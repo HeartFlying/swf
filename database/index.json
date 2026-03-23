@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "description": "Agent+Skill用户需求分析系统 - 中心化信息库索引",
+  "lastUpdated": "2026-03-23T00:00:00Z",
+  
+  "plans": {
+    "description": "所有需求分析Plan的索引",
+    "totalCount": 0,
+    "items": []
+  },
+  
+  "stages": {
+    "description": "各阶段产物汇总索引",
+    "s1": {
+      "name": "需求边界与原始采集",
+      "description": "S1阶段所有Skill产物的索引",
+      "totalOutputs": 0,
+      "outputs": []
+    },
+    "s2": {
+      "name": "市场与需求价值校验",
+      "description": "S2阶段所有Skill产物的索引",
+      "totalOutputs": 0,
+      "outputs": []
+    },
+    "s3": {
+      "name": "技术可行性与选型",
+      "description": "S3阶段所有Skill产物的索引",
+      "totalOutputs": 0,
+      "outputs": []
+    },
+    "s4": {
+      "name": "需求整合与核心提炼",
+      "description": "S4阶段所有Skill产物的索引",
+      "totalOutputs": 0,
+      "outputs": []
+    }
+  },
+  
+  "agents": {
+    "description": "Agent配置索引",
+    "coordinator": {
+      "path": "agents/coordinator.md",
+      "version": "1.0",
+      "status": "active"
+    },
+    "validator": {
+      "path": "agents/validator.md",
+      "version": "1.0",
+      "status": "active"
+    },
+    "userInteraction": {
+      "path": "agents/user-interaction.md",
+      "version": "1.0",
+      "status": "active"
+    },
+    "executor": {
+      "path": "agents/executor.md",
+      "version": "1.0",
+      "status": "active"
+    }
+  },
+  
+  "skills": {
+    "description": "Skill定义索引",
+    "skill0": {
+      "name": "Plan制定",
+      "path": "skills/skill0-plan/",
+      "stage": "S0",
+      "status": "active"
+    },
+    "s1": {
+      "skill1": {
+        "name": "需求边界界定",
+        "path": "skills/s1-requirements/skill1-boundary/",
+        "stage": "S1",
+        "status": "active"
+      },
+      "skill2": {
+        "name": "显性需求提取",
+        "path": "skills/s1-requirements/skill2-explicit/",
+        "stage": "S1",
+        "status": "active"
+      },
+      "skill3": {
+        "name": "隐性需求挖掘",
+        "path": "skills/s1-requirements/skill3-implicit/",
+        "stage": "S1",
+        "status": "active"
+      },
+      "skill4": {
+        "name": "需求验证",
+        "path": "skills/s1-requirements/skill4-validation/",
+        "stage": "S1",
+        "status": "active"
+      }
+    },
+    "s2": {
+      "skill9": {
+        "name": "竞品分析",
+        "path": "skills/s2-market/skill9-competitor/",
+        "stage": "S2",
+        "status": "active"
+      },
+      "skill10": {
+        "name": "市场痛点验证",
+        "path": "skills/s2-market/skill10-market/",
+        "stage": "S2",
+        "status": "active"
+      }
+    },
+    "s3": {
+      "skill7": {
+        "name": "需求风险识别",
+        "path": "skills/s3-technical/skill7-risk/",
+        "stage": "S3",
+        "status": "active"
+      },
+      "skill11": {
+        "name": "技术可行性评估",
+        "path": "skills/s3-technical/skill11-feasibility/",
+        "stage": "S3",
+        "status": "active"
+      },
+      "skill12": {
+        "name": "轻量化技术选型",
+        "path": "skills/s3-technical/skill12-selection/",
+        "stage": "S3",
+        "status": "active"
+      }
+    },
+    "s4": {
+      "skill5": {
+        "name": "需求分类梳理",
+        "path": "skills/s4-integration/skill5-classify/",
+        "stage": "S4",
+        "status": "active"
+      },
+      "skill6": {
+        "name": "需求优先级排序",
+        "path": "skills/s4-integration/skill6-priority/",
+        "stage": "S4",
+        "status": "active"
+      },
+      "skill8": {
+        "name": "核心需求提炼",
+        "path": "skills/s4-integration/skill8-core/",
+        "stage": "S4",
+        "status": "active"
+      }
+    }
+  },
+  
+  "templates": {
+    "description": "模板文件索引",
+    "skillOutput": "utils/skill-output-template.md",
+    "statusFile": "database/status.json",
+    "resumeFile": "database/resume.json"
+  },
+  
+  "utils": {
+    "description": "工具规范文档索引",
+    "idGenerator": "utils/id-generator.md",
+    "formatChecker": "utils/format-checker.md"
+  }
+}

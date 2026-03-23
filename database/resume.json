@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "description": "需求分析断点续跑配置模板 - 用于保存和恢复需求分析流程的执行状态",
+  
+  "planId": "{PLAN_ID}",
+  "canResume": false,
+  "resumeStatus": "normal",
+  "resumeStatusDescription": {
+    "normal": "正常执行，无需续跑",
+    "interrupted": "执行被中断，可以续跑",
+    "failed": "执行失败，需要重试",
+    "user_paused": "用户主动暂停"
+  },
+  
+  "breakpoint": {
+    "stage": null,
+    "stageDescription": null,
+    "skill": null,
+    "skillDescription": null,
+    "action": null,
+    "actionDescription": {
+      "execute": "执行Skill",
+      "validate": "校验产物",
+      "retry": "重试执行",
+      "user_interaction": "等待用户交互"
+    },
+    "interruptedAt": null,
+    "reason": null,
+    "retryCount": 0,
+    "maxRetries": 3
+  },
+  
+  "context": {
+    "lastCompletedStage": null,
+    "lastCompletedSkill": null,
+    "lastCompletedOutput": null,
+    "lastCompletedOutputPath": null,
+    "pendingSkills": [],
+    "skippedSkills": [],
+    
+    "executionHistory": {
+      "totalSkillsExecuted": 0,
+      "skills": []
+    },
+    
+    "userInteractionHistory": {
+      "totalInteractions": 0,
+      "interactions": []
+    },
+    
+    "validationHistory": {
+      "totalValidations": 0,
+      "passed": 0,
+      "failed": 0,
+      "validations": []
+    },
+    
+    "dataSnapshot": {
+      "description": "执行上下文数据快照",
+      "currentStageInputs": {},
+      "currentSkillInputs": {},
+      "intermediateResults": {}
+    }
+  },
+  
+  "resumeInstruction": "无断点，正常执行",
+  
+  "resumeChecklist": {
+    "description": "续跑前检查清单",
+    "items": [
+      {
+        "item": "检查lastCompletedOutput是否存在",
+        "status": "pending",
+        "required": true
+      },
+      {
+        "item": "检查当前Skill的输入依赖是否满足",
+        "status": "pending",
+        "required": true
+      },
+      {
+        "item": "检查是否需要用户交互",
+        "status": "pending",
+        "required": false
+      },
+      {
+        "item": "检查重试次数是否超过限制",
+        "status": "pending",
+        "required": true
+      }
+    ]
+  },
+  
+  "recovery": {
+    "description": "故障恢复信息",
+    "failureType": null,
+    "failureTypeDescription": {
+      "validation_failed": "产物校验失败",
+      "skill_error": "Skill执行错误",
+      "user_interaction_timeout": "用户交互超时",
+      "system_error": "系统错误",
+      "dependency_missing": "依赖产物缺失"
+    },
+    "errorDetails": null,
+    "recoveryAttempts": 0,
+    "recoveryStrategy": null,
+    "recoveryStrategyDescription": {
+      "retry": "重试当前操作",
+      "skip": "跳过当前Skill",
+      "fallback": "使用备用方案",
+      "abort": "终止执行",
+      "user_decision": "等待用户决策"
+    }
+  },
+  
+  "metadata": {
+    "originalRequirement": "{用户原始需求内容}",
+    "executionMode": "normal",
+    "createdAt": "{ISO_TIMESTAMP}",
+    "updatedAt": "{ISO_TIMESTAMP}",
+    "interruptedAt": null,
+    "resumedAt": null,
+    "completedAt": null,
+    "createdBy": "coordinator-agent",
+    "lastModifiedBy": "coordinator-agent"
+  },
+  
+  "notes": {
+    "description": "续跑相关备注信息",
+    "items": []
+  }
+}
