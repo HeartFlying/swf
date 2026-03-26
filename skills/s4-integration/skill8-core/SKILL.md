@@ -10,11 +10,10 @@
 | **所属阶段** | S4 - 需求整合与核心提炼阶段 |
 | **执行顺序** | S4 阶段第 3 个执行（依赖 S4-S06） |
 | **执行模式** | 常规模式执行，轻量化模式可选执行 |
-| **执行 Agent** | Executor Agent |
 | **前置 Skill** | S4-S06（需求优先级排序） |
 | **后置 Skill** | 无（S4 阶段最后一个 Skill） |
 | **参考标准** | IEEE 29148-2011, ISO/IEC 25010 |
-| **Skill 版本** | 2.0（标准化版本） |
+| **Skill 版本** | 3.0 |
 | **模板引用** | [template.md](template.md) |
 
 ---
@@ -72,14 +71,88 @@ Skill8 负责将前面所有分析阶段（Skill1-Skill7, Skill9-Skill12）的�
 
 | 产物编号 | 产物 ID 格式 | 产物名称 | 文件格式 | 存储路径 |
 |---------|-------------|---------|---------|---------|
-| OUT-01 | {PlanID}-S4-S08-001 | 需求整合与规整报告 | Markdown | `database/stages/s4/{PlanID}-S4-S08-001-consolidation.md` |
-| OUT-02 | {PlanID}-S4-S08-001 | 需求规格 JSON | JSON | `database/stages/s4/{PlanID}-S4-S08-001-consolidation.json` |
-| OUT-03 | {PlanID}-S4-S08-001 | 需求追溯矩阵 | Markdown | `database/stages/s4/{PlanID}-S4-S08-001-traceability.md` |
-| OUT-04 | - | 状态更新 | JSON | `database/status.json` |
+| OUT-01 | {PlanID}-S4-S08-001 | 需求整合与规整报告 | Markdown | `database/stages/s4/{PlanID}/{PlanID}-S4-S08-001.md` |
+| OUT-02 | {PlanID}-S4-S08-001 | 需求追溯矩阵 | Markdown | `database/stages/s4/{PlanID}/{PlanID}-S4-S08-001-traceability.md` |
+| OUT-03 | - | Todo-List 更新 | Markdown | `database/plans/{PlanID}/todo-list.md` |
 
-**产物 ID 格式**：`{PlanID}-S4-S08-001-{类型}`
+**产物 ID 格式**：`{PlanID}-S4-S08-001`
 
-**版本**：2.0（标准化版本）
+**版本**：3.0（增强版本）
+
+### Todo-List 更新规则
+
+**更新时机 1：Skill 开始时**
+- 任务状态：待执行 → 执行中
+- 记录开始时间
+- 更新进度概览（执行中 +1，待执行 -1）
+
+**更新时机 2：用户交互后**
+- 如交互导致产物重大变更，填写变更记录表格
+- 记录交互轮次到备注
+
+**更新时机 3：Skill 完成后（评审前）**
+- 任务状态：执行中 → 已完成
+- 填写输出文档路径
+- 记录完成时间
+- 评审状态：待评审
+
+**更新时机 4：用户评审后**
+- **评审通过**：任务状态 → 已评审，评审状态 → approved
+- **需修改**：评审状态 → rejected，任务状态保持已完成
+- **修改中**：评审状态 → modifying，任务状态 → 执行中
+- **新增想法**：任务状态 → 执行中，评审状态 → pending
+- 填写评审记录表格
+- 更新进度概览（已评审 +1，如通过）
+
+**Todo-List 文件路径**：`database/plans/{PlanID}/todo-list.md`
+
+### 错误处理
+
+**前置校验错误（E001-E099）**：
+- E001：S4-S06 产物不存在 - 要求先执行 Skill6
+- E002：S4-S05 产物不存在 - 要求先执行 Skill5
+- E003-E006：S1 阶段产物缺失 - 要求先执行 S1 阶段 Skills
+- E007：产物状态异常 - 要求重新生成产物
+- E008：产物 ID 格式错误 - 要求修正 ID 格式
+
+**执行过程错误（E100-E199）**：
+- E101-E109：文件读取/解析/合并错误 - 重试或降级处理
+- E106：需求合并冲突 - 记录日志，手动处理
+- E107：需求重写失败 - 保持原描述，记录警告
+- E108：验收标准缺失 - 提示补充，继续执行
+- E109：追溯关系断裂 - 修复追溯关系，继续执行
+
+**质量验证错误（E200-E299）**：
+- E201：完整性得分过低 - 列出缺失项，要求补充
+- E202：准确性得分过低 - 列出问题项，要求修正
+- E203：一致性检查失败 - 列出矛盾项，要求解决
+- E204：可追溯性得分过低 - 补充追溯关系
+- E205：可读性得分过低 - 优化文档结构和表达
+- E206-E208：SMART 检查/循环依赖/需求冲突
+
+**用户评审错误（E300-E399）**：
+- E301：用户评审未通过 - 用户提出修改意见
+- W301：用户评审超时 - 24 小时未响应，状态设为 paused
+- E302：评审意见解析失败 - 无法识别用户输入
+- E301-E309：报告/追溯矩阵/状态文件生成失败
+
+**用户交互错误（E400-E499）**：
+- W401：用户交互超时 - 等待用户输入超时
+- E401：用户输入无效 - 输入不符合格式要求
+- E402：多轮交互超限 - 超过 5 轮仍未明确
+
+**输出错误（E300-E399）**：
+- E301：报告生成失败 - 重试 3 次，失败则返回错误
+- E302：Markdown 生成失败 - 检查数据结构，重试
+- E303：追溯矩阵生成失败 - 检查追溯数据，重试
+- E304：状态更新失败 - 手动更新状态
+- E305：文件写入失败 - 检查权限，重试
+
+**系统错误（E900-E999）**：
+- E901：内存溢出 - 优化数据处理，分批处理
+- E902：执行超时 - 增加超时时间，优化性能
+- E903：磁盘空间不足 - 清理磁盘空间
+- E904：权限不足 - 检查文件权限
 
 ---
 
@@ -101,11 +174,12 @@ flowchart TD
     Step11 --> Step12[步骤 12: 一致性检查]
     Step12 --> Step13[步骤 13: 需求基线建立]
     Step13 --> Step14[步骤 14: 生成整合报告]
-    Step14 --> Step15[步骤 15: 生成规格 JSON]
-    Step15 --> Step16[步骤 16: 生成追溯矩阵]
-    Step16 --> Step17[步骤 17: 更新状态文件]
-    Step17 --> Step18[步骤 18: 返回执行结果]
-    Step18 --> End([结束])
+    Step14 --> Step15[步骤 15: 生成追溯矩阵]
+    Step15 --> Step16[步骤 16: 更新 Todo-List（待评审）]
+    Step16 --> Step17[步骤 17: 用户评审确认]
+    Step17 --> Step18[步骤 18: 更新 Todo-List（已评审）]
+    Step18 --> Step19[返回执行结果]
+    Step19 --> End([结束])
 
     %% 错误处理
     Step1 -.->|校验失败 | Error1[返回错误 E001-E099]
@@ -159,19 +233,19 @@ flowchart TD
 **目标**：读取需求优先级排序结果，提取需求清单和优先级信息
 
 **操作**：
-1. 读取 `{PlanID}-S4-S06-001-priority.json`
-2. 解析 JSON 数据，提取 prioritizedRequirements 列表
+1. 读取 `{PlanID}-S4-S06-001.md`
+2. 解析 Markdown 报告，提取 prioritizedRequirements 列表
 3. 提取每个需求的优先级、评估得分、版本规划信息
 4. 建立优先级索引，便于后续查询
 
 **验证规则**：
-- JSON 格式必须有效
+- Markdown 报告必须格式规范
 - prioritizedRequirements 列表不能为空
 - 每个需求必须包含 reqId、priority、phase 字段
 
 **错误处理**：
 - 文件读取失败：返回 E101 错误
-- JSON 解析失败：返回 E102 错误
+- Markdown 解析失败：返回 E102 错误
 - 需求清单为空：返回警告 W101，继续执行
 
 ### 步骤 3：读取 S4-S05 产物
@@ -179,18 +253,18 @@ flowchart TD
 **目标**：读取需求分类梳理结果，提取需求分类信息
 
 **操作**：
-1. 读取 `{PlanID}-S4-S05-001-classification.json`
-2. 解析 JSON 数据，提取分类需求列表
+1. 读取 `{PlanID}-S4-S05-001.md`
+2. 解析 Markdown 报告，提取分类需求列表
 3. 提取功能需求、用户需求、系统需求、业务需求分类信息
 4. 建立分类索引
 
 **验证规则**：
-- JSON 格式必须有效
+- Markdown 报告必须格式规范
 - 至少包含一种需求分类
 
 **错误处理**：
 - 文件读取失败：返回 E103 错误
-- JSON 解析失败：返回 E104 错误
+- Markdown 解析失败：返回 E104 错误
 
 ### 步骤 4：读取 S1 阶段产物
 
@@ -226,6 +300,93 @@ flowchart TD
 
 **错误处理**：
 - 产物不存在：记录日志，继续执行（非阻塞）
+
+### 步骤 5.5：用户交互（信息补全与澄清）
+
+**触发场景**：
+1. 检测到关键字段缺失或模糊（如需求描述不清晰、验收标准模糊）
+2. 需求信息完整度评分低于 60 分
+3. 检测到矛盾或冲突信息（如需求冲突、验收标准矛盾）
+4. 存在多个可行方案需要用户决策
+
+**交互流程**：
+1. 识别需要澄清的问题点
+2. 生成标准化交互问题（使用问题模板）
+3. 展示问题并等待用户输入
+4. 解析用户输入并补充到产物中
+5. 如仍不明确，进行多轮对话直到明确（最多 5 轮）
+
+**问题模板**：
+
+**模板 1：信息补全**
+```
+【信息补全请求】
+
+在需求整合过程中，发现以下关键信息缺失：
+
+缺失字段：{字段名称}
+当前上下文：{相关背景信息}
+影响范围：{不补充的影响}
+
+请补充{字段名称}的具体描述：
+- 期望格式：{格式要求}
+- 示例：{参考示例}
+
+您的输入：
+```
+
+**模板 2：需求澄清**
+```
+【需求澄清请求】
+
+检测到以下需求描述可能存在歧义：
+
+原文描述："{模糊描述}"
+可能理解：
+  A. {理解 A}
+  B. {理解 B}
+  C. {理解 C}
+  D. 其他（请说明）
+
+请选择您的真实意图（单选）：
+- 输入选项字母（A/B/C/D）
+- 如选择 D，请补充具体说明
+
+您的选择：
+```
+
+**模板 3：方案选择**
+```
+【方案选择请求】
+
+针对{需求名称}，存在以下可行方案：
+
+方案 A：{方案 A 描述}
+  - 优点：{优点列表}
+  - 缺点：{缺点列表}
+  - 适用场景：{场景描述}
+
+方案 B：{方案 B 描述}
+  - 优点：{优点列表}
+  - 缺点：{缺点列表}
+  - 适用场景：{场景描述}
+
+请选择您的偏好方案：
+- 单选：输入方案字母（A/B）
+- 多选：输入方案字母组合（AB/BA）
+- 其他：提出新方案
+
+您的选择：
+```
+
+**交互记录**：
+- 所有交互记录保存到产物文档的"用户交互记录"章节
+- 记录格式：交互轮次、交互时间、交互类型、问题描述、用户输入、解析结果、处理状态
+
+**错误处理**：
+- W401：用户交互超时 - 等待用户输入超时，继续执行
+- E401：用户输入无效 - 输入不符合格式要求，重新提问
+- E402：多轮交互超限 - 超过 5 轮仍未明确，使用默认值并标记待确认
 
 ### 步骤 6：提取需求清单
 
@@ -540,24 +701,7 @@ TRACE-VERIFY（验证于）：
 **错误处理**：
 - 生成失败：返回 E301-E309 错误
 
-### 步骤 15：生成规格 JSON
-
-**目标**：生成结构化的需求规格 JSON 数据
-
-**操作**：
-1. 按照 JSON Schema 生成结构化数据
-2. 包含所有需求及其属性
-3. 包含追溯关系
-4. 包含基线信息
-
-**验证规则**：
-- JSON 格式必须有效
-- 符合 JSON Schema 定义
-
-**错误处理**：
-- 生成失败：返回 E310-E319 错误
-
-### 步骤 16：生成追溯矩阵
+### 步骤 15：生成追溯矩阵
 
 **目标**：生成需求追溯矩阵文档
 
@@ -573,19 +717,141 @@ TRACE-VERIFY（验证于）：
 **错误处理**：
 - 生成失败：返回 E320-E329 错误
 
-### 步骤 17：更新状态文件
+### 步骤 16：更新 Todo-List（待评审）
 
-**目标**：更新 database/status.json 中的 Skill 状态
+**目标**：更新 Todo-List 任务状态为"已完成"，评审状态为"待评审"
 
 **操作**：
-1. 读取 status.json
-2. 更新 S4-S08 状态为 completed
-3. 更新产物路径
-4. 写回 status.json
+1. 读取 `database/plans/{PlanID}/todo-list.md`
+2. 更新 S4-S08 任务状态为"已完成"
+3. 填写输出文档路径
+4. 记录完成时间
+5. 评审状态设置为"待评审"
+6. 更新进度概览
+
+**验证规则**：
+- 状态必须正确更新
+- 产物路径必须准确
+
+**错误处理**：
+- E204：Todo-List 结构错误 - Todo-List 文件格式不符合规范
+
+### 步骤 17：用户评审确认
+
+**目标**：触发用户评审流程，等待用户确认
+
+**评审提示模板**：
+```
+【需求分析-S4-需求整合与规整】- 用户评审
+
+需求整合与规整已完成，输出产物如下：
+
+**产物文件**：`{PlanID}-S4-S08-001.md`
+**追溯矩阵**：`{PlanID}-S4-S08-001-traceability.md`
+
+**整合统计**：
+- 总需求数：{X} 项
+- Must Have：{X} 项
+- Should Have：{X} 项
+- Could Have：{X} 项
+- Won't Have：{X} 项
+- SMART 通过率：{X}%
+- 追溯完整性：{X}%
+
+**用户交互记录**：{X} 轮交互
+
+---
+请评审以上结果：
+- 输入「确认」表示无误，继续执行下一个步骤
+- 输入「修改」并提供修改意见，格式：「修改：{具体修改内容}」
+- 输入「新增」并提出新想法，格式：「新增：{新需求内容}」
+
+示例：
+- 确认
+- 修改：需求 1 的验收标准需要补充性能指标
+- 新增：希望能增加需求变更记录章节
+```
+
+**用户决策处理**：
+1. **确认**：
+   - 更新 Todo-List：任务状态 → 已评审，评审状态 → approved
+   - 填写评审记录表格
+   - S4 阶段完成，进入最终报告阶段
+
+2. **修改 - 小修改**：
+   - 直接修改产物内容
+   - 重新展示评审
+   - 更新 Todo-List：评审状态 → rejected → modifying
+
+3. **修改 - 大修改**：
+   - 返回步骤 6 重新执行
+   - 更新 Todo-List：任务状态 → 执行中，评审状态 → pending
+   - 填写变更记录表格
+
+4. **新增想法**：
+   - 更新产物内容
+   - 重新展示评审
+   - 更新 Todo-List：任务状态 → 执行中，评审状态 → pending
+
+**评审超时处理**：
+- 超时时间：24 小时
+- 超时处理：状态设为 paused，支持恢复
+- 恢复方式：用户输入「继续」后从断点继续
+
+**错误处理**：
+- E301：用户评审未通过 - 用户提出修改意见
+- W301：用户评审超时 - 24 小时未响应，状态设为 paused
+- E302：评审意见解析失败 - 无法识别用户输入
+
+### 步骤 18：更新 Todo-List（已评审）
+
+**目标**：更新 Todo-List 任务状态为"已评审"，记录评审结果
+
+**操作**：
+1. 读取 `database/plans/{PlanID}/todo-list.md`
+2. 更新 S4-S08 任务状态为"已评审"
+3. 评审状态设置为"approved"
+4. 填写评审记录表格：
+   - 评审轮次：第 N 轮评审
+   - 评审时间：评审完成的时间
+   - 评审结果：通过/需修改
+   - 评审意见：用户提出的具体意见
+   - 处理状态：已处理/处理中
+5. 更新进度概览
+
+**验证规则**：
+- 状态必须正确更新
+- 评审记录必须完整
+
+**错误处理**：
+- E204：Todo-List 结构错误 - Todo-List 文件格式不符合规范
+
+### 步骤 19：返回执行结果
+1. 生成需求追溯表格
+2. 绘制依赖关系图
+3. 建立需求索引
+
+**验证规则**：
+- 追溯关系必须完整
+- 依赖关系图必须清晰
+
+**错误处理**：
+- 生成失败：返回 E320-E329 错误
+
+### 步骤 17：更新 Todo-List（已评审）
+
+**目标**：更新 Todo-List 任务状态为"已评审"，记录评审结果
+
+**操作**：
+1. 读取 `database/plans/{PlanID}/todo-list.md`
+2. 更新 S4-S08 任务状态为"已评审"
+3. 评审状态设置为"approved"
+4. 填写评审记录表格
+5. 更新进度概览
 
 **验证规则**：
 - 状态更新必须成功
-- 产物路径必须正确
+- 评审记录必须完整
 
 **错误处理**：
 - 更新失败：返回 E330-E339 错误
@@ -595,21 +861,20 @@ TRACE-VERIFY（验证于）：
 **目标**：返回 Skill 执行结果给 Coordinator Agent
 
 **操作**：
-1. 构建执行结果 JSON
+1. 构建执行结果
 2. 包含产物列表
 3. 包含执行统计
 4. 返回结果
 
-**返回格式**：
-```json
-{
-  "status": "success|failed",
-  "planId": "{PlanID}",
-  "skillId": "S08",
-  "outputs": [...],
-  "statistics": {...}
-}
-```
+**返回内容**：
+- 执行状态：success/failed
+- PlanID：计划 ID
+- SkillID：S08
+- 输出产物：产物文件列表
+- 执行统计：统计数据
+
+**错误处理**：
+- 返回格式错误：使用标准格式重新构建
 
 ---
 
@@ -634,164 +899,9 @@ TRACE-VERIFY（验证于）：
 8. 需求基线信息
 9. 附录
 
-### 产物 2：需求规格 JSON
+### 产物 2：需求追溯矩阵
 
-**文件路径**：`database/stages/s4/{PlanID}-S4-S08-001-consolidation.json`
-
-**JSON Schema**：
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "artifactId": {
-      "type": "string",
-      "pattern": "^[A-Z0-9]+-S4-S08-001$"
-    },
-    "planId": {
-      "type": "string"
-    },
-    "skillId": {
-      "type": "string",
-      "enum": ["S08"]
-    },
-    "version": {
-      "type": "string",
-      "enum": ["2.0"]
-    },
-    "createdAt": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "consolidation": {
-      "type": "object",
-      "properties": {
-        "summary": {
-          "type": "object",
-          "properties": {
-            "totalRequirements": {"type": "integer"},
-            "mustHaveCount": {"type": "integer"},
-            "shouldHaveCount": {"type": "integer"},
-            "couldHaveCount": {"type": "integer"},
-            "wontHaveCount": {"type": "integer"},
-            "smartPassRate": {"type": "number", "minimum": 0, "maximum": 100},
-            "traceabilityCompleteness": {"type": "number", "minimum": 0, "maximum": 100}
-          },
-          "required": ["totalRequirements", "mustHaveCount", "smartPassRate", "traceabilityCompleteness"]
-        },
-        "requirementsBySource": {
-          "type": "object",
-          "properties": {
-            "explicit": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "implicit": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "derived": {"type": "array", "items": {"$ref": "#/definitions/requirement"}}
-          }
-        },
-        "requirementsByPriority": {
-          "type": "object",
-          "properties": {
-            "p0": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "p1": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "p2": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "p3": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "p4": {"type": "array", "items": {"$ref": "#/definitions/requirement"}}
-          }
-        },
-        "requirementsByPhase": {
-          "type": "object",
-          "properties": {
-            "mvp": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "v1": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "v2": {"type": "array", "items": {"$ref": "#/definitions/requirement"}},
-            "future": {"type": "array", "items": {"$ref": "#/definitions/requirement"}}
-          }
-        }
-      },
-      "required": ["summary", "requirementsBySource", "requirementsByPriority"]
-    },
-    "traceability": {
-      "type": "object",
-      "properties": {
-        "matrix": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "reqId": {"type": "string"},
-              "source": {"type": "string"},
-              "dependencies": {"type": "array", "items": {"type": "string"}},
-              "testCases": {"type": "array", "items": {"type": "string"}}
-            },
-            "required": ["reqId", "source"]
-          }
-        }
-      }
-    },
-    "baseline": {
-      "type": "object",
-      "properties": {
-        "version": {"type": "string"},
-        "createdAt": {"type": "string", "format": "date-time"},
-        "createdBy": {"type": "string"},
-        "changeLog": {"type": "array", "items": {"type": "object"}}
-      },
-      "required": ["version", "createdAt"]
-    },
-    "qualityAssurance": {
-      "type": "object",
-      "properties": {
-        "completenessCheck": {
-          "type": "object",
-          "properties": {
-            "passed": {"type": "boolean"},
-            "score": {"type": "number"},
-            "missingItems": {"type": "array", "items": {"type": "string"}}
-          }
-        },
-        "consistencyCheck": {
-          "type": "object",
-          "properties": {
-            "passed": {"type": "boolean"},
-            "score": {"type": "number"},
-            "conflicts": {"type": "array", "items": {"type": "string"}}
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "requirement": {
-      "type": "object",
-      "properties": {
-        "reqId": {"type": "string"},
-        "userStory": {"type": "string"},
-        "category": {"type": "string"},
-        "priority": {"type": "string"},
-        "phase": {"type": "string"},
-        "acceptanceCriteria": {"type": "array", "items": {"type": "string"}},
-        "smartCheck": {
-          "type": "object",
-          "properties": {
-            "specific": {"type": "boolean"},
-            "measurable": {"type": "boolean"},
-            "achievable": {"type": "boolean"},
-            "relevant": {"type": "boolean"},
-            "timeBound": {"type": "boolean"}
-          }
-        },
-        "source": {"type": "string"},
-        "dependencies": {"type": "array", "items": {"type": "string"}}
-      },
-      "required": ["reqId", "userStory", "priority", "phase"]
-    }
-  },
-  "required": ["artifactId", "planId", "skillId", "version", "createdAt", "consolidation"]
-}
-```
-
-### 产物 3：需求追溯矩阵
-
-**文件路径**：`database/stages/s4/{PlanID}-S4-S08-001-traceability.md`
+**文件路径**：`database/stages/s4/{PlanID}/{PlanID}-S4-S08-001-traceability.md`
 
 **内容结构**：
 1. 追溯矩阵表
@@ -799,26 +909,7 @@ TRACE-VERIFY（验证于）：
 3. 需求来源索引
 4. 需求分类索引
 
-### 产物 4：状态更新
-
-**文件路径**：`database/status.json`
-
-**更新内容**：
-```json
-{
-  "skills": {
-    "S4-S08": {
-      "status": "completed",
-      "completedAt": "{ISO 时间戳}",
-      "artifacts": [
-        "{PlanID}-S4-S08-001-consolidation.md",
-        "{PlanID}-S4-S08-001-consolidation.json",
-        "{PlanID}-S4-S08-001-traceability.md"
-      ]
-    }
-  }
-}
-```
+**版本**：3.0（增强版本）
 
 ---
 
@@ -976,7 +1067,7 @@ SMART 符合度：
 | 错误码 | 错误名称 | 错误描述 | 处理策略 |
 |--------|---------|---------|---------|
 | E101 | FILE_READ_FAILED | 文件读取失败 | 重试 3 次，失败则返回错误 |
-| E102 | JSON_PARSE_FAILED | JSON 解析失败 | 返回错误，要求检查 JSON 格式 |
+| E102 | MARKDOWN_PARSE_FAILED | Markdown 解析失败 | 返回错误，要求检查 Markdown 格式 |
 | E103 | REQUIREMENT_EMPTY | 需求清单为空 | 返回警告，确认是否确实无需求 |
 | E104 | DUPLICATE_REQ_ID | 需求 ID 重复 | 自动重命名，记录日志 |
 | E105 | SOURCE_MISSING | 需求来源缺失 | 标记为"未知来源"，继续执行 |
@@ -1003,7 +1094,7 @@ SMART 符合度：
 | 错误码 | 错误名称 | 错误描述 | 处理策略 |
 |--------|---------|---------|---------|
 | E301 | REPORT_GENERATION_FAILED | 报告生成失败 | 重试 3 次，失败则返回错误 |
-| E302 | JSON_GENERATION_FAILED | JSON 生成失败 | 检查数据结构，重试 |
+| E302 | MARKDOWN_GENERATION_FAILED | Markdown 生成失败 | 检查数据结构，重试 |
 | E303 | TRACEABILITY_GENERATION_FAILED | 追溯矩阵生成失败 | 检查追溯数据，重试 |
 | E304 | STATUS_UPDATE_FAILED | 状态更新失败 | 手动更新状态 |
 | E305 | FILE_WRITE_FAILED | 文件写入失败 | 检查权限，重试 |
@@ -1038,7 +1129,7 @@ SMART 符合度：
 | 错误类型 | 恢复策略 | 重试次数 | 降级方案 |
 |---------|---------|---------|---------|
 | 文件读取失败 | 重试读取 | 3 次 | 使用缓存数据 |
-| JSON 解析失败 | 修复 JSON 格式 | 1 次 | 手动解析 |
+| Markdown 解析失败 | 修复 Markdown 格式 | 1 次 | 手动解析 |
 | 需求合并冲突 | 保留高优先级 | 0 次 | 记录日志，手动处理 |
 | 追溯关系断裂 | 自动修复 | 1 次 | 标记为"未知" |
 | 质量验证不通过 | 补充/修正 | 1 次 | 标记问题项 |

@@ -7,11 +7,12 @@
 | **所属 PlanID** | {PlanID} |
 | **所属阶段** | S2 阶段：市场与需求价值校验 |
 | **前置依赖 Skill** | Skill4（需求验证）、Skill9（竞品分析） |
-| **产物唯一 ID** | {PlanID}-S2-S10-001 |
-| **产物版本** | v2.0（标准化版本） |
+| **产物唯一 ID** | {PlanID}-S2-S10-001-MD |
+| **产物版本** | v3.0（增强版本） |
 | **核心内容摘要** | {验证 X 个痛点，Y 个高价值可推进，Z 个需调整/放弃} |
 | **生成日期** | {YYYY-MM-DD HH:mm:ss} |
 | **用户交互记录** | {无/有：交互内容摘要} |
+| **评审状态** | {待评审/已通过/需修改} |
 
 ---
 
@@ -618,6 +619,44 @@ graph LR
 
 ---
 
+## 用户交互记录
+
+{如有用户交互，记录所有交互轮次}
+
+### 交互详情
+
+| 交互轮次 | 交互时间 | 交互类型 | 问题描述 | 用户输入 | 解析结果 | 处理状态 |
+|---------|---------|---------|---------|---------|---------|---------|
+| 第 1 轮 | {YYYY-MM-DD HH:mm:ss} | {信息补全/需求澄清/方案选择} | {问题摘要} | {用户输入内容} | {解析结果} | 已处理 |
+
+**交互详情描述**：
+
+**第 1 轮交互**：
+- 问题：{详细描述交互问题}
+- 用户输入：{用户的具体输入}
+- 解析结果：{对用户输入的解析和理解}
+- 处理：{如何处理用户输入，补充到哪个章节}
+
+{更多交互轮次...}
+
+---
+
+## 评审记录
+
+| 评审轮次 | 评审时间 | 评审结果 | 评审意见 | 处理状态 |
+|---------|---------|---------|---------|---------|
+| 第 1 轮 | {YYYY-MM-DD HH:mm:ss} | {通过/需修改} | {用户意见或"无"} | {已处理/处理中} |
+
+**评审详情**：
+
+**第 1 轮评审**：
+- 评审时间：{YYYY-MM-DD HH:mm:ss}
+- 评审结果：{通过/需修改}
+- 评审意见：{用户的具体意见}
+- 处理情况：{如何处理评审意见，修改了哪些内容}
+
+---
+
 ## 十、附录
 
 ### 10.1 验证依据
@@ -664,133 +703,16 @@ graph LR
 |---------|---------|---------|------|
 | {文档名} | {类型} | {路径} | {说明} |
 
-### 10.5 JSON Schema
+### 10.5 版本历史
 
-**结构化数据定义**：
-
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "市场痛点验证 JSON Schema",
-  "type": "object",
-  "properties": {
-    "metadata": {
-      "type": "object",
-      "properties": {
-        "planId": {"type": "string"},
-        "stage": {"type": "string", "enum": ["S2"]},
-        "skillId": {"type": "string", "enum": ["S10"]},
-        "productId": {"type": "string"},
-        "generatedAt": {"type": "string", "format": "date-time"},
-        "version": {"type": "string"}
-      },
-      "required": ["planId", "stage", "skillId", "productId", "generatedAt"]
-    },
-    "validationOverview": {
-      "type": "object",
-      "properties": {
-        "validationDate": {"type": "string", "format": "date"},
-        "scope": {"type": "string"},
-        "methods": {"type": "array", "items": {"type": "string"}},
-        "summary": {"type": "string"},
-        "statistics": {
-          "type": "object",
-          "properties": {
-            "totalPainPoints": {"type": "integer"},
-            "validatedPoints": {"type": "integer"},
-            "highValuePoints": {"type": "integer"},
-            "mediumValuePoints": {"type": "integer"},
-            "lowValuePoints": {"type": "integer"},
-            "continuePoints": {"type": "integer"},
-            "adjustPoints": {"type": "integer"},
-            "abandonPoints": {"type": "integer"},
-            "needsValidationPoints": {"type": "integer"}
-          }
-        }
-      }
-    },
-    "painPoints": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {"type": "string"},
-          "description": {"type": "string"},
-          "source": {"type": "string", "enum": ["显性", "隐性", "竞品分析"]},
-          "affectedUsers": {"type": "string"},
-          "scenario": {"type": "string"},
-          "authenticity": {
-            "type": "object",
-            "properties": {
-              "userGroupValidation": {"type": "string"},
-              "scenarioValidation": {"type": "string"},
-              "frequency": {"type": "string", "enum": ["高频", "中频", "低频"]},
-              "severity": {"type": "string", "enum": ["严重", "中等", "轻微"]},
-              "conclusion": {"type": "string", "enum": ["已验证", "待验证", "存疑"]},
-              "evidence": {"type": "array", "items": {"type": "string"}}
-            }
-          },
-          "marketValue": {
-            "type": "object",
-            "properties": {
-              "marketSize": {"type": "string"},
-              "penetrationRate": {"type": "string"},
-              "userValue": {"type": "string"},
-              "totalValue": {"type": "string"},
-              "willingness": {"type": "string", "enum": ["强烈", "中等", "弱", "无"]},
-              "valueLevel": {"type": "string", "enum": ["高价值", "中价值", "低价值"]}
-            }
-          },
-          "feasibility": {
-            "type": "object",
-            "properties": {
-              "technical": {"type": "string"},
-              "resource": {"type": "string"},
-              "time": {"type": "string"},
-              "conclusion": {"type": "string", "enum": ["可行", "基本可行", "存疑", "不可行"]}
-            }
-          },
-          "conclusion": {
-            "type": "string",
-            "enum": ["继续推进", "需要调整", "建议放弃", "需进一步验证"]
-          }
-        },
-        "required": ["id", "description", "source", "authenticity", "marketValue", "feasibility", "conclusion"]
-      }
-    },
-    "conclusions": {
-      "type": "object",
-      "properties": {
-        "summary": {"type": "string"},
-        "highPriority": {"type": "array", "items": {"type": "string"}},
-        "needsAdjustment": {"type": "array", "items": {"type": "string"}},
-        "suggestedAbandon": {"type": "array", "items": {"type": "string"}},
-        "needsValidation": {"type": "array", "items": {"type": "string"}},
-        "keyFindings": {"type": "array", "items": {"type": "string"}}
-      }
-    },
-    "risks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {"type": "string"},
-          "description": {"type": "string"},
-          "level": {"type": "string", "enum": ["高", "中", "低"]},
-          "impact": {"type": "string"},
-          "probability": {"type": "string", "enum": ["高", "中", "低"]},
-          "mitigation": {"type": "string"}
-        }
-      }
-    }
-  },
-  "required": ["metadata", "validationOverview", "painPoints", "conclusions"]
-}
-```
+| 版本 | 日期 | 变更内容 | 变更人 |
+|-----|------|---------|-------|
+| v1.0 | 2026-03-24 | 初始版本 | AI Assistant |
+| v3.0 | 2026-03-26 | 增强版本：添加用户交互环节、用户评审环节、去除 JSON Schema、统一产物 ID 格式 | AI Assistant |
 
 ---
 
 *产物生成时间：{YYYY-MM-DD HH:mm:ss}*  
-*生成者：Skill10-市场痛点验证 v2.0*  
-*产物版本：v2.0*  
-*产物 ID: {PlanID}-S2-S10-001*
+*生成者：Skill10-市场痛点验证 v3.0*  
+*产物版本：v3.0*  
+*产物 ID: {PlanID}-S2-S10-001-MD*

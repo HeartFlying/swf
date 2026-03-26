@@ -536,9 +536,9 @@ T001（基础技术） → T004（核心技术） → T007（高级技术） →
 | 技术预研 | Technical Research | 针对新技术或难点进行的预先研究和验证 |
 | 技术债务 | Technical Debt | 为快速实现而采用的非最优技术方案累积的问题 |
 
-### E. JSON Schema
+### E. 数据格式说明
 
-完整的结构化数据定义见 [Skill11 SKILL.md](../SKILL.md) 第四章。
+完整的数据结构定义见 [Skill11 SKILL.md](../SKILL.md) 第四章。
 
 ---
 

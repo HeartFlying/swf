@@ -9,13 +9,9 @@
 | **所属阶段** | S3 - 技术可行性与选型阶段 |
 | **执行顺序** | 第 3 个执行（S3 阶段出口） |
 | **执行模式** | 仅常规模式执行，轻量化模式跳过 |
-| **执行 Agent** | Executor Agent |
 | **前置依赖** | Skill7（需求风险识别，可选）、Skill11（技术可行性评估，必需） |
 | **后置 Skill** | Skill5（需求分类梳理，S4 阶段入口） |
-| **产物 ID 格式** | `{PlanID}-S3-S12-001-{类型}` |
-| **产物类型** | 技术选型报告（Markdown）、技术选型 JSON（结构化数据） |
-| **模板引用** | [template.md](template.md) |
-| **版本** | 2.0（标准化版本） |
+| **版本** | v3.0 |
 
 ---
 
@@ -43,55 +39,41 @@ Skill12 负责基于技术可行性评估结果，进行技术方案选型和成
 **前置产物**：
 - Plan 定义文件（必需）
 - 技术可行性评估报告（Skill11 产物，必需）
-- 技术可行性评估 JSON（Skill11 产物，必需）
 - 需求风险识别报告（Skill7 产物，可选）
-- 需求风险清单 JSON（Skill7 产物，可选）
 
 **输入数据**：
-```json
-{
-  "planId": "P000001",
-  "planDefinition": "database/plan/{PlanID}/plan-definition.md",
-  "feasibilityArtifact": "P000001-S3-S11-001",
-  "feasibilityArtifactPath": "database/stages/s3/{PlanID}/P000001-S3-S11-001-feasibility.md",
-  "feasibilityJsonPath": "database/stages/s3/{PlanID}/P000001-S3-S11-001-feasibility.json",
-  "riskArtifact": "P000001-S3-S07-001",
-  "riskArtifactPath": "database/stages/s3/{PlanID}/P000001-S3-S07-001-risk.md",
-  "riskJsonPath": "database/stages/s3/{PlanID}/P000001-S3-S07-001-risk.json"
-}
-```
+
+| 数据项 | 说明 | 示例值 |
+|--------|------|--------|
+| Plan ID | 当前计划的唯一标识 | P000001 |
+| Plan 定义文件 | Plan 定义文档路径 | database/plan/{PlanID}/plan-definition.md |
+| 可行性评估产物 ID | Skill11 产物标识 | P000001-S3-S11-001 |
+| 可行性评估报告路径 | Skill11 产物文件路径 | database/stages/s3/{PlanID}/P000001-S3-S11-001-feasibility.md |
+| 风险识别产物 ID | Skill7 产物标识（可选） | P000001-S3-S07-001 |
+| 风险识别报告路径 | Skill7 产物文件路径（可选） | database/stages/s3/{PlanID}/P000001-S3-S07-001-risk.md |
 
 #### 输出
 
 **产物清单**：
 - 技术选型报告（Markdown）：`database/stages/s3/{PlanID}/{PlanID}-S3-S12-001-selection.md`
-- 技术选型 JSON（结构化数据）：`database/stages/s3/{PlanID}/{PlanID}-S3-S12-001-selection.json`
-- 状态更新：更新 Plan-Status.json 中 Skill12 的执行状态
+- Todo-List 更新：更新 Todo-List 中 Skill12 的执行状态
 
 **输出数据**：
-```json
-{
-  "status": "success|failed",
-  "planId": "P000001",
-  "outputs": [
-    {
-      "artifactId": "P000001-S3-S12-001",
-      "artifactType": "tech_selection",
-      "filePath": "database/stages/s3/{PlanID}/P000001-S3-S12-001-selection.md",
-      "jsonPath": "database/stages/s3/{PlanID}/P000001-S3-S12-001-selection.json"
-    }
-  ],
-  "nextStage": "S4",
-  "nextSkill": "S05",
-  "selectionSummary": {
-    "totalSelections": 8,
-    "totalDuration": "120 PD",
-    "totalLaborCost": "150,000 元",
-    "totalMonthlyCost": "5,000 元/月",
-    "totalFirstYearCost": "210,000 元"
-  }
-}
-```
+
+| 数据项 | 说明 | 示例值 |
+|--------|------|--------|
+| 执行状态 | 执行成功或失败 | success / failed |
+| Plan ID | 当前计划的唯一标识 | P000001 |
+| 产物 ID | 技术选型报告产物标识 | P000001-S3-S12-001 |
+| 产物类型 | 产物类型标识 | tech_selection |
+| 产物路径 | 技术选型报告文件路径 | database/stages/s3/{PlanID}/P000001-S3-S12-001-selection.md |
+| 下一阶段 | 下一阶段标识 | S4 |
+| 下一 Skill | 下一 Skill 标识 | S05 |
+| 选型总数 | 技术选型项目总数 | 8 |
+| 总实施周期 | 总体实施周期（人天） | 120 PD |
+| 总人力成本 | 总体人力成本 | 150,000 元 |
+| 月度运营成本 | 每月运营成本 | 5,000 元/月 |
+| 首年总成本 | 第一年度总成本 | 210,000 元 |
 
 ### 2.3 质量标准
 
@@ -117,7 +99,8 @@ Skill12 负责基于技术可行性评估结果，进行技术方案选型和成
 flowchart TD
     Start([开始]) --> Step1[步骤 1: 前置校验]
     Step1 --> Step2[步骤 2: 技术需求分析]
-    Step2 --> Step3[步骤 3: 技术点识别]
+    Step2 --> Step2.5[步骤 2.5: 用户交互]
+    Step2.5 --> Step3[步骤 3: 技术点识别]
     Step3 --> Step4[步骤 4: 候选方案收集]
     Step4 --> Step5[步骤 5: 多维度方案对比]
     Step5 --> Step6[步骤 6: 技术选型决策]
@@ -125,22 +108,26 @@ flowchart TD
     Step7 --> Step8[步骤 8: 实施周期规划]
     Step8 --> Step9[步骤 9: 技术风险评估]
     Step9 --> Step10[步骤 10: 生成选型报告]
-    Step10 --> Step11[步骤 11: 生成选型 JSON]
-    Step11 --> Step12[步骤 12: 更新状态文件]
-    Step12 --> End([结束])
+    Step10 --> Step11[步骤 11: 更新 Todo-List]
+    Step11 --> Step12[步骤 12: 用户评审]
+    Step12 --> Decision{用户决策}
+    Decision -->|确认| Step13[步骤 13: 更新 Todo-List]
+    Decision -->|修改| Modify[返回修改]
+    Decision -->|新增| Add[补充选型]
+    Step13 --> End([结束])
+    Modify --> Step10
+    Add --> Step10
     
-    Step1 -->|校验失败 | Error1[返回错误]
-    Step2 -->|识别失败 | Error2[补充识别]
-    Step3 -->|识别不完整 | Error3[补充技术点]
-    Step4 -->|方案不足 | Error4[补充候选方案]
-    Step5 -->|对比不充分 | Error5[补充对比维度]
-    Step6 -->|决策困难 | Error6[请求用户决策]
-    Step7 -->|估算不合理 | Error7[重新评估成本]
-    Step8 -->|排期冲突 | Error8[调整排期]
-    Step9 -->|风险遗漏 | Error9[补充风险项]
-    Step10 -->|生成失败 | Error10[重新生成报告]
-    Step11 -->|生成失败 | Error11[重新生成 JSON]
-    Step12 -->|更新失败 | Error12[重试更新]
+    Step1 -->|校验失败| Error1[返回错误]
+    Step2 -->|识别失败| Error2[补充识别]
+    Step3 -->|识别不完整| Error3[补充技术点]
+    Step4 -->|方案不足| Error4[补充候选方案]
+    Step5 -->|对比不充分| Error5[补充对比维度]
+    Step6 -->|决策困难| Error6[请求用户决策]
+    Step7 -->|估算不合理| Error7[重新评估成本]
+    Step8 -->|排期冲突| Error8[调整排期]
+    Step9 -->|风险遗漏| Error9[补充风险项]
+    Step10 -->|生成失败| Error10[重新生成报告]
     
     Error1 --> Start
     Error2 --> Step2
@@ -152,8 +139,6 @@ flowchart TD
     Error8 --> Step8
     Error9 --> Step9
     Error10 --> Step10
-    Error11 --> Step11
-    Error12 --> Step12
 ```
 
 ### 步骤 1：前置校验
@@ -163,9 +148,8 @@ flowchart TD
 **操作**：
 1. 检查 Plan 定义文件是否存在
 2. 检查 Skill11 技术可行性评估报告是否存在
-3. 检查 Skill11 技术可行性评估 JSON 是否存在
-4. 检查 Skill7 需求风险识别报告是否存在（可选）
-5. 验证文件格式是否符合模板要求
+3. 检查 Skill7 需求风险识别报告是否存在（可选）
+4. 验证文件格式是否符合模板要求
 
 **验证规则**：
 - 前置产物必须存在且可读
@@ -195,6 +179,88 @@ flowchart TD
 **错误处理**：
 - E1200: 技术可行性评估报告读取失败 → 重试读取或返回错误
 - E1201: 技术点识别不完整 → 补充识别遗漏的技术点
+
+### 步骤 2.5：用户交互（技术选型偏好调研）
+
+**触发场景**：
+- 技术选型偏好不明确（如成本优先/效率优先/稳定性优先）
+- 技术栈约束条件不清晰
+- 团队技术能力信息缺失
+- 预算约束与选型冲突
+- 发现重大技术选型风险
+
+**交互流程**：
+1. 识别需要用户确认的技术选型偏好
+2. 生成澄清问题（使用标准化问题模板）
+3. 等待用户输入
+4. 解析用户输入，补充到技术选型需求
+5. 如仍不清晰，进行多轮对话（最多 3 轮）
+
+**问题模板示例**：
+
+**场景 1：技术选型偏好调研**
+```
+【技术选型偏好调研】
+
+在进行技术选型前，需要了解您的偏好优先级：
+
+请按优先级排序以下因素（1=最高优先级，5=最低优先级）：
+A. 成本控制 - 降低开发和运营成本
+B. 开发效率 - 快速实现功能上线
+C. 技术稳定性 - 选择成熟稳定的技术
+D. 团队熟悉度 - 选择团队熟悉的技术
+E. 技术先进性 - 采用前沿技术方案
+
+您的排序（例如：CBAED）：
+```
+
+**场景 2：技术栈约束确认**
+```
+【技术栈约束确认】
+
+检测到以下技术栈约束条件需要确认：
+
+约束项：{约束名称，如"必须使用 Flutter 开发"}
+当前上下文：{相关背景信息}
+影响范围：{约束对选型的影响}
+
+请确认：
+- 输入「确认」表示接受此约束
+- 输入「修改」并提供新的约束条件
+- 输入「取消」表示移除此约束
+
+您的选择：
+```
+
+**场景 3：预算约束与选型冲突**
+```
+【预算约束冲突提示】
+
+检测到技术选型与预算约束存在冲突：
+
+推荐方案：{推荐技术方案}
+方案成本：{预估成本}
+预算约束：{预算上限}
+差额：{差额}
+
+可选处理方式：
+A. 调整预算上限
+B. 选择成本更低的替代方案
+C. 分阶段实施，降低首期投入
+D. 其他方案（请说明）
+
+请选择处理方式：
+```
+
+**交互记录保存**：
+所有交互记录保存到技术选型报告的"用户交互记录"章节，包含：
+- 交互轮次
+- 交互时间
+- 交互类型
+- 问题描述
+- 用户输入
+- 解析结果
+- 处理状态
 
 ### 步骤 3：技术点识别
 
@@ -479,78 +545,193 @@ flowchart TD
 - E202: 报告内容不完整 → 补充缺失内容
 - E203: 报告格式错误 → 修正格式
 
-### 步骤 11：生成选型 JSON
+### 步骤 11：更新 Todo-List
 
-**目标**：生成技术选型 JSON（结构化数据）
-
-**操作**：
-1. 按照 JSON Schema 定义组织数据
-2. 填写元数据信息
-3. 填写技术选型概览
-4. 填写技术选型清单
-5. 填写成本预算
-6. 填写实施周期
-7. 填写风险评估
-8. 验证 JSON 格式和 Schema 合规性
-
-**验证规则**：
-- JSON 格式正确
-- Schema 验证通过
-- 数据完整准确
-
-**错误处理**：
-- E204: JSON 生成失败 → 检查数据并重新生成
-- E205: Schema 验证失败 → 修正数据格式
-- E206: 数据不完整 → 补充缺失数据
-
-### 步骤 12：更新状态文件
-
-**目标**：更新 Plan-Status.json 中 Skill12 的执行状态
+**目标**：更新 Todo-List，标记 S3-S12 完成，准备用户评审
 
 **操作**：
-1. 读取 Plan-Status.json
-2. 更新 Skill12 的执行状态为"已完成"
-3. 记录产物 ID 和文件路径
-4. 更新 S3 阶段状态为"已完成"
-5. 标记 S4 阶段为"可开始"
-6. 写回 Plan-Status.json
+1. 读取 `database/plans/{PlanID}/todo-list.md`
+2. 更新 S3-S12 任务状态为 `已完成`
+3. 更新评审状态为 `待评审`
+4. 记录完成时间、产物路径
+5. 添加评审提示
+6. 写回 Todo-List 文件
 
-**验证规则**：
-- 状态更新及时
-- 产物路径准确
-- 阶段转换正确
+**Todo-List 更新内容示例**：
+
+```markdown
+## S3 阶段 - 技术可行性与选型
+
+### S3-S12 轻量化技术选型
+- [x] 执行技术选型
+  - 状态：已完成
+  - 完成时间：2026-03-26 18:00
+  - 产物：`database/stages/s3/P000001/P000001-S3-S12-001-selection.md`
+- [ ] 用户评审
+  - 状态：待评审
+  - 评审提示：请查看技术选型报告，确认选型方案
+```
 
 **错误处理**：
-- E301: 状态文件读取失败 → 重试读取或创建新文件
-- E302: 状态更新失败 → 重试更新
-- E303: 状态文件损坏 → 修复或重建状态文件
+- E204: Todo-List 更新失败 → 返回错误，但选型结果仍然有效
+
+### 步骤 12：用户评审
+
+**目标**：用户对技术选型结果进行评审和确认
+
+**评审触发**：步骤 11 完成后自动触发
+
+**评审展示**：
+向用户展示以下内容：
+- 技术选型报告核心内容（选型概览、技术选型总表、成本预算汇总）
+- 关键技术选型决策
+- 实施周期规划摘要
+- Todo-List 更新状态
+
+**用户决策选项**：
+- **确认**：选型无误，继续执行 S4 阶段
+- **修改（小修改）**：直接修改技术选型报告
+- **修改（大修改）**：返回步骤 1 重新执行
+- **新增想法**：补充技术选型信息，更新报告
+
+**评审提示模板**：
+
+```
+【技术选型完成 - 用户评审】
+
+技术选型已完成，核心内容如下：
+
+**选型概览**：
+- 总选型数：{X}个
+- 总实施周期：{X} PD
+- 总人力成本：{X} 元
+- 月度运营成本：{X} 元/月
+- 首年总成本：{X} 元
+
+**关键技术选型**：
+1. {技术点}：{推荐方案}（得分：{X}）
+2. {技术点}：{推荐方案}（得分：{X}）
+...
+
+**成本预算汇总**：
+- 开发成本：{X} 元
+- 运营成本：{X} 元/月
+- 首年总成本：{X} 元
+
+---
+请评审以上技术选型结果：
+- 输入「确认」表示无误，开始执行 S4 阶段
+- 输入「修改」并提供修改意见，格式：「修改：{具体意见}」
+- 输入「新增」并补充信息，格式：「新增：{新信息内容}」
+
+示例：
+- 确认
+- 修改：数据库选型建议改用 PostgreSQL
+- 新增：还需要考虑 CDN 选型
+```
+
+**用户响应处理**：
+- **确认**：更新 Todo-List 评审状态为 `已确认`，准备执行 S4 阶段
+- **修改（小修改）**：根据用户意见修改选型报告，更新 Todo-List
+- **修改（大修改）**：返回步骤 1 重新执行
+- **新增想法**：补充技术选型信息到报告，重新生成选型报告
+
+### 步骤 13：更新 Todo-List（评审后）
+
+**目标**：根据用户评审结果，更新 Todo-List 状态
+
+**操作**：
+1. 读取 `database/plans/{PlanID}/todo-list.md`
+2. 根据用户评审结果更新状态：
+   - 用户确认：评审状态 → `已确认`，下阶段准备 → `S4 阶段`
+   - 用户修改：评审状态 → `修改中`，记录修改内容
+   - 用户新增：评审状态 → `修改中`，补充技术选型信息
+3. 写回 Todo-List 文件
+
+**错误处理**：
+- E205: 状态更新失败 → 返回错误，记录详细错误信息
 
 ---
 
-## 四、产物规范
+## 四、Todo-List 更新规则
 
-### 4.1 产物 ID 格式
+### 4.1 更新时机
+
+| 执行阶段 | 更新时机 | 更新内容 |
+|---------|---------|---------|
+| Skill 执行开始 | 步骤 1 完成后 | 当前任务状态：待执行 → 执行中 |
+| 用户交互后 | 步骤 2.5 完成后 | 更新技术选型偏好信息（如有补充） |
+| Skill 执行完成 | 步骤 11 完成后 | 当前任务状态：执行中 → 已完成，评审状态：待评审 |
+| 用户评审后 | 步骤 13 完成后 | 根据评审结果更新状态（见下表） |
+
+### 4.2 用户评审后的状态更新
+
+| 用户决策 | 评审状态更新 | 任务状态更新 | 后续操作 |
+|---------|------------|------------|---------|
+| 确认 | 待评审 → 已确认 | 已完成 | 准备执行 S4 阶段 |
+| 小修改 | 待评审 → 修改中 | 执行中 | 修改产物后重新评审 |
+| 大修改 | 待评审 → 重新执行 | 待执行 | 返回步骤 1 重新执行 |
+| 新增想法 | 待评审 → 补充中 | 执行中 | 补充信息后重新生成 |
+
+### 4.3 Todo-List 更新示例
+
+**执行开始时更新**：
+
+```markdown
+### S3-S12 轻量化技术选型
+- [ ] 执行技术选型
+  - 状态：执行中
+  - 开始时间：2026-03-26 17:00
+```
+
+**执行完成时更新**：
+
+```markdown
+### S3-S12 轻量化技术选型
+- [x] 执行技术选型
+  - 状态：已完成
+  - 完成时间：2026-03-26 18:00
+  - 产物：`database/stages/s3/P000001/P000001-S3-S12-001-selection.md`
+- [ ] 用户评审
+  - 状态：待评审
+  - 评审提示：请查看技术选型报告，确认选型方案
+```
+
+**评审确认后更新**：
+
+```markdown
+- [x] 用户评审
+  - 状态：已确认
+  - 确认时间：2026-03-26 18:30
+  - 用户决策：确认
+- [ ] 准备 S4 阶段
+  - 状态：准备中
+```
+
+---
+
+## 五、产物规范
+
+### 5.1 产物 ID 格式
 
 ```
-{PlanID}-S3-S12-001-{类型}
+{PlanID}-S3-S12-001
 ```
 
 **示例**：
 - `P000001-S3-S12-001-selection.md` - 技术选型报告
-- `P000001-S3-S12-001-selection.json` - 技术选型 JSON
 
-### 4.2 存储路径
+### 5.2 存储路径
 
 ```
 database/
 └── stages/
     └── s3/
         └── {PlanID}/
-            ├── {PlanID}-S3-S12-001-selection.md      # 技术选型报告
-            └── {PlanID}-S3-S12-001-selection.json    # 技术选型 JSON
+            └── {PlanID}-S3-S12-001-selection.md      # 技术选型报告
 ```
 
-### 4.3 产物结构
+### 5.3 产物结构
 
 #### 技术选型报告（Markdown）
 
@@ -571,183 +752,11 @@ database/
 
 **详细内容**：参见 [template.md](template.md)
 
-#### 技术选型 JSON（结构化数据）
-
-**JSON Schema**：
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "技术选型评估 Schema",
-  "type": "object",
-  "properties": {
-    "metadata": {
-      "type": "object",
-      "properties": {
-        "planId": {"type": "string"},
-        "artifactId": {"type": "string"},
-        "artifactType": {"type": "string"},
-        "version": {"type": "string"},
-        "generatedAt": {"type": "string", "format": "date-time"},
-        "skillVersion": {"type": "string"}
-      },
-      "required": ["planId", "artifactId", "artifactType", "version", "generatedAt"]
-    },
-    "selectionOverview": {
-      "type": "object",
-      "properties": {
-        "totalSelections": {"type": "integer"},
-        "totalDuration": {"type": "string"},
-        "totalLaborCost": {"type": "string"},
-        "totalMonthlyCost": {"type": "string"},
-        "totalFirstYearCost": {"type": "string"}
-      },
-      "required": ["totalSelections"]
-    },
-    "techSelections": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "selectionId": {"type": "string"},
-          "techPoint": {"type": "string"},
-          "description": {"type": "string"},
-          "category": {"type": "string"},
-          "candidates": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {"type": "string"},
-                "maturity": {"type": "string"},
-                "teamFamiliarity": {"type": "string"},
-                "developmentEfficiency": {"type": "string"},
-                "performance": {"type": "string"},
-                "ecosystem": {"type": "string"},
-                "cost": {"type": "string"},
-                "score": {"type": "number"}
-              },
-              "required": ["name", "score"]
-            }
-          },
-          "recommendedSolution": {"type": "string"},
-          "selectionReasons": {
-            "type": "array",
-            "items": {"type": "string"}
-          },
-          "implementationDuration": {"type": "string"},
-          "laborCost": {"type": "string"},
-          "otherCosts": {"type": "string"},
-          "totalCost": {"type": "string"},
-          "risks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "riskId": {"type": "string"},
-                "description": {"type": "string"},
-                "impact": {"type": "string"},
-                "mitigation": {"type": "string"}
-              }
-            }
-          }
-        },
-        "required": ["selectionId", "techPoint", "recommendedSolution"]
-      }
-    },
-    "costBudget": {
-      "type": "object",
-      "properties": {
-        "developmentCost": {
-          "type": "object",
-          "properties": {
-            "laborCost": {"type": "string"},
-            "outsourcingCost": {"type": "string"},
-            "trainingCost": {"type": "string"},
-            "toolCost": {"type": "string"},
-            "subtotal": {"type": "string"}
-          }
-        },
-        "operatingCost": {
-          "type": "object",
-          "properties": {
-            "cloudService": {"type": "string"},
-            "thirdPartyService": {"type": "string"},
-            "licenseCost": {"type": "string"},
-            "maintenanceCost": {"type": "string"},
-            "subtotal": {"type": "string"}
-          }
-        },
-        "firstYearTotal": {"type": "string"}
-      }
-    },
-    "implementationPlan": {
-      "type": "object",
-      "properties": {
-        "phases": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "phaseName": {"type": "string"},
-              "duration": {"type": "string"},
-              "startDate": {"type": "string"},
-              "endDate": {"type": "string"},
-              "milestones": {
-                "type": "array",
-                "items": {"type": "string"}
-              }
-            }
-          }
-        },
-        "criticalPath": {
-          "type": "array",
-          "items": {"type": "string"}
-        }
-      }
-    },
-    "risks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "riskId": {"type": "string"},
-          "category": {"type": "string"},
-          "description": {"type": "string"},
-          "probability": {"type": "string"},
-          "impact": {"type": "string"},
-          "level": {"type": "string"},
-          "mitigation": {"type": "string"},
-          "owner": {"type": "string"}
-        }
-      }
-    },
-    "recommendations": {
-      "type": "object",
-      "properties": {
-        "shortTerm": {
-          "type": "array",
-          "items": {"type": "string"}
-        },
-        "mediumTerm": {
-          "type": "array",
-          "items": {"type": "string"}
-        },
-        "longTerm": {
-          "type": "array",
-          "items": {"type": "string"}
-        }
-      }
-    }
-  },
-  "required": ["metadata", "selectionOverview", "techSelections"]
-}
-```
-
 ---
 
-## 五、质量标准
+## 六、质量标准
 
-### 5.1 质量评估框架
+### 6.1 质量评估框架
 
 采用 ISO/IEC 25010 软件质量模型，从 5 个维度评估技术选型质量：
 
@@ -759,7 +768,7 @@ database/
 | **可读性** | 15% | 结构清晰，表达准确 | 检查结构清晰度和表达准确性 |
 | **可追溯性** | 10% | 关键结论可追溯到数据来源 | 检查关键结论可追溯率 |
 
-### 5.2 检查清单
+### 6.2 检查清单
 
 #### 完整性检查（30%）
 
@@ -815,7 +824,7 @@ database/
 
 **可追溯性得分** = (完成项数 / 5) × 100%
 
-### 5.3 质量综合得分
+### 6.3 质量综合得分
 
 ```
 质量综合得分 = 完整性×30% + 准确性×25% + 一致性×20% + 可读性×15% + 可追溯性×10%
@@ -823,7 +832,7 @@ database/
 
 **验收标准**：质量综合得分 ≥ 85%
 
-### 5.4 质量等级
+### 6.4 质量等级
 
 | 得分范围 | 质量等级 | 说明 |
 |---------|---------|------|
@@ -835,18 +844,20 @@ database/
 
 ---
 
-## 六、错误处理
+## 七、错误处理
 
-### 6.1 错误分类
+### 7.1 错误分类
 
-| 错误类别 | 错误码范围 | 说明 |
-|---------|-----------|------|
-| 前置校验错误 | E001-E099 | 前置产物缺失或格式错误 |
-| 执行过程错误 | E100-E199 | 执行过程中的业务逻辑错误 |
-| 输出错误 | E200-E299 | 产物生成和输出错误 |
-| 系统错误 | E900-E999 | 文件读写、网络等系统级错误 |
+| 错误类别 | 错误码范围 | 说明 | 处理策略 |
+|---------|-----------|------|---------|
+| **前置校验错误** | E001-E099 | 前置产物缺失或格式错误 | 中止执行，返回错误信息 |
+| **执行过程错误** | E100-E199 | 执行过程中的业务逻辑错误 | 尝试恢复，记录错误 |
+| **输出错误** | E200-E299 | 产物生成和输出错误 | 中止执行，返回错误信息 |
+| **用户评审错误** | E301-E399 | 用户评审相关错误 | 等待用户处理或重试 |
+| **用户交互错误** | E401-E499 | 用户交互相关错误 | 重试或使用默认值 |
+| **系统错误** | E900-E999 | 文件读写、网络等系统级错误 | 中止执行，记录日志 |
 
-### 6.2 错误代码表
+### 7.2 错误代码表
 
 #### 前置校验错误（E001-E099）
 
@@ -888,9 +899,25 @@ database/
 | E201 | 报告生成失败 | 无法生成 Markdown 报告 | 检查模板并重新生成 |
 | E202 | 报告内容不完整 | 报告缺少必要章节 | 补充缺失内容 |
 | E203 | 报告格式错误 | 报告格式不符合模板 | 修正格式 |
-| E204 | JSON 生成失败 | 无法生成 JSON 文件 | 检查数据并重新生成 |
-| E205 | Schema 验证失败 | JSON 数据不符合 Schema | 修正数据格式 |
-| E206 | 数据不完整 | JSON 数据缺少必填字段 | 补充缺失数据 |
+| E204 | Todo-List 更新失败 | 无法更新 Todo-List 文件 | 重试或手动更新状态 |
+| E205 | 评审后状态更新失败 | 无法根据评审结果更新状态 | 记录详细错误信息 |
+| E206 | 文件保存失败 | 无法保存输出文件 | 检查文件权限和磁盘空间 |
+
+#### 用户评审错误（E301-E399）
+
+| 错误码 | 错误类型 | 错误描述 | 处理策略 | 重试次数 |
+|-------|---------|---------|---------|---------|
+| E301 | 用户评审未通过 | 用户拒绝选型结果 | 根据评审意见修改产物 | 1 次 |
+| E302 | 用户评审超时 | 用户 24 小时未响应 | 保持 paused 状态，等待用户输入 | - |
+| E303 | 用户输入解析失败 | 用户输入格式无法识别 | 请求用户重新输入 | 最多 3 次 |
+
+#### 用户交互错误（E401-E499）
+
+| 错误码 | 错误类型 | 错误描述 | 处理策略 | 重试次数 |
+|-------|---------|---------|---------|---------|
+| E401 | 用户交互超时 | 用户长时间未响应 | 使用默认值继续，标记信息缺失 | - |
+| E402 | 用户输入无效 | 用户输入不符合预期格式 | 重新提问，引导用户正确输入 | 最多 3 次 |
+| E403 | 多轮对话超过限制 | 交互轮次超过 3 轮 | 记录信息缺失，继续执行并标记风险 | 不重试 |
 
 #### 系统错误（E900-E999）
 
@@ -898,31 +925,50 @@ database/
 |-------|---------|---------|---------|
 | E901 | 文件读写错误 | 无法读取或写入文件 | 重试操作或返回错误 |
 | E902 | 目录创建失败 | 无法创建产物存储目录 | 检查权限并重试 |
-| E903 | 网络错误 | 网络请求失败 | 重试请求或返回错误 |
-| E904 | 内存不足 | 系统内存不足 | 优化内存使用或返回错误 |
-| E905 | 磁盘空间不足 | 磁盘空间不足 | 清理空间或返回错误 |
 
-### 6.3 错误处理流程
+### 7.3 错误处理流程
 
+```mermaid
+graph TD
+    A[发生错误] --> B{错误分类}
+    B -->|前置校验错误| C[中止执行]
+    B -->|执行过程错误| D{是否可恢复？}
+    B -->|输出错误| E[中止执行]
+    B -->|用户评审错误| F[等待用户处理]
+    B -->|用户交互错误| G[重试或使用默认值]
+    B -->|系统错误| H[中止执行]
+    
+    D -->|是| I[尝试恢复]
+    D -->|否| J[记录错误并继续]
+    
+    I --> K{恢复成功？}
+    K -->|是| L[继续执行]
+    K -->|否| M[降级处理]
+    
+    C --> N[返回错误信息]
+    E --> N
+    F --> O[等待用户输入]
+    G --> P{重试成功？}
+    P -->|是| L
+    P -->|否| Q[使用默认值]
+    H --> N
+    J --> L
+    M --> L
+    Q --> L
+    O --> L
+    
+    N --> R[结束]
+    L --> R
 ```
-发生错误
-    ↓
-错误分类（根据错误码）
-    ↓
-是否可恢复错误？
-    ├─ 是 → 重试/降级处理/记录日志 → 继续执行
-    └─ 否 → 记录错误详情 → 返回错误信息 → 中止执行
-```
 
-### 6.4 错误恢复策略
+### 7.4 错误恢复策略
 
 | 错误类型 | 恢复策略 | 重试次数 | 降级方案 |
 |---------|---------|---------|---------|
 | 文件读写错误 | 重试读取/写入 | 3 次 | 返回错误，要求手动处理 |
-| 网络错误 | 重试请求 | 3 次 | 使用缓存数据或返回错误 |
 | 数据格式错误 | 自动修正格式 | 1 次 | 返回错误，要求修正数据 |
 | 计算错误 | 重新计算 | 1 次 | 返回错误，要求人工复核 |
-| 系统资源不足 | 等待资源释放 | 1 次 | 返回错误，建议稍后重试 |
+| 用户交互超时 | 使用默认值 | - | 标记信息缺失，继续执行 |
 
 ---
 
@@ -956,14 +1002,5 @@ database/
 | 困难功能 | 20-40 PD | 技术挑战大，可能需要突破 |
 | 极难功能 | 40+ PD | 前沿技术，不确定性高 |
 
-### D. 版本历史
-
-| 版本 | 日期 | 更新内容 |
-|------|------|----------|
-| 1.0 | 2026-03-24 | 初始版本，定义 Skill12 完整规范 |
-| 2.0 | 2026-03-24 | 标准化优化版本，采用 6 段式结构，统一技术选型框架 |
-
 ---
 
-*生成时间：2026-03-24*  
-*Skill 版本：2.0*

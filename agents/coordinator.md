@@ -10,12 +10,11 @@
 2. **Plan 制定与初始化**：直接执行 Skill0 制定执行计划，初始化 Todo-List
 3. **信息完整度评分**：评估需求信息质量，确定执行模式
 4. **阶段化调度**：按 S1→S2→S3→S4 顺序直接调用各阶段 Skill 执行
-5. **校验调用**：Skill 内嵌的前置校验逻辑
-6. **交互调用**：Skill 内嵌的用户交互逻辑
-7. **用户评审控制**：每个 Skill 输出后触发用户评审，处理评审结果（确认/修改/新增想法）
-8. **状态管理与持久化**：维护并更新 Todo-List，包含评审状态
-9. **断点续跑检测与恢复**：检测断点状态，恢复执行上下文
-10. **结果整合与输出**：汇总各阶段产物，输出最终需求分析结果
+5. **用户交互处理**：处理 Skill 执行过程中的模糊内容澄清请求
+6. **用户评审控制**：每个 Skill 输出后触发用户评审，处理评审结果（确认/修改/新增想法）
+7. **状态管理与持久化**：维护并更新 Todo-List，包含评审状态
+8. **断点续跑检测与恢复**：检测断点状态，恢复执行上下文
+9. **结果整合与输出**：汇总各阶段产物，输出最终需求分析结果
 
 ***
 
@@ -23,61 +22,72 @@
 
 ### 阶段 1：初始化阶段
 
-```
-接收用户原始需求
-    ↓
-直接执行 Skill0 制定 Plan
-    ↓
-Skill0 内嵌前置校验
-    ↓
-Skill0 内嵌用户交互（如需要）
-    ↓
-Skill0 内嵌用户评审 ← 新增
-    ↓
-初始化 Todo-List
-    ↓
-信息完整度评分
-    ↓
-确定执行模式（常规/轻量化）
-    ↓
-进入阶段执行循环
+```mermaid
+flowchart TD
+    Start[接收用户原始需求] --> Skill0[执行 Skill0 制定 Plan]
+    Skill0 --> Check{前置校验}
+    Check -->|不通过 | Error[返回错误，请求补充信息]
+    Check -->|通过 | Interact[用户交互<br/>如需要]
+    Interact --> Review[用户评审]
+    Review --> Init[初始化 Todo-List]
+    Init --> Score[信息完整度评分]
+    Score --> Mode{确定执行模式}
+    Mode --> Normal[常规模式]
+    Mode --> Light[轻量化模式]
+    Normal --> Loop[进入阶段执行循环]
+    Light --> Loop
 ```
 
 ### 阶段 2：阶段执行循环（S1→S2→S3→S4）
 
-```
-对于每个阶段 SX:
-    1. 读取上一阶段汇总产物 ID
-    2. 按顺序执行阶段内 Skill:
-       a. 读取输入数据（依赖产物）
-       b. 执行前置校验（Skill 内嵌）
-       c. 执行 Skill 核心逻辑
-       d. 处理用户交互（Skill 内嵌）
-       e. 生成输出产物
-       f. 【用户评审】确认产物 ← 新增
-          - 用户确认 → 继续
-          - 用户修改 → 优化产物后重新评审
-          - 用户新增想法 → 更新产物后重新评审
-       g. 保存产物，更新 Todo-List（包含评审状态）
-    3. 阶段完成后，生成阶段汇总产物
-    4. 【阶段评审】确认阶段汇总 ← 新增
-    5. 更新 Plan 状态
+```mermaid
+flowchart TD
+    StageStart[阶段 SX 开始] --> Read[读取上一阶段汇总产物]
+    Read --> SkillLoop[执行阶段内 Skill]
+    
+    subgraph SkillExecution[Skill 执行流程]
+        direction TB
+        SkillStart[Skill 开始] --> PreCheck[前置校验]
+        PreCheck --> CheckResult{校验通过？}
+        CheckResult -->|否 | HandleError[错误处理]
+        CheckResult -->|是 | Execute[执行核心逻辑]
+        Execute --> Interact[用户交互<br/>模糊内容澄清]
+        Interact --> Generate[生成输出产物]
+        Generate --> Review{用户评审}
+        Review -->|确认 | Save[保存产物，更新 Todo-List]
+        Review -->|小修改 | Modify[直接修改产物]
+        Review -->|大修改 | ReExecute[重新执行 Skill]
+        Review -->|新增想法 | Update[更新产物]
+        Modify --> Review
+        Update --> Review
+        Save --> NextSkill[下一个 Skill]
+    end
+    
+    SkillLoop --> SkillExecution
+    NextSkill --> AllDone{所有 Skill 完成？}
+    AllDone -->|否 | SkillLoop
+    AllDone -->|是 | Summary[生成阶段汇总产物]
+    Summary --> StageReview{阶段评审}
+    StageReview -->|确认 | StageDone[阶段完成]
+    StageReview -->|修改 | Optimize[优化阶段汇总]
+    Optimize --> StageReview
+    StageDone --> UpdatePlan[更新 Plan 状态]
 ```
 
 ### 阶段 3：结果整合阶段
 
-```
-收集所有阶段产物
-    ↓
-整合需求分析结果
-    ↓
-生成最终报告
-    ↓
-【最终评审】确认最终报告 ← 新增
-    ↓
-更新状态为 completed
-    ↓
-输出结果
+```mermaid
+flowchart TD
+    Start[结果整合开始] --> Collect[收集所有阶段产物]
+    Collect --> Integrate[整合需求分析结果]
+    Integrate --> Generate[生成最终报告]
+    Generate --> Review{最终评审}
+    Review -->|确认 | Update[更新状态为 completed]
+    Review -->|修改 | Optimize[优化最终报告]
+    Review -->|新增 | Add[添加新需求]
+    Optimize --> Review
+    Add --> Review
+    Update --> Output[输出结果]
 ```
 
 ***
@@ -97,7 +107,6 @@ Skill0 内嵌用户评审 ← 新增
 
 ### 评分流程
 
-```
 1. 解析用户原始需求文本
 2. 按四个维度逐一评分
 3. 计算总分（各维度得分之和）
@@ -105,7 +114,6 @@ Skill0 内嵌用户评审 ← 新增
    - 总分 ≥ 90 分 → lightweight 模式
    - 总分 < 90 分 → normal 模式
 5. 将评分结果写入 Todo-List 的"进度概览"区块
-```
 
 ### 轻量化模式规则
 
@@ -131,21 +139,14 @@ Skill0 内嵌用户评审 ← 新增
 
 ### 模式决策流程
 
-```
-开始
-  ↓
-执行信息完整度评分
-  ↓
-分数 >= 90?
-  ├── 是 → 设置 mode=lightweight
-  │         标记跳过的 Skill
-  │         进入轻量化执行路径
-  │
-  └── 否 → 设置 mode=normal
-            执行所有 Skill
-            进入常规执行路径
-  ↓
-将 mode 写入 Todo-List 的"进度概览"区块
+```mermaid
+flowchart TD
+    Start[开始] --> Score[执行信息完整度评分]
+    Score --> Check{分数 >= 90?}
+    Check -->|是 | Light[设置 mode=lightweight<br/>标记跳过的 Skill<br/>进入轻量化执行路径]
+    Check -->|否 | Normal[设置 mode=normal<br/>执行所有 Skill<br/>进入常规执行路径]
+    Light --> Write[将 mode 写入 Todo-List]
+    Normal --> Write
 ```
 
 ### 轻量化模式跳过的 Skill
@@ -174,13 +175,15 @@ Skill0 内嵌用户评审 ← 新增
 
 ### 阶段执行顺序
 
-```
-S0(Plan 制定) → S1(需求边界) → S2(市场校验) → S3(技术选型) → S4(需求整合)
+```mermaid
+flowchart LR
+    S0[S0 - Plan 制定] --> S1[S1 - 需求边界]
+    S1 --> S2[S2 - 市场校验]
+    S2 --> S3[S3 - 技术选型]
+    S3 --> S4[S4 - 需求整合]
 ```
 
-### 阶段内 Skill 执行规则（含用户评审）
-
-#### 各阶段执行顺序
+### 阶段内 Skill 执行规则
 
 | 阶段 | 执行顺序 | 轻量化模式 |
 |------|---------|-----------|
@@ -199,8 +202,7 @@ S0(Plan 制定) → S1(需求边界) → S2(市场校验) → S3(技术选型) �
 - 触发用户评审，确认后继续
 - 阶段完成后生成汇总产物传递给下一阶段
 
-**依赖关系**：
-- S0 → S1(Skill1→2→3→4) → S2(Skill9→10) → S3(Skill7→11→12) → S4(Skill5→6→8)
+**依赖关系**：S0 → S1(Skill1→2→3→4) → S2(Skill9→10) → S3(Skill7→11→12) → S4(Skill5→6→8)
 
 ***
 
@@ -297,72 +299,60 @@ Skill 输出产物 → 展示产物 → 等待用户决策 → 处理决策 → 
 
 ### 断点检测流程
 
-```
-每次执行前：
-  1. 检查 database/plans/{PlanID}/todo-list.md 是否存在
-  2. 若不存在 → 正常从头执行
-  3. 若存在：
-     a. 读取 Todo-List
-     b. 检查"断点续跑信息"区块的"可恢复"字段
-     c. 若可恢复=false → 正常从头执行
-     d. 若可恢复=true → 进入断点恢复流程
+```mermaid
+flowchart TD
+    Start[每次执行前] --> Check1[检查 Todo-List 是否存在]
+    Check1 -->|不存在 | Normal[正常从头执行]
+    Check1 -->|存在 | Check2[检查断点续跑信息]
+    Check2 --> Check3{可恢复=true?}
+    Check3 -->|否 | Normal
+    Check3 -->|是 | Recover[进入断点恢复流程]
 ```
 
 ### 断点恢复流程
 
-```
-读取 Todo-List 获取断点信息
-    ↓
-检查断点有效性：
-  - 检查"最后产物 ID"对应的文件是否存在
-  - 检查当前 Skill 的输入依赖是否满足
-  - 检查重试次数是否超过限制 (maxRetries=3)
-  - 检查评审状态（如等待用户评审则提示用户）
-    ↓
-若检查通过：
-  - 从"最后完成任务"的下一个任务继续执行
-  - 更新 Todo-List：可恢复=false，清除中断信息
-    ↓
-若检查失败：
-  - 根据中断原因执行恢复策略
-  - 或提示用户决策
+```mermaid
+flowchart TD
+    Start[读取 Todo-List] --> Check1[检查最后产物 ID 对应文件是否存在]
+    Check1 --> Check2[检查当前 Skill 输入依赖是否满足]
+    Check2 --> Check3[检查重试次数是否超过限制<br/>maxRetries=3]
+    Check3 --> Check4[检查评审状态]
+    Check4 --> AllPass{所有检查通过？}
+    AllPass -->|是 | Continue[从断点继续执行<br/>更新 Todo-List：可恢复=false]
+    AllPass -->|否 | Handle[根据中断原因执行恢复策略<br/>或提示用户决策]
 ```
 
 ### 断点保存时机
 
-在以下情况下更新 Todo-List 断点信息：
-
-1. **用户主动暂停**：用户输入"暂停"或"保存进度"
-2. **等待用户评审**：Skill 输出后等待用户评审确认
-3. **Skill 执行失败**：执行过程中遇到错误
-4. **校验失败**：Skill 内嵌前置校验不通过
-5. **等待用户交互**：Skill 内嵌交互等待用户输入
-6. **系统异常**：发生意外错误
+| 情况 | 说明 |
+|------|------|
+| 用户主动暂停 | 用户输入"暂停"或"保存进度" |
+| 等待用户评审 | Skill 输出后等待用户评审确认 |
+| Skill 执行失败 | 执行过程中遇到错误 |
+| 校验失败 | Skill 内嵌前置校验不通过 |
+| 等待用户交互 | Skill 内嵌交互等待用户输入 |
+| 系统异常 | 发生意外错误 |
 
 ### 断点保存操作
 
-更新 Todo-List 的"断点续跑信息"区块：
-
-```markdown
-## 断点续跑信息
-
-- **最后完成任务**: {SkillID}
-- **最后产物 ID**: {产物ID}
-- **中断时间**: {ISO8601时间戳}
-- **中断原因**: {原因描述}
-- **可恢复**: true
-```
+| 字段 | 说明 |
+|------|------|
+| 最后完成任务 | 最后完成的 Skill ID |
+| 最后产物 ID | 最后生成产物的标识 |
+| 中断时间 | ISO8601 时间戳 |
+| 中断原因 | 原因描述 |
+| 可恢复 | true/false |
 
 ### 恢复策略
 
-| 中断类型       | 恢复策略         | 说明                         |
-| ---------- | ------------ | -------------------------- |
-| 用户主动暂停     | 从断点继续        | 从最后完成任务的下一个任务开始执行          |
-| 等待用户评审     | 等待用户输入       | 保持断点，用户评审后自动恢复             |
-| Skill 执行错误 | 重试当前 Skill   | retryCount < 3 时重试，否则跳过或终止 |
-| 校验失败       | 重试或用户决策      | 根据错误类型选择重试或询问用户            |
-| 用户交互超时     | 等待用户输入       | 保持断点，等待用户响应                |
-| 依赖产物缺失     | 重新执行依赖 Skill | 回溯到缺失产物的 Skill 重新执行        |
+| 中断类型 | 恢复策略 | 说明 |
+|----------|----------|------|
+| 用户主动暂停 | 从断点继续 | 从最后完成任务的下一个任务开始执行 |
+| 等待用户评审 | 等待用户输入 | 保持断点，用户评审后自动恢复 |
+| Skill 执行错误 | 重试当前 Skill | retryCount < 3 时重试，否则跳过或终止 |
+| 校验失败 | 重试或用户决策 | 根据错误类型选择重试或询问用户 |
+| 用户交互超时 | 等待用户输入 | 保持断点，等待用户响应 |
+| 依赖产物缺失 | 重新执行依赖 Skill | 回溯到缺失产物的 Skill 重新执行 |
 
 ***
 
@@ -465,28 +455,19 @@ Todo-List 是唯一的任务进度跟踪机制，所有状态通过 Todo-List �
 
 ### Plan ID 生成
 
-```
-格式：P{6 位数字}
-示例：P000001
-
-生成方式：
-  1. 取当前时间戳后 6 位
-  2. 加上 2 位随机数
-  3. 取模确保 6 位数字
-```
+| 项目 | 规则 |
+|------|------|
+| 格式 | `P{6 位数字}` |
+| 示例 | `P000001` |
+| 生成方式 | 取当前时间戳后 6 位 + 2 位随机数，取模确保 6 位数字 |
 
 ### Skill 产物 ID 生成
 
-```
-格式：{PlanID}-{阶段编号}-{Skill 编号}-{序号}
-示例：P000001-S1-S01-001
-
-组成部分：
-  - PlanID: 所属 Plan 的 ID
-  - 阶段编号：S0/S1/S2/S3/S4
-  - Skill 编号：S00-S12
-  - 序号：3 位数字，从 001 开始递增
-```
+| 项目 | 规则 |
+|------|------|
+| 格式 | `{PlanID}-{阶段编号}-{Skill 编号}-{序号}` |
+| 示例 | `P000001-S1-S01-001` |
+| 组成部分 | PlanID + 阶段编号 (S0/S1/S2/S3/S4) + Skill 编号 (S00-S12) + 序号 (3 位数字) |
 
 ***
 
@@ -505,18 +486,18 @@ Todo-List 是唯一的任务进度跟踪机制，所有状态通过 Todo-List �
 
 ### 错误处理流程
 
-```
-捕获错误
-  ↓
-分类错误类型
-  ↓
-根据类型选择策略：
-  - 可恢复错误 → 自动恢复/重试
-  - 需用户决策 → Skill 内嵌交互
-  - 评审未通过 → 根据评审意见优化
-  - 严重错误 → 保存断点，终止执行
-  ↓
-更新 Todo-List（记录错误信息）
+```mermaid
+flowchart TD
+    Error[捕获错误] --> Classify[分类错误类型]
+    Classify --> Strategy{选择策略}
+    Strategy --> Recover[可恢复错误<br/>自动恢复/重试]
+    Strategy --> User[需用户决策<br/>Skill 内嵌交互]
+    Strategy --> Optimize[评审未通过<br/>根据评审意见优化]
+    Strategy --> Critical[严重错误<br/>保存断点，终止执行]
+    Recover --> Update[更新 Todo-List]
+    User --> Update
+    Optimize --> Update
+    Critical --> Update
 ```
 
 ***
