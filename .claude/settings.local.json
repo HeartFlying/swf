@@ -4,7 +4,8 @@
       "Bash(ping -c 1 baidu.com)",
       "Bash(ping -n 1 baidu.com)",
       "Bash(git mv:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
