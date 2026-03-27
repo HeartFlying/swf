@@ -431,7 +431,7 @@ S0 → S1(S101→S102→S104) → S3(S301→S302) → S4(S401→S402→S403)
 
 **Todo-List 模板引用**：
 
-- 模板文件：`skills/s0-plan/todo-list-template.md`
+- 模板文件：`templates/todo-list-template.md`
 
 #### 步骤 7：后置校验
 
