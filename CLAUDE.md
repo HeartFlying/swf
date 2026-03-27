@@ -30,8 +30,7 @@ User Input → Coordinator Agent → Skills (S0→S1→S2→S3→S4) → Final R
 ```
 swf/
 ├── agents/                    # Agent definitions
-│   ├── coordinator.md         # Main coordinator agent (primary)
-│   └── requirements-analyst.md # Alternative requirements analyst
+│   └── coordinator.md         # Main coordinator agent
 ├── skills/                    # 14 Skills organized by stage
 │   ├── s0-plan/               # S0-S001: Plan definition
 │   ├── s1-boundary/           # S1-S101: Requirement boundary
