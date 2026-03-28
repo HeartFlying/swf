@@ -45,7 +45,7 @@
   - **状态**: 已完成 ✅
   - **完成时间**: 2026-03-27 01:15
   - **产物**: `templates/all-templates.md`
-  - **内容**: 全部14个Skill模板 + 最终报告模板
+  - **内容**: 全部23个Skill模板 + 最终报告模板
 
 - [x] **任务5: 创建 .claude/memory/ 上下文记忆机制**
   - **状态**: 已完成 ✅
@@ -63,7 +63,7 @@
   - **状态**: 已完成 ✅
   - **完成时间**: 2026-03-27 01:15
   - **产物**: 更新 `templates/all-templates.md`
-  - **内容**: 补充Skill5-15模板
+  - **内容**: 补充全部23个Skill模板
 
 - [x] **任务8: 创建 .claude/prompts/ 常用提示词库**
   - **状态**: 已完成 ✅
@@ -85,7 +85,7 @@
 | **计划** | 目录结构规范 | `DIRECTORY-STRUCTURE.md` | 新产物目录结构 |
 | **指令** | 快速启动指令 | `.claude/SWF.md` | Claude Code 入口 |
 | **指南** | 异常处理指南 | `templates/exception-handling-guide.md` | 替代错误代码表 |
-| **模板** | 模板速查表 | `templates/all-templates.md` | 全部14个Skill模板 |
+| **模板** | 模板速查表 | `templates/all-templates.md` | 全部23个Skill模板 |
 | **模板** | 任务清单V2 | `templates/todo-list-template-v2.md` | 含评审方式和可视化 |
 | **记忆** | 上下文记忆 | `.claude/memory/swf-context.md` | 断点续跑支持 |
 | **记忆** | 任务计划 | `.claude/memory/swf-tasks.md` | 本文件 |
@@ -118,7 +118,7 @@
 - ✅ 轻量化模式特殊规则
 
 ### 4. 模板全面覆盖
-- ✅ 全部14个Skill模板
+- ✅ 全部23个Skill模板
 - ✅ 最终报告模板
 - ✅ 统一格式规范
 - ✅ 可直接复制使用

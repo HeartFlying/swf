@@ -171,7 +171,13 @@ flowchart TD
 **产物**：
 - Plan 定义文件：`artifacts/plans/{PlanID}.md`
 - 评分报告：`artifacts/stages/s0/{PlanID}-S0-S001-002.md`
-- Todo-List：`artifacts/plans/{PlanID}/todo-list.md`
+- Todo-List：`artifacts/plans/{PlanID}/todo-list.md`（主 Todo-List，贯穿 S0-S4）
+
+**Todo-List 初始化内容**：
+- Plan 基本信息（ID、名称、执行模式）
+- S0-S4 所有 Skill 任务列表（根据执行模式动态生成）
+- 任务状态：S001 为"执行中"，其余为"待执行"
+- 断点续跑信息：可恢复=false
 
 ### S1 - 需求边界与原始采集
 
@@ -362,14 +368,30 @@ artifacts/
 ├── plans/
 │   ├── {PlanID}.md              # Plan 定义
 │   └── {PlanID}/
-│       └── todo-list.md         # 任务跟踪
+│       ├── todo-list.md         # S0-S4 任务跟踪（主 Todo-List）
+│       ├── todo-list-s5.md      # S5 架构设计任务跟踪（S5 阶段创建）
+│       └── todo-list-s6.md      # S6 详细设计任务跟踪（S6 阶段创建）
 └── stages/
     ├── s0/                      # S0 阶段产物
     ├── s1/                      # S1 阶段产物
     ├── s2/                      # S2 阶段产物
     ├── s3/                      # S3 阶段产物
-    └── s4/                      # S4 阶段产物
+    ├── s4/                      # S4 阶段产物
+    ├── s5/                      # S5 阶段产物（由 coordinator-architecture.md 创建）
+    └── s6/                      # S6 阶段产物（由 coordinator-detailed-design.md 创建）
 ```
+
+### S4 输出作为 S5 输入的衔接
+
+S4 阶段产物是 S5 架构设计阶段的核心输入：
+
+| S4 输出产物 | S5 输入 Skill | 用途 |
+|------------|--------------|------|
+| S1-S4 需求规格说明书 | S5-A01 架构愿景 | 理解系统需求，推导架构方向 |
+| 用户故事清单 | S5-A01, S5-A02 | 识别系统角色和使用场景 |
+| 约束条件清单 | S5-A01, S5-A03, S5-A05 | 技术约束影响架构选型 |
+| 原型设计文档 | S5-A02 架构视图 | 理解功能模块划分 |
+| 核心需求清单 | S5-A01, S5-A06 | 验证架构覆盖度 |
 
 ## 初始化检查
 
@@ -388,6 +410,53 @@ artifacts/
 2. **完整需求分析报告**（整合所有阶段产物）
 3. **执行总结**（执行时间、模式、各阶段完成情况、评审记录）
 4. **更新后的 Todo-List**（完整执行记录）
+
+---
+
+## S4 阶段结束与 S5 阶段触发
+
+### S4 阶段完成标志
+
+当以下所有条件满足时，S4 阶段视为完成：
+- [ ] S401 需求分类已完成并通过评审
+- [ ] S402 优先级排序已完成并通过评审
+- [ ] S403 核心需求提取已完成并通过评审
+- [ ] S404 原型设计已完成并通过评审（常规模式）或已跳过（轻量化模式）
+- [ ] Todo-List 中所有 S4 阶段任务状态为"已评审"
+
+### S4 阶段汇总产物
+
+S4 阶段完成后，生成以下汇总产物作为 S5 阶段的输入：
+
+| 产物名称 | 文件路径 | 说明 |
+|---------|---------|------|
+| 需求规格说明书 | `artifacts/stages/s4/{PlanID}-S4-summary-001.md` | 整合 S1-S4 所有需求的完整规格书 |
+| 用户故事清单 | `artifacts/stages/s4/{PlanID}-S4-summary-002.md` | 核心用户故事和验收标准 |
+| 约束条件清单 | `artifacts/stages/s4/{PlanID}-S4-summary-003.md` | 技术、业务、法规约束汇总 |
+| 原型设计文档 | `artifacts/stages/s4/{PlanID}-S4-S404-001.md` | 原型草图和交互流程（常规模式）|
+
+### 触发 S5 架构设计阶段
+
+S4 阶段完成后，自动触发 coordinator-architecture.md：
+
+```mermaid
+flowchart TD
+    S4Done[S4 阶段完成] --> GenSummary[生成 S4 阶段汇总产物]
+    GenSummary --> UpdateTodo[更新 Todo-List<br/>标记 S4 完成]
+    UpdateTodo --> Handover[执行阶段交接]
+    Handover --> TriggerS5[触发 coordinator-architecture.md]
+    TriggerS5 --> InitS5[初始化 S5 架构设计阶段]
+```
+
+**交接内容**：
+1. Plan ID 保持不变（继承使用）
+2. 传递 S4 阶段汇总产物路径
+3. 更新主 Todo-List，添加 S5 阶段任务列表
+4. 创建 S5 专用 Todo-List：`artifacts/plans/{PlanID}/todo-list-s5.md`
+
+**触发方式**：
+- 由 coordinator-requirements.md 在最终输出后调用 coordinator-architecture.md
+- 或者由用户手动触发："开始架构设计"
 
 ---
 

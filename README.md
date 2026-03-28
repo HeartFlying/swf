@@ -4,8 +4,8 @@ AI驱动的软件需求分析工作流系统，通过多阶段Skill编排，将�
 
 ## 核心特性
 
-- **多阶段分析流程**：S0(Plan制定) → S1(需求边界) → S2(市场校验) → S3(技术选型) → S4(需求整合)
-- **双执行模式**：根据信息完整度自动推荐常规模式(14个Skill)或轻量化模式(10个Skill)
+- **多阶段分析流程**：S0(Plan制定) → S1(需求边界) → S2(市场校验) → S3(技术选型) → S4(需求整合) → S5(架构设计) → S6(详细设计)
+- **双执行模式**：根据信息完整度自动推荐常规模式(23个Skill)或轻量化模式(17个Skill)
 - **用户评审机制**：每个Skill输出后触发用户评审，确保质量可控
 - **断点续跑支持**：自动保存执行状态，支持随时暂停和恢复
 - **标准化输出**：所有产物采用统一格式，便于后续开发使用
@@ -64,8 +64,8 @@ claude
 ```
 swf/
 ├── agents/
-│   └── coordinator.md          # 主协调Agent
-├── skills/                      # 14个Skill定义
+│   └── coordinator-requirements.md  # 主协调Agent
+├── skills/                      # 23个Skill定义
 │   ├── s0-plan/SKILL.md         # S001: Plan制定
 │   ├── s1-boundary/SKILL.md     # S101: 需求边界
 │   ├── s1-explicit/SKILL.md     # S102: 显式需求
@@ -80,6 +80,8 @@ swf/
 │   ├── s4-priority/SKILL.md     # S402: 需求优先级
 │   ├── s4-core/SKILL.md         # S403: 核心需求提取
 │   └── s4-prototype/SKILL.md    # S404: 原型设计
+│   ├── s5-architecture-generic/ # S501-S505: 架构设计阶段
+│   └── s6-detailed-design-generic/ # S601-S604: 详细设计阶段
 ├── templates/                   # 标准模板
 │   ├── quality-standard.md      # 质量评估标准
 │   ├── error-code-standard.md   # 错误代码标准
@@ -95,12 +97,12 @@ swf/
 
 ### 常规模式 (Normal)
 - **触发条件**：信息完整度评分 < 90分
-- **执行所有14个Skill**：S001 → S101-S104 → S201-S202 → S301-S303 → S401-S404
+- **执行所有23个Skill**：S001 → S101-S104 → S201-S202 → S301-S303 → S401-S404 → S501-S505 → S601-S604
 - **适用场景**：需求不明确，需要全面分析
 
 ### 轻量化模式 (Lightweight)
 - **触发条件**：信息完整度评分 ≥ 90分
-- **执行10个Skill**：S001 → S101-S102-S104 → S301-S303 → S401-S404
+- **执行17个Skill**：S001 → S101-S102-S104 → S301-S303 → S401-S404 → S501-S505 → S601-S604
 - **跳过Skill**：S103(隐性需求)、S201(竞品分析)、S202(市场验证)
 - **适用场景**：需求明确，快速输出核心需求
 
@@ -118,7 +120,9 @@ artifacts/
     ├── s1/{PlanID}/             # S1阶段产物
     ├── s2/{PlanID}/             # S2阶段产物
     ├── s3/{PlanID}/             # S3阶段产物
-    └── s4/{PlanID}/             # S4阶段产物
+    ├── s4/{PlanID}/             # S4阶段产物
+    ├── s5/{PlanID}/             # S5架构设计阶段产物
+    └── s6/{PlanID}/             # S6详细设计阶段产物
 ```
 
 ## 文档指南

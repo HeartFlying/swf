@@ -20,7 +20,7 @@ This is **swf (Software WorkFlow)**, an AI-driven requirements analysis system t
 The system uses a single main coordinator Agent that executes all Skills serially with embedded validation and user interaction within each Skill.
 
 ```
-User Input → Coordinator Agent → Skills (S0→S1→S2→S3→S4) → Final Report
+User Input → Coordinator Agent → Skills (S0→S1→S2→S3→S4→S5→S6) → Final Report
                                     ↓
                             Todo-List (state tracking)
 ```
@@ -30,8 +30,10 @@ User Input → Coordinator Agent → Skills (S0→S1→S2→S3→S4) → Final R
 ```
 swf/
 ├── agents/                    # Agent definitions
-│   └── coordinator.md         # Main coordinator agent
-├── skills/                    # 14 Skills organized by stage
+│   ├── coordinator-requirements.md    # Requirements analysis agent (S0-S4)
+│   ├── coordinator-architecture.md    # Architecture design agent (S5)
+│   └── coordinator-detailed-design.md # Detailed design agent (S6)
+├── skills/                    # 23 Skills organized by stage
 │   ├── s0-plan/               # S0-S001: Plan definition
 │   ├── s1-boundary/           # S1-S101: Requirement boundary
 │   ├── s1-explicit/           # S1-S102: Explicit requirements
@@ -45,7 +47,16 @@ swf/
 │   ├── s4-classify/           # S4-S401: Requirements classification
 │   ├── s4-priority/           # S4-S402: Requirements prioritization
 │   ├── s4-core/               # S4-S403: Core requirements extraction
-│   └── s4-prototype/          # S4-S404: Prototype design
+│   ├── s4-prototype/          # S4-S404: Prototype design
+│   ├── s5-vision/             # S5-A01: Architecture vision definition
+│   ├── s5-views/              # S5-A02: Architecture view design
+│   ├── s5-data/               # S5-A03: Data architecture design
+│   ├── s5-interface/          # S5-A04: Interface architecture design
+│   ├── s5-deployment/         # S5-A05: Deployment architecture design
+│   ├── s5-validation/         # S5-A06: Architecture validation and review
+│   ├── s6-module/             # S6-A01: Module detailed design
+│   ├── s6-database/           # S6-A02: Database detailed design
+│   └── s6-uiux/               # S6-A03: UI/UX design
 ├── templates/                 # Output templates
 │   ├── user-interaction/      # User interaction templates
 │   │   ├── clarification-template.md      # Requirement clarification
@@ -79,6 +90,15 @@ swf/
 | S4 | S402 | s4-priority/ | Requirements prioritization |
 | S4 | S403 | s4-core/ | Core requirements extraction |
 | S4 | S404 | s4-prototype/ | Prototype design |
+| S5 | S5-A01 | s5-vision/ | Architecture vision definition |
+| S5 | S5-A02 | s5-views/ | Architecture view design (4+1 views) |
+| S5 | S5-A03 | s5-data/ | Data architecture design |
+| S5 | S5-A04 | s5-interface/ | Interface architecture design |
+| S5 | S5-A05 | s5-deployment/ | Deployment architecture design |
+| S5 | S5-A06 | s5-validation/ | Architecture validation and review |
+| S6 | S6-A01 | s6-module/ | Module detailed design |
+| S6 | S6-A02 | s6-database/ | Database detailed design |
+| S6 | S6-A03 | s6-uiux/ | UI/UX design |
 
 ## Execution Modes
 
@@ -92,7 +112,9 @@ The system automatically selects execution mode based on information completenes
 ## Key Files to Reference
 
 - **WORKFLOW.md**: Complete workflow documentation including user review process, change management, and prototype design
-- **agents/coordinator.md**: Main agent execution flow, state management, and Todo-List rules
+- **agents/coordinator-requirements.md**: Requirements analysis agent (S0-S4)
+- **agents/coordinator-architecture.md**: Architecture design agent (S5)
+- **agents/coordinator-detailed-design.md**: Detailed design agent (S6)
 - **skills/s0-plan/SKILL.md**: Entry point skill with scoring methodology
 - **srs.md**: Full system requirements specification
 
@@ -104,7 +126,7 @@ All outputs are stored in `artifacts/`:
 artifacts/
 ├── plans/{PlanID}.md              # Plan definition
 ├── plans/{PlanID}/todo-list.md    # Task tracking (single source of truth)
-└── stages/{s0-s4}/                # Skill outputs by stage
+└── stages/{s0-s6}/                # Skill outputs by stage
 ```
 
 ## Product ID Format

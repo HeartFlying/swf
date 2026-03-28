@@ -40,7 +40,7 @@ claude
 
 启动后，Claude Code 会自动加载：
 - `agents/swf-coordinator.md` - 主协调器 Agent
-- `skills/*` - 14 个 Skill 定义
+- `skills/*` - 23 个 Skill 定义
 
 ---
 
@@ -121,10 +121,10 @@ claude
 
 当用户需要需求分析时，使用以下 Agent：
 
-@agents/swf-coordinator.md
+@agents/coordinator-requirements.md
 ```
 
-然后复制 `agents/swf-coordinator.md` 和 `skills/` 目录到项目即可。
+然后复制 `agents/coordinator-requirements.md` 和 `skills/` 目录到项目即可。
 
 ---
 
@@ -182,13 +182,22 @@ Claude：
 12. [S402] 优先级排序 → MoSCoW 排序
 13. [S403] 核心需求提取 → 确定 MVP 功能
 14. [S404] 原型设计 → 设计原型草图
+15. [S501] 架构风格选择 → 选择合适的架构风格
+16. [S502] 系统架构设计 → 设计系统整体架构
+17. [S503] 模块划分 → 划分系统模块
+18. [S504] 接口设计 → 设计模块间接口
+19. [S505] 架构评审 → 评审架构设计
+20. [S601] 数据库设计 → 设计数据模型
+21. [S602] API设计 → 设计系统API
+22. [S603] 安全设计 → 设计安全机制
+23. [S604] 详细设计评审 → 评审详细设计
 
 最终输出：完整需求分析报告
 ```
 
 ### 轻量化模式
 
-当需求信息完整度 ≥ 90 分时，自动跳过 S103、S201、S202、S404，执行 10 个 Skill。
+当需求信息完整度 ≥ 90 分时，自动跳过 S103、S201、S202，执行 20 个 Skill。
 
 ---
 
@@ -268,9 +277,9 @@ git push origin feature/P000001-requirements
 **现象：** 输入需求分析相关语句，Agent 未启动
 
 **解决：**
-1. 检查文件路径是否正确：`agents/swf-coordinator.md`
+1. 检查文件路径是否正确：`agents/coordinator-requirements.md`
 2. 确认 YAML frontmatter 格式正确
-3. 尝试直接引用：`@agents/swf-coordinator.md 帮我分析需求`
+3. 尝试直接引用：`@agents/coordinator-requirements.md 帮我分析需求`
 
 ### 问题 2：Skill 加载失败
 
@@ -296,7 +305,7 @@ git push origin feature/P000001-requirements
 
 | 版本 | 日期 | 变更内容 |
 |------|------|----------|
-| v3.2.0 | 2026-03-28 | 初始发布，14 个 Skill，渐进式加载 |
+| v3.2.0 | 2026-03-28 | 初始发布，23 个 Skill，渐进式加载 |
 
 ---
 

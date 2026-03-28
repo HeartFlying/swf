@@ -77,7 +77,7 @@ cp -r /path/to/swf/.claude-plugin .
 echo "
 ## SWF 需求分析
 
-使用 @agents/swf-coordinator.md 进行需求分析。
+使用 @agents/coordinator-requirements.md 进行需求分析。
 " >> CLAUDE.md
 
 # 4. 启动 Claude Code
@@ -96,7 +96,7 @@ swf/
 │   └── plugin.json              # 插件配置
 ├── agents/
 │   ├── coordinator.md           # 内部协调器
-│   └── swf-coordinator.md       # 主 Agent（入口）
+│   └── coordinator-requirements.md  # 主 Agent（入口）
 ├── skills/
 │   ├── s0-plan/SKILL.md         # S001 Plan 制定
 │   ├── s1-boundary/SKILL.md     # S101 需求边界
@@ -147,11 +147,11 @@ mkdir -p artifacts/plans artifacts/stages/s{0,1,2,3,4}
       目标用户是 18-25 岁大学生，预算 10 万，3 个月完成。
 
 Claude：
-[触发 swf-coordinator]
+[触发 coordinator-requirements]
 1. 制定 Plan → P000001
 2. 信息完整度评分 → 85 分（常规模式）
 3. 执行 S101 需求边界界定...
-4. ...（逐步执行 14 个 Skill）
+4. ...（逐步执行 23 个 Skill）
 5. 输出最终需求分析报告
 ```
 
@@ -188,7 +188,7 @@ cp -r artifacts artifacts-backup-$(date +%Y%m%d)
 
 ```bash
 # 删除 SWF 文件
-rm -rf agents/swf-coordinator.md
+rm -rf agents/coordinator-requirements.md
 rm -rf skills/
 rm -rf .claude-plugin/
 
@@ -201,10 +201,10 @@ rm -rf .claude-plugin/
 ## 常见问题
 
 **Q: Claude Code 无法识别 Agent？**
-A: 检查 `agents/swf-coordinator.md` 是否存在，且 YAML frontmatter 格式正确。
+A: 检查 `agents/coordinator-requirements.md` 是否存在，且 YAML frontmatter 格式正确。
 
 **Q: Skill 执行报错？**
-A: 检查 `skills/` 目录结构是否完整，所有 14 个 Skill 是否存在。
+A: 检查 `skills/` 目录结构是否完整，所有 23 个 Skill 是否存在。
 
 **Q: 产物保存在哪里？**
 A: 默认保存在 `artifacts/` 目录，可在 `CLAUDE.md` 中修改路径。

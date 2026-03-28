@@ -46,14 +46,14 @@
 
 **常规模式执行序列**:
 ```
-S0(Skill0) → S1(Skill1→Skill2→Skill3→Skill4) → S2(Skill9→Skill10) → S3(Skill7→Skill11→Skill12) → S4(Skill5→Skill6→Skill8→Skill15)
+S0(S001) → S1(S101→S102→S103→S104) → S2(S201→S202) → S3(S301→S302→S303) → S4(S401→S402→S403→S404) → S5(S501→S502→S503→S504→S505) → S6(S601→S602→S603→S604)
 ```
 
 **轻量化模式执行序列**:
 ```
-S0(Skill0) → S1(Skill1→Skill2→Skill4) → S3(Skill7→Skill11→Skill12) → S4(Skill5→Skill6→Skill8)
+S0(S001) → S1(S101→S102→S104) → S3(S301→S302→S303) → S4(S401→S402→S403→S404) → S5(S501→S502→S503→S504→S505) → S6(S601→S602→S603→S604)
 ```
-（跳过 Skill3、Skill9、Skill10、Skill15）
+（跳过 S103、S201、S202）
 
 ---
 
@@ -95,21 +95,30 @@ S0(Skill0) → S1(Skill1→Skill2→Skill4) → S3(Skill7→Skill11→Skill12) �
 
 | Skill | 产物文件名 | 说明 |
 |-------|-----------|------|
-| Skill0 | `00-plan.md` | Plan定义 |
-| Skill0 | `00-todo-list.md` | 任务跟踪 |
-| Skill1 | `01-boundary.md` | 需求边界界定 |
-| Skill2 | `02-explicit.md` | 显性需求提取 |
-| Skill3 | `03-implicit.md` | 隐性需求挖掘（常规模式） |
-| Skill4 | `04-validation.md` | 需求验证 |
-| Skill9 | `09-competitor.md` | 竞品分析（常规模式） |
-| Skill10 | `10-market.md` | 市场痛点验证（常规模式） |
-| Skill7 | `07-risk.md` | 需求风险识别 |
-| Skill11 | `11-feasibility.md` | 技术可行性评估 |
-| Skill12 | `12-selection.md` | 轻量化技术选型 |
-| Skill5 | `05-classify.md` | 需求分类梳理 |
-| Skill6 | `06-priority.md` | 需求优先级排序 |
-| Skill8 | `08-core.md` | 核心需求提炼 |
-| Skill15 | `15-prototype.md` | 原型设计（可选） |
+| S001 | `00-plan.md` | Plan定义 |
+| S001 | `00-todo-list.md` | 任务跟踪 |
+| S101 | `01-boundary.md` | 需求边界界定 |
+| S102 | `02-explicit.md` | 显性需求提取 |
+| S103 | `03-implicit.md` | 隐性需求挖掘（常规模式） |
+| S104 | `04-validation.md` | 需求验证 |
+| S201 | `05-competitor.md` | 竞品分析（常规模式） |
+| S202 | `06-market.md` | 市场痛点验证（常规模式） |
+| S301 | `07-risk.md` | 需求风险识别 |
+| S302 | `08-feasibility.md` | 技术可行性评估 |
+| S303 | `09-selection.md` | 技术选型 |
+| S401 | `10-classify.md` | 需求分类梳理 |
+| S402 | `11-priority.md` | 需求优先级排序 |
+| S403 | `12-core.md` | 核心需求提炼 |
+| S404 | `13-prototype.md` | 原型设计 |
+| S501 | `14-architecture-style.md` | 架构风格选择 |
+| S502 | `15-system-architecture.md` | 系统架构设计 |
+| S503 | `16-module-design.md` | 模块划分 |
+| S504 | `17-interface-design.md` | 接口设计 |
+| S505 | `18-architecture-review.md` | 架构评审 |
+| S601 | `19-database-design.md` | 数据库设计 |
+| S602 | `20-api-design.md` | API设计 |
+| S603 | `21-security-design.md` | 安全设计 |
+| S604 | `22-detail-review.md` | 详细设计评审 |
 | 最终 | `final-report.md` | 整合最终报告 |
 
 ---
