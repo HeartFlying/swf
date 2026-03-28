@@ -114,7 +114,33 @@ artifacts/
 
 ## Skill Definition Standards
 
-Each Skill follows a consistent 6-section structure:
+Each Skill follows a consistent 6-section structure with **progressive disclosure** design:
+
+### File Structure
+
+```
+skills/s{stage}-{name}/
+├── SKILL.md                    # Main skill file (~300 lines)
+│   └── YAML frontmatter        # name, description, version
+├── template.md                 # Output template
+└── references/                 # Detailed content (loaded on demand)
+    ├── execution-details.md    # Detailed step descriptions
+    └── examples.md             # Demo examples
+```
+
+### YAML Frontmatter
+
+Each SKILL.md starts with YAML frontmatter for AI IDE auto-discovery:
+
+```yaml
+---
+name: S101 需求边界界定
+description: This skill should be used when the user asks to "define requirement boundaries",
+  "clarify product scope", "identify target users", or "establish project boundaries".
+  It provides 5-dimensional boundary analysis.
+version: 3.2.0
+---
+```
 
 ### Section 1: Meta Information
 - Skill ID, Name, English Name
@@ -129,8 +155,9 @@ Each Skill follows a consistent 6-section structure:
 
 ### Section 3: Execution Process
 - Process overview (Mermaid flowchart)
-- Detailed step descriptions (objectives, operations, validation rules, error handling)
-- **Demo examples** (input example, processing, output example)
+- Brief step summary (table format)
+- **References**: Detailed steps in `references/execution-details.md`
+- **References**: Demo examples in `references/examples.md`
 
 ### Section 4: Artifact Specifications
 - Artifact ID naming rules
