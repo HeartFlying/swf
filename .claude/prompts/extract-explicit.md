@@ -11,7 +11,7 @@
 
 ## 输入信息
 - Plan ID: {PlanID}
-- 边界界定报告: database/{PlanID}/01-boundary.md
+- 边界界定报告: artifacts/{PlanID}/01-boundary.md
 - 用户原始需求: {需求摘要}
 
 ## 执行步骤
@@ -41,7 +41,7 @@
 
 ## 输出要求
 
-生成产物文件：database/{PlanID}/02-explicit.md
+生成产物文件：artifacts/{PlanID}/02-explicit.md
 
 使用模板：templates/all-templates.md 中的 Skill2 模板
 
@@ -73,7 +73,7 @@
 
 ## 预期输出
 
-产物文件 `database/{PlanID}/02-explicit.md`，包含：
+产物文件 `artifacts/{PlanID}/02-explicit.md`，包含：
 - 5类需求清单（功能、非功能、业务规则、数据、接口）
 - 需求统计表
 - 需求缺口分析
@@ -82,7 +82,7 @@
 
 ## 后置操作
 
-1. 更新 `database/{PlanID}/00-todo-list.md`
+1. 更新 `artifacts/{PlanID}/00-todo-list.md`
 2. 根据执行模式决定下一步：
    - 常规模式 → 执行 Skill3
    - 轻量化模式 → 跳过 Skill3，执行 Skill4

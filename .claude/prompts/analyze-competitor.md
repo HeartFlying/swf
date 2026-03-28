@@ -11,7 +11,7 @@
 
 ## 输入信息
 - Plan ID: {PlanID}
-- 需求验证报告: database/{PlanID}/04-validation.md
+- 需求验证报告: artifacts/{PlanID}/04-validation.md
 - 产品目标: {目标}
 - 目标用户: {用户}
 - 核心场景: {场景}
@@ -44,7 +44,7 @@
 
 ## 输出要求
 
-生成产物文件：database/{PlanID}/09-competitor.md
+生成产物文件：artifacts/{PlanID}/09-competitor.md
 
 使用模板：templates/all-templates.md 中的 Skill9 模板
 
@@ -70,7 +70,7 @@
 
 ## 预期输出
 
-产物文件 `database/{PlanID}/09-competitor.md`，包含：
+产物文件 `artifacts/{PlanID}/09-competitor.md`，包含：
 - 竞品清单（直接/间接/潜在）
 - 功能对标矩阵
 - 竞争格局评估
@@ -79,5 +79,5 @@
 
 ## 后置操作
 
-1. 更新 `database/{PlanID}/00-todo-list.md`
+1. 更新 `artifacts/{PlanID}/00-todo-list.md`
 2. 执行 Skill10 - 市场痛点验证

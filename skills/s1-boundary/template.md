@@ -6,7 +6,7 @@
 
 **产物 ID 格式**：`{PlanID}-S1-S101-001-boundary`
 
-**存储路径**：`database/stages/s1/{PlanID}-S1-S101-001-boundary.md`
+**存储路径**：`artifacts/stages/s1/{PlanID}-S1-S101-001-boundary.md`
 
 **模板版本**：2.0（标准化版本）
 
@@ -437,7 +437,7 @@
 | **执行耗时** | {N}ms |
 | **下次执行** | S102（显性需求提取） |
 | **产物 ID** | {PlanID}-S1-S101-001-boundary |
-| **存储路径** | database/stages/s1/{PlanID}-S1-S101-001-boundary.md |
+| **存储路径** | artifacts/stages/s1/{PlanID}-S1-S101-001-boundary.md |
 
 ---
 

@@ -21,7 +21,7 @@
 graph TD
     A[用户 User<br/>需求输入] --> B[主协调 Agent<br/>职责：接收需求 → 制定 Plan → 分阶段调用 Skill → 用户评审 → 状态管理<br/>核心功能：阶段化调度 / 信息完整度评分 / 双模式切换 / 断点续跑 / 用户评审控制 / 变更管理]
     B --> C[14 个 Skill 技能库<br/>内嵌校验 + 用户交互<br/>S0: Plan 制定 → S1: 需求边界 → S2: 市场校验 → S3: 技术选型 → S4: 需求整合 + 原型设计<br/>每个 Skill 包含：前置校验 → 执行 → 用户交互 → 输出 → 用户评审确认]
-    C --> D[中心化信息库 Database<br/> Todo-List 管理任务 / 产物文件 / 变更记录 / 基线版本]
+    C --> D[中心化信息库 artifacts<br/> Todo-List 管理任务 / 产物文件 / 变更记录 / 基线版本]
 ```
 
 ### 1.2 核心设计原则
@@ -217,7 +217,7 @@ flowchart TD
 
 **Todo-List 任务状态检查**：
 
-- 读取 `database/plans/{PlanID}/todo-list.md`
+- 读取 `artifacts/plans/{PlanID}/todo-list.md`
 - 检查当前 Skill 的前置任务在 Todo-List 中的状态
 - 前置任务状态必须为"已完成"或"已评审"才能执行当前 Skill
 - 如前置任务状态为"待执行"或"执行中"，提示"前置任务未完成"
@@ -396,7 +396,7 @@ flowchart TD
 
 ### 7.2 Todo-List 结构
 
-**文件路径**：`database/plans/{PlanID}/todo-list.md`
+**文件路径**：`artifacts/plans/{PlanID}/todo-list.md`
 
 **创建时机**：
 
@@ -478,7 +478,7 @@ flowchart TD
 
 | 时机             | 更新内容          | 详细说明                                                                                                                                         |
 | -------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| **S001 完成后** | 初始化 Todo-List | - 创建 `database/plans/{PlanID}/todo-list.md` 文件- 填充基本信息（从 Plan 定义提取）- 初始化 14 个 Skill 任务（状态：待执行）- 初始化进度概览和阶段状态- 记录 Plan 评审意见到评审记录表格            |
+| **S001 完成后** | 初始化 Todo-List | - 创建 `artifacts/plans/{PlanID}/todo-list.md` 文件- 填充基本信息（从 Plan 定义提取）- 初始化 14 个 Skill 任务（状态：待执行）- 初始化进度概览和阶段状态- 记录 Plan 评审意见到评审记录表格            |
 | **Skill 开始时**  | 更新任务状态为"执行中"  | - 将当前 Skill 任务状态更新为"执行中"- 记录开始时间- 更新进度概览（执行中 +1，待执行 -1）- 更新阶段状态（如该阶段第一个 Skill 开始）                                                            |
 | **Skill 完成后**  | 更新任务状态为"已完成"  | - 更新任务状态为"已完成"- 填写输出文档路径- 填写完成时间- 评审状态设置为"待评审"- 更新进度概览（已完成 +1，执行中 -1）- 更新阶段状态（统计该阶段完成 Skill 数）                                               |
 | **用户评审后**      | 更新评审状态        | - **评审通过**：评审状态更新为"已通过"，任务状态更新为"已评审"- **需修改**：评审状态更新为"需修改"，任务状态保持"已完成"- **修改中**：评审状态更新为"修改中"，任务状态更新为"执行中"- 填写评审意见到评审记录表格- 更新进度概览（已评审 +1，如通过） |
@@ -491,7 +491,7 @@ flowchart TD
 
 **查询方式**：
 
-- 读取 `database/plans/{PlanID}/todo-list.md` 文件
+- 读取 `artifacts/plans/{PlanID}/todo-list.md` 文件
 - 查看"进度概览"表格了解整体进度
 - 查看"阶段状态"表格了解各阶段完成情况
 - 查看各任务状态了解详细进度
@@ -895,10 +895,10 @@ flowchart TD
 
 | 产物类型       | 文件格式     | 存储路径                                               | 说明        |
 | ---------- | -------- | -------------------------------------------------- | --------- |
-| **原型线框图**  | PNG/SVG  | `database/prototypes/{PlanID}/wireframes/`         | 界面线框图     |
-| **交互流程图**  | PNG/SVG  | `database/prototypes/{PlanID}/flow/`               | 用户交互流程    |
-| **原型说明文档** | Markdown | `database/prototypes/{PlanID}/prototype-spec.md`   | 原型设计说明    |
-| **原型评审记录** | Markdown | `database/prototypes/{PlanID}/prototype-review.md` | 评审意见和修改记录 |
+| **原型线框图**  | PNG/SVG  | `artifacts/prototypes/{PlanID}/wireframes/`         | 界面线框图     |
+| **交互流程图**  | PNG/SVG  | `artifacts/prototypes/{PlanID}/flow/`               | 用户交互流程    |
+| **原型说明文档** | Markdown | `artifacts/prototypes/{PlanID}/prototype-spec.md`   | 原型设计说明    |
+| **原型评审记录** | Markdown | `artifacts/prototypes/{PlanID}/prototype-review.md` | 评审意见和修改记录 |
 
 **原型说明文档结构**：
 
@@ -952,7 +952,7 @@ flowchart TD
 
 **原型支持**：
 - 原型页面：Wireframe-003（任务创建页）
-- 原型路径：`database/prototypes/P000001/wireframes/task-create.png`
+- 原型路径：`artifacts/prototypes/P000001/wireframes/task-create.png`
 - 交互流程：Flow-002（任务创建流程）
 
 **原型验证结果**：
@@ -1004,7 +1004,7 @@ flowchart TD
 - 交互流程：{Y} 个
 - 关联需求：{Z} 个
 
-原型路径：`database/prototypes/{PlanID}/`
+原型路径：`artifacts/prototypes/{PlanID}/`
 
 ---
 请评审原型设计：

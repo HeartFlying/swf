@@ -38,9 +38,9 @@ S101 负责明确需求分析的边界范围，为后续需求分析提供清晰
 
 | 内容     | 要求           | 示例                     |
 | ------ | ------------ | ---------------------- |
-| Plan 定义文件 | 必填，S001 生成的 Plan.md 文件 | `database/plans/P000001.md` |
+| Plan 定义文件 | 必填，S001 生成的 Plan.md 文件 | `artifacts/plans/P000001.md` |
 | 用户原始需求 | 必填，用户最初的需求描述文本 | "我想开发一个面向大学生的时间管理 APP" |
-| Todo-List 文件 | 必填，S001 创建的 todo-list.md | `database/plans/P000001/todo-list.md` |
+| Todo-List 文件 | 必填，S001 创建的 todo-list.md | `artifacts/plans/P000001/todo-list.md` |
 
 **Plan 定义文件应包含**：
 
@@ -62,7 +62,7 @@ S101 负责明确需求分析的边界范围，为后续需求分析提供清晰
 **示例 1：完整输入**
 
 ```
-Plan 定义文件：database/plans/P000001.md
+Plan 定义文件：artifacts/plans/P000001.md
 - Plan ID: P000001
 - 执行模式：常规模式
 - 信息完整度：95 分
@@ -77,14 +77,14 @@ Plan 定义文件：database/plans/P000001.md
 **示例 2：简略输入**
 
 ```
-Plan 定义文件：database/plans/P000002.md
+Plan 定义文件：artifacts/plans/P000002.md
 用户原始需求："我想做一个时间管理 APP"
 ```
 
 **示例 3：附带补充材料**
 
 ```
-Plan 定义文件：database/plans/P000003.md
+Plan 定义文件：artifacts/plans/P000003.md
 用户原始需求："我想开发一个类似'得到 APP'的知识付费平台"
 补充材料：
 - 竞品链接：https://www.dedao.cn
@@ -101,8 +101,8 @@ S101 完成后，系统会生成以下产物并保存到项目目录：
 
 | 产物名称      | 文件位置                                              | 格式       | 用途                 | 用户可见性   |
 | --------- | ------------------------------------------------- | -------- | ------------------ | ------- |
-| 边界界定报告 | `database/stages/s1/{PlanID}-S1-S101-001.md`      | Markdown | 5 维度边界定义详情     | ✅ 用户可查看 |
-| Todo-List 更新 | `database/plans/{PlanID}/todo-list.md`            | Markdown | 更新 S101 任务状态    | ✅ 用户可查看 |
+| 边界界定报告 | `artifacts/stages/s1/{PlanID}-S1-S101-001.md`      | Markdown | 5 维度边界定义详情     | ✅ 用户可查看 |
+| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`            | Markdown | 更新 S101 任务状态    | ✅ 用户可查看 |
 
 **重要说明**：
 
@@ -590,7 +590,7 @@ flowchart TD
 **输入示例**：
 
 ```
-Plan 定义文件：database/plans/P000001.md
+Plan 定义文件：artifacts/plans/P000001.md
 - Plan ID: P000001
 - 执行模式：常规模式
 - 信息完整度：95 分
@@ -622,7 +622,7 @@ Plan 定义文件：database/plans/P000001.md
 **输出示例**：
 
 - 产物 ID: P000001-S1-S101-001
-- 产物路径: database/stages/s1/P000001-S1-S101-001.md
+- 产物路径: artifacts/stages/s1/P000001-S1-S101-001.md
 - 5 维度边界定义完整
 - 边界模糊点：1 个（第三方日历集成）
 - Todo-List 更新：S101 已完成，待评审
@@ -635,7 +635,7 @@ Plan 定义文件：database/plans/P000001.md
 
 | 产物名称 | 产物 ID | 存储路径 | 说明 |
 |---------|---------|----------|------|
-| 边界界定报告 | `{PlanID}-S1-S101-001` | `database/stages/s1/{PlanID}-S1-S101-001.md` | 5 维度边界定义 |
+| 边界界定报告 | `{PlanID}-S1-S101-001` | `artifacts/stages/s1/{PlanID}-S1-S101-001.md` | 5 维度边界定义 |
 
 ### 4.2 通用规范
 
@@ -692,14 +692,48 @@ S101 遵循 [quality-standard.md](../../templates/quality-standard.md) 中的 IS
 - [ ] 与 S001 Plan 定义的关联清晰
 - [ ] 用户原始需求已保留
 
-### 5.3 验收标准与处理流程
+### 5.3 质量综合得分计算
+
+```
+得分 = Σ(维度得分 × 维度权重)
+
+示例：
+- 完整性：95% × 30% = 28.5
+- 准确性：90% × 25% = 22.5
+- 一致性：100% × 20% = 20.0
+- 可读性：90% × 15% = 13.5
+- 可追溯性：95% × 10% = 9.5
+- 总分：28.5 + 22.5 + 20.0 + 13.5 + 9.5 = 94.0%
+```
+
+### 5.4 验收标准
 
 | 结果 | 标准 | 处理方式 |
 |------|------|----------|
 | **通过** | 质量综合得分 ≥ 85% | 进入用户评审阶段 |
-| **不通过** | 质量综合得分 < 85% | 识别问题 → 自动重新执行（最多3次） |
+| **不通过** | 质量综合得分 < 85% | 识别问题 → 生成问题清单 → 自动重新执行 |
 
-**不达标处理流程**：详见 [quality-standard.md](../../templates/quality-standard.md) 第 5 章
+### 5.5 不达标处理流程
+
+```mermaid
+flowchart TD
+    Evaluate[质量评估] --> Score{得分 >= 85%?}
+    Score -->|是| Pass[通过验收]
+    Score -->|否| Identify[识别问题点]
+    Identify --> List[生成问题清单]
+    List --> ReExecute[自动重新执行S101]
+    ReExecute --> Retry{重试次数 < 3?}
+    Retry -->|是| Evaluate
+    Retry -->|否| Risk[标记为风险]
+    Pass --> UserReview[进入用户评审]
+    Risk --> UserReview
+```
+
+**重试机制**：
+- 第1次：自动重新执行，尝试修复问题
+- 第2次：自动重新执行，调整参数
+- 第3次：自动重新执行，简化复杂部分
+- 仍不达标：标记为风险，进入用户评审并提示问题
 
 ***
 
@@ -763,7 +797,7 @@ S101 使用标准化的用户交互模板：
 **S001 (Plan 制定)**：
 
 - 依赖产物：`{PlanID}-S0-S001-001`（Plan 定义文件）
-- 依赖文件：`database/plans/{PlanID}.md`
+- 依赖文件：`artifacts/plans/{PlanID}.md`
 - 用途：获取 Plan ID、执行模式、用户原始需求
 
 ### 后置 Skill

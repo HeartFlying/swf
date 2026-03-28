@@ -6,7 +6,7 @@
 
 **产物 ID 格式**：`{PlanID}-S1-S104-001-validation`
 
-**存储路径**：`database/stages/s1/{PlanID}/{PlanID}-S1-S104-001-validation.md`
+**存储路径**：`artifacts/stages/s1/{PlanID}/{PlanID}-S1-S104-001-validation.md`
 
 **模板版本**：2.0(标准化版本)
 
@@ -698,11 +698,11 @@ graph LR
 
 | 产物 ID | 产物名称 | 产物类型 | 存储路径 | 状态 |
 |:-------:|----------|----------|----------|:----:|
-| {PlanID}-S1-S101-001 | 需求边界界定报告 | boundary | database/stages/s1/{PlanID}/ | ✅ |
-| {PlanID}-S1-S102-001 | 显性需求提取报告 | explicit | database/stages/s1/{PlanID}/ | ✅ |
-| {PlanID}-S1-S103-001 | 隐性需求挖掘报告 | implicit | database/stages/s1/{PlanID}/ | ✅ |
-| {PlanID}-S1-S104-001 | 需求验证报告 | validation | database/stages/s1/{PlanID}/ | ✅ |
-| {PlanID}-S1-summary | S1 阶段总结报告 | summary | database/stages/s1/{PlanID}/ | ✅ |
+| {PlanID}-S1-S101-001 | 需求边界界定报告 | boundary | artifacts/stages/s1/{PlanID}/ | ✅ |
+| {PlanID}-S1-S102-001 | 显性需求提取报告 | explicit | artifacts/stages/s1/{PlanID}/ | ✅ |
+| {PlanID}-S1-S103-001 | 隐性需求挖掘报告 | implicit | artifacts/stages/s1/{PlanID}/ | ✅ |
+| {PlanID}-S1-S104-001 | 需求验证报告 | validation | artifacts/stages/s1/{PlanID}/ | ✅ |
+| {PlanID}-S1-summary | S1 阶段总结报告 | summary | artifacts/stages/s1/{PlanID}/ | ✅ |
 
 ### 12.3 关键结论
 
@@ -728,7 +728,7 @@ graph LR
 
 | 准备项 | 状态 | 说明 |
 |--------|:----:|------|
-| S1 阶段产物已归档 | ✅ | 所有产物已保存到 database/stages/s1/{PlanID}/ |
+| S1 阶段产物已归档 | ✅ | 所有产物已保存到 artifacts/stages/s1/{PlanID}/ |
 | 需求已验证通过 | ✅ | 核心需求已通过验证，综合得分{分} |
 | 风险已识别 | ✅ | 主要风险已记录，共{N}个 |
 | 状态文件已更新 | ✅ | Todo-List 已更新，S1 阶段标记为已完成 |

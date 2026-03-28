@@ -14,7 +14,7 @@
 
 ### 步骤1：初始化检查
 
-1. 检查 `database/` 目录是否存在，不存在则创建
+1. 检查 `artifacts/` 目录是否存在，不存在则创建
 2. 询问用户原始需求
 3. 确认用户已准备好开始
 
@@ -31,10 +31,10 @@
 4. 确定执行模式：
    - 总分 ≥ 90分 → 轻量化模式
    - 总分 < 90分 → 常规模式
-5. 创建目录：`database/{PlanID}/`
+5. 创建目录：`artifacts/{PlanID}/`
 6. 生成产物：
-   - `database/{PlanID}/00-plan.md`（Plan定义）
-   - `database/{PlanID}/00-todo-list.md`（任务跟踪）
+   - `artifacts/{PlanID}/00-plan.md`（Plan定义）
+   - `artifacts/{PlanID}/00-todo-list.md`（任务跟踪）
 
 **用户交互**:
 - 如信息完整度低于60分，触发信息补全提问
@@ -80,7 +80,7 @@ S0(Skill0) → S1(Skill1→Skill2→Skill4) → S3(Skill7→Skill11→Skill12) �
 4. **生成产物**
    - 使用对应模板
    - 填充分析结果
-   - 保存到 `database/{PlanID}/`
+   - 保存到 `artifacts/{PlanID}/`
 
 5. **用户评审**
    - 展示产物核心内容
@@ -88,7 +88,7 @@ S0(Skill0) → S1(Skill1→Skill2→Skill4) → S3(Skill7→Skill11→Skill12) �
    - 记录评审结果
 
 6. **更新状态**
-   - 更新 `00-todo-list.md`
+   - 更新 `artifacts/{PlanID}/00-todo-list.md`
    - 记录执行进度
 
 ### 产物命名规范
@@ -225,7 +225,7 @@ S0(Skill0) → S1(Skill1→Skill2→Skill4) → S3(Skill7→Skill11→Skill12) �
 - 工作流详细规范：`WORKFLOW.md`
 - Skill定义：`skills/**/SKILL.md`
 - 产物模板：`templates/all-templates.md`
-- 任务跟踪：`database/{PlanID}/00-todo-list.md`
+- 任务跟踪：`artifacts/{PlanID}/00-todo-list.md`
 
 ---
 

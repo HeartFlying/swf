@@ -11,7 +11,7 @@
 
 ## 输入信息
 - Plan ID: {PlanID}
-- 优先级排序报告: database/{PlanID}/06-priority.md
+- 优先级排序报告: artifacts/{PlanID}/06-priority.md
 - 所有已验证需求: {需求列表}
 
 ## 执行步骤
@@ -42,7 +42,7 @@
 
 ## 输出要求
 
-生成产物文件：database/{PlanID}/08-core.md
+生成产物文件：artifacts/{PlanID}/08-core.md
 
 使用模板：templates/all-templates.md 中的 Skill8 模板
 
@@ -79,7 +79,7 @@
 
 ## 预期输出
 
-产物文件 `database/{PlanID}/08-core.md`，包含：
+产物文件 `artifacts/{PlanID}/08-core.md`，包含：
 - 1-3个核心需求详细描述
 - 需求追溯矩阵
 - MVP功能清单
@@ -89,7 +89,7 @@
 
 ## 后置操作
 
-1. 更新 `database/{PlanID}/00-todo-list.md`
+1. 更新 `artifacts/{PlanID}/00-todo-list.md`
 2. **必须触发用户评审**（关键节点）
 3. 根据用户选择决定是否执行 Skill15（原型设计）
 4. 生成最终报告

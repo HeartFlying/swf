@@ -38,10 +38,10 @@ S104 负责对 S1 阶段收集的所有需求进行系统性验证和确认，�
 
 | 内容           | 要求                         | 示例                                         |
 | ------------ | -------------------------- | ------------------------------------------ |
-| 边界界定报告       | 必填，S101 生成的边界文件          | `database/stages/s1/P000001-S1-S101-001.md` |
-| 显性需求报告       | 必填，S102 生成的显性需求文件        | `database/stages/s1/P000001-S1-S102-001.md` |
-| 隐性需求报告       | 常规模式必填，S103 生成的隐性需求文件    | `database/stages/s1/P000001-S1-S103-001.md` |
-| Todo-List 文件 | 必填，S001 创建的 todo-list.md | `database/plans/P000001/todo-list.md`      |
+| 边界界定报告       | 必填，S101 生成的边界文件          | `artifacts/stages/s1/P000001-S1-S101-001.md` |
+| 显性需求报告       | 必填，S102 生成的显性需求文件        | `artifacts/stages/s1/P000001-S1-S102-001.md` |
+| 隐性需求报告       | 常规模式必填，S103 生成的隐性需求文件    | `artifacts/stages/s1/P000001-S1-S103-001.md` |
+| Todo-List 文件 | 必填，S001 创建的 todo-list.md | `artifacts/plans/P000001/todo-list.md`      |
 
 **输入数据要求**：
 
@@ -54,17 +54,17 @@ S104 负责对 S1 阶段收集的所有需求进行系统性验证和确认，�
 **示例 1：常规模式完整输入**
 
 ```
-边界界定报告：database/stages/s1/P000001-S1-S101-001.md
-显性需求报告：database/stages/s1/P000001-S1-S102-001.md
-隐性需求报告：database/stages/s1/P000001-S1-S103-001.md
+边界界定报告：artifacts/stages/s1/P000001-S1-S101-001.md
+显性需求报告：artifacts/stages/s1/P000001-S1-S102-001.md
+隐性需求报告：artifacts/stages/s1/P000001-S1-S103-001.md
 执行模式：常规模式
 ```
 
 **示例 2：轻量化模式输入**
 
 ```
-边界界定报告：database/stages/s1/P000002-S1-S101-001.md
-显性需求报告：database/stages/s1/P000002-S1-S102-001.md
+边界界定报告：artifacts/stages/s1/P000002-S1-S101-001.md
+显性需求报告：artifacts/stages/s1/P000002-S1-S102-001.md
 执行模式：轻量化模式（跳过 S103）
 ```
 
@@ -78,9 +78,9 @@ S104 完成后，系统会生成以下产物并保存到项目目录：
 
 | 产物名称         | 文件位置                                        | 格式       | 用途             | 用户可见性   |
 | ------------ | ------------------------------------------- | -------- | -------------- | ------- |
-| 需求验证报告       | `database/stages/s1/{PlanID}-S1-S104-001.md` | Markdown | 需求验证结果详情       | 用户可查看 |
-| S1 阶段总结报告    | `database/stages/s1/{PlanID}-S1-summary.md` | Markdown | S1 阶段总结        | 用户可查看 |
-| Todo-List 更新 | `database/plans/{PlanID}/todo-list.md`      | Markdown | 更新 S104 任务状态 | 用户可查看 |
+| 需求验证报告       | `artifacts/stages/s1/{PlanID}-S1-S104-001.md` | Markdown | 需求验证结果详情       | 用户可查看 |
+| S1 阶段总结报告    | `artifacts/stages/s1/{PlanID}-S1-summary.md` | Markdown | S1 阶段总结        | 用户可查看 |
+| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`      | Markdown | 更新 S104 任务状态 | 用户可查看 |
 
 **重要说明**：
 
@@ -478,10 +478,10 @@ flowchart TD
 
 |      产物 ID      | 产物名称     | 产物类型       | 存储路径                     |  状态 |
 | :-------------: | -------- | ---------- | ------------------------ | :-: |
-| P001-S1-S101-001 | 需求边界界定报告 | boundary   | database/stages/s1/P001/ |  通过  |
-| P001-S1-S102-001 | 显性需求提取报告 | explicit   | database/stages/s1/P001/ |  通过  |
-| P001-S1-S103-001 | 隐性需求挖掘报告 | implicit   | database/stages/s1/P001/ |  通过  |
-| P001-S1-S104-001 | 需求验证报告   | validation | database/stages/s1/P001/ |  通过  |
+| P001-S1-S101-001 | 需求边界界定报告 | boundary   | artifacts/stages/s1/P001/ |  通过  |
+| P001-S1-S102-001 | 显性需求提取报告 | explicit   | artifacts/stages/s1/P001/ |  通过  |
+| P001-S1-S103-001 | 隐性需求挖掘报告 | implicit   | artifacts/stages/s1/P001/ |  通过  |
+| P001-S1-S104-001 | 需求验证报告   | validation | artifacts/stages/s1/P001/ |  通过  |
 
 #### 步骤 11：更新 Todo-List
 
@@ -616,9 +616,9 @@ flowchart TD
 **输入示例**：
 
 ```
-边界界定报告：database/stages/s1/P000001-S1-S101-001.md
-显性需求报告：database/stages/s1/P000001-S1-S102-001.md
-隐性需求报告：database/stages/s1/P000001-S1-S103-001.md
+边界界定报告：artifacts/stages/s1/P000001-S1-S101-001.md
+显性需求报告：artifacts/stages/s1/P000001-S1-S102-001.md
+隐性需求报告：artifacts/stages/s1/P000001-S1-S103-001.md
 执行模式：常规模式
 ```
 
@@ -654,8 +654,8 @@ flowchart TD
 
 | 产物名称 | 产物 ID | 存储路径 | 说明 |
 |---------|---------|----------|------|
-| 需求验证报告 | `{PlanID}-S1-S104-001` | `database/stages/s1/{PlanID}-S1-S104-001.md` | 需求验证结果 |
-| S1 阶段总结报告 | `{PlanID}-S1-summary` | `database/stages/s1/{PlanID}-S1-summary.md` | S1 阶段汇总 |
+| 需求验证报告 | `{PlanID}-S1-S104-001` | `artifacts/stages/s1/{PlanID}-S1-S104-001.md` | 需求验证结果 |
+| S1 阶段总结报告 | `{PlanID}-S1-summary` | `artifacts/stages/s1/{PlanID}-S1-summary.md` | S1 阶段汇总 |
 
 ### 4.2 通用规范
 
@@ -709,14 +709,48 @@ S104 遵循 [quality-standard.md](../../templates/quality-standard.md) 中的 IS
 - [ ] 需求来源已保留（引用 S101-S103 产物）
 - [ ] 验证依据可追溯
 
-### 5.3 验收标准与处理流程
+### 5.3 质量综合得分计算
+
+```
+得分 = Σ(维度得分 × 维度权重)
+
+示例：
+- 完整性：95% × 30% = 28.5
+- 准确性：90% × 25% = 22.5
+- 一致性：100% × 20% = 20.0
+- 可读性：90% × 15% = 13.5
+- 可追溯性：95% × 10% = 9.5
+- 总分：28.5 + 22.5 + 20.0 + 13.5 + 9.5 = 94.0%
+```
+
+### 5.4 验收标准
 
 | 结果 | 标准 | 处理方式 |
 |------|------|----------|
 | **通过** | 质量综合得分 ≥ 85% | 进入用户评审阶段 |
-| **不通过** | 质量综合得分 < 85% | 识别问题 → 自动重新执行（最多3次） |
+| **不通过** | 质量综合得分 < 85% | 识别问题 → 生成问题清单 → 自动重新执行 |
 
-**不达标处理流程**：详见 [quality-standard.md](../../templates/quality-standard.md) 第 5 章
+### 5.5 不达标处理流程
+
+```mermaid
+flowchart TD
+    Evaluate[质量评估] --> Score{得分 >= 85%?}
+    Score -->|是| Pass[通过验收]
+    Score -->|否| Identify[识别问题点]
+    Identify --> List[生成问题清单]
+    List --> ReExecute[自动重新执行S104]
+    ReExecute --> Retry{重试次数 < 3?}
+    Retry -->|是| Evaluate
+    Retry -->|否| Risk[标记为风险]
+    Pass --> UserReview[进入用户评审]
+    Risk --> UserReview
+```
+
+**重试机制**：
+- 第1次：自动重新执行，尝试修复问题
+- 第2次：自动重新执行，调整参数
+- 第3次：自动重新执行，简化复杂部分
+- 仍不达标：标记为风险，进入用户评审并提示问题
 
 ***
 

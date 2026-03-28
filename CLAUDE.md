@@ -98,10 +98,10 @@ The system automatically selects execution mode based on information completenes
 
 ## Output Artifact Paths
 
-All outputs are stored in `database/`:
+All outputs are stored in `artifacts/`:
 
 ```
-database/
+artifacts/
 ├── plans/{PlanID}.md              # Plan definition
 ├── plans/{PlanID}/todo-list.md    # Task tracking (single source of truth)
 └── stages/{s0-s4}/                # Skill outputs by stage

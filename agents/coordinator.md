@@ -198,7 +198,7 @@ flowchart LR
 
 **通用规则**：
 - 每个 Skill 读取前置产物作为输入
-- 执行后生成产物并保存到 `database/plans/{PlanID}/`
+- 执行后生成产物并保存到 `artifacts/plans/{PlanID}/`
 - 触发用户评审，确认后继续
 - 阶段完成后生成汇总产物传递给下一阶段
 
@@ -364,7 +364,7 @@ Todo-List 是唯一的任务进度跟踪机制，所有状态通过 Todo-List �
 
 #### 详细结构定义
 
-**文件路径**：`database/plans/{PlanID}/todo-list.md`
+**文件路径**：`artifacts/plans/{PlanID}/todo-list.md`
 
 **创建时机**：
 - Skill0（Plan 制定）完成后创建
@@ -506,8 +506,8 @@ flowchart TD
 
 在开始执行前，检查以下内容：
 
-- [ ] database/plans/ 目录不存在则创建
-- [ ] database/stages/ 目录不存在则创建
+- [ ] artifacts/plans/ 目录不存在则创建
+- [ ] artifacts/stages/ 目录不存在则创建
 
 ***
 

@@ -175,7 +175,7 @@ swf-cc/
 │   └── todo-list-template-v2.md  # 任务清单V2
 ├── DIRECTORY-STRUCTURE.md        # 目录结构规范
 ├── OPTIMIZATION-PLAN.md          # 优化计划
-└── database/                     # 产物目录（使用时创建）
+└── artifacts/                     # 产物目录（使用时创建）
     └── {PlanID}/
         ├── 00-plan.md
         ├── 01-boundary.md

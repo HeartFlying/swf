@@ -6,7 +6,7 @@
 
 **产物 ID 格式**：`{PlanID}-S1-S103-001-implicit`
 
-**存储路径**：`database/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md`
+**存储路径**：`artifacts/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md`
 
 **模板版本**：2.0 (标准化版本)
 
@@ -723,7 +723,7 @@ flowchart TD
 | **模板版本** | 2.0 |
 | **执行耗时** | {N}ms |
 | **下次执行** | S104 (需求验证) |
-| **产物路径** | `database/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md` |
+| **产物路径** | `artifacts/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md` |
 
 ---
 

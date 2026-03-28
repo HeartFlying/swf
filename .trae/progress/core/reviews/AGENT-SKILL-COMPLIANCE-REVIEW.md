@@ -546,7 +546,7 @@ flowchart TD
 #### 步骤 5：更新产物 ID 格式
 - **标准格式**: `{PlanID}-{Stage}-{SkillID}-{序号}`
 - **示例**: `P000001-S2-S09-001`
-- **存储路径**: `database/stages/s2/{PlanID}-S2-S09-001.md`
+- **存储路径**: `artifacts/stages/s2/{PlanID}-S2-S09-001.md`
 
 #### 步骤 6：完善错误处理规范（2.4 节）
 包含 5 类错误：

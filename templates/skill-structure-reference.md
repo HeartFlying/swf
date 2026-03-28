@@ -189,7 +189,7 @@ flowchart TD
 
 **目录结构**：
 ```
-database/
+artifacts/
 ├── plans/
 │   ├── index.md                       # Plan 列表索引（可选）
 │   ├── {PlanID}.md                    # Plan 定义文件
@@ -201,7 +201,7 @@ database/
 ```
 
 **路径规则**：
-- 主产物：`database/stages/{s0-s4}/{PlanID}-S{阶段}-{SkillID}-{序号}.md`
+- 主产物：`artifacts/stages/{s0-s4}/{PlanID}-S{阶段}-{SkillID}-{序号}.md`
 - 其他产物：根据类型存放
 ```
 

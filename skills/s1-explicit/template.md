@@ -6,7 +6,7 @@
 
 **产物 ID 格式**：`{PlanID}-S1-S102-001-explicit`
 
-**存储路径**：`database/stages/s1/{PlanID}-S1-S102-001-explicit.md`
+**存储路径**：`artifacts/stages/s1/{PlanID}-S1-S102-001-explicit.md`
 
 **模板版本**：2.0（标准化版本）
 

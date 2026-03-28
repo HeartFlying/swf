@@ -6,7 +6,7 @@
 
 **产物 ID 格式**：`{PlanID}-S0-S001-002`
 
-**存储路径**：`database/stages/s0/{PlanID}-S0-S001-002.md`
+**存储路径**：`artifacts/stages/s0/{PlanID}-S0-S001-002.md`
 
 **模板版本**：2.0（标准化版本）
 
@@ -357,7 +357,7 @@ S0 → S1(S101→S102→S104) → S3(S301→S302) → S4(S401→S402→S403)
 | **执行耗时** | {N}ms |
 | **下次执行** | S101（需求边界界定） |
 | **产物 ID** | {PlanID}-S0-S001-002 |
-| **存储路径** | database/stages/s0/{PlanID}-S0-S001-002.md |
+| **存储路径** | artifacts/stages/s0/{PlanID}-S0-S001-002.md |
 
 ---
 

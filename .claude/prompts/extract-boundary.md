@@ -11,7 +11,7 @@
 
 ## 输入信息
 - Plan ID: {PlanID}
-- Plan定义文件: database/{PlanID}/00-plan.md
+- Plan定义文件: artifacts/{PlanID}/00-plan.md
 - 用户原始需求: {需求摘要}
 
 ## 执行步骤
@@ -29,7 +29,7 @@
 
 ## 输出要求
 
-生成产物文件：database/{PlanID}/01-boundary.md
+生成产物文件：artifacts/{PlanID}/01-boundary.md
 
 使用模板：templates/all-templates.md 中的 Skill1 模板
 
@@ -54,7 +54,7 @@
 
 ## 预期输出
 
-产物文件 `database/{PlanID}/01-boundary.md`，包含：
+产物文件 `artifacts/{PlanID}/01-boundary.md`，包含：
 - 5个维度的边界定义
 - 边界一致性检查结果
 - 边界模糊点及风险
@@ -63,6 +63,6 @@
 
 ## 后置操作
 
-1. 更新 `database/{PlanID}/00-todo-list.md`
+1. 更新 `artifacts/{PlanID}/00-todo-list.md`
 2. 触发用户评审（AI自检通过则自动继续）
 3. 准备执行 Skill2

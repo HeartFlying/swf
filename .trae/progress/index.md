@@ -221,18 +221,18 @@
 - [ ] S4-S15: 原型设计
 
 **产物文件**:
-- [P000001 Plan定义](../../database/plans/P000001.md)
-- [S0 评分报告](../../database/stages/s0/P000001-S0-S00-001-score.md)
-- [S1-S01 需求边界](../../database/stages/s1/P000001-S1-S01-001.md)
-- [S1-S02 显性需求](../../database/stages/s1/P000001-S1-S02-001.md)
-- [S1-S03 隐性需求](../../database/stages/s1/P000001-S1-S03-001.md)
-- [S1-S04 阶段汇总](../../database/stages/s1/P000001-S1-S04-001.md)
-- [S2-S09 竞品分析](../../database/stages/s2/P000001/P000001-S2-S09-001.md)
-- [S2-S10 市场痛点验证](../../database/stages/s2/P000001/P000001-S2-S10-001.md)
-- [S3-S07 需求风险识别](../../database/stages/s3/P000001/P000001-S3-S07-001.md)
-- [S3-S11 技术可行性评估](../../database/stages/s3/P000001/P000001-S3-S11-001.md)
-- [S3-S12 技术选型建议](../../database/stages/s3/P000001/P000001-S3-S12-001.md)
-- [P000001 任务清单](../../database/plans/P000001/todo-list.md)
+- [P000001 Plan定义](../../artifacts/plans/P000001.md)
+- [S0 评分报告](../../artifacts/stages/s0/P000001-S0-S00-001-score.md)
+- [S1-S01 需求边界](../../artifacts/stages/s1/P000001-S1-S01-001.md)
+- [S1-S02 显性需求](../../artifacts/stages/s1/P000001-S1-S02-001.md)
+- [S1-S03 隐性需求](../../artifacts/stages/s1/P000001-S1-S03-001.md)
+- [S1-S04 阶段汇总](../../artifacts/stages/s1/P000001-S1-S04-001.md)
+- [S2-S09 竞品分析](../../artifacts/stages/s2/P000001/P000001-S2-S09-001.md)
+- [S2-S10 市场痛点验证](../../artifacts/stages/s2/P000001/P000001-S2-S10-001.md)
+- [S3-S07 需求风险识别](../../artifacts/stages/s3/P000001/P000001-S3-S07-001.md)
+- [S3-S11 技术可行性评估](../../artifacts/stages/s3/P000001/P000001-S3-S11-001.md)
+- [S3-S12 技术选型建议](../../artifacts/stages/s3/P000001/P000001-S3-S12-001.md)
+- [P000001 任务清单](../../artifacts/plans/P000001/todo-list.md)
 
 **断点续跑**: 告知"继续P000001需求分析"恢复任务
 

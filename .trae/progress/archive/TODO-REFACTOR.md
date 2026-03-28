@@ -7,7 +7,7 @@
 > - Agent合并策略：保留coordinator.md
 > - 编号体系：采用新的连续编号（S00-S13）
 > - 轻量化模式：在Agent中统一控制
-> - 产物存储：保持现有的database/目录结构
+> - 产物存储：保持现有的artifacts/目录结构
 
 ***
 
@@ -182,8 +182,8 @@
 
 ### 3.3 目录结构验证
 
-- [ ] 3.3.1 验证 `database/plans/` 结构
-- [ ] 3.3.2 验证 `database/stages/` 结构
+- [ ] 3.3.1 验证 `artifacts/plans/` 结构
+- [ ] 3.3.2 验证 `artifacts/stages/` 结构
 - [ ] 3.3.3 验证所有模板文件可访问
 
 ***
@@ -268,7 +268,7 @@
 1. **Agent合并策略**：保留coordinator.md，删除requirements-analyst.md
 2. **编号体系**：采用新的连续编号（S00-S13）
 3. **轻量化模式**：在Agent中统一控制
-4. **产物存储**：保持现有的database/目录结构
+4. **产物存储**：保持现有的artifacts/目录结构
 5. **错误处理**：删除错误代码，改为错误处理策略描述
 
 ***

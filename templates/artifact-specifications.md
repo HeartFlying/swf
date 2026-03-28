@@ -38,7 +38,7 @@
 ### 2.1 目录结构
 
 ```
-database/
+artifacts/
 ├── plans/
 │   ├── {PlanID}.md                    # Plan定义文件
 │   └── {PlanID}/
@@ -55,17 +55,17 @@ database/
 
 | 产物类型 | 路径格式 | 示例 |
 |----------|----------|------|
-| Plan定义文件 | `database/plans/{PlanID}.md` | `database/plans/P000001.md` |
-| Todo-List | `database/plans/{PlanID}/todo-list.md` | `database/plans/P000001/todo-list.md` |
-| S0阶段产物 | `database/stages/s0/{PlanID}-S0-{SkillID}-{序号}.md` | `database/stages/s0/P000001-S0-S001-002.md` |
-| S1阶段产物 | `database/stages/s1/{PlanID}-S1-{SkillID}-{序号}.md` | `database/stages/s1/P000001-S1-S101-001.md` |
-| S2阶段产物 | `database/stages/s2/{PlanID}-S2-{SkillID}-{序号}.md` | `database/stages/s2/P000001-S2-S201-001.md` |
-| S3阶段产物 | `database/stages/s3/{PlanID}-S3-{SkillID}-{序号}.md` | `database/stages/s3/P000001-S3-S301-001.md` |
-| S4阶段产物 | `database/stages/s4/{PlanID}-S4-{SkillID}-{序号}.md` | `database/stages/s4/P000001-S4-S401-001.md` |
+| Plan定义文件 | `artifacts/plans/{PlanID}.md` | `artifacts/plans/P000001.md` |
+| Todo-List | `artifacts/plans/{PlanID}/todo-list.md` | `artifacts/plans/P000001/todo-list.md` |
+| S0阶段产物 | `artifacts/stages/s0/{PlanID}-S0-{SkillID}-{序号}.md` | `artifacts/stages/s0/P000001-S0-S001-002.md` |
+| S1阶段产物 | `artifacts/stages/s1/{PlanID}-S1-{SkillID}-{序号}.md` | `artifacts/stages/s1/P000001-S1-S101-001.md` |
+| S2阶段产物 | `artifacts/stages/s2/{PlanID}-S2-{SkillID}-{序号}.md` | `artifacts/stages/s2/P000001-S2-S201-001.md` |
+| S3阶段产物 | `artifacts/stages/s3/{PlanID}-S3-{SkillID}-{序号}.md` | `artifacts/stages/s3/P000001-S3-S301-001.md` |
+| S4阶段产物 | `artifacts/stages/s4/{PlanID}-S4-{SkillID}-{序号}.md` | `artifacts/stages/s4/P000001-S4-S401-001.md` |
 
 ### 2.3 索引文件（可选）
 
-**Plan列表索引**：`database/plans/index.md`
+**Plan列表索引**：`artifacts/plans/index.md`
 
 ```markdown
 # Plan列表索引
@@ -153,42 +153,42 @@ updated_at: 2026-03-27 10:00:00
 
 | Skill | 产物名称 | 产物ID格式 | 存储路径 |
 |-------|----------|------------|----------|
-| S001 | Plan定义文件 | {PlanID}-S0-S001-001 | database/plans/{PlanID}.md |
-| S001 | 评分报告 | {PlanID}-S0-S001-002 | database/stages/s0/ |
-| S001 | Todo-List | {PlanID}-S0-S001-003 | database/plans/{PlanID}/todo-list.md |
+| S001 | Plan定义文件 | {PlanID}-S0-S001-001 | artifacts/plans/{PlanID}.md |
+| S001 | 评分报告 | {PlanID}-S0-S001-002 | artifacts/stages/s0/ |
+| S001 | Todo-List | {PlanID}-S0-S001-003 | artifacts/plans/{PlanID}/todo-list.md |
 
 ### S1阶段
 
 | Skill | 产物名称 | 产物ID格式 | 存储路径 |
 |-------|----------|------------|----------|
-| S101 | 边界界定报告 | {PlanID}-S1-S101-001 | database/stages/s1/ |
-| S102 | 显式需求报告 | {PlanID}-S1-S102-001 | database/stages/s1/ |
-| S103 | 隐性需求报告 | {PlanID}-S1-S103-001 | database/stages/s1/ |
-| S104 | 需求验证报告 | {PlanID}-S1-S104-001 | database/stages/s1/ |
+| S101 | 边界界定报告 | {PlanID}-S1-S101-001 | artifacts/stages/s1/ |
+| S102 | 显式需求报告 | {PlanID}-S1-S102-001 | artifacts/stages/s1/ |
+| S103 | 隐性需求报告 | {PlanID}-S1-S103-001 | artifacts/stages/s1/ |
+| S104 | 需求验证报告 | {PlanID}-S1-S104-001 | artifacts/stages/s1/ |
 
 ### S2阶段
 
 | Skill | 产物名称 | 产物ID格式 | 存储路径 |
 |-------|----------|------------|----------|
-| S201 | 竞品分析报告 | {PlanID}-S2-S201-001 | database/stages/s2/ |
-| S202 | 市场痛点验证报告 | {PlanID}-S2-S202-001 | database/stages/s2/ |
+| S201 | 竞品分析报告 | {PlanID}-S2-S201-001 | artifacts/stages/s2/ |
+| S202 | 市场痛点验证报告 | {PlanID}-S2-S202-001 | artifacts/stages/s2/ |
 
 ### S3阶段
 
 | Skill | 产物名称 | 产物ID格式 | 存储路径 |
 |-------|----------|------------|----------|
-| S301 | 风险识别报告 | {PlanID}-S3-S301-001 | database/stages/s3/ |
-| S302 | 技术可行性报告 | {PlanID}-S3-S302-001 | database/stages/s3/ |
-| S303 | 技术选型报告 | {PlanID}-S3-S303-001 | database/stages/s3/ |
+| S301 | 风险识别报告 | {PlanID}-S3-S301-001 | artifacts/stages/s3/ |
+| S302 | 技术可行性报告 | {PlanID}-S3-S302-001 | artifacts/stages/s3/ |
+| S303 | 技术选型报告 | {PlanID}-S3-S303-001 | artifacts/stages/s3/ |
 
 ### S4阶段
 
 | Skill | 产物名称 | 产物ID格式 | 存储路径 |
 |-------|----------|------------|----------|
-| S401 | 需求分类报告 | {PlanID}-S4-S401-001 | database/stages/s4/ |
-| S402 | 优先级排序报告 | {PlanID}-S4-S402-001 | database/stages/s4/ |
-| S403 | 核心需求报告 | {PlanID}-S4-S403-001 | database/stages/s4/ |
-| S404 | 原型设计报告 | {PlanID}-S4-S404-001 | database/stages/s4/ |
+| S401 | 需求分类报告 | {PlanID}-S4-S401-001 | artifacts/stages/s4/ |
+| S402 | 优先级排序报告 | {PlanID}-S4-S402-001 | artifacts/stages/s4/ |
+| S403 | 核心需求报告 | {PlanID}-S4-S403-001 | artifacts/stages/s4/ |
+| S404 | 原型设计报告 | {PlanID}-S4-S404-001 | artifacts/stages/s4/ |
 
 ---
 
@@ -207,8 +207,8 @@ updated_at: 2026-03-27 10:00:00
 
 ```markdown
 **依赖产物**：
-- [边界界定报告](../../database/stages/s1/P000001-S1-S101-001.md) - P000001-S1-S101-001
-- [显式需求报告](../../database/stages/s1/P000001-S1-S102-001.md) - P000001-S1-S102-001
+- [边界界定报告](../../artifacts/stages/s1/P000001-S1-S101-001.md) - P000001-S1-S101-001
+- [显式需求报告](../../artifacts/stages/s1/P000001-S1-S102-001.md) - P000001-S1-S102-001
 ```
 
 ---

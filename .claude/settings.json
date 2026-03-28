@@ -6,10 +6,7 @@
       "Edit",
       "Git",
       "WebFetch",
-      "WebSearch",
-      "Bash(do if:*)",
-      "Bash(then echo:*)",
-      "Bash(fi)"
+      "WebSearch"
     ]
   }
 }

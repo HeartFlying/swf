@@ -91,10 +91,10 @@ swf/
 
 ## 产物输出
 
-所有产物存储在 `database/` 目录：
+所有产物存储在 `artifacts/` 目录：
 
 ```
-database/
+artifacts/
 ├── plans/{PlanID}/
 │   ├── {PlanID}-definition.md   # Plan定义
 │   └── todo-list.md             # 任务跟踪
