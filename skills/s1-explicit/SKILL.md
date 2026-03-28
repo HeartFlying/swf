@@ -194,9 +194,9 @@ S102 包含完整的输入示例、处理过程说明和输出示例。
 
 ### 4.2 通用规范
 
-- **产物 ID 命名规则**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ---
@@ -205,7 +205,7 @@ S102 包含完整的输入示例、处理过程说明和输出示例。
 
 ### 5.1 质量评估框架
 
-S102 遵循 [quality-standard.md](../../templates/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S102 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度 | 权重 | 评估标准 | 验收阈值 |
 |------|------|----------|----------|
@@ -323,4 +323,4 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](../../templates/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)

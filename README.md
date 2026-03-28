@@ -12,6 +12,21 @@ AI驱动的软件需求分析工作流系统，通过多阶段Skill编排，将�
 
 ## 快速开始
 
+```bash
+git clone https://github.com/HeartFlying/swf.git
+cd swf
+claude
+```
+
+然后输入：`帮我分析一个 APP 的需求`
+
+### 详细文档
+
+- [快速开始](QUICKSTART.md) - 5 分钟上手
+- [安装指南](INSTALL.md) - 详细安装步骤
+- [部署指南](DEPLOYMENT.md) - 团队发布与共享
+- [工作流程](WORKFLOW.md) - 完整流程说明
+
 ### 前置要求
 
 - Claude Code、Codex 或 Trae 等AI IDE
@@ -21,7 +36,7 @@ AI驱动的软件需求分析工作流系统，通过多阶段Skill编排，将�
 
 1. **启动协调器Agent**
    ```
-   在AI IDE中加载 agents/coordinator.md
+   在AI IDE中加载 agents/swf-coordinator.md
    ```
 
 2. **输入需求**

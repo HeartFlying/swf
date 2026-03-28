@@ -53,12 +53,12 @@
 | 用户偏好不明确 | 需要确认用户对风险的态度 | 用户是风险厌恶型还是风险承受型 |
 | 发现重大风险 | 识别出可能影响项目成败的重大风险 | 核心技术无法实现 |
 
-**交互流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户交互流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互流程"章节
 
 **使用模板**：
-- 使用 [clarification-template.md](../../../templates/user-interaction/clarification-template.md) 进行信息澄清
-- 使用 [information-collection-template.md](../../../templates/user-interaction/information-collection-template.md) 收集补充信息
-- 使用 [option-selection-template.md](../../../templates/user-interaction/option-selection-template.md) 进行选项选择
+- 使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md) 进行信息澄清
+- 使用 [user-interaction/information-collection-template.md](user-interaction/information-collection-template.md) 收集补充信息
+- 使用 [user-interaction/option-selection-template.md](user-interaction/option-selection-template.md) 进行选项选择
 
 ---
 
@@ -250,7 +250,7 @@
 
 **目标**：更新Todo-List，标记 S301 完成，准备用户评审
 
-**更新规则**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"Todo-List更新规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节
 
 **S301特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -264,7 +264,7 @@
 
 **目标**：用户对风险识别结果进行评审和确认
 
-**评审流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户评审流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审流程"章节
 
 **评审展示内容**：
 - 风险识别报告核心内容（风险统计、高风险清单、关键风险提示）

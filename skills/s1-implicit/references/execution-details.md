@@ -39,7 +39,7 @@
 
 **交互流程**：
 
-使用 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的标准用户交互流程：
+使用 [execution-flow-standard.md](execution-flow-standard.md) 中的标准用户交互流程：
 
 1. 识别模糊/缺失的需求信息
 2. 生成澄清问题（使用标准化问题模板）
@@ -49,9 +49,9 @@
 
 **交互模板**：
 
-- **需求澄清**：使用 [clarification-template.md](../../../templates/user-interaction/clarification-template.md)
-- **信息收集**：使用 [information-collection-template.md](../../../templates/user-interaction/information-collection-template.md)
-- **方案选择**：使用 [option-selection-template.md](../../../templates/user-interaction/option-selection-template.md)
+- **需求澄清**：使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md)
+- **信息收集**：使用 [user-interaction/information-collection-template.md](user-interaction/information-collection-template.md)
+- **方案选择**：使用 [user-interaction/option-selection-template.md](user-interaction/option-selection-template.md)
 
 **交互记录保存**：
 
@@ -257,7 +257,7 @@
 
 **评审超时处理**：
 
-详见 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户评审流程"章节。
+详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审流程"章节。
 
 **评审记录填写**：
 
@@ -283,4 +283,4 @@
 | 大修改    | 执行中   | 需重做    | 可恢复=true  |
 | 新增想法   | 执行中   | 需修改    | 可恢复=true  |
 
-**详细规则**：详见 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节。

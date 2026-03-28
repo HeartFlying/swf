@@ -138,7 +138,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-遵循标准 [产物规范](../../templates/artifact-specifications.md)。
+遵循标准 [产物规范](references/artifact-specifications.md)。
 
 **本Skill产物**：
 
@@ -277,7 +277,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](../../templates/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
 
 ***
 

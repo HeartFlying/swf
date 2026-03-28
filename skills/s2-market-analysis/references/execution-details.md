@@ -68,13 +68,13 @@
 3. 需求理解模糊：对痛点场景、用户群体的理解存在歧义
 4. 信息完整度评分低于 60 分
 
-**交互流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户交互流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"用户交互流程"章节
 
 **使用模板**：
 
-- **信息补全请求**：使用 [information-collection-template.md](../../../templates/user-interaction/information-collection-template.md)
-- **需求澄清请求**：使用 [clarification-template.md](../../../templates/user-interaction/clarification-template.md)
-- **方案选择请求**：使用 [option-selection-template.md](../../../templates/user-interaction/option-selection-template.md)
+- **信息补全请求**：使用 [user-interaction/information-collection-template.md](user-interaction/information-collection-template.md)
+- **需求澄清请求**：使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md)
+- **方案选择请求**：使用 [user-interaction/option-selection-template.md](user-interaction/option-selection-template.md)
 
 ---
 
@@ -230,7 +230,7 @@
 
 **目标**：触发用户评审，确认验证结果。
 
-**评审流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户评审流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"用户评审流程"章节
 
 **评审展示内容**：
 - 识别痛点数量及分类
@@ -244,7 +244,7 @@
 
 **目标**：更新Todo-List状态，记录执行成果
 
-**更新规则**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"Todo-List更新规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"Todo-List更新规则"章节
 
 **S202特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中

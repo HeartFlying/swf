@@ -38,9 +38,9 @@
 
 **交互协议**：
 
-遵循标准 [执行流程标准](../../../templates/execution-flow-standard.md) 中的用户交互流程。
+遵循标准 [执行流程标准](execution-flow-standard.md) 中的用户交互流程。
 
-- 使用标准化交互模板，详见 [用户交互模板](../../../templates/user-interaction/)
+- 使用标准化交互模板，详见 [用户交互模板](user-interaction/)
 - 交互记录保存到产物"用户交互记录"章节
 - 最多3轮交互，超过则标记风险继续
 
@@ -181,7 +181,7 @@ S0 → S1(S101→S102→S104) → S3(S301→S302) → S4(S401→S402→S403)
 
 ## 步骤 8：用户评审
 
-遵循标准 [执行流程标准](../../../templates/execution-flow-standard.md) 中的用户评审流程。
+遵循标准 [执行流程标准](execution-flow-standard.md) 中的用户评审流程。
 
 **本Skill评审内容**：
 - Plan定义文件核心内容（Plan ID、执行模式、阶段划分）
@@ -195,7 +195,7 @@ S0 → S1(S101→S102→S104) → S3(S301→S302) → S4(S401→S402→S403)
 
 ## Todo-List 更新规则
 
-遵循标准 [执行流程标准](../../../templates/execution-flow-standard.md) 中的Todo-List更新规则。
+遵循标准 [执行流程标准](execution-flow-standard.md) 中的Todo-List更新规则。
 
 **本Skill特定更新**：
 

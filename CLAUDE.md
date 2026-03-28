@@ -125,7 +125,15 @@ skills/s{stage}-{name}/
 ├── template.md                 # Output template
 └── references/                 # Detailed content (loaded on demand)
     ├── execution-details.md    # Detailed step descriptions
-    └── examples.md             # Demo examples
+    ├── examples.md             # Demo examples
+    ├── quality-standard.md     # ISO/IEC 25010 quality standard (copied from templates/)
+    ├── error-code-standard.md  # Unified error code standard (copied from templates/)
+    ├── execution-flow-standard.md  # Execution flow standard (copied from templates/)
+    ├── artifact-specifications.md  # Artifact specifications (copied from templates/)
+    └── user-interaction/       # User interaction templates (copied from templates/)
+        ├── clarification-template.md
+        ├── information-collection-template.md
+        └── option-selection-template.md
 ```
 
 ### YAML Frontmatter
@@ -179,16 +187,18 @@ version: 3.2.0
 
 ### User Interaction Templates
 
-All Skills use standardized interaction templates:
-- **Clarification**: [templates/user-interaction/clarification-template.md](templates/user-interaction/clarification-template.md)
-- **Information Collection**: [templates/user-interaction/information-collection-template.md](templates/user-interaction/information-collection-template.md)
-- **Option Selection**: [templates/user-interaction/option-selection-template.md](templates/user-interaction/option-selection-template.md)
+All Skills use standardized interaction templates (now copied to each Skill's `references/user-interaction/` directory):
+- **Clarification**: `references/user-interaction/clarification-template.md`
+- **Information Collection**: `references/user-interaction/information-collection-template.md`
+- **Option Selection**: `references/user-interaction/option-selection-template.md`
 
 ### Quality Standards Reference
 
-All Skills follow the quality assessment framework:
-- **Quality Standard**: [templates/quality-standard.md](templates/quality-standard.md)
-- **Error Code Standard**: [templates/error-code-standard.md](templates/error-code-standard.md)
+All Skills follow the quality assessment framework (now copied to each Skill's `references/` directory):
+- **Quality Standard**: `references/quality-standard.md`
+- **Error Code Standard**: `references/error-code-standard.md`
+- **Execution Flow Standard**: `references/execution-flow-standard.md`
+- **Artifact Specifications**: `references/artifact-specifications.md`
 
 ## Key Rules (from .trae/rules/swf-rule.md)
 

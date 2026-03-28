@@ -56,13 +56,13 @@
 3. 需求理解模糊：对产品定位、目标用户的理解存在歧义
 4. 信息完整度评分低于60分
 
-**交互流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户交互流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"用户交互流程"章节
 
 **使用模板**：
 
-- **需求澄清**：使用 [clarification-template.md](../../../templates/user-interaction/clarification-template.md)
-- **信息收集**：使用 [information-collection-template.md](../../../templates/user-interaction/information-collection-template.md)
-- **方案选择**：使用 [option-selection-template.md](../../../templates/user-interaction/option-selection-template.md)
+- **需求澄清**：使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md)
+- **信息收集**：使用 [user-interaction/information-collection-template.md](user-interaction/information-collection-template.md)
+- **方案选择**：使用 [user-interaction/option-selection-template.md](user-interaction/option-selection-template.md)
 
 ## 步骤4：竞品识别
 
@@ -267,7 +267,7 @@
 
 **目标**：触发用户评审，确认分析结果
 
-**评审流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户评审流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"用户评审流程"章节
 
 **评审展示内容**：
 
@@ -280,7 +280,7 @@
 
 **目标**：更新Todo-List状态，记录执行成果
 
-**更新规则**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"Todo-List更新规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](../execution-flow-standard.md) 中的"Todo-List更新规则"章节
 
 **S201特定更新时机**：
 

@@ -151,9 +151,9 @@ S103 的完整输入/处理/输出示例请参考：[references/examples.md](ref
 
 ### 4.2 通用规范
 
-- **产物 ID 命名规则**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [artifact-specifications.md](../../templates/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ***
@@ -162,7 +162,7 @@ S103 的完整输入/处理/输出示例请参考：[references/examples.md](ref
 
 ### 5.1 质量评估框架
 
-S103 遵循 [quality-standard.md](../../templates/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S103 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度       | 权重   | 评估标准           | 验收阈值   |
 | -------- | ---- | -------------- | ------ |
@@ -285,4 +285,4 @@ flowchart TD
 | 推导失败 | 降低置信度标记 |
 | 需求冲突 | 标记冲突点，进入评审 |
 
-详细流程参见 [execution-flow-standard.md](../../templates/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)

@@ -165,11 +165,11 @@
 3. 需求分层结果需要确认
 4. 资源约束需要权衡
 
-**交互流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户交互流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互流程"章节
 
 **使用模板**：
-- **信息收集**：使用 [information-collection-template.md](../../../templates/user-interaction/information-collection-template.md)
-- **方案选择**：使用 [option-selection-template.md](../../../templates/user-interaction/option-selection-template.md)
+- **信息收集**：使用 [user-interaction/information-collection-template.md](user-interaction/information-collection-template.md)
+- **方案选择**：使用 [user-interaction/option-selection-template.md](user-interaction/option-selection-template.md)
 
 ---
 
@@ -292,7 +292,7 @@ MVP需求数：{X} 项
 
 ## 步骤 15：更新 Todo-List
 
-**更新规则**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"Todo-List更新规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节
 
 **S403特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -306,7 +306,7 @@ MVP需求数：{X} 项
 
 **目标**：用户对核心需求提取结果进行评审和确认
 
-**评审流程**：遵循 [execution-flow-standard.md](../../../templates/execution-flow-standard.md) 中的"用户评审流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审流程"章节
 
 **评审展示内容**：
 - 核心功能识别结果（5-10项）
