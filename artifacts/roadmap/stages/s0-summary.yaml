@@ -1,0 +1,29 @@
+# S0 Plan 制定阶段摘要
+# 路径: artifacts/roadmap/stages/s0-summary.yaml
+
+stage:
+  id: s0
+  name: Plan 制定
+  description: 需求解析、ID生成、信息完整度评分
+  skills: [S001]
+
+# 该阶段所有 Plan 的产物索引
+plans:
+  P000001:
+    name: 研发中心AI编程绩效管理平台
+    status: completed
+    artifacts:
+      - id: P000001
+        name: Plan 定义
+        path: ../plans/P000001.md
+        keywords: [执行计划, 信息完整度]
+        summary: "信息完整度评分 72 分，常规模式"
+      - id: P000001-S0-S001-002
+        name: 评分报告
+        path: ../stages/s0/P000001-S0-S001-002.md
+        keywords: [评分, 完整度]
+
+# 阶段通用依赖
+dependencies:
+  upstream: []
+  downstream: [s1, s2, s3, s4, s5, s6]

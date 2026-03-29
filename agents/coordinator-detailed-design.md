@@ -451,14 +451,16 @@ flowchart TD
 
 ### Roadmap 最终更新（S6 完成后）
 
-S6 阶段完成后，完成 Roadmap 索引的最后更新：
+S6 阶段完成后，完成全局 Roadmap 索引的最后更新：
+
+**存储位置**：`artifacts/roadmap/`
 
 **更新文件**：
-- `roadmap/index.yaml` - 更新状态为 completed，完成进度 100%
-- `roadmap/stages/s6-summary.yaml` - 新增 S6 阶段摘要
-- `roadmap/dependency-graph.yaml` - 追加 S6 产物依赖
+- `artifacts/roadmap/index.yaml` - 更新 Plan 状态为 completed
+- `artifacts/roadmap/stages/s6-summary.yaml` - 新增/更新 S6 阶段产物索引
+- `artifacts/roadmap/plans/{PlanID}/roadmap.yaml` - 更新最终状态
 
-**index.yaml 最终状态**：
+**plans/{PlanID}/roadmap.yaml 最终状态**：
 ```yaml
 meta:
   plan_id: {PlanID}
@@ -477,23 +479,14 @@ stages:
   s4: { status: completed }
   s5: { status: completed }
   s6: { status: completed }
-
-deliverables:
-  requirements_spec:
-    path: ../stages/s4/{PlanID}-S4-summary-001.md
-  architecture_doc:
-    path: ../stages/s5/{PlanID}/{PlanID}-S5-summary-001.md
-  design_doc:
-    path: ../stages/s6/{PlanID}/{PlanID}-S6-summary-001.md
-  ddl_script:
-    path: ../stages/s6/{PlanID}/{PlanID}-S6-A02-002.sql
 ```
 
 **AI 工具使用方式**：
 ```
-1. 读取 roadmap/index.yaml → 获取全局概览
-2. 根据需求定位阶段 → 读取 stages/s{n}-summary.yaml
-3. 按需加载产物 → 通过 path 定位具体文件
+1. 读取 artifacts/roadmap/index.yaml → 获取全局概览
+2. 读取 plans/{PlanID}/roadmap.yaml → 获取 Plan 详情
+3. 按需读取 stages/s{n}-summary.yaml → 获取阶段产物索引
+4. 按需加载产物 → 通过 path 定位具体文件
 ```
 
 ---

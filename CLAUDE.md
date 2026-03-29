@@ -140,32 +140,37 @@ All outputs are stored in `artifacts/`:
 
 ```
 artifacts/
+├── roadmap/                       # Global Roadmap (AI tool navigation)
+│   ├── index.yaml                 # Global index (all plans overview)
+│   ├── stages/                    # Stage-level artifact index
+│   │   ├── s0-summary.yaml
+│   │   ├── s1-summary.yaml
+│   │   └── ... s6-summary.yaml
+│   └── plans/                     # Plan-level roadmap
+│       └── {PlanID}/
+│           └── roadmap.yaml
 ├── plans/{PlanID}.md              # Plan definition
 ├── plans/{PlanID}/todo-list.md    # Task tracking (single source of truth)
-├── plans/{PlanID}/roadmap/        # Roadmap index (AI tool navigation)
-│   ├── index.yaml                 # Global index
-│   ├── dependency-graph.yaml      # Artifact dependency graph
-│   └── stages/                    # Stage summaries
-│       ├── s0-summary.yaml
-│       ├── s1-summary.yaml
-│       └── ... s6-summary.yaml
 └── stages/{s0-s6}/                # Skill outputs by stage
 ```
 
 ## Roadmap Navigation (AI Tool Usage)
 
-The Roadmap is designed for AI tools to navigate and retrieve artifacts efficiently:
+The Roadmap is stored in `artifacts/roadmap/` and is global (not bound to specific Plan).
 
 ### How to Use Roadmap
 
 ```
-Step 1: Read roadmap/index.yaml
-        → Get project overview, progress, stage status
+Step 1: Read artifacts/roadmap/index.yaml
+        → Get global overview (all plans, progress, stage definitions)
 
-Step 2: Read relevant stage summary (e.g., stages/s5-summary.yaml)
-        → Get skill outputs, keywords, summaries
+Step 2: Read artifacts/roadmap/plans/{PlanID}/roadmap.yaml
+        → Get specific Plan details and stage status
 
-Step 3: Load specific artifact if needed
+Step 3: Read artifacts/roadmap/stages/s{n}-summary.yaml
+        → Get stage-level artifact index with keywords and summaries
+
+Step 4: Load specific artifact if needed
         → Use path from summary to load full document
 ```
 
@@ -173,23 +178,23 @@ Step 3: Load specific artifact if needed
 
 | File | Purpose | When to Read |
 |------|---------|--------------|
-| `index.yaml` | Global overview, quick navigation | First, always |
-| `stages/s{n}-summary.yaml` | Stage-level details | When needed |
-| `dependency-graph.yaml` | Artifact dependencies | For impact analysis |
+| `roadmap/index.yaml` | Global overview, all plans, skill index | First, always |
+| `roadmap/plans/{PlanID}/roadmap.yaml` | Plan-specific progress and artifacts | When working on specific Plan |
+| `roadmap/stages/s{n}-summary.yaml` | Stage-level artifact index | When retrieving stage artifacts |
 
 ### Quick Navigation by Topic
 
 | Topic | Stages | Summary Files |
 |-------|--------|---------------|
-| Requirements | S2, S4 | `s2-summary.yaml`, `s4-summary.yaml` |
-| Architecture | S5 | `s5-summary.yaml` |
-| Design | S6 | `s6-summary.yaml` |
-| Risks | S3 | `s3-summary.yaml` |
-| Testing | S6 | `s6-summary.yaml` |
+| Requirements | S2, S4 | `stages/s2-summary.yaml`, `stages/s4-summary.yaml` |
+| Architecture | S5 | `stages/s5-summary.yaml` |
+| Design | S6 | `stages/s6-summary.yaml` |
+| Risks | S3 | `stages/s3-summary.yaml` |
+| Testing | S6 | `stages/s6-summary.yaml` |
 
-### When Roadmap is Generated
+### When Roadmap is Updated
 
-- **S0-S4 complete**: `coordinator-requirements.md` generates initial roadmap
+- **S0-S4 complete**: `coordinator-requirements.md` updates roadmap
 - **S5 complete**: `coordinator-architecture.md` updates roadmap
 - **S6 complete**: `coordinator-detailed-design.md` finalizes roadmap
 

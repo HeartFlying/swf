@@ -1,0 +1,123 @@
+# SWF 全局 Roadmap 索引
+# 路径: artifacts/roadmap/index.yaml
+
+# 元信息
+meta:
+  version: "1.0.0"
+  generated_at: "2026-03-29"
+  total_plans: 1
+
+# 所有 Plan 列表
+plans:
+  P000001:
+    name: 研发中心AI编程绩效管理平台
+    status: in_progress
+    mode: normal
+    created_at: "2026-03-28"
+    updated_at: "2026-03-28"
+    progress:
+      current_stage: s1
+      completed_stages: [s0, s1]
+      progress_percent: 15
+    roadmap: plans/P000001/roadmap.yaml
+
+# 全局阶段概览
+stages:
+  s0:
+    name: Plan 制定
+    description: 需求解析、ID生成、信息完整度评分
+    skills: [S001]
+    plans_completed: 1
+    plans_in_progress: 0
+
+  s1:
+    name: 市场洞察
+    description: 竞品分析、市场验证
+    skills: [S101, S102]
+    plans_completed: 0
+    plans_in_progress: 1
+
+  s2:
+    name: 需求定义
+    description: 边界界定、显式需求、隐式需求、需求验证
+    skills: [S201, S202, S203, S204]
+    plans_completed: 0
+    plans_in_progress: 0
+
+  s3:
+    name: 技术规划
+    description: 可行性分析、技术选型、非功能需求、风险识别
+    skills: [S301, S302, S303, S304]
+    plans_completed: 0
+    plans_in_progress: 0
+
+  s4:
+    name: 需求整合
+    description: 分类、优先级、核心提取、用户故事、原型设计
+    skills: [S401, S402, S403, S405, S406]
+    plans_completed: 0
+    plans_in_progress: 0
+
+  s5:
+    name: 架构设计
+    description: 愿景、视图、数据、接口、部署、验证
+    skills: [S5-A01, S5-A02, S5-A03, S5-A04, S5-A05, S5-A06]
+    plans_completed: 0
+    plans_in_progress: 0
+
+  s6:
+    name: 详细设计
+    description: 模块、数据库、UI/UX、测试策略
+    skills: [S6-A01, S6-A02, S6-A03, S6-A04]
+    plans_completed: 0
+    plans_in_progress: 0
+
+# 快速导航（按主题）
+navigation:
+  by_topic:
+    requirements:
+      - stages/s2-summary.yaml
+      - stages/s4-summary.yaml
+    architecture:
+      - stages/s5-summary.yaml
+    design:
+      - stages/s6-summary.yaml
+    risks:
+      - stages/s3-summary.yaml
+    testing:
+      - stages/s6-summary.yaml
+
+  by_status:
+    completed: []
+    in_progress: [P000001]
+    pending: []
+
+# Skill 定义索引（全局）
+skill_index:
+  S001: { name: "Plan 制定", stage: s0 }
+  S101: { name: "竞品分析", stage: s1 }
+  S102: { name: "市场痛点验证", stage: s1 }
+  S201: { name: "需求边界界定", stage: s2 }
+  S202: { name: "显式需求提取", stage: s2 }
+  S203: { name: "隐式需求挖掘", stage: s2 }
+  S204: { name: "需求验证", stage: s2 }
+  S301: { name: "技术可行性评估", stage: s3 }
+  S302: { name: "技术选型", stage: s3 }
+  S303: { name: "非功能需求定义", stage: s3 }
+  S304: { name: "风险识别", stage: s3 }
+  S401: { name: "需求分类", stage: s4 }
+  S402: { name: "优先级排序", stage: s4 }
+  S403: { name: "核心需求提取", stage: s4 }
+  S405: { name: "用户故事编写", stage: s4 }
+  S406: { name: "原型设计", stage: s4 }
+  S5-A01: { name: "架构愿景定义", stage: s5 }
+  S5-A02: { name: "架构视图设计", stage: s5 }
+  S5-A03: { name: "数据架构设计", stage: s5 }
+  S5-A04: { name: "接口架构设计", stage: s5 }
+  S5-A05: { name: "部署架构设计", stage: s5 }
+  S5-A06: { name: "架构验证与评审", stage: s5 }
+  S6-A01: { name: "模块详细设计", stage: s6 }
+  S6-A02: { name: "数据库详细设计", stage: s6 }
+  S6-A03: { name: "UI/UX设计", stage: s6 }
+  S6-A04: { name: "测试策略设计", stage: s6 }
+  CM-001: { name: "变更影响分析", stage: cm }

@@ -474,36 +474,30 @@ flowchart TD
 
 ### Roadmap 更新（S5 完成后）
 
-S5 阶段完成后，更新 Roadmap 索引：
+S5 阶段完成后，更新全局 Roadmap 索引：
+
+**存储位置**：`artifacts/roadmap/`
 
 **更新文件**：
-- `roadmap/index.yaml` - 更新进度和 S5 阶段状态
-- `roadmap/stages/s5-summary.yaml` - 新增 S5 阶段摘要
-- `roadmap/dependency-graph.yaml` - 追加 S5 产物依赖
+- `artifacts/roadmap/index.yaml` - 更新 Plan 进度
+- `artifacts/roadmap/stages/s5-summary.yaml` - 新增/更新 S5 阶段产物索引
+- `artifacts/roadmap/plans/{PlanID}/roadmap.yaml` - 更新 S5 阶段状态
 
 **s5-summary.yaml 关键内容**：
 ```yaml
 stage:
   id: s5
   name: 架构设计
-  status: completed
+  skills: [S5-A01, S5-A02, S5-A03, S5-A04, S5-A05, S5-A06]
 
-skills:
-  - id: S5-A01
-    name: 架构愿景定义
-    artifact:
-      id: {PlanID}-S5-A01-001
-      path: ../../stages/s5/{PlanID}/{PlanID}-S5-A01-001.md
-    keywords: [架构风格, 架构原则, ADR]
-    summary: "系统采用分层架构..."
-
-dependencies:
-  upstream:
-    - stage: s4
-      artifacts: [S403-001, S303-001]
-  downstream:
-    - stage: s6
-      skills: [S6-A01, S6-A02, S6-A03, S6-A04]
+plans:
+  {PlanID}:
+    status: completed
+    artifacts:
+      - id: {PlanID}-S5-A01-001
+        path: ../stages/s5/{PlanID}/{PlanID}-S5-A01-001.md
+        keywords: [架构风格, 架构原则, ADR]
+        summary: "系统采用分层架构..."
 ```
 
 **触发方式**：

@@ -498,45 +498,32 @@ S4 阶段产物是 S5 架构设计阶段的核心输入：
 
 ### Roadmap 生成（S0-S4 完成后）
 
-S4 阶段完成后，自动生成需求分析阶段的 Roadmap 索引：
+S4 阶段完成后，更新全局 Roadmap 索引：
 
-**存储位置**：`artifacts/plans/{PlanID}/roadmap/`
+**存储位置**：`artifacts/roadmap/`
 
-**生成文件**：
+**目录结构**：
 ```
-roadmap/
-├── index.yaml              # 全局索引
-├── dependency-graph.yaml   # 依赖图谱
-└── stages/
-    ├── s0-summary.yaml
-    ├── s1-summary.yaml
-    ├── s2-summary.yaml
-    ├── s3-summary.yaml
-    └── s4-summary.yaml
+artifacts/roadmap/
+├── index.yaml                    # 全局索引（所有 Plan 概览）
+├── stages/
+│   ├── s0-summary.yaml           # S0 阶段产物索引
+│   ├── s1-summary.yaml
+│   ├── s2-summary.yaml
+│   ├── s3-summary.yaml
+│   └── s4-summary.yaml
+└── plans/
+    └── {PlanID}/
+        └── roadmap.yaml          # Plan 级别 Roadmap
 ```
 
-**index.yaml 关键内容**：
-```yaml
-meta:
-  plan_id: {PlanID}
-  status: in_progress  # S0-S4 完成，等待 S5
-
-progress:
-  current_stage: s5
-  completed_stages: [s0, s1, s2, s3, s4]
-
-stages:
-  s0: { status: completed, summary: "信息完整度评分..." }
-  s1: { status: completed, summary: "竞品分析..." }
-  s2: { status: completed, summary: "需求定义..." }
-  s3: { status: completed, summary: "技术规划..." }
-  s4: { status: completed, summary: "需求整合..." }
-  s5: { status: pending }
-  s6: { status: pending }
-```
+**更新内容**：
+1. 更新 `artifacts/roadmap/index.yaml` 中的 Plan 进度
+2. 更新 `artifacts/roadmap/stages/s{n}-summary.yaml` 添加产物索引
+3. 更新 `artifacts/roadmap/plans/{PlanID}/roadmap.yaml` 的阶段状态
 
 **更新时机**：
-- S4 阶段完成后一次性生成
+- S4 阶段完成后一次性生成/更新
 - 后续 S5、S6 完成后由对应 Agent 追加更新
 
 ### 需求依赖图谱
