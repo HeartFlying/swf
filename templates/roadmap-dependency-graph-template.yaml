@@ -1,0 +1,72 @@
+# 产物依赖图谱模板
+# 路径: artifacts/plans/{PlanID}/roadmap/dependency-graph.yaml
+
+# 元信息
+meta:
+  plan_id: {PlanID}
+  generated_at: {GeneratedAt}
+  total_artifacts: {TotalArtifacts}
+
+# 阶段依赖关系
+stage_dependencies:
+  s0:
+    depends_on: []
+    depended_by: [s1, s2, s3, s4, s5, s6]
+
+  s1:
+    depends_on: [s0]
+    depended_by: [s2]
+
+  s2:
+    depends_on: [s0, s1]
+    depended_by: [s3, s4]
+
+  s3:
+    depends_on: [s0, s2]
+    depended_by: [s4, s5]
+
+  s4:
+    depends_on: [s0, s2, s3]
+    depended_by: [s5]
+
+  s5:
+    depends_on: [s4]
+    depended_by: [s6]
+
+  s6:
+    depends_on: [s5]
+    depended_by: []
+
+# 产物级依赖关系
+artifact_dependencies:
+  {ArtifactId}:
+    type: {ArtifactType}        # plan | analysis | design | specification
+    stage: {StageId}
+    skill: {SkillId}
+    path: ../stages/{StageId}/{PlanID}/{ArtifactId}.md
+    keywords: [{Keywords}]
+    summary: |
+      {Summary}
+    depends_on:
+      - {DependsOnArtifactId}
+    depended_by:
+      - {DependedByArtifactId}
+
+  # ... 更多产物
+
+# 按主题分组
+by_topic:
+  requirements:
+    - {ArtifactId1}
+    - {ArtifactId2}
+
+  architecture:
+    - {ArtifactId3}
+    - {ArtifactId4}
+
+  design:
+    - {ArtifactId5}
+    - {ArtifactId6}
+
+  risks:
+    - {ArtifactId7}

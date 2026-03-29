@@ -470,6 +470,41 @@ flowchart TD
 2. 传递 S5 阶段汇总产物路径
 3. 更新主 Todo-List，添加 S6 阶段任务列表
 4. 创建 S6 专用 Todo-List：`artifacts/plans/{PlanID}/todo-list-s6.md`
+5. **更新 Roadmap**：追加 S5 阶段摘要
+
+### Roadmap 更新（S5 完成后）
+
+S5 阶段完成后，更新 Roadmap 索引：
+
+**更新文件**：
+- `roadmap/index.yaml` - 更新进度和 S5 阶段状态
+- `roadmap/stages/s5-summary.yaml` - 新增 S5 阶段摘要
+- `roadmap/dependency-graph.yaml` - 追加 S5 产物依赖
+
+**s5-summary.yaml 关键内容**：
+```yaml
+stage:
+  id: s5
+  name: 架构设计
+  status: completed
+
+skills:
+  - id: S5-A01
+    name: 架构愿景定义
+    artifact:
+      id: {PlanID}-S5-A01-001
+      path: ../../stages/s5/{PlanID}/{PlanID}-S5-A01-001.md
+    keywords: [架构风格, 架构原则, ADR]
+    summary: "系统采用分层架构..."
+
+dependencies:
+  upstream:
+    - stage: s4
+      artifacts: [S403-001, S303-001]
+  downstream:
+    - stage: s6
+      skills: [S6-A01, S6-A02, S6-A03, S6-A04]
+```
 
 **触发方式**：
 - 由 coordinator-architecture.md 在最终输出后调用 coordinator-detailed-design.md

@@ -1,0 +1,49 @@
+# 阶段摘要模板
+# 路径: artifacts/plans/{PlanID}/roadmap/stages/s{n}-summary.yaml
+
+stage:
+  id: {StageId}
+  name: {StageName}
+  status: {Status}          # completed | in_progress | pending | skipped
+  executed_at: {ExecutedDate}
+  duration_minutes: {Duration}
+
+# 该阶段产出的所有 Skill 产物
+skills:
+  - id: {SkillId}
+    name: {SkillName}
+    status: completed
+    artifact:
+      id: {ArtifactId}
+      path: ../../stages/{StageId}/{PlanID}/{ArtifactId}.md
+      size_lines: {SizeLines}
+    keywords: [{Keywords}]
+    summary: |
+      {ArtifactSummary}
+
+  # ... 更多 Skill
+
+# 依赖关系
+dependencies:
+  upstream:
+    - stage: {UpstreamStage}
+      artifacts: [{UpstreamArtifactIds}]
+  downstream:
+    - stage: {DownstreamStage}
+      skills: [{DownstreamSkillIds}]
+
+# 该阶段核心结论
+key_findings:
+  - "{Finding1}"
+  - "{Finding2}"
+  - "{Finding3}"
+
+# 风险和待办项
+risks:
+  - id: R001
+    description: "{RiskDescription}"
+    severity: high | medium | low
+    mitigation: "{MitigationPlan}"
+
+todos:
+  - "{TodoItem}"

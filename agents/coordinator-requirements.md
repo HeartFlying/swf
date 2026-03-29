@@ -494,6 +494,50 @@ S4 阶段产物是 S5 架构设计阶段的核心输入：
 3. **执行总结**（执行时间、模式、各阶段完成情况、评审记录）
 4. **更新后的 Todo-List**（完整执行记录）
 5. **需求依赖图谱**（`artifacts/plans/{PlanID}/dependency-graph.md`）
+6. **Roadmap 索引**（`artifacts/plans/{PlanID}/roadmap/`）
+
+### Roadmap 生成（S0-S4 完成后）
+
+S4 阶段完成后，自动生成需求分析阶段的 Roadmap 索引：
+
+**存储位置**：`artifacts/plans/{PlanID}/roadmap/`
+
+**生成文件**：
+```
+roadmap/
+├── index.yaml              # 全局索引
+├── dependency-graph.yaml   # 依赖图谱
+└── stages/
+    ├── s0-summary.yaml
+    ├── s1-summary.yaml
+    ├── s2-summary.yaml
+    ├── s3-summary.yaml
+    └── s4-summary.yaml
+```
+
+**index.yaml 关键内容**：
+```yaml
+meta:
+  plan_id: {PlanID}
+  status: in_progress  # S0-S4 完成，等待 S5
+
+progress:
+  current_stage: s5
+  completed_stages: [s0, s1, s2, s3, s4]
+
+stages:
+  s0: { status: completed, summary: "信息完整度评分..." }
+  s1: { status: completed, summary: "竞品分析..." }
+  s2: { status: completed, summary: "需求定义..." }
+  s3: { status: completed, summary: "技术规划..." }
+  s4: { status: completed, summary: "需求整合..." }
+  s5: { status: pending }
+  s6: { status: pending }
+```
+
+**更新时机**：
+- S4 阶段完成后一次性生成
+- 后续 S5、S6 完成后由对应 Agent 追加更新
 
 ### 需求依赖图谱
 

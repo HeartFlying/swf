@@ -441,12 +441,60 @@ flowchart TD
 5. **UI/UX 设计规范**（含组件清单）
 6. **测试策略文档**
 7. **完整的执行记录**（Todo-List 历史）
+8. **完整的 Roadmap 索引**（S0-S6 全阶段）
 
 **S6 完成后状态**：
 - Plan 状态：completed
 - 所有阶段状态：已评审
 - 断点续跑信息：可恢复=false
 - 流程结束标志：swf-completed=true
+
+### Roadmap 最终更新（S6 完成后）
+
+S6 阶段完成后，完成 Roadmap 索引的最后更新：
+
+**更新文件**：
+- `roadmap/index.yaml` - 更新状态为 completed，完成进度 100%
+- `roadmap/stages/s6-summary.yaml` - 新增 S6 阶段摘要
+- `roadmap/dependency-graph.yaml` - 追加 S6 产物依赖
+
+**index.yaml 最终状态**：
+```yaml
+meta:
+  plan_id: {PlanID}
+  status: completed
+
+progress:
+  current_stage: null
+  completed_stages: [s0, s1, s2, s3, s4, s5, s6]
+  progress_percent: 100
+
+stages:
+  s0: { status: completed }
+  s1: { status: completed }
+  s2: { status: completed }
+  s3: { status: completed }
+  s4: { status: completed }
+  s5: { status: completed }
+  s6: { status: completed }
+
+deliverables:
+  requirements_spec:
+    path: ../stages/s4/{PlanID}-S4-summary-001.md
+  architecture_doc:
+    path: ../stages/s5/{PlanID}/{PlanID}-S5-summary-001.md
+  design_doc:
+    path: ../stages/s6/{PlanID}/{PlanID}-S6-summary-001.md
+  ddl_script:
+    path: ../stages/s6/{PlanID}/{PlanID}-S6-A02-002.sql
+```
+
+**AI 工具使用方式**：
+```
+1. 读取 roadmap/index.yaml → 获取全局概览
+2. 根据需求定位阶段 → 读取 stages/s{n}-summary.yaml
+3. 按需加载产物 → 通过 path 定位具体文件
+```
 
 ---
 

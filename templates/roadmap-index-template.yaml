@@ -1,0 +1,110 @@
+# Roadmap 全局索引模板
+# 路径: artifacts/plans/{PlanID}/roadmap/index.yaml
+
+meta:
+  plan_id: {PlanID}
+  plan_name: {PlanName}
+  version: v1.0.0
+  status: {Status}          # in_progress | completed | paused
+  mode: {Mode}              # normal | lightweight
+  created_at: {CreatedDate}
+  updated_at: {UpdatedDate}
+
+progress:
+  current_stage: {CurrentStage}
+  completed_stages: {CompletedStages}
+  total_stages: 7
+  progress_percent: {ProgressPercent}
+
+stages:
+  s0:
+    name: Plan 制定
+    status: {S0Status}      # completed | in_progress | pending | skipped
+    skills: [S001]
+    artifact_count: {S0ArtifactCount}
+    summary: "{S0Summary}"
+    roadmap: stages/s0-summary.yaml
+
+  s1:
+    name: 市场洞察
+    status: {S1Status}
+    skills: [S101, S102]
+    artifact_count: {S1ArtifactCount}
+    summary: "{S1Summary}"
+    roadmap: stages/s1-summary.yaml
+
+  s2:
+    name: 需求定义
+    status: {S2Status}
+    skills: [S201, S202, S203, S204]
+    artifact_count: {S2ArtifactCount}
+    summary: "{S2Summary}"
+    roadmap: stages/s2-summary.yaml
+
+  s3:
+    name: 技术规划
+    status: {S3Status}
+    skills: [S301, S302, S303, S304]
+    artifact_count: {S3ArtifactCount}
+    summary: "{S3Summary}"
+    roadmap: stages/s3-summary.yaml
+
+  s4:
+    name: 需求整合
+    status: {S4Status}
+    skills: [S401, S402, S403, S405, S406]
+    artifact_count: {S4ArtifactCount}
+    summary: "{S4Summary}"
+    roadmap: stages/s4-summary.yaml
+
+  s5:
+    name: 架构设计
+    status: {S5Status}
+    skills: [S5-A01, S5-A02, S5-A03, S5-A04, S5-A05, S5-A06]
+    artifact_count: {S5ArtifactCount}
+    summary: "{S5Summary}"
+    roadmap: stages/s5-summary.yaml
+
+  s6:
+    name: 详细设计
+    status: {S6Status}
+    skills: [S6-A01, S6-A02, S6-A03, S6-A04]
+    artifact_count: {S6ArtifactCount}
+    summary: "{S6Summary}"
+    roadmap: stages/s6-summary.yaml
+
+quick_navigation:
+  # 按主题分类的快速导航入口
+  requirements:
+    - stages/s2-summary.yaml
+    - stages/s4-summary.yaml
+  architecture:
+    - stages/s5-summary.yaml
+  design:
+    - stages/s6-summary.yaml
+  risks:
+    - stages/s3-summary.yaml
+  testing:
+    - stages/s6-summary.yaml
+
+# 核心产物清单（最终交付物）
+deliverables:
+  requirements_spec:
+    name: 需求规格说明书
+    path: ../stages/s4/{PlanID}-S4-summary-001.md
+    keywords: [功能需求, 非功能需求, 用户故事]
+
+  architecture_doc:
+    name: 架构设计文档
+    path: ../stages/s5/{PlanID}/{PlanID}-S5-summary-001.md
+    keywords: [架构风格, 架构视图, 部署方案]
+
+  design_doc:
+    name: 详细设计文档
+    path: ../stages/s6/{PlanID}/{PlanID}-S6-summary-001.md
+    keywords: [模块设计, 数据库设计, UI设计]
+
+  ddl_script:
+    name: 数据库脚本
+    path: ../stages/s6/{PlanID}/{PlanID}-S6-A02-002.sql
+    keywords: [DDL, 表结构, 索引]
