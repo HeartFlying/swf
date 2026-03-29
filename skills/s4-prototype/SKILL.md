@@ -1,10 +1,10 @@
 ---
-name: S404 原型设计
+name: S406 原型设计
 description: This skill should be used when the user asks to "design prototype", "create wireframes", "prototype design", or "UI mockups". It creates visual prototypes for core features to validate requirements.
 version: 3.2.0
 ---
 
-# S404: 原型设计
+# S406: 原型设计
 
 ## Section 1: 元信息 (Meta Information)
 

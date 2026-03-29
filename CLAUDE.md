@@ -15,14 +15,20 @@ This is **swf (Software WorkFlow)**, an AI-driven requirements analysis system t
 
 ## Architecture
 
-### Single Coordinator Agent Architecture
+### Three-Stage Coordinator Agent Architecture
 
-The system uses a single main coordinator Agent that executes all Skills serially with embedded validation and user interaction within each Skill.
+The system uses three coordinator Agents that execute Skills serially with embedded validation and user interaction within each Skill.
 
 ```
-User Input → Coordinator Agent → Skills (S0→S1→S2→S3→S4→S5→S6) → Final Report
-                                    ↓
-                            Todo-List (state tracking)
+User Input → coordinator-requirements (S0→S1→S2→S3→S4)
+                    ↓
+            coordinator-architecture (S5)
+                    ↓
+            coordinator-detailed-design (S6)
+                    ↓
+                Final Report
+                    ↓
+            Todo-List (state tracking)
 ```
 
 ### Directory Structure
@@ -33,21 +39,23 @@ swf/
 │   ├── coordinator-requirements.md    # Requirements analysis agent (S0-S4)
 │   ├── coordinator-architecture.md    # Architecture design agent (S5)
 │   └── coordinator-detailed-design.md # Detailed design agent (S6)
-├── skills/                    # 23 Skills organized by stage
-│   ├── s0-plan/               # S0-S001: Plan definition
-│   ├── s1-boundary/           # S1-S101: Requirement boundary
-│   ├── s1-explicit/           # S1-S102: Explicit requirements
-│   ├── s1-implicit/           # S1-S103: Implicit requirements
-│   ├── s1-validation/         # S1-S104: Requirements validation
-│   ├── s2-competitor/         # S2-S201: Competitor analysis
-│   ├── s2-market-analysis/    # S2-S202: Market validation
-│   ├── s3-risk/               # S3-S301: Risk identification
-│   ├── s3-feasibility/        # S3-S302: Technical feasibility
-│   ├── s3-selection/          # S3-S303: Technology selection
-│   ├── s4-classify/           # S4-S401: Requirements classification
-│   ├── s4-priority/           # S4-S402: Requirements prioritization
-│   ├── s4-core/               # S4-S403: Core requirements extraction
-│   ├── s4-prototype/          # S4-S404: Prototype design
+├── skills/                    # 27 Skills organized by stage
+│   ├── s0-plan/               # S001: Plan definition
+│   ├── s1-competitor/         # S101: Competitor analysis
+│   ├── s1-market-analysis/    # S102: Market validation
+│   ├── s2-boundary/           # S201: Requirement boundary
+│   ├── s2-explicit/           # S202: Explicit requirements
+│   ├── s2-implicit/           # S203: Implicit requirements
+│   ├── s2-validation/         # S204: Requirements validation
+│   ├── s3-feasibility/        # S301: Technical feasibility
+│   ├── s3-selection/          # S302: Technology selection
+│   ├── s3-nfr/                # S303: Non-functional requirements
+│   ├── s3-risk/               # S304: Risk identification
+│   ├── s4-classify/           # S401: Requirements classification
+│   ├── s4-priority/           # S402: Requirements prioritization
+│   ├── s4-core/               # S403: Core requirements extraction
+│   ├── s4-user-stories/       # S405: User story writing
+│   ├── s4-prototype/          # S406: Prototype design
 │   ├── s5-vision/             # S5-A01: Architecture vision definition
 │   ├── s5-views/              # S5-A02: Architecture view design
 │   ├── s5-data/               # S5-A03: Data architecture design
@@ -56,7 +64,9 @@ swf/
 │   ├── s5-validation/         # S5-A06: Architecture validation and review
 │   ├── s6-module/             # S6-A01: Module detailed design
 │   ├── s6-database/           # S6-A02: Database detailed design
-│   └── s6-uiux/               # S6-A03: UI/UX design
+│   ├── s6-uiux/               # S6-A03: UI/UX design
+│   ├── s6-test-strategy/      # S6-A04: Test strategy design
+│   └── cm-impact-analysis/    # CM-001: Change impact analysis
 ├── templates/                 # Output templates
 │   ├── user-interaction/      # User interaction templates
 │   │   ├── clarification-template.md      # Requirement clarification
@@ -77,19 +87,21 @@ swf/
 | Stage | Skill ID | Directory | Purpose |
 |-------|----------|-----------|---------|
 | S0 | S001 | s0-plan/ | Plan definition, ID generation, completeness scoring |
-| S1 | S101 | s1-boundary/ | Requirement boundary definition |
-| S1 | S102 | s1-explicit/ | Explicit requirements collection |
-| S1 | S103 | s1-implicit/ | Implicit requirements analysis |
-| S1 | S104 | s1-validation/ | Requirements validation |
-| S2 | S201 | s2-competitor/ | Competitor analysis |
-| S2 | S202 | s2-market-analysis/ | Market pain point validation |
-| S3 | S301 | s3-risk/ | Risk identification |
-| S3 | S302 | s3-feasibility/ | Technical feasibility analysis |
-| S3 | S303 | s3-selection/ | Technology selection |
+| S1 | S101 | s1-competitor/ | Competitor analysis |
+| S1 | S102 | s1-market-analysis/ | Market pain point validation |
+| S2 | S201 | s2-boundary/ | Requirement boundary definition |
+| S2 | S202 | s2-explicit/ | Explicit requirements collection |
+| S2 | S203 | s2-implicit/ | Implicit requirements analysis |
+| S2 | S204 | s2-validation/ | Requirements validation |
+| S3 | S301 | s3-feasibility/ | Technical feasibility analysis |
+| S3 | S302 | s3-selection/ | Technology selection |
+| S3 | S303 | s3-nfr/ | Non-functional requirements definition |
+| S3 | S304 | s3-risk/ | Risk identification |
 | S4 | S401 | s4-classify/ | Requirements classification |
 | S4 | S402 | s4-priority/ | Requirements prioritization |
 | S4 | S403 | s4-core/ | Core requirements extraction |
-| S4 | S404 | s4-prototype/ | Prototype design |
+| S4 | S405 | s4-user-stories/ | User story writing |
+| S4 | S406 | s4-prototype/ | Prototype design |
 | S5 | S5-A01 | s5-vision/ | Architecture vision definition |
 | S5 | S5-A02 | s5-views/ | Architecture view design (4+1 views) |
 | S5 | S5-A03 | s5-data/ | Data architecture design |
@@ -99,15 +111,19 @@ swf/
 | S6 | S6-A01 | s6-module/ | Module detailed design |
 | S6 | S6-A02 | s6-database/ | Database detailed design |
 | S6 | S6-A03 | s6-uiux/ | UI/UX design |
+| S6 | S6-A04 | s6-test-strategy/ | Test strategy design |
+| CM | CM-001 | cm-impact-analysis/ | Change impact analysis |
+
+**Total**: 27 Skills (26 workflow Skills + 1 change management Skill)
 
 ## Execution Modes
 
 The system automatically selects execution mode based on information completeness score (0-100):
 
-| Mode | Threshold | Description |
-|------|-----------|-------------|
-| Normal | Score < 90 | Full 14-skill execution with deep analysis |
-| Lightweight | Score ≥ 90 | Skips S103, S201, S202, S404 for faster execution |
+| Mode | Threshold | Description | Skipped Skills |
+|------|-----------|-------------|----------------|
+| Normal | Score < 90 | Full 26-skill execution with deep analysis | None |
+| Lightweight | Score ≥ 90 | Fast execution with essential skills only | S101, S102, S203, S406 |
 
 ## Key Files to Reference
 
