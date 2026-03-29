@@ -1,25 +1,25 @@
 ---
-name: S104 需求验证
+name: S204 需求验证
 description: This skill should be used when the user asks to "validate requirements", "verify requirement quality", "check requirement completeness", or "review requirements". It validates requirements against quality standards and identifies issues.
 version: 3.2.0
 ---
 
-# S104: 需求验证
+# S204: 需求验证
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S104                       |
+| **Skill 编号**   | S204                       |
 | **Skill 名称**   | 需求验证                   |
 | **Skill 英文名称** | Requirements Validation    |
-| **所属阶段**       | S1 - 需求边界与原始采集      |
-| **执行顺序**       | S1 阶段第 4 个执行（S1 阶段最后一个 Skill） |
+| **所属阶段**       | S2 - 需求定义                 |
+| **执行顺序**       | S2 阶段第 4 个执行（S2 阶段最后一个 Skill） |
 | **执行模式**       | 常规模式 / 轻量化模式均执行   |
-| **依赖 Skill**   | S103（常规模式）/ S102（轻量化模式） |
-| **后置 Skill**   | S201 (竞品分析)             |
+| **依赖 Skill**   | S203（常规模式）/ S202（轻量化模式） |
+| **后置 Skill**   | S301 (技术可行性评估)        |
 | **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-28                 |
+| **最后更新时间**    | 2026-03-29（阶段重构）      |
 
 ***
 
@@ -27,7 +27,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-S104 负责对 S1 阶段收集的所有需求进行系统性验证和确认，确保需求质量符合进入 S2 阶段的标准。核心职责包括：
+S204 负责对 S2 阶段收集的所有需求进行系统性验证和确认，确保需求质量符合进入 S3 阶段的标准。核心职责包括：
 
 1. **需求完整性验证**：检查需求覆盖的完整性，包括功能、非功能、边界场景
 2. **需求一致性验证**：检测需求之间的冲突、矛盾和依赖关系

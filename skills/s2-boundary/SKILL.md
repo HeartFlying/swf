@@ -1,31 +1,31 @@
 ---
-name: S101 需求边界界定
+name: S201 需求边界界定
 description: This skill should be used when the user asks to "define requirement boundaries", "clarify product scope", "identify target users", "establish project boundaries", or "analyze product domain". It provides 5-dimensional boundary analysis (product, user, scenario, time, resource).
 version: 3.2.0
 ---
 
-# S101: 需求边界
+# S201: 需求边界
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S101 |
+| **Skill 编号** | S201 |
 | **Skill 名称** | 需求边界 |
 | **Skill 英文名称** | Requirement Boundary Definition |
-| **所属阶段** | S1 - 需求边界与原始采集 |
-| **执行顺序** | S1 阶段第 1 个执行 |
+| **所属阶段** | S2 - 需求定义 |
+| **执行顺序** | S2 阶段第 1 个执行 |
 | **执行模式** | 常规模式 / 轻量化模式均执行 |
-| **依赖 Skill** | S001 (Plan 制定) |
-| **后置 Skill** | S102 (显性需求提取) |
+| **依赖 Skill** | S102 (市场痛点验证) 或 S001 (Plan制定，轻量化模式) |
+| **后置 Skill** | S202 (显性需求提取) |
 | **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
+| **最后更新时间** | 2026-03-29（阶段重构） |
 
 ## Section 2: 功能描述 (Functional Description)
 
 ### 2.1 核心职责
 
-S101 负责明确需求分析的边界范围，为后续需求分析提供清晰的边界框架：
+S201 负责明确需求分析的边界范围，基于市场洞察结果定义产品边界：
 
 1. **产品边界界定**：明确产品做什么、不做什么，划分功能域
 2. **用户边界界定**：明确目标用户群体及其特征，建立用户分层模型

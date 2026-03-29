@@ -1,25 +1,25 @@
 ---
-name: S302 技术可行性分析
+name: S301 技术可行性分析
 description: This skill should be used when the user asks to "analyze technical feasibility", "feasibility study", "technical assessment", or "evaluate technical risks". It assesses whether requirements can be implemented with available technology.
 version: 3.2.0
 ---
 
-# S302: 技术可行性
+# S301: 技术可行性
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S302                       |
+| **Skill 编号**   | S301                       |
 | **Skill 名称**   | 技术可行性                  |
 | **Skill 英文名称** | Technical Feasibility      |
-| **所属阶段**     | S3 - 技术可行性与选型阶段     |
-| **执行顺序**     | S3 阶段第 2 个执行            |
+| **所属阶段**     | S3 - 技术规划                 |
+| **执行顺序**     | S3 阶段第 1 个执行            |
 | **执行模式**     | normal/lightweight 均执行    |
-| **依赖 Skill**   | S301 (风险识别)              |
-| **后置 Skill**   | S303 (normal) / S401 (lightweight) |
+| **依赖 Skill**   | S204 (需求验证)              |
+| **后置 Skill**   | S302 (技术选型)              |
 | **版本**         | v3.2.0                     |
-| **最后更新时间**  | 2026-03-28                 |
+| **最后更新时间**  | 2026-03-29（阶段重构）      |
 
 ***
 

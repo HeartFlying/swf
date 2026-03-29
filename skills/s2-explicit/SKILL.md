@@ -1,25 +1,25 @@
 ---
-name: S102 显性需求提取
+name: S202 显性需求提取
 description: This skill should be used when the user asks to "extract explicit requirements", "collect functional requirements", "gather user requirements", or "document feature requests". It extracts and structures clearly stated requirements from users.
 version: 3.2.0
 ---
 
-# S102: 显式需求
+# S202: 显式需求
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S102 |
+| **Skill 编号** | S202 |
 | **Skill 名称** | 显式需求 |
 | **Skill 英文名称** | Explicit Requirements |
-| **所属阶段** | S1 - 需求分析阶段 |
-| **执行顺序** | S1 阶段第 2 个执行 |
+| **所属阶段** | S2 - 需求定义 |
+| **执行顺序** | S2 阶段第 2 个执行 |
 | **执行模式** | 常规模式 / 轻量化模式均执行 |
-| **依赖 Skill** | S101 (需求边界界定) |
-| **后置 Skill** | S103 (隐性需求挖掘 - normal 模式) / S104 (需求验证 - lightweight 模式) |
+| **依赖 Skill** | S201 (需求边界界定) |
+| **后置 Skill** | S203 (隐性需求挖掘 - normal 模式) / S204 (需求验证 - lightweight 模式) |
 | **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
+| **最后更新时间** | 2026-03-29（阶段重构） |
 
 ---
 

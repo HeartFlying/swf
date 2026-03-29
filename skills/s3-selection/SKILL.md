@@ -1,25 +1,25 @@
 ---
-name: S303 技术选型
+name: S302 技术选型
 description: This skill should be used when the user asks to "select technology", "technology stack", "choose framework", or "technical decision". It provides structured technology selection based on requirement characteristics and constraints.
 version: 3.2.0
 ---
 
-# S303: 技术选型
+# S302: 技术选型
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S303                       |
+| **Skill 编号**   | S302                       |
 | **Skill 名称**   | 技术选型                    |
 | **Skill 英文名称** | Technology Selection       |
-| **所属阶段**       | S3 - 技术可行性与选型阶段      |
-| **执行顺序**       | 第 3 个执行（S3 阶段出口）      |
+| **所属阶段**       | S3 - 技术规划                  |
+| **执行顺序**       | S3 阶段第 2 个执行              |
 | **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
-| **依赖 Skill**   | S302（技术可行性评估）          |
-| **后置 Skill**   | S401（需求分类梳理）            |
+| **依赖 Skill**   | S301（技术可行性评估）          |
+| **后置 Skill**   | S303（非功能需求定义）          |
 | **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-28                 |
+| **最后更新时间**    | 2026-03-29（阶段重构）      |
 
 ***
 

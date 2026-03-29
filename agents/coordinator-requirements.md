@@ -51,6 +51,7 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 4. **用户评审**：每个 Skill 输出后触发用户评审确认
 5. **断点续跑**：支持中断后从断点恢复执行
 6. **双模式支持**：根据信息完整度自动选择常规/轻量化模式
+7. **变更管理**：支持工作流完成后的需求变更，智能增量更新
 
 ## 执行模式
 
@@ -60,73 +61,78 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 - 适用于信息完整度 < 90 分的需求
 
 ### 轻量化模式 (lightweight)
-- 执行 10 个 Skill（跳过 S103, S201, S202, S404）
+- 执行 10 个 Skill（跳过 S101, S102, S203, S404）
 - 快速输出核心需求
 - 适用于信息完整度 ≥ 90 分的需求
 
-## 阶段定义
+## 阶段定义（重构后）
 
 | 阶段 | 编号 | 名称 | Skill 列表 | 轻量化跳过 |
 |------|------|------|-----------|-----------|
 | S0 | S0 | Plan 制定 | S001 | - |
-| S1 | S1 | 需求边界与原始采集 | S101, S102, S103, S104 | S103 |
-| S2 | S2 | 市场与需求价值校验 | S201, S202 | 全跳过 |
-| S3 | S3 | 技术可行性与选型 | S301, S302, S303 | - |
-| S4 | S4 | 需求整合与核心提炼 | S401, S402, S403, S404 | S404 |
+| S1 | S1 | 市场洞察 | S101, S102 | 全跳过 |
+| S2 | S2 | 需求定义 | S201, S202, S203, S204 | S203 |
+| S3 | S3 | 技术规划 | S301, S302, S303, S304 | - |
+| S4 | S4 | 需求整合 | S401, S402, S403, S404, S405 | S404, S405 |
 
-## 执行流程
+## 执行流程（重构后）
 
 ```mermaid
 flowchart TD
     Start[接收用户原始需求] --> LoadS0[加载 S001 Skill]
     LoadS0 --> ExecS0[执行 S001 Plan制定]
     ExecS0 --> ReviewS0{用户评审}
-    ReviewS0 -->|确认| LoadS1[加载 S101 Skill]
-    ReviewS0 -->|修改| ExecS0
+    ReviewS0 -->|确认| CheckMode{检查执行模式}
 
-    LoadS1 --> ExecS1[执行 S101 边界界定]
+    CheckMode -->|常规模式| LoadS1[加载 S101 Skill]
+    CheckMode -->|轻量化| SkipS1[跳过 S1 阶段]
+    SkipS1 --> LoadS201
+
+    LoadS1 --> ExecS1[执行 S101 竞品分析]
     ExecS1 --> ReviewS1{用户评审}
-    ReviewS1 -->|确认| LoadNext1[加载 S102 Skill]
+    ReviewS1 -->|确认| LoadS102[加载 S102 Skill]
     ReviewS1 -->|修改| ExecS1
 
-    LoadNext1 --> ExecS102[执行 S102 显式需求]
+    LoadS102 --> ExecS102[执行 S102 市场验证]
     ExecS102 --> ReviewS102{用户评审}
-    ReviewS102 -->|确认| CheckMode{检查执行模式}
+    ReviewS102 -->|确认| Stage1Done[S1 阶段完成]
+    ReviewS102 -->|修改| ExecS102
 
-    CheckMode -->|常规模式| LoadS103[加载 S103 Skill]
-    CheckMode -->|轻量化| SkipS103[跳过 S103]
-    SkipS103 --> LoadS104
+    Stage1Done --> LoadS201[加载 S201 Skill]
+    SkipS1 --> LoadS201
 
-    LoadS103 --> ExecS103[执行 S103 隐式需求]
-    ExecS103 --> ReviewS103{用户评审}
-    ReviewS103 -->|确认| LoadS104[加载 S104 Skill]
-    ReviewS103 -->|修改| ExecS103
+    LoadS201 --> ExecS201[执行 S201 边界界定]
+    ExecS201 --> ReviewS201{用户评审}
+    ReviewS201 -->|确认| LoadS202[加载 S202 Skill]
+    ReviewS201 -->|修改| ExecS201
 
-    LoadS104 --> ExecS104[执行 S104 需求验证]
-    ExecS104 --> ReviewS104{用户评审}
-    ReviewS104 -->|确认| Stage1Done[S1 阶段完成]
-    ReviewS104 -->|修改| ExecS104
+    LoadS202 --> ExecS202[执行 S202 显式需求]
+    ExecS202 --> ReviewS202{用户评审}
+    ReviewS202 -->|确认| CheckMode2{检查执行模式}
+    ReviewS202 -->|修改| ExecS202
 
-    Stage1Done --> CheckMode2{检查执行模式}
-    CheckMode2 -->|常规模式| LoadS2[加载 S201 Skill]
-    CheckMode2 -->|轻量化| SkipS2[跳过 S2 阶段]
-    SkipS2 --> LoadS301
+    CheckMode2 -->|常规模式| LoadS203[加载 S203 Skill]
+    CheckMode2 -->|轻量化| SkipS203[跳过 S203]
+    SkipS203 --> LoadS204
 
-    LoadS2 --> ExecS2[执行 S2 阶段]
-    ExecS2 --> Stage2Done[S2 阶段完成]
+    LoadS203 --> ExecS203[执行 S203 隐式需求]
+    ExecS203 --> ReviewS203{用户评审}
+    ReviewS203 -->|确认| LoadS204[加载 S204 Skill]
+    ReviewS203 -->|修改| ExecS203
+
+    LoadS204 --> ExecS204[执行 S204 需求验证]
+    ExecS204 --> ReviewS204{用户评审}
+    ReviewS204 -->|确认| Stage2Done[S2 阶段完成]
+    ReviewS204 -->|修改| ExecS204
+
     Stage2Done --> LoadS301[加载 S301 Skill]
 
     LoadS301 --> ExecS3[执行 S3 阶段]
     ExecS3 --> Stage3Done[S3 阶段完成]
-    LoadS301 --> LoadS302[加载 S302 Skill]
-    LoadS302 --> LoadS303[加载 S303 Skill]
 
     Stage3Done --> LoadS4[加载 S401 Skill]
     LoadS4 --> ExecS4[执行 S4 阶段]
     ExecS4 --> Stage4Done[S4 阶段完成]
-    LoadS4 --> LoadS402[加载 S402 Skill]
-    LoadS402 --> LoadS403[加载 S403 Skill]
-    LoadS403 --> LoadS404[加载 S404 Skill]
 
     Stage4Done --> FinalReview[最终评审]
     FinalReview --> Output[输出最终报告]
@@ -179,45 +185,45 @@ flowchart TD
 - 任务状态：S001 为"执行中"，其余为"待执行"
 - 断点续跑信息：可恢复=false
 
-### S1 - 需求边界与原始采集
+### S1 - 市场洞察（常规模式，轻量化跳过）
 
-**S101 - 需求边界界定**
-- 加载：`skills/s1-boundary/SKILL.md`
-- 5维度边界分析：产品、用户、场景、时间、资源
-- 识别边界模糊点
-- 产物：`artifacts/stages/s1/{PlanID}-S1-S101-001.md`
-
-**S102 - 显式需求提取**
-- 加载：`skills/s1-explicit/SKILL.md`
-- 功能需求收集
-- 非功能需求收集
-- 产物：`artifacts/stages/s1/{PlanID}-S1-S102-001.md`
-
-**S103 - 隐式需求挖掘**（常规模式）
-- 加载：`skills/s1-implicit/SKILL.md`
-- 业务规则挖掘
-- 约束条件识别
-- 产物：`artifacts/stages/s1/{PlanID}-S1-S103-001.md`
-
-**S104 - 需求验证**
-- 加载：`skills/s1-validation/SKILL.md`
-- 一致性检查
-- 完整性验证
-- 产物：`artifacts/stages/s1/{PlanID}-S1-S104-001.md`
-
-### S2 - 市场与需求价值校验（常规模式）
-
-**S201 - 竞品分析**
-- 加载：`skills/s2-competitor/SKILL.md`
+**S101 - 竞品分析**
+- 加载：`skills/s1-competitor/SKILL.md`
 - 竞品功能对比
 - 差异化分析
-- 产物：`artifacts/stages/s2/{PlanID}-S2-S201-001.md`
+- 产物：`artifacts/stages/s1/{PlanID}-S1-S101-001.md`
 
-**S202 - 市场痛点验证**
-- 加载：`skills/s2-market-analysis/SKILL.md`
+**S102 - 市场痛点验证**
+- 加载：`skills/s1-market-analysis/SKILL.md`
 - 市场痛点确认
 - 价值主张验证
+- 产物：`artifacts/stages/s1/{PlanID}-S1-S102-001.md`
+
+### S2 - 需求定义
+
+**S201 - 需求边界界定**
+- 加载：`skills/s2-boundary/SKILL.md`
+- 5维度边界分析：产品、用户、场景、时间、资源
+- 识别边界模糊点
+- 产物：`artifacts/stages/s2/{PlanID}-S2-S201-001.md`
+
+**S202 - 显式需求提取**
+- 加载：`skills/s2-explicit/SKILL.md`
+- 功能需求收集
+- 非功能需求收集
 - 产物：`artifacts/stages/s2/{PlanID}-S2-S202-001.md`
+
+**S203 - 隐式需求挖掘**（常规模式）
+- 加载：`skills/s2-implicit/SKILL.md`
+- 业务规则挖掘
+- 约束条件识别
+- 产物：`artifacts/stages/s2/{PlanID}-S2-S203-001.md`
+
+**S204 - 需求验证**
+- 加载：`skills/s2-validation/SKILL.md`
+- 一致性检查
+- 完整性验证
+- 产物：`artifacts/stages/s2/{PlanID}-S2-S204-001.md`
 
 ### S3 - 技术可行性与选型
 
@@ -259,11 +265,18 @@ flowchart TD
 - 核心需求清单
 - 产物：`artifacts/stages/s4/{PlanID}-S4-S403-001.md`
 
-**S404 - 原型设计**（常规模式）
+**S405 - 用户故事编写**
+- 加载：`skills/s4-user-stories/SKILL.md`
+- 用户故事格式转换
+- 验收标准定义
+- 故事点估算
+- 产物：`artifacts/stages/s4/{PlanID}-S4-S405-001.md`
+
+**S406 - 原型设计**（常规模式）
 - 加载：`skills/s4-prototype/SKILL.md`
 - 原型草图设计
 - 交互流程定义
-- 产物：`artifacts/stages/s4/{PlanID}-S4-S404-001.md`
+- 产物：`artifacts/stages/s4/{PlanID}-S4-S406-001.md`
 
 ## 用户评审机制
 
@@ -301,6 +314,74 @@ flowchart TD
 | 修改（小） | 直接修改产物，重新评审 | 状态：需修改 |
 | 修改（大）/重做 | 重新执行当前 Skill | 状态：需重做 |
 | 新增 | 更新产物，重新评审 | 状态：需修改 |
+
+### 变更请求处理（工作流完成后）
+
+当工作流已完成（S0-S4 全部评审通过）后，用户可能发起新的变更请求。此时触发**变更管理流程**：
+
+#### 变更触发条件
+
+1. **用户主动变更**：用户明确提出新的需求变更
+2. **外部驱动变更**：市场变化、技术约束、法规调整等
+3. **评审后变更**：最终报告评审时发现遗漏或错误
+
+#### 变更管理流程
+
+```mermaid
+flowchart TD
+    ChangeReq[接收变更请求] --> DetectChange{检测变更触发}
+    DetectChange -->|执行中评审| NormalReview[正常评审流程]
+    DetectChange -->|完成后变更| CMProcess[变更管理流程]
+
+    CMProcess --> LoadCM[加载 CM-001 Skill]
+    LoadCM --> ExecCM[执行变更影响分析]
+    ExecCM --> CMReview{用户评审影响分析}
+
+    CMReview -->|确认| GenPlan[生成重执行计划]
+    CMReview -->|调整| ExecCM
+    CMReview -->|取消| RecordCancel[记录变更取消]
+
+    GenPlan --> ExecuteRe[执行重执行计划]
+    ExecuteRe --> UpdateMatrix[更新变更追溯矩阵]
+    UpdateMatrix --> Complete[变更完成]
+```
+
+#### 变更执行策略
+
+**智能增量执行**：
+
+| 影响范围 | 执行策略 | 保留产物 |
+|---------|---------|---------|
+| 仅 S4 | 重执行 S401-S403, S405-S406 | S0-S3, S5-S6（如存在） |
+| S4 + S5 | 重执行 S4 + S5 | S0-S3, S6（如存在） |
+| S4 + S5 + S6 | 重执行 S4 + S5 + S6 | S0-S3 |
+| 仅 S5 | 重执行 S5-A01-S5-A06 | S0-S4, S6（如存在） |
+| 仅 S6 | 重执行 S6-A01-S6-A03 | S0-S5 |
+
+**变更追溯矩阵**：
+
+所有变更记录在 `artifacts/change-management/{PlanID}/traceability-matrix.md`：
+
+| 变更编号 | 变更内容 | 影响阶段 | 重执行Skill | 基线版本变化 |
+|---------|---------|---------|------------|-------------|
+| CR-P000001-001 | 新增积分体系 | S4-S6 | 12个 | v1.0.0→v1.1.0 |
+
+#### 变更管理命令
+
+用户可通过以下方式触发变更：
+
+```markdown
+"我需要变更：{变更内容}"
+"新增需求：{需求描述}"
+"修改架构：{架构调整}"
+"调整设计：{设计变更}"
+```
+
+Agent 识别到变更请求后：
+1. 判定是否为工作流完成后的变更
+2. 如是，加载 CM-001 执行影响分析
+3. 生成重执行计划并等待用户确认
+4. 执行增量更新，保留未受影响产物
 
 ## 断点续跑机制
 
@@ -358,8 +439,10 @@ flowchart TD
 
 示例：
 - `P000001-S0-S001-001` - Plan 定义
-- `P000001-S1-S101-001` - 边界界定报告
+- `P000001-S1-S101-001` - 竞品分析报告
+- `P000001-S2-S201-001` - 需求边界报告
 - `P000001-S4-S403-001` - 核心需求报告
+- `P000001-S4-S405-001` - 用户故事地图
 
 ### 产物存储路径
 
@@ -387,11 +470,11 @@ S4 阶段产物是 S5 架构设计阶段的核心输入：
 
 | S4 输出产物 | S5 输入 Skill | 用途 |
 |------------|--------------|------|
-| S1-S4 需求规格说明书 | S5-A01 架构愿景 | 理解系统需求，推导架构方向 |
-| 用户故事清单 | S5-A01, S5-A02 | 识别系统角色和使用场景 |
-| 约束条件清单 | S5-A01, S5-A03, S5-A05 | 技术约束影响架构选型 |
-| 原型设计文档 | S5-A02 架构视图 | 理解功能模块划分 |
-| 核心需求清单 | S5-A01, S5-A06 | 验证架构覆盖度 |
+| S2-S4 需求规格说明书 | S5-A01 架构愿景 | 理解系统需求，推导架构方向 |
+| 用户故事清单 (S405) | S5-A01, S5-A02 | 识别系统角色和使用场景 |
+| 非功能需求规格书 (S303) | S5-A01, S5-A03, S5-A05 | 质量属性约束架构设计 |
+| 原型设计文档 (S406) | S5-A02 架构视图 | 理解功能模块划分 |
+| 核心需求清单 (S403) | S5-A01, S5-A06 | 验证架构覆盖度 |
 
 ## 初始化检查
 
@@ -410,6 +493,31 @@ S4 阶段产物是 S5 架构设计阶段的核心输入：
 2. **完整需求分析报告**（整合所有阶段产物）
 3. **执行总结**（执行时间、模式、各阶段完成情况、评审记录）
 4. **更新后的 Todo-List**（完整执行记录）
+5. **需求依赖图谱**（`artifacts/plans/{PlanID}/dependency-graph.md`）
+
+### 需求依赖图谱
+
+S4 阶段完成后生成需求依赖图谱，用于后续变更管理：
+
+```yaml
+# dependency-graph.md
+## 需求依赖关系
+
+### R001 - {需求名称}
+- **类型**: 功能需求 / 非功能需求
+- **依赖**: [R002, R003]  # 依赖的其他需求
+- **被依赖**: [R004, R005]  # 依赖此需求的其他需求
+- **关联 Skill**: [S201, S202, S401]
+- **关联产物**: [S201-001, S202-001, S401-001]
+
+### R002 - {需求名称}
+...
+```
+
+依赖图谱在变更时用于：
+- 快速识别级联影响
+- 计算最小重执行路径
+- 维护变更追溯关系
 
 ---
 
@@ -421,7 +529,8 @@ S4 阶段产物是 S5 架构设计阶段的核心输入：
 - [ ] S401 需求分类已完成并通过评审
 - [ ] S402 优先级排序已完成并通过评审
 - [ ] S403 核心需求提取已完成并通过评审
-- [ ] S404 原型设计已完成并通过评审（常规模式）或已跳过（轻量化模式）
+- [ ] S405 用户故事编写已完成并通过评审
+- [ ] S406 原型设计已完成并通过评审（常规模式）或已跳过（轻量化模式）
 - [ ] Todo-List 中所有 S4 阶段任务状态为"已评审"
 
 ### S4 阶段汇总产物
@@ -431,9 +540,9 @@ S4 阶段完成后，生成以下汇总产物作为 S5 阶段的输入：
 | 产物名称 | 文件路径 | 说明 |
 |---------|---------|------|
 | 需求规格说明书 | `artifacts/stages/s4/{PlanID}-S4-summary-001.md` | 整合 S1-S4 所有需求的完整规格书 |
-| 用户故事清单 | `artifacts/stages/s4/{PlanID}-S4-summary-002.md` | 核心用户故事和验收标准 |
+| 用户故事地图 | `artifacts/stages/s4/{PlanID}-S4-S405-001.md` | 用户故事地图和验收标准 |
 | 约束条件清单 | `artifacts/stages/s4/{PlanID}-S4-summary-003.md` | 技术、业务、法规约束汇总 |
-| 原型设计文档 | `artifacts/stages/s4/{PlanID}-S4-S404-001.md` | 原型草图和交互流程（常规模式）|
+| 原型设计文档 | `artifacts/stages/s4/{PlanID}-S4-S406-001.md` | 原型草图和交互流程（常规模式）|
 
 ### 触发 S5 架构设计阶段
 

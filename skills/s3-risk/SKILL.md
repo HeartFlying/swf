@@ -1,25 +1,25 @@
 ---
-name: S301 风险识别
+name: S304 风险识别
 description: This skill should be used when the user asks to "identify risks", "risk analysis", "assess project risks", or "risk assessment". It identifies potential risks across technical, market, resource, and requirement dimensions.
 version: 3.2.0
 ---
 
-# S301: 风险识别
+# S304: 风险识别
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S301 |
+| **Skill 编号** | S304 |
 | **Skill 名称** | 风险识别 |
 | **Skill 英文名称** | Risk Identification |
-| **所属阶段** | S3 - 技术可行性与选型阶段 |
-| **执行顺序** | S3 阶段第 1 个执行（S3 阶段入口 Skill） |
+| **所属阶段** | S3 - 技术规划 |
+| **执行顺序** | S3 阶段第 4 个执行（S3 阶段出口 Skill） |
 | **执行模式** | 常规模式 / 轻量化模式均执行 |
-| **依赖 Skill** | S202（常规模式）/ S104（轻量化模式） |
-| **后置 Skill** | S302 |
+| **依赖 Skill** | S303（非功能需求定义） |
+| **后置 Skill** | S401（需求分类梳理） |
 | **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
+| **最后更新时间** | 2026-03-29（阶段重构） |
 
 ---
 

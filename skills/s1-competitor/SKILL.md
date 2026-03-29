@@ -1,25 +1,25 @@
 ---
-name: S201 竞品分析
+name: S101 竞品分析
 description: This skill should be used when the user asks to "analyze competitors", "competitive analysis", "benchmark against competitors", or "market research". It analyzes competitor products to identify differentiation opportunities.
 version: 3.2.0
 ---
 
-# S201: 竞品分析
+# S101: 竞品分析
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S201                       |
+| **Skill 编号**   | S101                       |
 | **Skill 名称**   | 竞品分析                   |
 | **Skill 英文名称** | Competitor Analysis        |
-| **所属阶段**       | S2 - 市场与需求价值校验      |
-| **执行顺序**       | S2阶段第1个执行              |
+| **所属阶段**       | S1 - 市场洞察                |
+| **执行顺序**       | S1阶段第1个执行              |
 | **执行模式**       | 仅normal模式执行（lightweight跳过） |
-| **依赖 Skill**   | S104 (需求验证)              |
-| **后置 Skill**   | S202 (市场痛点验证)          |
+| **依赖 Skill**   | S001 (Plan制定)              |
+| **后置 Skill**   | S102 (市场痛点验证)          |
 | **版本**          | v3.2.0                       |
-| **最后更新时间**    | 2026-03-28                 |
+| **最后更新时间**    | 2026-03-29（阶段重构）        |
 
 ***
 
@@ -27,7 +27,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-基于S1阶段的需求成果，系统性地识别和分析市场上已有的竞品解决方案，评估需求的竞争格局和市场机会，为后续的价值验证和技术选型提供市场背景支撑。
+基于用户原始需求和Plan定义，系统性地识别和分析市场上已有的竞品解决方案，评估需求的竞争格局和市场机会，为需求边界定义提供市场背景支撑。
 
 具体职责包括：
 
@@ -45,7 +45,7 @@ version: 3.2.0
 | 输入项       | 文件路径                                                   | 说明                   |  必填 |
 | --------- | ------------------------------------------------------ | -------------------- | :-: |
 | Plan 定义文件 | `artifacts/plans/{PlanID}.md`                           | Plan 基本信息            |  是  |
-| 需求验证报告    | `artifacts/stages/s1/{PlanID}-S1-S104-001.md`          | S104产物，包含验证后的完整需求 |  是  |
+| Plan 定义文件 | `artifacts/plans/{PlanID}.md`                           | Plan 基本信息            |  是  |
 
 #### 输入内容读取规则
 
@@ -58,13 +58,13 @@ version: 3.2.0
 
 #### 用户会得到什么
 
-S201完成后，系统会生成以下产物并保存到项目目录：
+S101完成后，系统会生成以下产物并保存到项目目录：
 
 **产物清单**：
 
 | 产物名称      | 文件路径                                              | 格式       | 用途                 | 用户可见性   |
 | --------- | ------------------------------------------------- | -------- | ------------------ | ------- |
-| 竞品分析报告 | `artifacts/stages/s2/{PlanID}-S2-S201-001.md`      | Markdown | 结构化的竞品分析报告     | 用户可查看 |
+| 竞品分析报告 | `artifacts/stages/s1/{PlanID}-S1-S101-001.md`      | Markdown | 结构化的竞品分析报告     | 用户可查看 |
 | 状态更新   | `artifacts/plans/{PlanID}/todo-list.md`            | Markdown | 更新Todo-List状态      | 用户可查看 |
 
 **产物内容结构**：
@@ -130,7 +130,7 @@ S201产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 竞品分析报告 | `{PlanID}-S2-S201-001` | `artifacts/stages/s2/{PlanID}-S2-S201-001.md` | 主产物，包含竞品识别、对标分析、竞争格局评估 |
+| 竞品分析报告 | `{PlanID}-S1-S101-001` | `artifacts/stages/s1/{PlanID}-S1-S101-001.md` | 主产物，包含竞品识别、对标分析、竞争格局评估 |
 
 ***
 
@@ -138,7 +138,7 @@ S201产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S201遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S101遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S201特定权重分配**：
 | 维度 | 权重 | 验收阈值 |

@@ -1,25 +1,25 @@
 ---
-name: S103 隐性需求挖掘
+name: S203 隐性需求挖掘
 description: This skill should be used when the user asks to "discover implicit requirements", "analyze unstated needs", "identify hidden requirements", or "explore user pain points". It uncovers requirements that users haven't explicitly stated.
 version: 3.2.0
 ---
 
-# S103: 隐式需求挖掘
+# S203: 隐式需求挖掘
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S103                       |
+| **Skill 编号**   | S203                       |
 | **Skill 名称**   | 隐式需求挖掘                 |
 | **Skill 英文名称** | Implicit Requirements Mining |
-| **所属阶段**       | S1 - 需求边界与原始采集       |
-| **执行顺序**       | S1 阶段第 3 个执行           |
+| **所属阶段**       | S2 - 需求定义                 |
+| **执行顺序**       | S2 阶段第 3 个执行           |
 | **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
-| **依赖 Skill**   | S102 (显性需求提取)          |
-| **后置 Skill**   | S104 (需求验证)              |
+| **依赖 Skill**   | S202 (显性需求提取)          |
+| **后置 Skill**   | S204 (需求验证)              |
 | **版本**          | v3.2.0                       |
-| **最后更新时间**    | 2026-03-28                 |
+| **最后更新时间**    | 2026-03-29（阶段重构）      |
 
 ***
 

@@ -1,25 +1,25 @@
 ---
-name: S202 市场痛点验证
+name: S102 市场痛点验证
 description: This skill should be used when the user asks to "validate market pain points", "market validation", "verify user needs", or "demand analysis". It validates whether identified pain points represent real market opportunities.
 version: 3.2.0
 ---
 
-# S202: 市场痛点验证
+# S102: 市场痛点验证
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目             | 内容                       |
 | -------------- | -------------------------- |
-| **Skill 编号**   | S202                       |
+| **Skill 编号**   | S102                       |
 | **Skill 名称**   | 市场痛点验证               |
 | **Skill 英文名称** | Market Pain Point Validation |
-| **所属阶段**       | S2 - 市场与需求价值校验     |
-| **执行顺序**       | S2 阶段第 2 个执行          |
+| **所属阶段**       | S1 - 市场洞察                |
+| **执行顺序**       | S1 阶段第 2 个执行          |
 | **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
-| **依赖 Skill**   | S201 (竞品分析)             |
-| **后置 Skill**   | S301 (风险识别)             |
+| **依赖 Skill**   | S101 (竞品分析)             |
+| **后置 Skill**   | S201 (需求边界)             |
 | **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-28                 |
+| **最后更新时间**    | 2026-03-29（阶段重构）      |
 
 ---
 
@@ -27,7 +27,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-S202 负责验证市场需求的真实性和商业价值，基于 S201 竞品分析结果，深入分析市场痛点，评估市场规模和付费意愿，为后续技术可行性评估和优先级排序提供价值依据。
+S102 负责验证市场需求的真实性和商业价值，基于 S101 竞品分析结果，深入分析市场痛点，评估市场规模和付费意愿，为需求边界定义提供市场依据。
 
 1. **验证市场需求**：确认需求所解决的市场痛点是否真实存在
 2. **识别用户痛点**：从竞品分析中识别未被满足的市场空白点
