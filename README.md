@@ -154,11 +154,6 @@ swf/
 │   ├── s6-uiux/                    # S6-A03: UI/UX设计
 │   ├── s6-test-strategy/           # S6-A04: 测试策略设计
 │   └── cm-impact-analysis/         # CM-001: 变更影响分析
-├── templates/                      # 输出模板
-│   ├── user-interaction/           # 用户交互模板
-│   ├── quality-standard.md         # ISO/IEC 25010 质量标准
-│   ├── error-code-standard.md      # 统一错误码标准
-│   └── skill-structure-reference.md # Skill 结构参考
 ├── WORKFLOW.md                     # 主工作流程文档
 ├── CLAUDE.md                       # Claude Code 项目指引
 └── README.md                       # 本文件
