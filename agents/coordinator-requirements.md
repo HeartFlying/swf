@@ -1,5 +1,5 @@
 ---
-name: swf-coordinator
+name: coordinator-requirements
 description: |
   使用此 Agent 当用户需要 "需求分析"、"软件需求梳理"、"产品需求定义"、"需求工程"、
   "分析产品需求"、"整理需求文档"、"需求评审" 或 "需求规划"。

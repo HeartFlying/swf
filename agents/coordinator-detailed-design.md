@@ -1,5 +1,5 @@
 ---
-name: swf-detailed-design
+name: coordinator-detailed-design
 description: |
   使用此 Agent 当用户需要 "详细设计"、"模块设计"、"数据库设计"、"界面设计"、
   "UI设计"、"测试策略" 或 "开始详细设计"。

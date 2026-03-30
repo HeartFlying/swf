@@ -1,5 +1,5 @@
 ---
-name: swf-architecture
+name: coordinator-architecture
 description: |
   使用此 Agent 当用户需要 "架构设计"、"软件架构"、"系统架构"、"技术架构"、
   "架构规划"、"架构方案" 或 "开始架构设计"。
