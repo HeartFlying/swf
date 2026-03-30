@@ -2,7 +2,7 @@
 
 ## 概述
 
-本文档说明如何将 SWF (Software WorkFlow) 需求分析系统发布给团队成员使用。
+本文档说明如何将 SWF (Software WorkFlow) 需求分析与设计系统发布给团队成员使用。
 
 ---
 
@@ -39,76 +39,14 @@ claude
 ```
 
 启动后，Claude Code 会自动加载：
-- `agents/swf-coordinator.md` - 主协调器 Agent
-- `skills/*` - 23 个 Skill 定义
+- `agents/coordinator-requirements.md` - 需求分析协调器 (S0-S4)
+- `agents/coordinator-architecture.md` - 架构设计协调器 (S5)
+- `agents/coordinator-detailed-design.md` - 详细设计协调器 (S6)
+- `skills/*` - 27 个 Skill 定义
 
 ---
 
-### 方式二：Claude Code Plugin 安装
-
-适用于需要作为独立插件安装的场景。
-
-#### 目录结构要求
-
-```
-swf/
-├── .claude-plugin/
-│   └── plugin.json          # 插件元数据
-├── agents/
-│   └── swf-coordinator.md   # 主 Agent
-├── skills/
-│   ├── s0-plan/
-│   ├── s1-boundary/
-│   ├── s1-explicit/
-│   ├── s1-implicit/
-│   ├── s1-validation/
-│   ├── s2-competitor/
-│   ├── s2-market-analysis/
-│   ├── s3-risk/
-│   ├── s3-feasibility/
-│   ├── s3-selection/
-│   ├── s4-classify/
-│   ├── s4-priority/
-│   ├── s4-core/
-│   └── s4-prototype/
-└── README.md
-```
-
-#### 安装步骤
-
-**步骤 1：打包插件**
-
-```bash
-# 创建发布包
-zip -r swf-plugin-v3.2.0.zip .claude-plugin agents skills README.md
-```
-
-**步骤 2：分发给团队成员**
-
-方式 A：通过 GitHub Release
-1. 在 GitHub 创建 Release
-2. 上传 `swf-plugin-v3.2.0.zip`
-3. 团队成员下载解压到项目目录
-
-方式 B：直接复制
-```bash
-# 复制到目标项目
-cp -r swf-plugin/* /path/to/target/project/
-```
-
-**步骤 3：验证安装**
-
-```bash
-# 在目标项目启动 Claude Code
-claude
-
-# 测试触发 Agent
-# 输入："帮我分析一个 APP 的需求"
-```
-
----
-
-### 方式三：CLAUDE.md 引用（最简单）
+### 方式二：CLAUDE.md 引用（最简单）
 
 适用于快速试用，不需要完整插件结构。
 
@@ -117,14 +55,22 @@ claude
 在项目的 `CLAUDE.md` 中添加：
 
 ```markdown
-## SWF 需求分析系统
+## SWF 需求分析与设计系统
 
 当用户需要需求分析时，使用以下 Agent：
 
 @agents/coordinator-requirements.md
+
+当用户需要架构设计时，使用以下 Agent：
+
+@agents/coordinator-architecture.md
+
+当用户需要详细设计时，使用以下 Agent：
+
+@agents/coordinator-detailed-design.md
 ```
 
-然后复制 `agents/coordinator-requirements.md` 和 `skills/` 目录到项目即可。
+然后复制 `agents/` 和 `skills/` 目录到项目即可。
 
 ---
 
@@ -159,45 +105,71 @@ claude
 用户：我想开发一个面向大学生的时间管理 APP
 
 Claude：我将启动 SWF 需求分析流程来帮助您系统化梳理需求...
-[自动触发 swf-coordinator Agent]
+[自动触发 coordinator-requirements Agent]
 ```
 
 ### 完整流程示例
 
 ```
-用户：帮我做一个完整的需求分析
+用户：帮我做一个完整的需求分析和设计
 
 Claude：
-1. [S001] 制定 Plan → 生成 Plan ID: P000001
-2. [S101] 需求边界界定 → 定义产品/用户/场景/时间/资源边界
-3. [S102] 显式需求提取 → 收集功能和非功能需求
-4. [S103] 隐式需求挖掘 → 识别业务规则和约束
-5. [S104] 需求验证 → 一致性检查
-6. [S201] 竞品分析 → 对比分析竞品功能
-7. [S202] 市场验证 → 验证市场痛点
-8. [S301] 风险识别 → 技术/业务风险评估
-9. [S302] 技术可行性 → 评估技术方案
-10. [S303] 技术选型 → 推荐技术栈
-11. [S401] 需求分类 → 功能/非功能分类
-12. [S402] 优先级排序 → MoSCoW 排序
-13. [S403] 核心需求提取 → 确定 MVP 功能
-14. [S404] 原型设计 → 设计原型草图
-15. [S501] 架构风格选择 → 选择合适的架构风格
-16. [S502] 系统架构设计 → 设计系统整体架构
-17. [S503] 模块划分 → 划分系统模块
-18. [S504] 接口设计 → 设计模块间接口
-19. [S505] 架构评审 → 评审架构设计
-20. [S601] 数据库设计 → 设计数据模型
-21. [S602] API设计 → 设计系统API
-22. [S603] 安全设计 → 设计安全机制
-23. [S604] 详细设计评审 → 评审详细设计
+=== 阶段一：需求分析 (coordinator-requirements) ===
 
-最终输出：完整需求分析报告
+[S001] Plan 制定 → 生成 Plan ID: P000001
+       信息完整度: 65 分（常规模式）
+
+--- S1 市场洞察 ---
+[S101] 竞品分析 → 对比分析竞品功能
+[S102] 市场痛点验证 → 验证市场痛点
+
+--- S2 需求定义 ---
+[S201] 需求边界界定 → 定义产品/用户/场景边界
+[S202] 显性需求提取 → 收集功能和非功能需求
+[S203] 隐性需求挖掘 → 识别业务规则和约束
+[S204] 需求验证 → 一致性检查
+
+--- S3 技术规划 ---
+[S301] 技术可行性评估 → 评估技术方案
+[S302] 技术选型 → 推荐技术栈
+[S303] 非功能需求定义 → 定义性能、安全等 NFR
+[S304] 风险识别 → 技术/业务风险评估
+
+--- S4 需求整合 ---
+[S401] 需求分类梳理 → 功能/非功能分类
+[S402] 需求优先级排序 → MoSCoW 排序
+[S403] 核心需求提炼 → 确定 MVP 功能
+[S405] 用户故事编写 → 编写用户故事
+[S406] 原型设计 → 设计原型草图
+
+=== 阶段二：架构设计 (coordinator-architecture) ===
+
+[S5-A01] 架构愿景定义 → 定义架构目标、原则
+[S5-A02] 架构视图设计 → 4+1 视图设计
+[S5-A03] 数据架构设计 → 数据模型、存储方案
+[S5-A04] 接口架构设计 → API 定义、接口规范
+[S5-A05] 部署架构设计 → 部署方案、拓扑结构
+[S5-A06] 架构验证与评审 → 完整性检查、风险识别
+
+=== 阶段三：详细设计 (coordinator-detailed-design) ===
+
+[S6-A01] 模块详细设计 → 类设计、方法签名
+[S6-A02] 数据库详细设计 → 表结构、索引、DDL
+[S6-A03] UI/UX设计 → 信息架构、页面设计
+[S6-A04] 测试策略设计 → 测试策略、测试用例
+
+=== 输出 SWF 完整交付物 ===
 ```
 
 ### 轻量化模式
 
-当需求信息完整度 ≥ 90 分时，自动跳过 S103、S201、S202，执行 20 个 Skill。
+当需求信息完整度 ≥ 90 分时，自动跳过 5 个 Skill：
+
+| 阶段 | 跳过 Skill | 说明 |
+|------|-----------|------|
+| S1 | S101, S102 | 竞品分析、市场验证 |
+| S2 | S203 | 隐性需求挖掘 |
+| S4 | S406 | 原型设计 |
 
 ---
 
@@ -207,30 +179,58 @@ Claude：
 
 ```
 artifacts/
+├── roadmap/                       # 全局 Roadmap（AI 工具导航）
+│   ├── index.yaml                 # 全局索引
+│   ├── stages/                    # 阶段产物索引
+│   └── plans/                     # Plan 级 Roadmap
 ├── plans/
 │   ├── P000001.md                 # Plan 定义
 │   └── P000001/
-│       └── todo-list.md           # 任务跟踪
-└── stages/
-    ├── s0/
-    │   └── P000001-S0-S001-002.md # 评分报告
-    ├── s1/
-    │   ├── P000001-S1-S101-001.md # 边界界定
-    │   ├── P000001-S1-S102-001.md # 显式需求
-    │   ├── P000001-S1-S103-001.md # 隐式需求
-    │   └── P000001-S1-S104-001.md # 需求验证
-    ├── s2/
-    │   ├── P000001-S2-S201-001.md # 竞品分析
-    │   └── P000001-S2-S202-001.md # 市场验证
-    ├── s3/
-    │   ├── P000001-S3-S301-001.md # 风险识别
-    │   ├── P000001-S3-S302-001.md # 技术可行性
-    │   └── P000001-S3-S303-001.md # 技术选型
-    └── s4/
-        ├── P000001-S4-S401-001.md # 需求分类
-        ├── P000001-S4-S402-001.md # 优先级排序
-        ├── P000001-S4-S403-001.md # 核心需求
-        └── P000001-S4-S404-001.md # 原型设计
+│       ├── todo-list.md           # S0-S4 任务跟踪
+│       ├── todo-list-s5.md        # S5 任务跟踪
+│       ├── todo-list-s6.md        # S6 任务跟踪
+│       ├── dependency-graph.md    # 需求依赖图谱
+│       └── swf-deliverable.md     # SWF 完整交付物
+├── stages/
+│   ├── s0/
+│   │   └── P000001-S0-S001-*.md   # Plan 制定产物
+│   ├── s1/
+│   │   ├── P000001-S1-S101-*.md   # 竞品分析
+│   │   └── P000001-S1-S102-*.md   # 市场验证
+│   ├── s2/
+│   │   ├── P000001-S2-S201-*.md   # 需求边界
+│   │   ├── P000001-S2-S202-*.md   # 显性需求
+│   │   ├── P000001-S2-S203-*.md   # 隐性需求
+│   │   └── P000001-S2-S204-*.md   # 需求验证
+│   ├── s3/
+│   │   ├── P000001-S3-S301-*.md   # 技术可行性
+│   │   ├── P000001-S3-S302-*.md   # 技术选型
+│   │   ├── P000001-S3-S303-*.md   # 非功能需求
+│   │   └── P000001-S3-S304-*.md   # 风险识别
+│   ├── s4/
+│   │   ├── P000001-S4-S401-*.md   # 需求分类
+│   │   ├── P000001-S4-S402-*.md   # 优先级排序
+│   │   ├── P000001-S4-S403-*.md   # 核心需求
+│   │   ├── P000001-S4-S405-*.md   # 用户故事
+│   │   └── P000001-S4-S406-*.md   # 原型设计
+│   ├── s5/
+│   │   └── P000001/
+│   │       ├── P000001-S5-A01-*.md # 架构愿景
+│   │       ├── P000001-S5-A02-*.md # 架构视图
+│   │       ├── P000001-S5-A03-*.md # 数据架构
+│   │       ├── P000001-S5-A04-*.md # 接口架构
+│   │       ├── P000001-S5-A05-*.md # 部署架构
+│   │       └── P000001-S5-A06-*.md # 架构验证
+│   └── s6/
+│       └── P000001/
+│           ├── P000001-S6-A01-*.md # 模块设计
+│           ├── P000001-S6-A02-*.md # 数据库设计
+│           ├── P000001-S6-A03-*.md # UI/UX设计
+│           └── P000001-S6-A04-*.md # 测试策略
+└── change-management/             # 变更管理产物
+    └── P000001/
+        ├── traceability-matrix.md # 变更追溯矩阵
+        └── impact-analysis-*.md   # 变更影响分析
 ```
 
 ---
@@ -253,7 +253,7 @@ claude
 
 # 4. 提交产物
 git add artifacts/
-git commit -m "docs: 添加 P000001 需求分析产物"
+git commit -m "docs: 添加 P000001 需求分析与设计产物"
 
 # 5. 推送到远程
 git push origin feature/P000001-requirements
@@ -267,6 +267,7 @@ git push origin feature/P000001-requirements
 - 在 GitHub 上查看和评审
 - 导出为 PDF/Word 分享给非技术人员
 - 导入到项目管理工具（Jira、飞书等）
+- 通过 Roadmap 快速导航
 
 ---
 
@@ -287,7 +288,7 @@ git push origin feature/P000001-requirements
 
 **解决：**
 1. 检查 `skills/` 目录是否存在
-2. 确认 Skill 目录命名正确：`s0-plan`, `s1-boundary` 等
+2. 确认 Skill 目录命名正确：`s0-plan`, `s1-competitor`, `s2-boundary` 等
 3. 检查 SKILL.md 文件是否存在
 
 ### 问题 3：产物未生成
@@ -299,13 +300,21 @@ git push origin feature/P000001-requirements
 2. 确认目录结构：`artifacts/plans/` 和 `artifacts/stages/`
 3. 查看执行日志中的错误信息
 
+### 问题 4：阶段未自动衔接
+
+**现象：** S4 完成后未触发 S5
+
+**解决：**
+1. 确认 S4 所有 Skill 已评审通过
+2. 手动触发：输入"开始架构设计"
+
 ---
 
 ## 版本历史
 
 | 版本 | 日期 | 变更内容 |
 |------|------|----------|
-| v3.2.0 | 2026-03-28 | 初始发布，23 个 Skill，渐进式加载 |
+| v3.2.0 | 2026-03-30 | 三阶段协调器架构，26 个工作流 Skill |
 
 ---
 
@@ -316,4 +325,4 @@ git push origin feature/P000001-requirements
 
 ---
 
-**SWF v3.2.0 - AI 驱动的需求分析系统**
+**SWF v3.2.0 - AI 驱动的需求分析与设计系统**

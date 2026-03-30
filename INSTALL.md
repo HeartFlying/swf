@@ -23,7 +23,7 @@ cd swf
 
 # 3. 验证文件结构
 ls -la
-# 应看到：agents/  skills/  .claude-plugin/  README.md
+# 应看到：agents/  skills/  templates/  README.md  CLAUDE.md
 
 # 4. 启动 Claude Code
 claude
@@ -36,7 +36,7 @@ claude
 我想开发一个时间管理 APP，帮我分析需求
 ```
 
-应看到 Agent 被触发并启动需求分析流程。
+应看到 `coordinator-requirements` Agent 被触发并启动需求分析流程。
 
 ---
 
@@ -71,13 +71,15 @@ cd your-project
 # 2. 复制 SWF 文件
 cp -r /path/to/swf/agents .
 cp -r /path/to/swf/skills .
-cp -r /path/to/swf/.claude-plugin .
+cp -r /path/to/swf/templates .
 
 # 3. 在 CLAUDE.md 中添加引用
 echo "
 ## SWF 需求分析
 
 使用 @agents/coordinator-requirements.md 进行需求分析。
+使用 @agents/coordinator-architecture.md 进行架构设计。
+使用 @agents/coordinator-detailed-design.md 进行详细设计。
 " >> CLAUDE.md
 
 # 4. 启动 Claude Code
@@ -92,30 +94,48 @@ claude
 
 ```
 swf/
-├── .claude-plugin/
-│   └── plugin.json              # 插件配置
-├── agents/
-│   ├── coordinator.md           # 内部协调器
-│   └── coordinator-requirements.md  # 主 Agent（入口）
-├── skills/
-│   ├── s0-plan/SKILL.md         # S001 Plan 制定
-│   ├── s1-boundary/SKILL.md     # S101 需求边界
-│   ├── s1-explicit/SKILL.md     # S102 显式需求
-│   ├── s1-implicit/SKILL.md     # S103 隐式需求
-│   ├── s1-validation/SKILL.md   # S104 需求验证
-│   ├── s2-competitor/SKILL.md   # S201 竞品分析
-│   ├── s2-market-analysis/      # S202 市场验证
-│   ├── s3-risk/SKILL.md         # S301 风险识别
-│   ├── s3-feasibility/          # S302 技术可行性
-│   ├── s3-selection/            # S303 技术选型
-│   ├── s4-classify/SKILL.md     # S401 需求分类
-│   ├── s4-priority/             # S402 优先级排序
-│   ├── s4-core/                 # S403 核心需求
-│   └── s4-prototype/            # S404 原型设计
-├── artifacts/                   # 产物输出目录（自动生成）
-├── README.md                    # 项目说明
-├── DEPLOYMENT.md                # 部署指南
-└── INSTALL.md                   # 本文件
+├── agents/                         # Agent 定义
+│   ├── coordinator-requirements.md # 需求分析协调器 (S0-S4)
+│   ├── coordinator-architecture.md # 架构设计协调器 (S5)
+│   └── coordinator-detailed-design.md # 详细设计协调器 (S6)
+├── skills/                         # 27 个 Skill 定义
+│   ├── s0-plan/                    # S001: Plan 制定
+│   ├── s1-competitor/              # S101: 竞品分析
+│   ├── s1-market-analysis/         # S102: 市场验证
+│   ├── s2-boundary/                # S201: 需求边界
+│   ├── s2-explicit/                # S202: 显式需求
+│   ├── s2-implicit/                # S203: 隐式需求
+│   ├── s2-validation/              # S204: 需求验证
+│   ├── s3-feasibility/             # S301: 技术可行性
+│   ├── s3-selection/               # S302: 技术选型
+│   ├── s3-nfr/                     # S303: 非功能需求
+│   ├── s3-risk/                    # S304: 风险识别
+│   ├── s4-classify/                # S401: 需求分类
+│   ├── s4-priority/                # S402: 优先级排序
+│   ├── s4-core/                    # S403: 核心需求提取
+│   ├── s4-user-stories/            # S405: 用户故事
+│   ├── s4-prototype/               # S406: 原型设计
+│   ├── s5-vision/                  # S5-A01: 架构愿景
+│   ├── s5-views/                   # S5-A02: 架构视图
+│   ├── s5-data/                    # S5-A03: 数据架构
+│   ├── s5-interface/               # S5-A04: 接口架构
+│   ├── s5-deployment/              # S5-A05: 部署架构
+│   ├── s5-validation/              # S5-A06: 架构验证
+│   ├── s6-module/                  # S6-A01: 模块详细设计
+│   ├── s6-database/                # S6-A02: 数据库详细设计
+│   ├── s6-uiux/                    # S6-A03: UI/UX设计
+│   ├── s6-test-strategy/           # S6-A04: 测试策略设计
+│   └── cm-impact-analysis/         # CM-001: 变更影响分析
+├── templates/                      # 输出模板
+│   ├── user-interaction/           # 用户交互模板
+│   ├── quality-standard.md         # ISO/IEC 25010 质量标准
+│   ├── error-code-standard.md      # 统一错误码标准
+│   └── skill-structure-reference.md # Skill 结构参考
+├── artifacts/                      # 产物输出目录（自动生成）
+├── WORKFLOW.md                     # 主工作流程文档
+├── CLAUDE.md                       # Claude Code 项目指引
+├── README.md                       # 项目说明
+└── INSTALL.md                      # 本文件
 ```
 
 ---
@@ -125,7 +145,9 @@ swf/
 ### 步骤 1：创建 artifacts 目录
 
 ```bash
-mkdir -p artifacts/plans artifacts/stages/s{0,1,2,3,4}
+mkdir -p artifacts/plans artifacts/roadmap/stages artifacts/roadmap/plans
+mkdir -p artifacts/stages/s{0,1,2,3,4,5,6}
+mkdir -p artifacts/change-management
 ```
 
 ### 步骤 2：测试 Agent 触发
@@ -148,11 +170,38 @@ mkdir -p artifacts/plans artifacts/stages/s{0,1,2,3,4}
 
 Claude：
 [触发 coordinator-requirements]
-1. 制定 Plan → P000001
-2. 信息完整度评分 → 85 分（常规模式）
-3. 执行 S101 需求边界界定...
-4. ...（逐步执行 23 个 Skill）
-5. 输出最终需求分析报告
+1. [S001] Plan 制定 → P000001
+2. 信息完整度评分 → 65 分（常规模式）
+3. [S101-S102] 市场洞察阶段
+4. [S201-S204] 需求定义阶段
+5. [S301-S304] 技术规划阶段
+6. [S401-S406] 需求整合阶段
+
+[阶段交接：触发 coordinator-architecture]
+7. [S5-A01-S5-A06] 架构设计阶段
+
+[阶段交接：触发 coordinator-detailed-design]
+8. [S6-A01-S6-A04] 详细设计阶段
+
+输出 SWF 完整交付物
+```
+
+---
+
+## 三阶段协调器
+
+SWF 使用三个协调器 Agent 串行执行：
+
+| 协调器 | 阶段 | Skill 数量 | 触发方式 |
+|--------|------|-----------|---------|
+| coordinator-requirements | S0-S4 | 14 个 | 用户输入需求 |
+| coordinator-architecture | S5 | 6 个 | S4 完成后自动触发 |
+| coordinator-detailed-design | S6 | 4 个 | S5 完成后自动触发 |
+
+**手动触发方式**：
+```
+"开始架构设计"     → 触发 coordinator-architecture
+"开始详细设计"     → 触发 coordinator-detailed-design
 ```
 
 ---
@@ -188,9 +237,9 @@ cp -r artifacts artifacts-backup-$(date +%Y%m%d)
 
 ```bash
 # 删除 SWF 文件
-rm -rf agents/coordinator-requirements.md
+rm -rf agents/
 rm -rf skills/
-rm -rf .claude-plugin/
+rm -rf templates/
 
 # 保留产物（可选）
 # mv artifacts ~/swf-backup/
@@ -204,13 +253,19 @@ rm -rf .claude-plugin/
 A: 检查 `agents/coordinator-requirements.md` 是否存在，且 YAML frontmatter 格式正确。
 
 **Q: Skill 执行报错？**
-A: 检查 `skills/` 目录结构是否完整，所有 23 个 Skill 是否存在。
+A: 检查 `skills/` 目录结构是否完整，所有 27 个 Skill 是否存在。
 
 **Q: 产物保存在哪里？**
-A: 默认保存在 `artifacts/` 目录，可在 `CLAUDE.md` 中修改路径。
+A: 默认保存在 `artifacts/` 目录，包括 `plans/`、`stages/`、`roadmap/` 等子目录。
 
 **Q: 支持哪些 Claude Code 版本？**
 A: 需要 Claude Code ≥ 1.0.0，支持 Agent/Skill 功能。
+
+**Q: 如何只做需求分析不做架构设计？**
+A: S4 完成后输入"暂停"或"结束"，不会自动触发 S5 阶段。
+
+**Q: 如何跳过某个 Skill？**
+A: 在评审时输入"跳过"即可跳过当前 Skill（部分 Skill 不可跳过）。
 
 ---
 
