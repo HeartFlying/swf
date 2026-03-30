@@ -18,11 +18,11 @@
 采用**三阶段协调 Agent 架构**，三个协调 Agent 串行执行，校验和用户交互内嵌到每个 Skill 中。
 
 ```mermaid
-graph TD
-    A[用户 User<br/>需求输入] --> B[coordinator-requirements<br/>需求分析协调器 (S0→S1→S2→S3→S4)<br/>14 个 Skill]
-    B --> C[coordinator-architecture<br/>架构设计协调器 (S5)<br/>6 个 Skill]
-    C --> D[coordinator-detailed-design<br/>详细设计协调器 (S6)<br/>4 个 Skill]
-    D --> E[中心化信息库 artifacts<br/>Todo-List 管理任务 / 产物文件 / Roadmap]
+flowchart TD
+    A[用户需求输入] --> B[需求分析协调器<br/>S0-S4 共14个Skill]
+    B --> C[架构设计协调器<br/>S5 共6个Skill]
+    C --> D[详细设计协调器<br/>S6 共4个Skill]
+    D --> E[产物输出<br/>Todo-List / Roadmap]
 ```
 
 ### 1.2 核心设计原则
