@@ -42,11 +42,11 @@ S102 负责验证市场需求的真实性和商业价值，基于 S101 竞品分
 | 输入类型      | 文件路径                                                    | 说明               | 必需性 |
 | --------- | ------------------------------------------------------- | ---------------- | --- |
 | Plan 定义文件 | `artifacts/plans/{PlanID}.md`                             | Plan 基本信息、目标、范围  | 必需  |
-| 竞品分析报告  | `artifacts/stages/s2/{PlanID}-S2-S201-001.md`            | S201 产物，竞品分析结果 | 必需  |
+| 竞品分析报告  | `artifacts/stages/s1/{PlanID}-S1-S101-001.md`            | S101 产物，竞品分析结果 | 必需  |
 
 #### 输入内容读取规则
 
-1. 从 S201 产物提取市场空白点和竞争格局
+1. 从 S101 产物提取市场空白点和竞争格局
 2. 从 Plan 定义文件提取产品目标和目标用户
 3. 关联分析识别痛点来源
 
@@ -56,7 +56,7 @@ S102 负责验证市场需求的真实性和商业价值，基于 S101 竞品分
 
 | 产物名称      | 文件路径                                              | 格式       | 用途                 | 用户可见性   |
 | --------- | ------------------------------------------------- | -------- | ------------------ | ------- |
-| 市场验证报告 | `artifacts/stages/s2/{PlanID}-S2-S202-001.md`       | Markdown | 市场痛点验证结果      | 用户可查看 |
+| 市场验证报告 | `artifacts/stages/s1/{PlanID}-S1-S102-001.md`       | Markdown | 市场痛点验证结果      | 用户可查看 |
 | Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`            | Markdown | 任务跟踪 + 状态管理   | 用户可查看 |
 
 #### 输出内容结构
@@ -117,13 +117,13 @@ Demo 示例请参阅 [references/examples.md](references/examples.md)
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S202产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S102产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
 
-### 4.1 S202特定产物清单
+### 4.1 S102特定产物清单
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 市场验证报告 | `{PlanID}-S2-S202-001` | `artifacts/stages/s2/{PlanID}-S2-S202-001.md` | 主产物，包含痛点验证、市场价值评估、可行性预判 |
+| 市场验证报告 | `{PlanID}-S1-S102-001` | `artifacts/stages/s1/{PlanID}-S1-S102-001.md` | 主产物，包含痛点验证、市场价值评估、可行性预判 |
 
 ---
 
@@ -131,9 +131,9 @@ S202产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S202遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S102遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
-**S202特定权重分配**：
+**S102特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
 |------|------|----------|
 | **完整性** | 30% | ≥ 90% |
@@ -144,7 +144,7 @@ S202遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 2
 
 **验收门槛**：质量综合得分 ≥ 85%
 
-### 5.2 S202特定检查项
+### 5.2 S102特定检查项
 
 **完整性检查**：
 - [ ] 至少识别了 3 个关键痛点

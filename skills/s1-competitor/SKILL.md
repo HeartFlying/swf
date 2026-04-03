@@ -124,9 +124,9 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S201产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S101产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
 
-### 4.1 S201特定产物清单
+### 4.1 S101特定产物清单
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
@@ -140,7 +140,7 @@ S201产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 S101遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
-**S201特定权重分配**：
+**S101特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
 |------|------|----------|
 | **完整性** | 30% | >= 90% |
@@ -151,7 +151,7 @@ S101遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 2
 
 **验收门槛**：质量综合得分 >= 85%
 
-### 5.2 S201特定检查项
+### 5.2 S101特定检查项
 
 **完整性检查**：
 - [ ] 至少识别2-3个直接竞品

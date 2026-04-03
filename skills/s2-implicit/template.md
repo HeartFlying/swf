@@ -1,12 +1,12 @@
-# S103 输出模板：隐性需求挖掘报告
+# S203 输出模板：隐性需求挖掘报告
 
 ## 模板说明
 
-本模板用于 S103（隐性需求挖掘）的输出产物：**隐性需求挖掘报告**。
+本模板用于 S203（隐性需求挖掘）的输出产物：**隐性需求挖掘报告**。
 
-**产物 ID 格式**：`{PlanID}-S1-S103-001-implicit`
+**产物 ID 格式**：`{PlanID}-S2-S203-001-implicit`
 
-**存储路径**：`artifacts/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md`
+**存储路径**：`artifacts/stages/s2/{PlanID}/{PlanID}-S2-S203-001-implicit.md`
 
 **模板版本**：2.0 (标准化版本)
 
@@ -22,12 +22,12 @@
 | 项目 | 内容 |
 |-----|------|
 | **Plan ID** | {PlanID} |
-| **报告 ID** | {PlanID}-S1-S103-001-implicit |
+| **报告 ID** | {PlanID}-S2-S203-001-implicit |
 | **生成时间** | {ISO 时间戳} |
 | **Skill 版本** | 2.0 |
 | **执行模式** | normal |
-| **前置 Skill** | S102 (显性需求提取) |
-| **后置 Skill** | S104 (需求验证) |
+| **前置 Skill** | S202 (显性需求提取) |
+| **后置 Skill** | S204 (需求验证) |
 
 ---
 
@@ -722,12 +722,12 @@ flowchart TD
 | **Skill 版本** | 2.0 |
 | **模板版本** | 2.0 |
 | **执行耗时** | {N}ms |
-| **下次执行** | S104 (需求验证) |
-| **产物路径** | `artifacts/stages/s1/{PlanID}/{PlanID}-S1-S103-001-implicit.md` |
+| **下次执行** | S204 (需求验证) |
+| **产物路径** | `artifacts/stages/s2/{PlanID}/{PlanID}-S2-S203-001-implicit.md` |
 
 ---
 
-*本报告由 S103-隐性需求挖掘 自动生成，遵循 IEEE 29148-2011 标准*
+*本报告由 S203-隐性需求挖掘 自动生成，遵循 IEEE 29148-2011 标准*
 ```
 
 ---

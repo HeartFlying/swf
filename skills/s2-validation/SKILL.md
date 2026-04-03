@@ -44,9 +44,9 @@ S204 负责对 S2 阶段收集的所有需求进行系统性验证和确认，�
 
 | 内容           | 要求                         | 示例                                         |
 | ------------ | -------------------------- | ------------------------------------------ |
-| 边界界定报告       | 必填，S101 生成的边界文件          | `artifacts/stages/s1/P000001-S1-S101-001.md` |
-| 显性需求报告       | 必填，S102 生成的显性需求文件        | `artifacts/stages/s1/P000001-S1-S102-001.md` |
-| 隐性需求报告       | 常规模式必填，S103 生成的隐性需求文件    | `artifacts/stages/s1/P000001-S1-S103-001.md` |
+| 边界界定报告       | 必填，S201 生成的边界文件          | `artifacts/stages/s2/P000001-S2-S201-001.md` |
+| 显性需求报告       | 必填，S202 生成的显性需求文件        | `artifacts/stages/s2/P000001-S2-S202-001.md` |
+| 隐性需求报告       | 常规模式必填，S203 生成的隐性需求文件    | `artifacts/stages/s2/P000001-S2-S203-001.md` |
 | Todo-List 文件 | 必填，S001 创建的 todo-list.md | `artifacts/plans/P000001/todo-list.md`      |
 
 **输入数据要求**：
@@ -60,33 +60,33 @@ S204 负责对 S2 阶段收集的所有需求进行系统性验证和确认，�
 **示例 1：常规模式完整输入**
 
 ```
-边界界定报告：artifacts/stages/s1/P000001-S1-S101-001.md
-显性需求报告：artifacts/stages/s1/P000001-S1-S102-001.md
-隐性需求报告：artifacts/stages/s1/P000001-S1-S103-001.md
+边界界定报告：artifacts/stages/s2/P000001-S2-S201-001.md
+显性需求报告：artifacts/stages/s2/P000001-S2-S202-001.md
+隐性需求报告：artifacts/stages/s2/P000001-S2-S203-001.md
 执行模式：常规模式
 ```
 
 **示例 2：轻量化模式输入**
 
 ```
-边界界定报告：artifacts/stages/s1/P000002-S1-S101-001.md
-显性需求报告：artifacts/stages/s1/P000002-S1-S102-001.md
-执行模式：轻量化模式（跳过 S103）
+边界界定报告：artifacts/stages/s2/P000002-S2-S201-001.md
+显性需求报告：artifacts/stages/s2/P000002-S2-S202-001.md
+执行模式：轻量化模式（跳过 S203）
 ```
 
 ### 2.3 输出规范 (Output Specifications)
 
 #### 用户会得到什么
 
-S104 完成后，系统会生成以下产物并保存到项目目录：
+S204 完成后，系统会生成以下产物并保存到项目目录：
 
 **产物清单**：
 
 | 产物名称         | 文件位置                                        | 格式       | 用途             | 用户可见性   |
 | ------------ | ------------------------------------------- | -------- | -------------- | ------- |
-| 需求验证报告       | `artifacts/stages/s1/{PlanID}-S1-S104-001.md` | Markdown | 需求验证结果详情       | 用户可查看 |
-| S1 阶段总结报告    | `artifacts/stages/s1/{PlanID}-S1-summary.md` | Markdown | S1 阶段总结        | 用户可查看 |
-| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`      | Markdown | 更新 S104 任务状态 | 用户可查看 |
+| 需求验证报告       | `artifacts/stages/s2/{PlanID}-S2-S204-001.md` | Markdown | 需求验证结果详情       | 用户可查看 |
+| S2 阶段总结报告    | `artifacts/stages/s2/{PlanID}-S2-summary.md` | Markdown | S2 阶段总结        | 用户可查看 |
+| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`      | Markdown | 更新 S204 任务状态 | 用户可查看 |
 
 **重要说明**：
 
@@ -106,18 +106,18 @@ S104 完成后，系统会生成以下产物并保存到项目目录：
    - 风险识别（需求风险、验证过程风险）
    - 建议与决策（高优先级建议、需要决策的事项）
 
-2. **S1 阶段总结报告**（Markdown 格式）
+2. **S2 阶段总结报告**（Markdown 格式）
    - 阶段执行概况（执行 Skill、阶段状态、产物数量）
-   - S1 阶段产物清单（所有产物 ID、名称、类型、存储路径）
-   - 关键结论（S1 阶段核心结论）
-   - 进入 S2 阶段的准备（准备事项检查）
-   - S2 阶段执行计划（下一阶段 Skill）
+   - S2 阶段产物清单（所有产物 ID、名称、类型、存储路径）
+   - 关键结论（S2 阶段核心结论）
+   - 进入 S3 阶段的准备（准备事项检查）
+   - S3 阶段执行计划（下一阶段 Skill）
 
 3. **Todo-List 状态更新**
-   - S104 任务状态：待执行 → 已完成
+   - S204 任务状态：待执行 → 已完成
    - 评审状态：待评审
-   - S1 阶段状态：已完成
-   - 下阶段准备：S201 竞品分析
+   - S2 阶段状态：已完成
+   - 下阶段准备：S301 技术可行性评估
 
 ***
 
@@ -127,7 +127,7 @@ S104 完成后，系统会生成以下产物并保存到项目目录：
 
 ```mermaid
 flowchart TD
-    Start[开始执行 S104] --> PreCheck[前置校验]
+    Start[开始执行 S204] --> PreCheck[前置校验]
     PreCheck --> CheckResult{校验通过？}
     CheckResult -->|否 | Error[返回错误，补充信息]
     CheckResult -->|是 | Read[读取所有需求报告]
@@ -171,7 +171,7 @@ S104 执行流程包含以下主要步骤：
 | 7 | 需求分类 | 按决策矩阵分为通过/有条件通过/未通过 |
 | 8 | 风险识别 | 识别需求、技术、资源、时间、业务风险 |
 | 9 | 生成验证报告 | 按模板生成完整验证报告 |
-| 10 | 生成阶段总结 | 汇总 S1 阶段所有产物和信息 |
+| 10 | 生成阶段总结 | 汇总 S2 阶段所有产物和信息 |
 | 11 | 更新 Todo-List | 更新任务状态和阶段状态 |
 | 12 | 后置校验 | 验证产物格式和内容完整性 |
 | 13 | 用户评审 | 展示结果，等待用户确认或修改 |
@@ -185,7 +185,7 @@ S104 提供完整的输入、处理过程、输出示例，帮助理解 Skill �
 **示例概览**：
 - **输入**：边界界定报告 + 显性需求报告 + 隐性需求报告（常规模式）
 - **处理**：13 个步骤的完整验证流程
-- **输出**：需求验证报告 + S1 阶段总结报告
+- **输出**：需求验证报告 + S2 阶段总结报告
 
 **完整示例**请参考：[references/examples.md](references/examples.md)
 
@@ -197,8 +197,8 @@ S104 提供完整的输入、处理过程、输出示例，帮助理解 Skill �
 
 | 产物名称 | 产物 ID | 存储路径 | 说明 |
 |---------|---------|----------|------|
-| 需求验证报告 | `{PlanID}-S1-S104-001` | `artifacts/stages/s1/{PlanID}-S1-S104-001.md` | 需求验证结果 |
-| S1 阶段总结报告 | `{PlanID}-S1-summary` | `artifacts/stages/s1/{PlanID}-S1-summary.md` | S1 阶段汇总 |
+| 需求验证报告 | `{PlanID}-S2-S204-001` | `artifacts/stages/s2/{PlanID}-S2-S204-001.md` | 需求验证结果 |
+| S2 阶段总结报告 | `{PlanID}-S2-summary` | `artifacts/stages/s2/{PlanID}-S2-summary.md` | S2 阶段汇总 |
 
 ### 4.2 通用规范
 
@@ -213,7 +213,7 @@ S104 提供完整的输入、处理过程、输出示例，帮助理解 Skill �
 
 ### 5.1 质量评估框架
 
-S104 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S204 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度 | 权重 | 评估标准 | 验收阈值 |
 |------|------|----------|----------|
@@ -225,13 +225,13 @@ S104 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC
 
 **验收门槛**：质量综合得分 ≥ 85%
 
-### 5.2 S104 特定检查清单
+### 5.2 S204 特定检查清单
 
 **完整性检查**：
 - [ ] 4 个验证维度完整（完整性、一致性、可行性、价值）
 - [ ] 需求分类结果准确（通过、有条件通过、未通过）
 - [ ] 风险识别完整
-- [ ] S1 阶段总结报告完整
+- [ ] S2 阶段总结报告完整
 
 **准确性检查**：
 - [ ] 验证得分计算正确
@@ -240,7 +240,7 @@ S104 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC
 
 **一致性检查**：
 - [ ] 术语使用一致
-- [ ] 编号格式一致（S101, S102, S103, S104 等）
+- [ ] 编号格式一致（S201, S202, S203, S204 等）
 - [ ] 引用其他 Skill 时使用统一格式
 
 **可读性检查**：
@@ -249,7 +249,7 @@ S104 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC
 - [ ] 风险描述明确
 
 **可追溯性检查**：
-- [ ] 需求来源已保留（引用 S101-S103 产物）
+- [ ] 需求来源已保留（引用 S201-S203 产物）
 - [ ] 验证依据可追溯
 
 ### 5.3 质量综合得分计算
@@ -281,7 +281,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行S104]
+    List --> ReExecute[自动重新执行S204]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]
