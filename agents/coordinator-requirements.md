@@ -19,7 +19,7 @@ description: |
   <example>
   Context: 用户已有初步需求，需要深入分析和验证
   user: "帮我做一个完整的需求分析，包括竞品调研和技术可行性"
-  assistant: "我将使用 SWF 需求分析方法，按 S0(Plan制定)→S1(需求边界)→S2(市场验证)→S3(技术选型)→S4(需求整合) 五个阶段逐步分析。让我开始执行..."
+  assistant: "我将使用 SWF 需求分析方法，按 S0(Plan制定)→S1(市场洞察)→S2(需求定义)→S3(技术规划)→S4(需求整合) 五个阶段逐步分析。让我开始执行..."
   <commentary>
   用户明确要求完整的需求分析，触发 swf-coordinator 执行 S0-S4 全阶段流程
   </commentary>
