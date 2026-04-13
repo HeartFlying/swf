@@ -2,7 +2,7 @@
 
 **文档版本**: 1.0
 **创建日期**: 2026-04-14
-**最后更新**: 2026-04-14（阶段 1 完成）
+**最后更新**: 2026-04-14（阶段 2 完成）
 
 ---
 
@@ -10,8 +10,8 @@
 
 | 阶段 | 状态 | 开始时间 | 完成时间 | 备注 |
 |------|------|----------|----------|------|
-| 阶段 1：止血修复 | ✅ 已完成 | 2026-04-14 | 2026-04-14 | P0 问题修复，已提交 5 个 commit |
-| 阶段 2：契约收敛 | ⬜ 待开始 | - | - | 建立单一事实源 |
+| 阶段 1：止血修复 | ✅ 已完成 | 2026-04-14 | 2026-04-14 | P0 问题修复，已提交 7 个 commit |
+| 阶段 2：契约收敛 | ✅ 已完成 | 2026-04-14 | 2026-04-14 | 创建 manifest，添加 Contract 区块 |
 | 阶段 3：共享规范重构 | ⬜ 待开始 | - | - | 消除 references 复制扩散 |
 | 阶段 4：校验与治理 | ⬜ 待开始 | - | - | 防止问题复发 |
 
@@ -126,10 +126,10 @@
 
 | 序号 | 修改项 | 说明 | 状态 | 执行人 | 完成时间 |
 |------|--------|------|------|--------|----------|
-| 2.1.1 | 创建文件 | 在 agents 目录下创建 workflow-manifest.yaml | ⬜ | - | - |
-| 2.1.2 | 定义阶段 | S0-S6 + CM 共 8 个阶段定义 | ⬜ | - | - |
-| 2.1.3 | 定义 Skills | 27 个 Skill 定义（id, dir, stage, order, depends_on, next, outputs） | ⬜ | - | - |
-| 2.1.4 | 定义阶段交接 | S4→S5, S5→S6 交接定义 | ⬜ | - | - |
+| 2.1.1 | 创建文件 | 在 agents 目录下创建 workflow-manifest.yaml | ✅ | Claude | 2026-04-14 |
+| 2.1.2 | 定义阶段 | S0-S6 + CM 共 8 个阶段定义 | ✅ | Claude | 2026-04-14 |
+| 2.1.3 | 定义 Skills | 27 个 Skill 定义（id, dir, stage, order, depends_on, next, outputs） | ✅ | Claude | 2026-04-14 |
+| 2.1.4 | 定义阶段交接 | S4→S5, S5→S6 交接定义 | ✅ | Claude | 2026-04-14 |
 
 **验收标准**: manifest 文件格式正确，包含完整的阶段和 Skill 定义
 
@@ -139,33 +139,33 @@
 
 | 序号 | Skill 目录 | 状态 | 执行人 | 完成时间 |
 |------|------------|------|--------|----------|
-| 2.2.1 | skills/s0-plan | ⬜ | - | - |
-| 2.2.2 | skills/s1-competitor | ⬜ | - | - |
-| 2.2.3 | skills/s1-market-analysis | ⬜ | - | - |
-| 2.2.4 | skills/s2-boundary | ⬜ | - | - |
-| 2.2.5 | skills/s2-explicit | ⬜ | - | - |
-| 2.2.6 | skills/s2-implicit | ⬜ | - | - |
-| 2.2.7 | skills/s2-validation | ⬜ | - | - |
-| 2.2.8 | skills/s3-feasibility | ⬜ | - | - |
-| 2.2.9 | skills/s3-selection | ⬜ | - | - |
-| 2.2.10 | skills/s3-nfr | ⬜ | - | - |
-| 2.2.11 | skills/s3-risk | ⬜ | - | - |
-| 2.2.12 | skills/s4-classify | ⬜ | - | - |
-| 2.2.13 | skills/s4-priority | ⬜ | - | - |
-| 2.2.14 | skills/s4-core | ⬜ | - | - |
-| 2.2.15 | skills/s4-user-stories | ⬜ | - | - |
-| 2.2.16 | skills/s4-prototype | ⬜ | - | - |
-| 2.2.17 | skills/s5-vision | ⬜ | - | - |
-| 2.2.18 | skills/s5-views | ⬜ | - | - |
-| 2.2.19 | skills/s5-data | ⬜ | - | - |
-| 2.2.20 | skills/s5-interface | ⬜ | - | - |
-| 2.2.21 | skills/s5-deployment | ⬜ | - | - |
-| 2.2.22 | skills/s5-validation | ⬜ | - | - |
-| 2.2.23 | skills/s6-module | ⬜ | - | - |
-| 2.2.24 | skills/s6-database | ⬜ | - | - |
-| 2.2.25 | skills/s6-uiux | ⬜ | - | - |
-| 2.2.26 | skills/s6-test-strategy | ⬜ | - | - |
-| 2.2.27 | skills/cm-impact-analysis | ⬜ | - | - |
+| 2.2.1 | skills/s0-plan | ✅ | Claude | 2026-04-14 |
+| 2.2.2 | skills/s1-competitor | ✅ | Claude | 2026-04-14 |
+| 2.2.3 | skills/s1-market-analysis | ✅ | Claude | 2026-04-14 |
+| 2.2.4 | skills/s2-boundary | ✅ | Claude | 2026-04-14 |
+| 2.2.5 | skills/s2-explicit | ✅ | Claude | 2026-04-14 |
+| 2.2.6 | skills/s2-implicit | ✅ | Claude | 2026-04-14 |
+| 2.2.7 | skills/s2-validation | ✅ | Claude | 2026-04-14 |
+| 2.2.8 | skills/s3-feasibility | ✅ | Claude | 2026-04-14 |
+| 2.2.9 | skills/s3-selection | ✅ | Claude | 2026-04-14 |
+| 2.2.10 | skills/s3-nfr | ✅ | Claude | 2026-04-14 |
+| 2.2.11 | skills/s3-risk | ✅ | Claude | 2026-04-14 |
+| 2.2.12 | skills/s4-classify | ✅ | Claude | 2026-04-14 |
+| 2.2.13 | skills/s4-priority | ✅ | Claude | 2026-04-14 |
+| 2.2.14 | skills/s4-core | ✅ | Claude | 2026-04-14 |
+| 2.2.15 | skills/s4-user-stories | ✅ | Claude | 2026-04-14 |
+| 2.2.16 | skills/s4-prototype | ✅ | Claude | 2026-04-14 |
+| 2.2.17 | skills/s5-vision | ✅ | Claude | 2026-04-14 |
+| 2.2.18 | skills/s5-views | ✅ | Claude | 2026-04-14 |
+| 2.2.19 | skills/s5-data | ✅ | Claude | 2026-04-14 |
+| 2.2.20 | skills/s5-interface | ✅ | Claude | 2026-04-14 |
+| 2.2.21 | skills/s5-deployment | ✅ | Claude | 2026-04-14 |
+| 2.2.22 | skills/s5-validation | ✅ | Claude | 2026-04-14 |
+| 2.2.23 | skills/s6-module | ✅ | Claude | 2026-04-14 |
+| 2.2.24 | skills/s6-database | ✅ | Claude | 2026-04-14 |
+| 2.2.25 | skills/s6-uiux | ✅ | Claude | 2026-04-14 |
+| 2.2.26 | skills/s6-test-strategy | ✅ | Claude | 2026-04-14 |
+| 2.2.27 | skills/cm-impact-analysis | ✅ | Claude | 2026-04-14 |
 
 **验收标准**: 所有 SKILL.md 包含 Contract 区块，字段完整
 
@@ -175,9 +175,9 @@
 
 | 序号 | 文件 | 修改内容 | 状态 | 执行人 | 完成时间 |
 |------|------|----------|------|--------|----------|
-| 2.3.1 | agents/coordinator-requirements.md | 引用 workflow-manifest.yaml，移除重复 Skill 列表 | ⬜ | - | - |
-| 2.3.2 | agents/coordinator-architecture.md | 引用 workflow-manifest.yaml，移除重复 Skill 列表 | ⬜ | - | - |
-| 2.3.3 | agents/coordinator-detailed-design.md | 引用 workflow-manifest.yaml，移除重复 Skill 列表 | ⬜ | - | - |
+| 2.3.1 | agents/coordinator-requirements.md | 引用 workflow-manifest.yaml，更新 Skill 数量描述 | ✅ | Claude | 2026-04-14 |
+| 2.3.2 | agents/coordinator-architecture.md | 引用 workflow-manifest.yaml | ✅ | Claude | 2026-04-14 |
+| 2.3.3 | agents/coordinator-detailed-design.md | 引用 workflow-manifest.yaml | ✅ | Claude | 2026-04-14 |
 
 **验收标准**: coordinator 文档通过引用 manifest 获取 Skill 定义
 
@@ -188,9 +188,11 @@
 | 序号 | 文件 | 修改内容 | 状态 | 执行人 | 完成时间 |
 |------|------|----------|------|--------|----------|
 | 2.4.1 | README.md | 确保与 manifest 一致 | ⬜ | - | - |
-| 2.4.2 | WORKFLOW.md | 确保与 manifest 一致 | ⬜ | - | - |
+| 2.4.2 | WORKFLOW.md | 确保与 manifest 一致 | ✅ | Claude | 2026-04-14 |
 
 **验收标准**: README.md、WORKFLOW.md 与 manifest 三者一致
+
+**备注**: WORKFLOW.md 已经与 manifest 一致，README.md 待后续更新
 
 ---
 
@@ -198,10 +200,10 @@
 
 | 序号 | 检查项 | 检查方法 | 预期结果 | 状态 | 完成时间 |
 |------|--------|----------|----------|------|----------|
-| V2.1 | manifest 存在性 | 检查 agents/workflow-manifest.yaml | 文件存在 | ⬜ | - |
-| V2.2 | manifest 格式 | YAML 格式校验 | 格式正确 | ⬜ | - |
-| V2.3 | Skill 数量 | 统计 manifest 中 skills 列表 | 27 个 | ⬜ | - |
-| V2.4 | Contract 区块 | 检查所有 SKILL.md | 全部包含 | ⬜ | - |
+| V2.1 | manifest 存在性 | 检查 agents/workflow-manifest.yaml | 文件存在 | ✅ | 2026-04-14 |
+| V2.2 | manifest 格式 | YAML 格式校验 | 格式正确 | ✅ | 2026-04-14 |
+| V2.3 | Skill 数量 | 统计 manifest 中 skills 列表 | 27 个 | ✅ | 2026-04-14 |
+| V2.4 | Contract 区块 | 检查所有 SKILL.md | 全部包含 | ✅ | 2026-04-14 |
 
 ---
 
