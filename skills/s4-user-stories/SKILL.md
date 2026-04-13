@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-29（新增）          |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S405 |
+| **Stage** | S4 |
+| **Directory** | skills/s4-user-stories |
+| **Depends On** | S403 |
+| **Next (Normal)** | S406 |
+| **Next (Lightweight)** | S5-A01 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S403-001.md |
+| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

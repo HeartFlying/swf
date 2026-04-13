@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**         | v3.2.0               |
 | **最后更新时间**     | 2026-03-29（智能增量更新支持） |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | CM-001 |
+| **Stage** | CM |
+| **Directory** | skills/cm-impact-analysis |
+| **Depends On** | Dynamic (based on change type) |
+| **Next (Normal)** | Dynamic (based on impact analysis) |
+| **Next (Lightweight)** | Dynamic (based on impact analysis) |
+| **Lightweight Skip** | No |
+| **Required Inputs** | Dynamic (depends on change scope) |
+| **Outputs** | artifacts/change-management/{PlanID}-CM-001-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

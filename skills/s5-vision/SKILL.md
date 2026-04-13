@@ -25,6 +25,20 @@ version: 3.2.0
 | **最后更新时间**    | 2026-03-28                 |
 | **参考标准**      | ISO/IEC/IEEE 42010:2011    |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S5-A01 |
+| **Stage** | S5 |
+| **Directory** | skills/s5-vision |
+| **Depends On** | S406 |
+| **Next (Normal)** | S5-A02 |
+| **Next (Lightweight)** | S5-A02 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | 参见 workflow-manifest.yaml |
+| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A01-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

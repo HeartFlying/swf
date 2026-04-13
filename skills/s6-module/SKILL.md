@@ -22,6 +22,22 @@ version: 3.2.0
 | **最后更新时间** | 2026-03-28 |
 | **参考标准** | UML 2.5, IEEE 1016, 面向对象设计原则 |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S6-A01 |
+| **Stage** | S6 |
+| **Directory** | skills/s6-module |
+| **Depends On** | S5-A06 |
+| **Next (Normal)** | S6-A02 |
+| **Next (Lightweight)** | S6-A02 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/stages/s5/{PlanID}-S5-A06-001.md |
+| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A01-001.md |
+
+***
+
 ## Section 2: 功能描述 (Functional Description)
 
 ### 2.1 核心职责

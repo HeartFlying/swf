@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本** | v3.2.0 |
 | **最后更新时间** | 2026-03-29（阶段重构） |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S201 |
+| **Stage** | S2 |
+| **Directory** | skills/s2-boundary |
+| **Depends On** | S001 |
+| **Next (Normal)** | S202 |
+| **Next (Lightweight)** | S202 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/plans/{PlanID}.md |
+| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S201-001.md |
+
 ## Section 2: 功能描述 (Functional Description)
 
 ### 2.1 核心职责

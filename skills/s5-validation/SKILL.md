@@ -22,6 +22,20 @@ version: 3.2.0
 | **版本** | v3.2.0 |
 | **最后更新时间** | 2026-03-28 |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S5-A06 |
+| **Stage** | S5 |
+| **Directory** | skills/s5-validation |
+| **Depends On** | S5-A05 |
+| **Next (Normal)** | S6-A01 |
+| **Next (Lightweight)** | S6-A01 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | 参见 workflow-manifest.yaml |
+| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A06-001.md, artifacts/stages/s5/{PlanID}-S5-summary.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

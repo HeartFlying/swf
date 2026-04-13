@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-28                 |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S5-A03 |
+| **Stage** | S5 |
+| **Directory** | skills/s5-data |
+| **Depends On** | S5-A02 |
+| **Next (Normal)** | S5-A04 |
+| **Next (Lightweight)** | S5-A04 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | 参见 workflow-manifest.yaml |
+| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A03-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**         | v3.2.0               |
 | **最后更新时间**     | 2026-03-28（渐进式披露优化） |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S001 |
+| **Stage** | S0 |
+| **Directory** | skills/s0-plan |
+| **Depends On** | 无 |
+| **Next (Normal)** | S101 |
+| **Next (Lightweight)** | S201 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | 无 |
+| **Outputs** | artifacts/plans/{PlanID}.md, artifacts/stages/s0/{PlanID}-S0-S001-002.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

@@ -22,6 +22,20 @@ version: 3.2.0
 | **版本** | v3.2.0 |
 | **最后更新时间** | 2026-03-28 |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S6-A03 |
+| **Stage** | S6 |
+| **Directory** | skills/s6-uiux |
+| **Depends On** | S6-A02 |
+| **Next (Normal)** | S6-A04 |
+| **Next (Lightweight)** | S6-A04 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
+| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A03-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

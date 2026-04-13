@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-29（阶段重构）      |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S406 |
+| **Stage** | S4 |
+| **Directory** | skills/s4-prototype |
+| **Depends On** | S405 |
+| **Next (Normal)** | S5-A01 |
+| **Next (Lightweight)** | - |
+| **Lightweight Skip** | Yes |
+| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
+| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S406-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

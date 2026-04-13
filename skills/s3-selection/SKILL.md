@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-29（阶段重构）      |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S302 |
+| **Stage** | S3 |
+| **Directory** | skills/s3-selection |
+| **Depends On** | S301 |
+| **Next (Normal)** | S303 |
+| **Next (Lightweight)** | S303 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
+| **Outputs** | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)

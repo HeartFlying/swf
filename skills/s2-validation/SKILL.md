@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-29（阶段重构）      |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S204 |
+| **Stage** | S2 |
+| **Directory** | skills/s2-validation |
+| **Depends On** | S203 |
+| **Next (Normal)** | S301 |
+| **Next (Lightweight)** | S301 |
+| **Lightweight Skip** | No |
+| **Required Inputs** | artifacts/stages/s2/{PlanID}-S2-S201-001.md, artifacts/stages/s2/{PlanID}-S2-S202-001.md, artifacts/stages/s2/{PlanID}-S2-S203-001.md |
+| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S204-001.md, artifacts/stages/s2/{PlanID}-S2-summary.md |
+
 ***
 
 ## Section 2: 功能描述 (Functional Description)
@@ -34,7 +48,7 @@ S204 负责对 S2 阶段收集的所有需求进行系统性验证和确认，�
 3. **需求可行性初判**：从技术、资源、时间、业务维度评估可行性
 4. **需求价值评估**：评估用户价值、业务价值、技术价值、创新价值
 5. **需求分类与决策**：将需求分为通过、有条件通过、未通过三类
-6. **生成 S1 阶段总结**：汇总 S1 阶段所有产物，生成阶段总结报告
+6. **生成 S2 阶段总结**：汇总 S1 阶段所有产物，生成阶段总结报告
 
 ### 2.2 输入规范 (Input Specifications)
 
@@ -139,7 +153,7 @@ flowchart TD
     Value --> Decision[需求分类与决策]
     Decision --> Risk[风险识别]
     Risk --> GenReport[生成验证报告]
-    GenReport --> GenSummary[生成 S1 阶段总结]
+    GenReport --> GenSummary[生成 S2 阶段总结]
     GenSummary --> UpdateTodo[更新 Todo-List]
     UpdateTodo --> PostCheck[后置校验]
     PostCheck --> PostCheckResult{校验通过？}
@@ -148,7 +162,7 @@ flowchart TD
     Review --> ReviewResult{用户决策}
     ReviewResult -->|确认 | Return[返回执行结果]
     ReviewResult -->|小修改 | Modify[直接修改产物]
-    ReviewResult -->|大修改 | ReExecute[重新执行 S104]
+    ReviewResult -->|大修改 | ReExecute[重新执行 S204]
     ReviewResult -->|新增想法 | Update[更新产物]
     Modify --> Review
     Update --> Review
@@ -157,7 +171,7 @@ flowchart TD
 
 ### 3.2 执行步骤说明
 
-S104 执行流程包含以下主要步骤：
+S204 执行流程包含以下主要步骤：
 
 | 步骤 | 名称 | 说明 |
 |-----|------|------|
@@ -180,7 +194,7 @@ S104 执行流程包含以下主要步骤：
 
 ### 3.3 Demo 示例
 
-S104 提供完整的输入、处理过程、输出示例，帮助理解 Skill 的执行逻辑。
+S204 提供完整的输入、处理过程、输出示例，帮助理解 Skill 的执行逻辑。
 
 **示例概览**：
 - **输入**：边界界定报告 + 显性需求报告 + 隐性需求报告（常规模式）

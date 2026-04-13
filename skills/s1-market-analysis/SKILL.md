@@ -21,6 +21,20 @@ version: 3.2.0
 | **版本**          | v3.2.0                     |
 | **最后更新时间**    | 2026-03-29（阶段重构）      |
 
+## Contract
+
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S102 |
+| **Stage** | S1 |
+| **Directory** | skills/s1-market-analysis |
+| **Depends On** | S101 |
+| **Next (Normal)** | S201 |
+| **Next (Lightweight)** | - |
+| **Lightweight Skip** | Yes |
+| **Required Inputs** | artifacts/plans/{PlanID}.md, artifacts/stages/s1/{PlanID}-S1-S101-001.md |
+| **Outputs** | artifacts/stages/s1/{PlanID}-S1-S102-001.md |
+
 ---
 
 ## Section 2: 功能描述 (Functional Description)
