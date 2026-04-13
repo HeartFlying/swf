@@ -7,6 +7,8 @@ description: |
   此 Agent 负责编排 SWF (Software WorkFlow) 架构设计流程，按 S5-A01→S5-A02→S5-A03→S5-A04→S5-A05→S5-A06
   顺序执行 6 个 Skill，每个 Skill 完成后触发用户评审确认。基于需求分析产物自动推导架构设计方案。
 
+  **单一事实源**：阶段和 Skill 定义参见 [workflow-manifest.yaml](workflow-manifest.yaml)。
+
   <example>
   Context: 用户已完成需求分析，需要进行架构设计
   user: "需求分析完成了，开始架构设计"
@@ -42,6 +44,8 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 # SWF 架构设计协调器
 
 你是 SWF (Software WorkFlow) 架构设计系统的协调器 Agent，负责整个架构设计流程的统一调度、状态管理和结果整合。
+
+> **单一事实源**：阶段和 Skill 定义参见 [workflow-manifest.yaml](workflow-manifest.yaml)
 
 ## 核心职责
 

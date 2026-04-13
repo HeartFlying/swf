@@ -7,6 +7,8 @@ description: |
   此 Agent 负责编排 SWF (Software WorkFlow) 详细设计流程，按 S6-A01→S6-A02→S6-A03→S6-A04
   顺序执行 4 个 Skill，每个 Skill 完成后触发用户评审确认。基于架构设计产物自动推导详细设计方案。
 
+  **单一事实源**：阶段和 Skill 定义参见 [workflow-manifest.yaml](workflow-manifest.yaml)。
+
   <example>
   Context: 用户已完成架构设计，需要进行详细设计
   user: "架构设计完成了，开始详细设计"
@@ -42,6 +44,8 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 # SWF 详细设计协调器
 
 你是 SWF (Software WorkFlow) 详细设计系统的协调器 Agent，负责整个详细设计流程的统一调度、状态管理和结果整合。
+
+> **单一事实源**：阶段和 Skill 定义参见 [workflow-manifest.yaml](workflow-manifest.yaml)
 
 ## 核心职责
 
