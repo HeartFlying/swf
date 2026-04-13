@@ -61,7 +61,7 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 - 适用于信息完整度 < 90 分的需求
 
 ### 轻量化模式 (lightweight)
-- 执行 10 个 Skill（跳过 S101, S102, S203, S404）
+- 执行 10 个 Skill（跳过 S101, S102, S203, S406）
 - 快速输出核心需求
 - 适用于信息完整度 ≥ 90 分的需求
 
@@ -73,7 +73,7 @@ tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 | S1 | S1 | 市场洞察 | S101, S102 | 全跳过 |
 | S2 | S2 | 需求定义 | S201, S202, S203, S204 | S203 |
 | S3 | S3 | 技术规划 | S301, S302, S303, S304 | - |
-| S4 | S4 | 需求整合 | S401, S402, S403, S404, S405 | S404, S405 |
+| S4 | S4 | 需求整合 | S401, S402, S403, S405, S406 | S406 |
 
 ## 执行流程（重构后）
 
@@ -227,23 +227,29 @@ flowchart TD
 
 ### S3 - 技术可行性与选型
 
-**S301 - 风险识别**
-- 加载：`skills/s3-risk/SKILL.md`
-- 技术风险分析
-- 业务风险评估
-- 产物：`artifacts/stages/s3/{PlanID}-S3-S301-001.md`
-
-**S302 - 技术可行性**
+**S301 - 技术可行性评估**
 - 加载：`skills/s3-feasibility/SKILL.md`
 - 技术方案评估
 - 可行性结论
-- 产物：`artifacts/stages/s3/{PlanID}-S3-S302-001.md`
+- 产物：`artifacts/stages/s3/{PlanID}-S3-S301-001.md`
 
-**S303 - 技术选型**
+**S302 - 技术选型**
 - 加载：`skills/s3-selection/SKILL.md`
 - 技术栈推荐
 - 选型决策
+- 产物：`artifacts/stages/s3/{PlanID}-S3-S302-001.md`
+
+**S303 - 非功能需求定义**
+- 加载：`skills/s3-nfr/SKILL.md`
+- 性能需求定义
+- 安全需求定义
 - 产物：`artifacts/stages/s3/{PlanID}-S3-S303-001.md`
+
+**S304 - 风险识别**
+- 加载：`skills/s3-risk/SKILL.md`
+- 技术风险分析
+- 业务风险评估
+- 产物：`artifacts/stages/s3/{PlanID}-S3-S304-001.md`
 
 ### S4 - 需求整合与核心提炼
 
