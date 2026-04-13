@@ -1,0 +1,651 @@
+# SWF Workflow Manifest
+# 单一事实源：定义所有阶段、Skill、依赖关系和阶段交接
+
+version: 1
+last_updated: 2026-04-14
+
+# ============================================================
+# 阶段定义
+# ============================================================
+
+stages:
+  - id: s0
+    name: Plan 制定
+    name_en: Plan Definition
+    coordinator: agents/coordinator-requirements.md
+    description: 生成 Plan ID，评估信息完整度，创建执行计划
+
+  - id: s1
+    name: 市场洞察
+    name_en: Market Insight
+    coordinator: agents/coordinator-requirements.md
+    description: 竞品分析和市场痛点验证
+    lightweight_skip: true  # 轻量化模式下整个阶段跳过
+
+  - id: s2
+    name: 需求定义
+    name_en: Requirements Definition
+    coordinator: agents/coordinator-requirements.md
+    description: 需求边界界定、显性/隐性需求提取、需求验证
+
+  - id: s3
+    name: 技术规划
+    name_en: Technical Planning
+    coordinator: agents/coordinator-requirements.md
+    description: 技术可行性、技术选型、非功能需求、风险识别
+
+  - id: s4
+    name: 需求整合
+    name_en: Requirements Integration
+    coordinator: agents/coordinator-requirements.md
+    description: 需求分类、优先级排序、核心需求提炼、用户故事、原型设计
+
+  - id: s5
+    name: 架构设计
+    name_en: Architecture Design
+    coordinator: agents/coordinator-architecture.md
+    description: 架构愿景、视图设计、数据架构、接口架构、部署架构、架构验证
+
+  - id: s6
+    name: 详细设计
+    name_en: Detailed Design
+    coordinator: agents/coordinator-detailed-design.md
+    description: 模块设计、数据库设计、UI/UX设计、测试策略
+
+  - id: cm
+    name: 变更管理
+    name_en: Change Management
+    coordinator: null  # 按需执行，无固定 coordinator
+    description: 变更影响分析，生成最小重执行路径
+
+# ============================================================
+# Skill 定义
+# ============================================================
+
+skills:
+  # -------------------------
+  # S0 阶段 - Plan 制定
+  # -------------------------
+  - id: S001
+    name: Plan 制定
+    name_en: Plan Definition
+    dir: skills/s0-plan
+    stage: s0
+    order: 1
+    depends_on: []
+    next:
+      normal: [S101]
+      lightweight: [S201]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S0-S001-001"
+        path: "artifacts/plans/{PlanID}.md"
+        name: Plan 定义文件
+      - id: "{PlanID}-S0-S001-002"
+        path: "artifacts/stages/s0/{PlanID}-S0-S001-002.md"
+        name: 评分报告
+
+  # -------------------------
+  # S1 阶段 - 市场洞察
+  # -------------------------
+  - id: S101
+    name: 竞品分析
+    name_en: Competitor Analysis
+    dir: skills/s1-competitor
+    stage: s1
+    order: 1
+    depends_on: [S001]
+    next:
+      normal: [S102]
+      lightweight: []
+    lightweight_skip: true
+    outputs:
+      - id: "{PlanID}-S1-S101-001"
+        path: "artifacts/stages/s1/{PlanID}-S1-S101-001.md"
+        name: 竞品分析报告
+
+  - id: S102
+    name: 市场痛点验证
+    name_en: Market Pain Point Validation
+    dir: skills/s1-market-analysis
+    stage: s1
+    order: 2
+    depends_on: [S101]
+    next:
+      normal: [S201]
+      lightweight: []
+    lightweight_skip: true
+    outputs:
+      - id: "{PlanID}-S1-S102-001"
+        path: "artifacts/stages/s1/{PlanID}-S1-S102-001.md"
+        name: 市场验证报告
+
+  # -------------------------
+  # S2 阶段 - 需求定义
+  # -------------------------
+  - id: S201
+    name: 需求边界界定
+    name_en: Requirements Boundary Definition
+    dir: skills/s2-boundary
+    stage: s2
+    order: 1
+    depends_on: [S001]
+    next:
+      normal: [S202]
+      lightweight: [S202]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S2-S201-001"
+        path: "artifacts/stages/s2/{PlanID}-S2-S201-001.md"
+        name: 需求边界界定报告
+
+  - id: S202
+    name: 显性需求提取
+    name_en: Explicit Requirements Extraction
+    dir: skills/s2-explicit
+    stage: s2
+    order: 2
+    depends_on: [S201]
+    next:
+      normal: [S203]
+      lightweight: [S204]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S2-S202-001"
+        path: "artifacts/stages/s2/{PlanID}-S2-S202-001.md"
+        name: 显性需求清单
+
+  - id: S203
+    name: 隐性需求挖掘
+    name_en: Implicit Requirements Mining
+    dir: skills/s2-implicit
+    stage: s2
+    order: 3
+    depends_on: [S202]
+    next:
+      normal: [S204]
+      lightweight: []
+    lightweight_skip: true
+    outputs:
+      - id: "{PlanID}-S2-S203-001"
+        path: "artifacts/stages/s2/{PlanID}-S2-S203-001.md"
+        name: 隐性需求报告
+
+  - id: S204
+    name: 需求验证
+    name_en: Requirements Validation
+    dir: skills/s2-validation
+    stage: s2
+    order: 4
+    depends_on: [S203]
+    next:
+      normal: [S301]
+      lightweight: [S301]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S2-S204-001"
+        path: "artifacts/stages/s2/{PlanID}-S2-S204-001.md"
+        name: 需求验证报告
+      - id: "{PlanID}-S2-summary"
+        path: "artifacts/stages/s2/{PlanID}-S2-summary.md"
+        name: S2 阶段总结
+
+  # -------------------------
+  # S3 阶段 - 技术规划
+  # -------------------------
+  - id: S301
+    name: 技术可行性评估
+    name_en: Technical Feasibility Assessment
+    dir: skills/s3-feasibility
+    stage: s3
+    order: 1
+    depends_on: [S204]
+    next:
+      normal: [S302]
+      lightweight: [S302]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S3-S301-001"
+        path: "artifacts/stages/s3/{PlanID}-S3-S301-001.md"
+        name: 技术可行性评估报告
+
+  - id: S302
+    name: 技术选型
+    name_en: Technology Selection
+    dir: skills/s3-selection
+    stage: s3
+    order: 2
+    depends_on: [S301]
+    next:
+      normal: [S303]
+      lightweight: [S303]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S3-S302-001"
+        path: "artifacts/stages/s3/{PlanID}-S3-S302-001.md"
+        name: 技术选型报告
+
+  - id: S303
+    name: 非功能需求定义
+    name_en: Non-Functional Requirements Definition
+    dir: skills/s3-nfr
+    stage: s3
+    order: 3
+    depends_on: [S302]
+    next:
+      normal: [S304]
+      lightweight: [S304]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S3-S303-001"
+        path: "artifacts/stages/s3/{PlanID}-S3-S303-001.md"
+        name: 非功能需求规格书
+
+  - id: S304
+    name: 风险识别
+    name_en: Risk Identification
+    dir: skills/s3-risk
+    stage: s3
+    order: 4
+    depends_on: [S303]
+    next:
+      normal: [S401]
+      lightweight: [S401]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S3-S304-001"
+        path: "artifacts/stages/s3/{PlanID}-S3-S304-001.md"
+        name: 风险识别报告
+
+  # -------------------------
+  # S4 阶段 - 需求整合
+  # -------------------------
+  - id: S401
+    name: 需求分类梳理
+    name_en: Requirements Classification
+    dir: skills/s4-classify
+    stage: s4
+    order: 1
+    depends_on: [S304]
+    next:
+      normal: [S402]
+      lightweight: [S402]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S4-S401-001"
+        path: "artifacts/stages/s4/{PlanID}-S4-S401-001.md"
+        name: 需求分类报告
+
+  - id: S402
+    name: 需求优先级排序
+    name_en: Requirements Prioritization
+    dir: skills/s4-priority
+    stage: s4
+    order: 2
+    depends_on: [S401]
+    next:
+      normal: [S403]
+      lightweight: [S403]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S4-S402-001"
+        path: "artifacts/stages/s4/{PlanID}-S4-S402-001.md"
+        name: 需求优先级报告
+
+  - id: S403
+    name: 核心需求提炼
+    name_en: Core Requirements Extraction
+    dir: skills/s4-core
+    stage: s4
+    order: 3
+    depends_on: [S402]
+    next:
+      normal: [S405]
+      lightweight: [S405]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S4-S403-001"
+        path: "artifacts/stages/s4/{PlanID}-S4-S403-001.md"
+        name: 核心需求报告
+
+  - id: S405
+    name: 用户故事编写
+    name_en: User Story Writing
+    dir: skills/s4-user-stories
+    stage: s4
+    order: 4
+    depends_on: [S403]
+    next:
+      normal: [S406]
+      lightweight: [S5-A01]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S4-S405-001"
+        path: "artifacts/stages/s4/{PlanID}-S4-S405-001.md"
+        name: 用户故事地图
+
+  - id: S406
+    name: 原型设计
+    name_en: Prototype Design
+    dir: skills/s4-prototype
+    stage: s4
+    order: 5
+    depends_on: [S405]
+    next:
+      normal: [S5-A01]
+      lightweight: []
+    lightweight_skip: true
+    outputs:
+      - id: "{PlanID}-S4-S406-001"
+        path: "artifacts/stages/s4/{PlanID}-S4-S406-001.md"
+        name: 原型设计文档
+
+  # -------------------------
+  # S5 阶段 - 架构设计
+  # -------------------------
+  - id: S5-A01
+    name: 架构愿景定义
+    name_en: Architecture Vision Definition
+    dir: skills/s5-vision
+    stage: s5
+    order: 1
+    depends_on: [S406]
+    next:
+      normal: [S5-A02]
+      lightweight: [S5-A02]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A01-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A01-001.md"
+        name: 架构愿景文档
+
+  - id: S5-A02
+    name: 架构视图设计
+    name_en: Architecture View Design
+    dir: skills/s5-views
+    stage: s5
+    order: 2
+    depends_on: [S5-A01]
+    next:
+      normal: [S5-A03]
+      lightweight: [S5-A03]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A02-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A02-001.md"
+        name: 架构视图文档
+
+  - id: S5-A03
+    name: 数据架构设计
+    name_en: Data Architecture Design
+    dir: skills/s5-data
+    stage: s5
+    order: 3
+    depends_on: [S5-A02]
+    next:
+      normal: [S5-A04]
+      lightweight: [S5-A04]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A03-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A03-001.md"
+        name: 数据架构文档
+
+  - id: S5-A04
+    name: 接口架构设计
+    name_en: Interface Architecture Design
+    dir: skills/s5-interface
+    stage: s5
+    order: 4
+    depends_on: [S5-A03]
+    next:
+      normal: [S5-A05]
+      lightweight: [S5-A05]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A04-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A04-001.md"
+        name: 接口架构文档
+
+  - id: S5-A05
+    name: 部署架构设计
+    name_en: Deployment Architecture Design
+    dir: skills/s5-deployment
+    stage: s5
+    order: 5
+    depends_on: [S5-A04]
+    next:
+      normal: [S5-A06]
+      lightweight: [S5-A06]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A05-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A05-001.md"
+        name: 部署架构文档
+
+  - id: S5-A06
+    name: 架构验证与评审
+    name_en: Architecture Validation and Review
+    dir: skills/s5-validation
+    stage: s5
+    order: 6
+    depends_on: [S5-A05]
+    next:
+      normal: [S6-A01]
+      lightweight: [S6-A01]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S5-A06-001"
+        path: "artifacts/stages/s5/{PlanID}-S5-A06-001.md"
+        name: 架构验证报告
+      - id: "{PlanID}-S5-summary"
+        path: "artifacts/stages/s5/{PlanID}-S5-summary.md"
+        name: S5 阶段总结
+
+  # -------------------------
+  # S6 阶段 - 详细设计
+  # -------------------------
+  - id: S6-A01
+    name: 模块详细设计
+    name_en: Module Detailed Design
+    dir: skills/s6-module
+    stage: s6
+    order: 1
+    depends_on: [S5-A06]
+    next:
+      normal: [S6-A02]
+      lightweight: [S6-A02]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S6-A01-001"
+        path: "artifacts/stages/s6/{PlanID}-S6-A01-001.md"
+        name: 模块设计文档
+
+  - id: S6-A02
+    name: 数据库详细设计
+    name_en: Database Detailed Design
+    dir: skills/s6-database
+    stage: s6
+    order: 2
+    depends_on: [S6-A01]
+    next:
+      normal: [S6-A03]
+      lightweight: [S6-A03]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S6-A02-001"
+        path: "artifacts/stages/s6/{PlanID}-S6-A02-001.md"
+        name: 数据库设计文档
+
+  - id: S6-A03
+    name: UI/UX 设计
+    name_en: UI/UX Design
+    dir: skills/s6-uiux
+    stage: s6
+    order: 3
+    depends_on: [S6-A02]
+    next:
+      normal: [S6-A04]
+      lightweight: [S6-A04]
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S6-A03-001"
+        path: "artifacts/stages/s6/{PlanID}-S6-A03-001.md"
+        name: UI/UX 设计文档
+
+  - id: S6-A04
+    name: 测试策略设计
+    name_en: Test Strategy Design
+    dir: skills/s6-test-strategy
+    stage: s6
+    order: 4
+    depends_on: [S6-A03]
+    next:
+      normal: []
+      lightweight: []
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-S6-A04-001"
+        path: "artifacts/stages/s6/{PlanID}-S6-A04-001.md"
+        name: 测试策略文档
+      - id: "{PlanID}-S6-summary"
+        path: "artifacts/stages/s6/{PlanID}-S6-summary.md"
+        name: S6 阶段总结
+
+  # -------------------------
+  # CM 阶段 - 变更管理
+  # -------------------------
+  - id: CM-001
+    name: 变更影响分析
+    name_en: Change Impact Analysis
+    dir: skills/cm-impact-analysis
+    stage: cm
+    order: 1
+    depends_on: []  # 动态确定
+    next:
+      normal: []  # 动态确定
+      lightweight: []
+    lightweight_skip: false
+    outputs:
+      - id: "{PlanID}-CM-001-001"
+        path: "artifacts/change-management/{PlanID}-CM-001-001.md"
+        name: 变更影响分析报告
+
+# ============================================================
+# 阶段交接定义
+# ============================================================
+
+handoffs:
+  - from: s4
+    to: s5
+    description: 需求整合完成，进入架构设计
+    required_inputs:
+      - stage: s2
+        skill: S201
+        artifact: "{PlanID}-S2-S201-001"
+        name: 需求边界界定报告
+      - stage: s2
+        skill: S202
+        artifact: "{PlanID}-S2-S202-001"
+        name: 显性需求提取清单
+      - stage: s2
+        skill: S204
+        artifact: "{PlanID}-S2-S204-001"
+        name: 需求验证报告
+      - stage: s3
+        skill: S301
+        artifact: "{PlanID}-S3-S301-001"
+        name: 技术可行性评估报告
+      - stage: s3
+        skill: S302
+        artifact: "{PlanID}-S3-S302-001"
+        name: 技术选型报告
+      - stage: s3
+        skill: S303
+        artifact: "{PlanID}-S3-S303-001"
+        name: 非功能需求规格书
+      - stage: s3
+        skill: S304
+        artifact: "{PlanID}-S3-S304-001"
+        name: 风险识别报告
+      - stage: s4
+        skill: S401
+        artifact: "{PlanID}-S4-S401-001"
+        name: 需求分类报告
+      - stage: s4
+        skill: S403
+        artifact: "{PlanID}-S4-S403-001"
+        name: 核心需求报告
+      - stage: s4
+        skill: S405
+        artifact: "{PlanID}-S4-S405-001"
+        name: 用户故事地图
+      - stage: s4
+        skill: S406
+        artifact: "{PlanID}-S4-S406-001"
+        name: 原型设计文档
+
+  - from: s5
+    to: s6
+    description: 架构设计完成，进入详细设计
+    required_inputs:
+      - stage: s5
+        skill: S5-A01
+        artifact: "{PlanID}-S5-A01-001"
+        name: 架构愿景文档
+      - stage: s5
+        skill: S5-A02
+        artifact: "{PlanID}-S5-A02-001"
+        name: 架构视图文档
+      - stage: s5
+        skill: S5-A03
+        artifact: "{PlanID}-S5-A03-001"
+        name: 数据架构文档
+      - stage: s5
+        skill: S5-A04
+        artifact: "{PlanID}-S5-A04-001"
+        name: 接口架构文档
+      - stage: s5
+        skill: S5-A05
+        artifact: "{PlanID}-S5-A05-001"
+        name: 部署架构文档
+      - stage: s5
+        skill: S5-A06
+        artifact: "{PlanID}-S5-A06-001"
+        name: 架构验证报告
+
+# ============================================================
+# 轻量化模式定义
+# ============================================================
+
+lightweight_mode:
+  threshold: 90  # 信息完整度 ≥ 90 分触发
+  skip_stages: [s1]  # 跳过整个 S1 阶段
+  skip_skills: [S203, S406]  # 额外跳过 S203（隐性需求挖掘）、S406（原型设计）
+  description: 轻量化模式跳过 5 个 Skill，执行 21 个 Skill
+
+# ============================================================
+# 统计信息
+# ============================================================
+
+statistics:
+  total_skills: 27
+  workflow_skills: 26
+  change_management_skills: 1
+  stages:
+    - stage: s0
+      skill_count: 1
+    - stage: s1
+      skill_count: 2
+    - stage: s2
+      skill_count: 4
+    - stage: s3
+      skill_count: 4
+    - stage: s4
+      skill_count: 5
+    - stage: s5
+      skill_count: 6
+    - stage: s6
+      skill_count: 4
+    - stage: cm
+      skill_count: 1
