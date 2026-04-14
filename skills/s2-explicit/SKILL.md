@@ -163,7 +163,7 @@ flowchart TD
     Review --> ReviewResult{用户决策}
     ReviewResult -->|确认| Return[返回执行结果给用户]
     ReviewResult -->|小修改| Modify[直接修改产物]
-    ReviewResult -->|大修改| ReExecute[重新执行 S102]
+    ReviewResult -->|大修改| ReExecute[重新执行 S202]
     ReviewResult -->|新增想法| Update[更新产物]
     Modify --> Review
     Update --> Review
@@ -172,7 +172,7 @@ flowchart TD
 
 ### 3.2 流程说明
 
-S102 执行流程包含以下关键阶段：
+S202 执行流程包含以下关键阶段：
 
 1. **前置校验**：检查输入文件完整性（边界报告、原始需求、Todo-List）
 2. **需求提取**：依次提取功能需求、非功能需求、业务规则、数据需求、接口需求
@@ -186,7 +186,7 @@ S102 执行流程包含以下关键阶段：
 
 ### 3.3 Demo 示例
 
-S102 包含完整的输入示例、处理过程说明和输出示例。
+S202 包含完整的输入示例、处理过程说明和输出示例。
 
 **完整示例**请参考：[references/examples.md](references/examples.md)
 
@@ -247,7 +247,7 @@ S202 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC
 **一致性检查**：
 - [ ] 术语使用一致
 - [ ] 编号格式一致（FR001, NFR001 等）
-- [ ] 与 S101 边界定义保持一致
+- [ ] 与 S201 边界定义保持一致
 
 **可读性检查**：
 - [ ] 需求描述清晰、无歧义

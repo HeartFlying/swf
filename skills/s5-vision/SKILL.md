@@ -37,7 +37,7 @@ version: 3.2.0
 | **Next (Lightweight)** | S5-A02 |
 | **Lightweight Skip** | No |
 | **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A01-001.md |
+| **Outputs** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md |
 
 ***
 
@@ -112,7 +112,7 @@ Skill 完成后，系统会生成以下产物并保存到项目目录：
 
 | 产物名称 | 文件位置 | 格式 | 用途 | 用户可见性 |
 |---------|---------|------|------|-----------|
-| 架构愿景文档 | `artifacts/stages/s5/{PlanID}-S5-A01-001.md` | Markdown | 架构愿景完整文档 | 用户可查看 |
+| 架构愿景文档 | `artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md` | Markdown | 架构愿景完整文档 | 用户可查看 |
 | Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md` | Markdown | 任务状态更新 | 用户可查看 |
 
 **产物内容结构**：
@@ -219,15 +219,15 @@ S5-A01产物规范遵循 [artifact-specifications.md](../_shared/artifact-specif
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 架构愿景文档 | `{PlanID}-S5-A01-001` | `artifacts/stages/s5/{PlanID}-S5-A01-001.md` | 主产物，包含系统定位、架构目标、关键决策、架构原则、风险与假设 |
+| 架构愿景文档 | `{PlanID}-S5-A01-001` | `artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md` | 主产物，包含系统定位、架构目标、关键决策、架构原则、风险与假设 |
 
 ### 4.2 产物依赖关系
 
 ```mermaid
 graph LR
-    S1[S1阶段产物] --> A01[S5-A01 架构愿景]
-    S3[S3阶段产物] --> A01
-    S4[S4阶段产物] --> A01
+    S1[S1-S102 显性需求] --> A01[S5-A01 架构愿景]
+    S3[S3-S302 技术选型报告] --> A01
+    S4[S4-S403 核心需求报告] --> A01
     A01 --> A02[S5-A02 架构视图]
 ```
 

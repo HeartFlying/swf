@@ -41,7 +41,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-S301 负责从技术、需求、资源、外部、合规等 5 个维度全面识别和评估需求实现过程中的各类风险，为项目决策提供风险依据。具体包括：
+S304 负责从技术、需求、资源、外部、合规等 5 个维度全面识别和评估需求实现过程中的各类风险，为项目决策提供风险依据。具体包括：
 
 1. **风险识别**：从需求和市场分析中识别潜在风险点（技术/需求/资源/外部/合规）
 2. **风险评估**：评估每个风险的发生概率、影响程度、风险等级
@@ -89,13 +89,12 @@ S301 负责从技术、需求、资源、外部、合规等 5 个维度全面识
 
 | 执行模式 | 依赖产物 | 说明 |
 |----------|----------|------|
-| 常规模式 | S102 市场验证报告 | 市场验证报告、市场价值校验清单 |
-| 常规模式 | S101 竞品分析报告 | 竞品分析报告、竞品分析结果 |
-| 轻量化模式 | S204 需求验证报告 | 需求验证报告、需求清单 |
+| 所有模式 | S303 非功能需求定义报告 | 必需，包含性能、安全、可靠性等非功能需求 |
+| 所有模式 | S302 技术选型报告 | 可选，包含技术栈、框架选型等信息 |
 
 #### 输入示例
 
-**示例 1：完整输入（常规模式）**
+**示例 1：完整输入（有 S302 产物）**
 
 ```
 Plan 定义文件：artifacts/plans/P000001.md
@@ -110,12 +109,11 @@ Plan 定义文件：artifacts/plans/P000001.md
 要求 3 个月内完成 MVP，预算 10 万以内，使用 Flutter 开发。"
 
 前置 Skill 产物：
-- S102 市场验证报告：artifacts/stages/s1/P000001-S1-S102-001.md
-- S101 竞品分析报告：artifacts/stages/s1/P000001-S1-S101-001.md
-- S204 需求验证报告：artifacts/stages/s2/P000001-S2-S204-001.md
+- S303 非功能需求定义报告：artifacts/stages/s3/P000001-S3-S303-001.md
+- S302 技术选型报告：artifacts/stages/s3/P000001-S3-S302-001.md
 ```
 
-**示例 2：轻量化模式输入**
+**示例 2：仅依赖 S303（无 S302 产物）**
 
 ```
 Plan 定义文件：artifacts/plans/P000002.md
@@ -126,21 +124,21 @@ Plan 定义文件：artifacts/plans/P000002.md
 用户原始需求："我想做一个时间管理 APP"
 
 前置 Skill 产物：
-- S204 需求验证报告：artifacts/stages/s2/P000002-S2-S204-001.md
+- S303 非功能需求定义报告：artifacts/stages/s3/P000002-S3-S303-001.md
 ```
 
 ### 2.4 输出规范 (Output Specifications)
 
 #### 用户会得到什么
 
-S301 完成后，系统会生成以下产物并保存到项目目录：
+S304 完成后，系统会生成以下产物并保存到项目目录：
 
 **产物清单**：
 
 | 产物名称 | 文件位置 | 格式 | 用途 | 用户可见性 |
 |---------|---------|------|------|-----------|
-| 风险识别报告 | `artifacts/stages/s3/{PlanID}-S3-S301-001.md` | Markdown | 5 大维度风险识别详情 | 用户可查看 |
-| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md` | Markdown | 更新 S301 任务状态 | 用户可查看 |
+| 风险识别报告 | `artifacts/stages/s3/{PlanID}-S3-S304-001.md` | Markdown | 5 大维度风险识别详情 | 用户可查看 |
+| Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md` | Markdown | 更新 S304 任务状态 | 用户可查看 |
 
 **重要说明**：
 - 所有产物均为 Markdown 格式
@@ -198,17 +196,17 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S301产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
+S304产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
-### 4.1 S301特定产物清单
+### 4.1 S304特定产物清单
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 风险识别报告 | `{PlanID}-S3-S301-001` | `artifacts/stages/s3/{PlanID}-S3-S301-001.md` | 主产物，包含5大维度风险识别、评估、应对策略 |
+| 风险识别报告 | `{PlanID}-S3-S304-001` | `artifacts/stages/s3/{PlanID}-S3-S304-001.md` | 主产物，包含5大维度风险识别、评估、应对策略 |
 
 ### 4.2 模板引用
 
-**模板文件**：`skills/s3-risk/template.md`
+**模板文件**：使用 [template.md](template.md)
 
 **引用方式**：直接引用模板结构，填充实际数据
 
@@ -218,9 +216,9 @@ S301产物规范遵循 [artifact-specifications.md](../_shared/artifact-specific
 
 ### 5.1 质量评估框架
 
-S301遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S304遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
-**S301特定权重分配**：
+**S304特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
 |------|------|----------|
 | **完整性** | 30% | ≥ 90% |
@@ -289,7 +287,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行S301]
+    List --> ReExecute[自动重新执行S304]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]

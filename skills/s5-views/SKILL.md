@@ -28,6 +28,7 @@ version: 3.2.0
 |------|------|
 | **Skill ID** | S5-A02 |
 | **Stage** | S5 |
+| **Execution Mode** | 自动分析 + 用户交互 |
 | **Directory** | skills/s5-views |
 | **Depends On** | S5-A01 |
 | **Next (Normal)** | S5-A03 |
@@ -206,7 +207,7 @@ S5-A02 产物规范遵循 [artifact-specifications.md](../_shared/artifact-speci
 
 ### 4.3 模板引用
 
-**模板文件**：`skills/s5-architecture-generic/skill-a02-views/template.md`
+**模板文件**：`skills/s5-views/template.md`
 
 **引用方式**：直接引用模板结构，填充实际数据
 

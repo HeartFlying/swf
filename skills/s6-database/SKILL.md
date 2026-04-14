@@ -249,7 +249,7 @@ S6-A02 产物规范遵循 [../_shared/artifact-specifications.md](../_shared/art
 
 ### 4.3 模板引用
 
-**模板文件**：`skills/s6-detailed-design-generic/skill-a02-database/template.md`
+**模板文件**：`skills/s6-database/template.md`
 
 **引用方式**：直接引用模板结构，填充实际数据
 

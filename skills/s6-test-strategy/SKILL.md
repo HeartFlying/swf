@@ -34,7 +34,7 @@ version: 3.2.0
 | **Next (Lightweight)** | None (Final) |
 | **Lightweight Skip** | No |
 | **Required Inputs** | artifacts/stages/s6/{PlanID}-S6-A03-001.md |
-| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A04-001.md, artifacts/stages/s6/{PlanID}-S6-summary.md |
+| **Outputs** | artifacts/stages/s6/{PlanID}/{PlanID}-S6-A04-001.md |
 
 ***
 

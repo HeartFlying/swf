@@ -34,7 +34,7 @@ version: 3.2.0
 | **Next (Lightweight)** | S6-A01 |
 | **Lightweight Skip** | No |
 | **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A06-001.md, artifacts/stages/s5/{PlanID}-S5-summary.md |
+| **Outputs** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A06-001.md, artifacts/stages/s5/{PlanID}/{PlanID}-S5-report.md |
 
 ***
 

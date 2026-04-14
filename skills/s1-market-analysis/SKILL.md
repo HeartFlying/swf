@@ -205,7 +205,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行S202]
+    List --> ReExecute[自动重新执行S102]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]

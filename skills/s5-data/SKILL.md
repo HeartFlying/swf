@@ -209,7 +209,7 @@ graph LR
 
 ### 4.3 模板引用
 
-**模板文件**：`skills/s5-architecture-generic/skill-a03-data/template.md`
+**模板文件**：`skills/s5-data/template.md`
 
 **引用方式**：直接引用模板结构，填充实际数据
 

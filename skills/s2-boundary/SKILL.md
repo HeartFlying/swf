@@ -28,7 +28,7 @@ version: 3.2.0
 | **Skill ID** | S201 |
 | **Stage** | S2 |
 | **Directory** | skills/s2-boundary |
-| **Depends On** | S001 |
+| **Depends On** | S102 or S001 |
 | **Next (Normal)** | S202 |
 | **Next (Lightweight)** | S202 |
 | **Lightweight Skip** | No |

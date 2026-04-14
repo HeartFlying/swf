@@ -15,7 +15,7 @@ version: 3.2.0
 | **Skill 英文名称** | Technology Selection       |
 | **所属阶段**       | S3 - 技术规划                  |
 | **执行顺序**       | S3 阶段第 2 个执行              |
-| **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
+| **执行模式**       | 常规模式 / 轻量化模式均执行 |
 | **依赖 Skill**   | S301（技术可行性评估）          |
 | **后置 Skill**   | S303（非功能需求定义）          |
 | **版本**          | v3.2.0                     |
@@ -41,7 +41,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-S303 负责基于技术可行性评估结果，进行技术方案对比、技术栈选型和决策建议，包括：
+S302 负责基于技术可行性评估结果，进行技术方案对比、技术栈选型和决策建议，包括：
 
 1. **技术需求分析**：从技术可行性评估报告中提取需要选型的技术点
 2. **候选方案收集**：为每个技术点收集多个可选技术方案
@@ -60,8 +60,7 @@ S303 负责基于技术可行性评估结果，进行技术方案对比、技术
 
 **前置产物**：
 - Plan 定义文件（必需）
-- 技术可行性评估报告（S302 产物，必需）
-- 需求风险识别报告（S301 产物，可选）
+- 技术可行性评估报告（S301 产物，必需）
 
 **输入数据**：
 
@@ -69,10 +68,8 @@ S303 负责基于技术可行性评估结果，进行技术方案对比、技术
 |--------|------|--------|
 | Plan ID | 当前计划的唯一标识 | P000001 |
 | Plan 定义文件 | Plan 定义文档路径 | artifacts/plans/{PlanID}.md |
-| 可行性评估产物 ID | S302 产物标识 | P000001-S3-S302-001 |
-| 可行性评估报告路径 | S302 产物文件路径 | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
-| 风险识别产物 ID | S301 产物标识（可选） | P000001-S3-S301-001 |
-| 风险识别报告路径 | S301 产物文件路径（可选） | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
+| 可行性评估产物 ID | S301 产物标识 | P000001-S3-S301-001 |
+| 可行性评估报告路径 | S301 产物文件路径 | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
 
 #### 输入示例
 
@@ -80,34 +77,26 @@ S303 负责基于技术可行性评估结果，进行技术方案对比、技术
 
 ```
 Plan ID: P000001
-可行性评估报告: artifacts/stages/s3/P000001-S3-S302-001.md
-风险识别报告: artifacts/stages/s3/P000001-S3-S301-001.md
+可行性评估报告: artifacts/stages/s3/P000001-S3-S301-001.md
 ```
 
 ### 2.3 输出规范 (Output Specifications)
 
 #### 用户会得到什么
 
-S303 完成后，系统会生成以下产物并保存到项目目录：
+S302 完成后，系统会生成以下产物并保存到项目目录：
 
 **产物清单**：
 
 | 产物名称      | 文件位置                                              | 格式       | 用途                 | 用户可见性   |
 | --------- | ------------------------------------------------- | -------- | ------------------ | ------- |
-| 技术选型报告 | `artifacts/stages/s3/{PlanID}-S3-S303-001.md`      | Markdown | 技术选型完整方案       | 用户可查看 |
+| 技术选型报告 | `artifacts/stages/s3/{PlanID}-S3-S302-001.md`      | Markdown | 技术选型完整方案       | 用户可查看 |
 | Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md`           | Markdown | 任务跟踪 + 状态管理    | 用户可查看 |
 
 **输出数据**：
 
 | 数据项 | 说明 | 示例值 |
 |--------|------|--------|
-| 执行状态 | 执行成功或失败 | success / failed |
-| Plan ID | 当前计划的唯一标识 | P000001 |
-| 产物 ID | 技术选型报告产物标识 | P000001-S3-S303-001 |
-| 产物类型 | 产物类型标识 | tech_selection |
-| 产物路径 | 技术选型报告文件路径 | artifacts/stages/s3/{PlanID}-S3-S303-001.md |
-| 下一阶段 | 下一阶段标识 | S4 |
-| 下一 Skill | 下一 Skill 标识 | S401 |
 | 选型总数 | 技术选型项目总数 | 8 |
 | 总实施周期 | 总体实施周期（人天） | 120 PD |
 | 总人力成本 | 总体人力成本 | 150,000 元 |
@@ -159,13 +148,13 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S303产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
+S302产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
-### 4.1 S303特定产物清单
+### 4.1 S302特定产物清单
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 技术选型报告 | `{PlanID}-S3-S303-001` | `artifacts/stages/s3/{PlanID}-S3-S303-001.md` | 主产物，包含技术选型方案、成本预算、实施周期 |
+| 技术选型报告 | `{PlanID}-S3-S302-001` | `artifacts/stages/s3/{PlanID}-S3-S302-001.md` | 主产物，包含技术选型方案、成本预算、实施周期 |
 
 ### 4.2 产物结构
 
@@ -191,9 +180,9 @@ S303产物规范遵循 [artifact-specifications.md](../_shared/artifact-specific
 
 ### 5.1 质量评估框架
 
-S303遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S302遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
-**S303特定权重分配**：
+**S302特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
 |------|------|----------|
 | **完整性** | 30% | >= 90% |
@@ -263,7 +252,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行S303]
+    List --> ReExecute[自动重新执行S302]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]

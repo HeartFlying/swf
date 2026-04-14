@@ -1,4 +1,4 @@
-***
+---
 
 name: coordinator-requirements
 description: |
@@ -40,7 +40,7 @@ description: |
 model: sonnet
 color: blue
 tools: \["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
----------------------------------------------------------
+---
 
 # SWF 需求分析协调器
 
@@ -72,7 +72,7 @@ tools: \["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 - 快速输出核心需求
 - 适用于信息完整度 ≥ 90 分的需求
 
-## 阶段定义（重构后）
+## 阶段定义
 
 | 阶段 | 编号 | 名称      | Skill 列表                     | 轻量化跳过 |
 | -- | -- | ------- | ---------------------------- | ----- |

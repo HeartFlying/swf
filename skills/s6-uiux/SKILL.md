@@ -34,7 +34,7 @@ version: 3.2.0
 | **Next (Lightweight)** | S6-A04 |
 | **Lightweight Skip** | No |
 | **Required Inputs** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
-| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A03-001.md |
+| **Outputs** | artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-001.md, artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-002.md |
 
 ***
 
@@ -216,7 +216,7 @@ graph LR
 
 ### 4.3 模板引用
 
-**模板文件**：`skills/s6-detailed-design-generic/skill-a03-uiux/template.md`
+**模板文件**：`skills/s6-uiux/template.md`
 
 **引用方式**：直接引用模板结构，填充实际数据
 
