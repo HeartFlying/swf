@@ -288,14 +288,14 @@ def identify_cascade_impacts(initial_elements, depth=0, max_depth=5):
 
 **场景 1：仅 S4 受影响**
 ```
-重执行路径: S401 → S402 → S403 → (S404)
+重执行路径: S401 → S402 → S403 → S405 → (S406)
 保留产物: S0-S3, S5-S6（待S4完成后更新）
 ```
 
 **场景 2：S4 + S5 受影响**
 ```
 重执行路径:
-  S401 → S402 → S403 → (S404) →
+  S401 → S402 → S403 → S405 → (S406) →
   S5-A01 → S5-A02 → S5-A03 → S5-A04 → S5-A05 → S5-A06
 保留产物: S0-S3, S6（待S5完成后更新）
 ```
@@ -303,9 +303,9 @@ def identify_cascade_impacts(initial_elements, depth=0, max_depth=5):
 **场景 3：S4 + S5 + S6 受影响**
 ```
 重执行路径:
-  S401 → S402 → S403 → (S404) →
+  S401 → S402 → S403 → S405 → (S406) →
   S5-A01 → ... → S5-A06 →
-  S6-A01 → S6-A02 → S6-A03
+  S6-A01 → S6-A02 → S6-A03 → S6-A04
 保留产物: S0-S3
 ```
 

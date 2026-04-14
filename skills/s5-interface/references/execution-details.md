@@ -379,7 +379,7 @@
 
 **Todo-List 更新规则**：
 
-详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+详见 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
 
 ---
 

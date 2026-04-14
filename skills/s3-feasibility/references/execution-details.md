@@ -56,7 +56,7 @@
 - 性能/安全要求不清晰
 - 需要确认技术约束条件
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互流程"章节
 
 **使用模板**：
 - **需求澄清**：使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md)
@@ -286,7 +286,7 @@
 
 **目标**：用户对技术可行性评估结果进行评审和确认
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审流程"章节
 
 **评审展示内容**：
 - 技术可行性评估报告核心内容（可行性结论、技术点统计、关键风险提示）
@@ -297,7 +297,7 @@
 
 **目标**：更新Todo-List，标记 S302 完成状态
 
-**更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节
 
 **S302特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中

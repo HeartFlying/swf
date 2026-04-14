@@ -89,9 +89,9 @@ S301 负责从技术、需求、资源、外部、合规等 5 个维度全面识
 
 | 执行模式 | 依赖产物 | 说明 |
 |----------|----------|------|
-| 常规模式 | S202 市场痛点验证报告 | 市场痛点验证报告、市场价值校验清单 |
-| 常规模式 | S201 竞品分析报告 | 竞品分析报告、竞品分析结果 |
-| 轻量化模式 | S104 需求验证报告 | 需求验证报告、需求清单 |
+| 常规模式 | S102 市场验证报告 | 市场验证报告、市场价值校验清单 |
+| 常规模式 | S101 竞品分析报告 | 竞品分析报告、竞品分析结果 |
+| 轻量化模式 | S204 需求验证报告 | 需求验证报告、需求清单 |
 
 #### 输入示例
 
@@ -110,9 +110,9 @@ Plan 定义文件：artifacts/plans/P000001.md
 要求 3 个月内完成 MVP，预算 10 万以内，使用 Flutter 开发。"
 
 前置 Skill 产物：
-- S202 市场痛点验证报告：artifacts/stages/s2/P000001-S2-S202-001.md
-- S201 竞品分析报告：artifacts/stages/s2/P000001-S2-S201-001.md
-- S104 需求验证报告：artifacts/stages/s1/P000001-S1-S104-001.md
+- S102 市场验证报告：artifacts/stages/s1/P000001-S1-S102-001.md
+- S101 竞品分析报告：artifacts/stages/s1/P000001-S1-S101-001.md
+- S204 需求验证报告：artifacts/stages/s2/P000001-S2-S204-001.md
 ```
 
 **示例 2：轻量化模式输入**
@@ -126,7 +126,7 @@ Plan 定义文件：artifacts/plans/P000002.md
 用户原始需求："我想做一个时间管理 APP"
 
 前置 Skill 产物：
-- S104 需求验证报告：artifacts/stages/s1/P000002-S1-S104-001.md
+- S204 需求验证报告：artifacts/stages/s2/P000002-S2-S204-001.md
 ```
 
 ### 2.4 输出规范 (Output Specifications)
@@ -198,7 +198,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S301产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S301产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S301特定产物清单
 
@@ -218,7 +218,7 @@ S301产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S301遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S301遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S301特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -345,7 +345,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

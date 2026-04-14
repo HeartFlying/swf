@@ -61,8 +61,8 @@ S5-A03 负责设计系统的数据架构，确保数据的完整性、一致性�
 | 阶段 | 产物名称 | 产物 ID 示例 | 用途 |
 |------|---------|-------------|------|
 | S5 | 架构视图设计文档 | `{PlanID}-S5-A02-001` | 获取逻辑视图中的领域模型 |
-| S1 | 数据需求清单 | `{PlanID}-S1-S102-001` | 获取数据实体、数据关系、数据量 |
-| S1 | 非功能需求报告 | `{PlanID}-S1-S104-001` | 获取性能、可用性、一致性要求 |
+| S2 | 数据需求清单 | `{PlanID}-S2-S202-001` | 获取数据实体、数据关系、数据量 |
+| S3 | 非功能需求报告 | `{PlanID}-S3-S303-001` | 获取性能、可用性、一致性要求 |
 | S5 | 架构愿景文档 | `{PlanID}-S5-A01-001` | 获取系统特征、技术约束 |
 
 **输入格式**：
@@ -87,8 +87,8 @@ S5-A03 负责设计系统的数据架构，确保数据的完整性、一致性�
 PlanID: P000001
 前置产物：
 - P000001-S5-A02-001 (架构视图设计文档)
-- P000001-S1-S102-001 (显性需求提取清单 - 数据需求部分)
-- P000001-S1-S104-001 (需求验证报告 - 非功能需求部分)
+- P000001-S2-S202-001 (显性需求提取清单 - 数据需求部分)
+- P000001-S3-S303-001 (非功能需求报告)
 - P000001-S5-A01-001 (架构愿景文档)
 ```
 
@@ -188,7 +188,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S5-A03 产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S5-A03 产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S5-A03 特定产物清单
 
@@ -201,8 +201,8 @@ S5-A03 产物规范遵循 [references/artifact-specifications.md](references/art
 ```mermaid
 graph LR
     A[S5-A02 架构视图设计] --> B[S5-A03 数据架构设计]
-    C[S1-S102 显性需求] --> B
-    D[S1-S104 需求验证] --> B
+    C[S2-S202 显性需求] --> B
+    D[S3-S303 非功能需求] --> B
     E[S5-A01 架构愿景] --> B
     B --> F[S5-A04 接口架构设计]
 ```
@@ -219,7 +219,7 @@ graph LR
 
 ### 5.1 质量评估框架
 
-S5-A03 遵循 [references/quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S5-A03 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S5-A03 特定权重分配**：
 
@@ -381,7 +381,7 @@ flowchart TD
 | 用户拒绝 | 使用默认值继续 |
 | 选型争议 | 提供选项让用户选择 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

@@ -119,7 +119,7 @@ flowchart TD
     Review --> ReviewResult{用户决策}
     ReviewResult -->|确认 | Return[返回执行结果]
     ReviewResult -->|小修改 | Modify[直接修改产物]
-    ReviewResult -->|大修改 | ReExecute[重新执行 S103]
+    ReviewResult -->|大修改 | ReExecute[重新执行 S203]
     ReviewResult -->|新增想法 | Update[更新产物]
     Modify --> Review
     Update --> Review
@@ -128,7 +128,7 @@ flowchart TD
 
 ### 3.2 执行步骤说明
 
-S103 执行流程包含以下关键步骤：
+S203 执行流程包含以下关键步骤：
 
 | 步骤 | 名称 | 说明 |
 |-----|------|------|
@@ -151,7 +151,7 @@ S103 执行流程包含以下关键步骤：
 
 ### 3.3 Demo 示例
 
-S103 的完整输入/处理/输出示例请参考：[references/examples.md](references/examples.md)
+S203 的完整输入/处理/输出示例请参考：[references/examples.md](references/examples.md)
 
 ***
 
@@ -165,9 +165,9 @@ S103 的完整输入/处理/输出示例请参考：[references/examples.md](ref
 
 ### 4.2 通用规范
 
-- **产物 ID 命名规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ***
@@ -176,7 +176,7 @@ S103 的完整输入/处理/输出示例请参考：[references/examples.md](ref
 
 ### 5.1 质量评估框架
 
-S203 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S203 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度       | 权重   | 评估标准           | 验收阈值   |
 | -------- | ---- | -------------- | ------ |
@@ -299,4 +299,4 @@ flowchart TD
 | 推导失败 | 降低置信度标记 |
 | 需求冲突 | 标记冲突点，进入评审 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)

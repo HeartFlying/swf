@@ -41,7 +41,7 @@ version: 3.2.0
 
 ### 2.1 核心职责
 
-S404 负责为核心功能创建可视化原型，通过快速原型设计帮助用户和开发团队更直观地理解需求，发现需求问题：
+S406 负责为核心功能创建可视化原型，通过快速原型设计帮助用户和开发团队更直观地理解需求，发现需求问题：
 
 1. **原型范围选择**：根据需求优先级和复杂度，选择需要原型设计的核心功能
 2. **保真度确定**：根据项目需求和时间约束，确定原型保真度等级（低保真/中保真/高保真）
@@ -84,7 +84,7 @@ P0 级需求:
 
 | 产物名称      | 文件位置                                              | 格式       | 用途                 |
 | --------- | ------------------------------------------------- | -------- | ------------------ |
-| 原型设计报告 | `artifacts/stages/s4/{PlanID}-S4-S404-001.md`      | Markdown | 完整的原型设计文档 |
+| 原型设计报告 | `artifacts/stages/s4/{PlanID}-S4-S406-001.md`      | Markdown | 完整的原型设计文档 |
 | 线框图描述 | 内嵌于原型设计报告中 | Markdown/文本 | 页面布局描述 |
 | 交互流程图 | 内嵌于原型设计报告中 | Mermaid | 页面跳转关系 |
 | Todo-List 更新 | `artifacts/plans/{PlanID}/todo-list.md` | Markdown | 任务状态更新 |
@@ -136,13 +136,13 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S404产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S406产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
-### 4.1 S404特定产物清单
+### 4.1 S406特定产物清单
 
 | 产物名称 | 产物ID | 存储路径 | 说明 |
 |---------|--------|---------|------|
-| 原型设计报告 | `{PlanID}-S4-S404-001` | `artifacts/stages/s4/{PlanID}-S4-S404-001.md` | 主产物，包含页面线框图、交互流程、需求关联矩阵 |
+| 原型设计报告 | `{PlanID}-S4-S406-001` | `artifacts/stages/s4/{PlanID}-S4-S406-001.md` | 主产物，包含页面线框图、交互流程、需求关联矩阵 |
 
 ### 4.2 产物内容结构
 
@@ -166,9 +166,9 @@ S404产物规范遵循 [references/artifact-specifications.md](references/artifa
 
 ### 5.1 质量评估框架
 
-S404遵循 [references/quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S406遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
-**S404特定权重分配**：
+**S406特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
 |------|------|----------|
 | **完整性** | 30% | ≥ 90% |
@@ -238,7 +238,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行S404]
+    List --> ReExecute[自动重新执行S406]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]
@@ -288,7 +288,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ***
 
@@ -317,7 +317,7 @@ flowchart TD
 | 版本 | 日期 | 更新内容 |
 |------|------|----------|
 | v1.0 | 2026-03-26 | 初始版本，定义 Skill15 完整规范 |
-| v3.0 | 2026-03-27 | 重构为 6 段式结构，更新 Skill 编号为 S404 |
+| v3.0 | 2026-03-27 | 重构为 6 段式结构，更新 Skill 编号为 S406 |
 | v3.1 | 2026-03-27 | Skill瘦身优化，引用通用模板 |
 | v3.2.0 | 2026-03-28 | 实施渐进式披露结构，添加 YAML Frontmatter |
 

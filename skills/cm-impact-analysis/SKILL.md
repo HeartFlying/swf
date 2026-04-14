@@ -150,7 +150,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-遵循标准 [产物规范](references/artifact-specifications.md)。
+遵循标准 [产物规范](../_shared/artifact-specifications.md)。
 
 **本 Skill 产物**：
 
@@ -276,7 +276,7 @@ CM-001 遵循 ISO/IEC 25010 质量评估框架：
 | 校验失败 | 保守策略，扩大重执行范围 |
 | 用户拒绝 | 记录变更取消 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ***
 

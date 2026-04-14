@@ -214,7 +214,7 @@ flowchart TD
 | 大修改 | 执行中 | 需重做 | 可恢复=true |
 | 新增想法 | 执行中 | 需修改 | 可恢复=true |
 
-**详细规则**：详见 [execution-flow-standard.md](references/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
 
 ### 3.4 Demo 示例
 
@@ -222,7 +222,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S6-A02 产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S6-A02 产物规范遵循 [../_shared/artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S6-A02 特定产物清单
 
@@ -257,7 +257,7 @@ S6-A02 产物规范遵循 [references/artifact-specifications.md](references/art
 
 ### 5.1 质量评估框架
 
-S6-A02 遵循 [references/quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架。
+S6-A02 遵循 [../_shared/quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架。
 
 **S6-A02 特定权重分配**：
 
@@ -401,10 +401,10 @@ flowchart TD
 4. **索引策略权衡**：读性能 vs 写性能
 
 **使用模板**：
-- 使用 [user-interaction/clarification-template.md](references/user-interaction/clarification-template.md) 进行信息澄清
-- 使用 [user-interaction/option-selection-template.md](references/user-interaction/option-selection-template.md) 进行选项选择
+- 使用 [user-interaction/clarification-template.md](../_shared/user-interaction/clarification-template.md) 进行信息澄清
+- 使用 [user-interaction/option-selection-template.md](../_shared/user-interaction/option-selection-template.md) 进行选项选择
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

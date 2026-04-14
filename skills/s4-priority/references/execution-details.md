@@ -56,7 +56,7 @@
 3. 检测到矛盾或冲突信息（如优先级矛盾、依赖关系冲突）
 4. 存在多个可行评估方案需要用户决策
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 **使用模板**：
 - [user-interaction/clarification-template.md](user-interaction/clarification-template.md)
@@ -391,7 +391,7 @@
 
 **目标**：更新 Todo-List 任务状态为"已完成"，评审状态为"待评审"
 
-**更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S402 特定更新内容**：
 - 任务状态：执行中 → 已完成
@@ -404,7 +404,7 @@
 
 **目标**：触发用户评审流程，等待用户确认
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **用户决策处理**：
 
@@ -421,7 +421,7 @@
 
 **目标**：更新 Todo-List 任务状态为"已评审"，记录评审结果
 
-**更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S402 特定更新内容**：
 - 任务状态：已完成 → 已评审

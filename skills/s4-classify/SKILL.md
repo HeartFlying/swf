@@ -62,15 +62,16 @@ S401 负责对所有收集到的需求进行系统化分类梳理，建立清晰
 
 | 阶段 | 产物名称 | 产物 ID 示例 | 用途 |
 |------|---------|-------------|------|
-| S1 | 需求边界界定报告 | `{PlanID}-S1-S101-001` | 获取需求范围边界 |
-| S1 | 显性需求提取清单 | `{PlanID}-S1-S102-001` | 获取显性需求列表 |
-| S1 | 隐性需求挖掘报告（normal 模式） | `{PlanID}-S1-S103-001` | 获取隐性需求列表 |
-| S1 | 需求验证报告 | `{PlanID}-S1-S104-001` | 获取已验证需求 |
-| S2 | 竞品分析报告（normal 模式） | `{PlanID}-S2-S201-001` | 获取竞品功能对比 |
-| S2 | 市场痛点验证报告（normal 模式） | `{PlanID}-S2-S202-001` | 获取市场相关需求 |
-| S3 | 需求风险识别报告 | `{PlanID}-S3-S301-001` | 获取风险相关需求 |
-| S3 | 技术可行性评估报告 | `{PlanID}-S3-S302-001` | 获取技术约束需求 |
-| S3 | 技术选型报告（normal 模式） | `{PlanID}-S3-S303-001` | 获取技术栈相关需求 |
+| S1 | 竞品分析报告（normal 模式） | `{PlanID}-S1-S101-001` | 获取竞品功能对比 |
+| S1 | 市场验证报告（normal 模式） | `{PlanID}-S1-S102-001` | 获取市场相关需求 |
+| S2 | 需求边界界定报告 | `{PlanID}-S2-S201-001` | 获取需求范围边界 |
+| S2 | 显性需求提取清单 | `{PlanID}-S2-S202-001` | 获取显性需求列表 |
+| S2 | 隐性需求挖掘报告（normal 模式） | `{PlanID}-S2-S203-001` | 获取隐性需求列表 |
+| S2 | 需求验证报告 | `{PlanID}-S2-S204-001` | 获取已验证需求 |
+| S3 | 技术可行性评估报告 | `{PlanID}-S3-S301-001` | 获取技术约束需求 |
+| S3 | 技术选型报告 | `{PlanID}-S3-S302-001` | 获取技术栈相关需求 |
+| S3 | 非功能需求报告 | `{PlanID}-S3-S303-001` | 获取非功能需求 |
+| S3 | 需求风险识别报告 | `{PlanID}-S3-S304-001` | 获取风险相关需求 |
 
 **输入格式**：
 - Markdown 报告文件
@@ -89,11 +90,11 @@ S401 负责对所有收集到的需求进行系统化分类梳理，建立清晰
 ```
 PlanID: P000001
 前置产物：
-- P000001-S1-S101-001 (需求边界界定报告)
-- P000001-S1-S102-001 (显性需求提取清单)
-- P000001-S1-S104-001 (需求验证报告)
-- P000001-S3-S301-001 (需求风险识别报告)
-- P000001-S3-S302-001 (技术可行性评估报告)
+- P000001-S2-S201-001 (需求边界界定报告)
+- P000001-S2-S202-001 (显性需求提取清单)
+- P000001-S2-S204-001 (需求验证报告)
+- P000001-S3-S301-001 (技术可行性评估报告)
+- P000001-S3-S304-001 (需求风险识别报告)
 ```
 
 ### 2.3 输出规范 (Output Specifications)
@@ -198,7 +199,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S401产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S401产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S401特定产物清单
 
@@ -218,7 +219,7 @@ S401产物规范遵循 [references/artifact-specifications.md](references/artifa
 
 ### 5.1 质量评估框架
 
-S401遵循 [references/quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S401遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S401特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -339,7 +340,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

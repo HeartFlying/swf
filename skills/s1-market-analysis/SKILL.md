@@ -131,7 +131,7 @@ Demo 示例请参阅 [references/examples.md](references/examples.md)
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S102产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S102产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S102特定产物清单
 
@@ -145,7 +145,7 @@ S102产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S102遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S102遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S102特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -263,4 +263,4 @@ flowchart TD
 2. 重试失败必须标记风险，不能阻塞流程
 3. 用户评审不通过时，优先采用用户意见
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)

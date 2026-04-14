@@ -78,7 +78,7 @@ skills:
       lightweight: [S201]
     lightweight_skip: false
     outputs:
-      - id: "{PlanID}-S0-S001-001"
+      - id: "{PlanID}"
         path: "artifacts/plans/{PlanID}.md"
         name: Plan 定义文件
       - id: "{PlanID}-S0-S001-002"

@@ -213,7 +213,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S5-A01产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S5-A01产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S5-A01特定产物清单
 
@@ -241,7 +241,7 @@ graph LR
 
 ### 5.1 质量评估框架
 
-S5-A01遵循 [references/quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S5-A01遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S5-A01特定权重分配**：
 
@@ -372,7 +372,7 @@ flowchart TD
 
 ### 6.4 错误代码参考
 
-详细错误代码参见 [references/error-code-standard.md](references/error-code-standard.md)
+详细错误代码参见 [error-code-standard.md](../_shared/error-code-standard.md)
 
 **S5-A01 常用错误代码**：
 
@@ -384,7 +384,7 @@ flowchart TD
 | E201 | 产物文件不存在 | 架构愿景生成失败 | 重新生成 |
 | E301 | 评审未通过 | 用户提出修改意见 | 根据意见修改 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

@@ -279,7 +279,7 @@
 | 模块边界争议 | 功能耦合度高 | 订单与库存模块合并/分离 |
 | 技术决策 | 影响架构风格 | 同步 vs 异步通信 |
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 **使用模板**：
 - 使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md) 进行信息澄清
@@ -344,7 +344,7 @@ B. DDD 四层架构
 
 **目标**：更新 Todo-List，标记 S5-A02 完成，准备用户评审
 
-**Todo-List 更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**Todo-List 更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S5-A02 特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -354,7 +354,7 @@ B. DDD 四层架构
 
 **用户评审**：
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **评审展示内容**：
 - 视图选择概览

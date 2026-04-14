@@ -161,7 +161,7 @@ flowchart TD
 | Skill 执行完成 | 步骤 11 完成后 | A05 任务状态：执行中 → 已完成，评审状态：待评审 |
 | 用户评审后 | 步骤 13 完成后 | 根据评审结果更新状态 |
 
-**详细规则**：详见 [references/execution-flow-standard.md](references/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
 
 ### 3.4 Demo 示例
 
@@ -188,16 +188,16 @@ flowchart LR
 
 ### 4.3 通用规范
 
-- **产物 ID 命名规则**：详见 [references/artifact-specifications.md](references/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [references/artifact-specifications.md](references/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [references/artifact-specifications.md](references/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ## Section 5: 质量标准 (Quality Standards)
 
 ### 5.1 质量评估框架
 
-S5-A05 遵循 [references/quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S5-A05 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度 | 权重 | 评估标准 | 验收阈值 |
 |------|------|----------|----------|
@@ -320,9 +320,9 @@ flowchart TD
 
 当需要用户确认或决策时，使用标准化交互模板：
 
-- **需求澄清**：使用 [references/user-interaction/clarification-template.md](references/user-interaction/clarification-template.md)
-- **信息收集**：使用 [references/user-interaction/information-collection-template.md](references/user-interaction/information-collection-template.md)
-- **方案选择**：使用 [references/user-interaction/option-selection-template.md](references/user-interaction/option-selection-template.md)
+- **需求澄清**：使用 [user-interaction/clarification-template.md](../_shared/user-interaction/clarification-template.md)
+- **信息收集**：使用 [user-interaction/information-collection-template.md](../_shared/user-interaction/information-collection-template.md)
+- **方案选择**：使用 [user-interaction/option-selection-template.md](../_shared/user-interaction/option-selection-template.md)
 
 ### 6.3 恢复策略
 
@@ -336,4 +336,4 @@ flowchart TD
 
 ### 6.4 错误处理流程
 
-详细错误处理流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md) 第 5 章。
+详细错误处理流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 第 5 章。

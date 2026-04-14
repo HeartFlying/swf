@@ -49,7 +49,7 @@
 
 **交互流程**：
 
-使用 [execution-flow-standard.md](execution-flow-standard.md) 中的标准用户交互流程：
+使用 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的标准用户交互流程：
 
 1. 识别需要确认的决策点
 2. 生成确认问题（使用标准化问题模板）
@@ -398,7 +398,7 @@
 
 **Todo-List 更新规则**：
 
-详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+详见 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
 
 ---
 

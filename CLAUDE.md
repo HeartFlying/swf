@@ -214,17 +214,17 @@ skills/s{stage}-{name}/
 ├── SKILL.md                    # Main skill file (~300 lines)
 │   └── YAML frontmatter        # name, description, version
 ├── template.md                 # Output template
-└── references/                 # Detailed content (loaded on demand)
+└── references/                 # Skill-specific content only
     ├── execution-details.md    # Detailed step descriptions
     ├── examples.md             # Demo examples
-    ├── quality-standard.md     # ISO/IEC 25010 quality standard (copied from templates/)
-    ├── error-code-standard.md  # Unified error code standard (copied from templates/)
-    ├── execution-flow-standard.md  # Execution flow standard (copied from templates/)
-    ├── artifact-specifications.md  # Artifact specifications (copied from templates/)
-    └── user-interaction/       # User interaction templates (copied from templates/)
-        ├── clarification-template.md
-        ├── information-collection-template.md
-        └── option-selection-template.md
+    └── appendix.md             # Skill-specific appendix (optional)
+
+Shared standards are referenced from `skills/_shared/`:
+- quality-standard.md           # ISO/IEC 25010 quality standard
+- error-code-standard.md        # Unified error code standard (E001-E999)
+- execution-flow-standard.md    # Execution flow standard
+- artifact-specifications.md    # Artifact specifications
+- user-interaction/            # User interaction templates
 ```
 
 ### YAML Frontmatter
@@ -278,18 +278,18 @@ version: 3.2.0
 
 ### User Interaction Templates
 
-All Skills use standardized interaction templates (now copied to each Skill's `references/user-interaction/` directory):
-- **Clarification**: `references/user-interaction/clarification-template.md`
-- **Information Collection**: `references/user-interaction/information-collection-template.md`
-- **Option Selection**: `references/user-interaction/option-selection-template.md`
+All Skills use standardized interaction templates from `skills/_shared/user-interaction/`:
+- **Clarification**: `skills/_shared/user-interaction/clarification-template.md`
+- **Information Collection**: `skills/_shared/user-interaction/information-collection-template.md`
+- **Option Selection**: `skills/_shared/user-interaction/option-selection-template.md`
 
 ### Quality Standards Reference
 
-All Skills follow the quality assessment framework (now copied to each Skill's `references/` directory):
-- **Quality Standard**: `references/quality-standard.md`
-- **Error Code Standard**: `references/error-code-standard.md`
-- **Execution Flow Standard**: `references/execution-flow-standard.md`
-- **Artifact Specifications**: `references/artifact-specifications.md`
+All Skills follow the quality assessment framework from `skills/_shared/`:
+- **Quality Standard**: `skills/_shared/quality-standard.md`
+- **Error Code Standard**: `skills/_shared/error-code-standard.md`
+- **Execution Flow Standard**: `skills/_shared/execution-flow-standard.md`
+- **Artifact Specifications**: `skills/_shared/artifact-specifications.md`
 
 ## Key Rules (from .trae/rules/swf-rule.md)
 
