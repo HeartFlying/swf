@@ -42,7 +42,7 @@
 
 **交互流程**：
 
-使用 [execution-flow-standard.md](execution-flow-standard.md) 中的标准用户交互流程：
+使用 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的标准用户交互流程：
 
 1. 识别模糊/缺失的需求信息
 2. 生成澄清问题（使用标准化问题模板）
@@ -247,7 +247,7 @@
 - Todo-List 更新状态
 
 **用户决策选项**：
-- **确认**：需求提取无误，继续执行 S103（normal 模式）或 S104（lightweight 模式）
+- **确认**：需求提取无误，继续执行 S203（normal 模式）或 S204（lightweight 模式）
 - **修改（小修改）**：直接修改显式需求报告
 - **修改（大修改）**：返回步骤 1 重新执行
 - **新增想法**：补充需求信息，更新报告
@@ -298,7 +298,7 @@
 
 **评审超时处理**：
 
-详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审流程"章节。
+详见 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审流程"章节。
 
 **评审记录填写**：
 
@@ -326,4 +326,4 @@
 | 大修改 | 执行中 | 需重做 | 可恢复=true |
 | 新增想法 | 执行中 | 需修改 | 可恢复=true |
 
-**详细规则**：详见 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。

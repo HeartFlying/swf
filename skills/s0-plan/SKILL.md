@@ -17,7 +17,7 @@ version: 3.2.0
 | **执行顺序**       | 第 1 个执行（入口 Skill）  |
 | **执行模式**       | 常规模式 / 轻量化模式均执行    |
 | **依赖 Skill**   | 无（入口 Skill）        |
-| **后置 Skill**   | S201 (需求边界界定) |
+| **后置 Skill**   | 常规模式：S101；轻量化模式：S201 |
 | **版本**         | v3.2.0               |
 | **最后更新时间**     | 2026-03-28（渐进式披露优化） |
 
@@ -152,7 +152,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-遵循标准 [产物规范](references/artifact-specifications.md)。
+遵循标准 [产物规范](../_shared/artifact-specifications.md)。
 
 **本Skill产物**：
 
@@ -167,7 +167,7 @@ flowchart TD
 **前置 Skill**：无 - S001 是入口 Skill，无前置依赖
 
 **后置 Skill**：
-- 常规模式：S201 (需求边界界定)
+- 常规模式：S101 (竞品分析)
 - 轻量化模式：S201 (需求边界界定)
 
 **被依赖的产物**：
@@ -291,7 +291,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ***
 

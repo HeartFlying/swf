@@ -8,6 +8,7 @@ SWF Workflow 文档校验脚本
 3. 旧编号残留扫描（S104, S404）
 4. manifest 与 SKILL.md 一致性
 5. 共享规范引用路径正确性
+6. 冗余共享规范文件检测
 """
 
 import os
@@ -23,10 +24,13 @@ SHARED_DIR = SKILLS_DIR / "_shared"
 MANIFEST_FILE = AGENTS_DIR / "workflow-manifest.yaml"
 
 # 废弃编号模式
+# 注意：S1-S101, S1-S102 是正确的（S1阶段的竞品分析和市场验证）
+# 废弃的是在描述 S2 阶段技能时使用 S1-S10x 编号
+# 例如：边界界定、显式需求、隐性需求、需求验证 应使用 S2-S20x
 DEPRECATED_PATTERNS = [
-    (r"\bS104\b", "S204"),      # 应为 S204
-    (r"\bS404\b", "S406"),      # 应为 S406
-    (r"S1-S10[1-4]", "S2-S20x"),   # 应为 S2-S20x
+    (r"\bS104\b", "S204"),      # 原 S104 (需求验证) 应为 S204
+    (r"\bS404\b", "S406"),      # 原 S404 (原型设计) 应为 S406
+    (r"\bS103\b", "S203"),      # 原 S103 (隐性需求) 应为 S203
 ]
 
 # 排除的文件（允许出现旧编号）
@@ -35,6 +39,23 @@ EXCLUDE_FILES = [
     "task-execution-status.md",
     "VERSION.md",
     "migration-status.md",
+    "swf-workflow-refactor-v4.md",  # 历史记录文件
+]
+
+# 冗余文件列表（应只存在于 _shared 目录）
+REDUNDANT_FILES = [
+    "quality-standard.md",
+    "artifact-specifications.md",
+    "execution-flow-standard.md",
+    "error-code-standard.md",
+]
+
+# 保留文件列表（Skill 特有）
+KEEP_FILES = [
+    "execution-details.md",
+    "examples.md",
+    "appendix.md",
+    "skill-structure-reference.md",
 ]
 
 
@@ -147,6 +168,58 @@ def check_manifest() -> list:
     return errors
 
 
+def check_redundant_files() -> tuple:
+    """
+    检查冗余共享规范文件
+
+    功能：
+    - 遍历所有 Skill 目录（排除 _shared）
+    - 检查每个 Skill 的 references 目录中是否存在冗余文件
+    - 检查 user-interaction 子目录是否存在
+
+    Returns:
+        tuple: (errors, warnings)
+    """
+    errors = []
+    warnings = []
+    checked_skills = 0
+    redundant_found = 0
+    user_interaction_found = 0
+
+    for skill_dir in SKILLS_DIR.iterdir():
+        if skill_dir.is_dir() and not skill_dir.name.startswith("_"):
+            checked_skills += 1
+            references_dir = skill_dir / "references"
+
+            if not references_dir.exists():
+                continue
+
+            # 检查冗余文件
+            for redundant_file in REDUNDANT_FILES:
+                file_path = references_dir / redundant_file
+                if file_path.exists():
+                    redundant_found += 1
+                    relative_path = file_path.relative_to(PROJECT_ROOT)
+                    warnings.append(
+                        f"冗余文件: {relative_path} (应使用 _shared/{redundant_file})"
+                    )
+
+            # 检查 user-interaction 子目录
+            user_interaction_dir = references_dir / "user-interaction"
+            if user_interaction_dir.exists():
+                user_interaction_found += 1
+                relative_path = user_interaction_dir.relative_to(PROJECT_ROOT)
+                warnings.append(
+                    f"冗余目录: {relative_path} (应使用 _shared/user-interaction/)"
+                )
+
+    print(f"  检查了 {checked_skills} 个 Skill 目录")
+    print(f"  发现 {redundant_found} 个冗余文件")
+    print(f"  发现 {user_interaction_found} 个冗余 user-interaction 目录")
+
+    return errors, warnings
+
+
 def main():
     print("=" * 60)
     print("SWF Workflow 文档校验")
@@ -177,6 +250,12 @@ def main():
     all_errors.extend(check_manifest())
     print()
 
+    print("[6] 检查冗余共享规范文件...")
+    redundant_errors, redundant_warnings = check_redundant_files()
+    all_errors.extend(redundant_errors)
+    all_warnings.extend(redundant_warnings)
+    print()
+
     # 输出结果
     print("=" * 60)
     if all_errors:
@@ -194,9 +273,9 @@ def main():
         print()
 
     if not all_errors and not all_warnings:
-        print("✅ 校验通过，无错误或警告。")
+        print("[PASS] 校验通过，无错误或警告。")
     elif not all_errors:
-        print("✅ 校验通过，但有警告需要关注。")
+        print("[PASS] 校验通过，但有警告需要关注。")
 
     print("=" * 60)
     return 1 if all_errors else 0

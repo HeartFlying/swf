@@ -197,7 +197,7 @@ flowchart TD
 | Skill 执行完成 | 步骤 11 完成后 | S5-A04 任务状态：执行中 -> 已完成，评审状态：待评审 |
 | 用户评审后 | 步骤 12 完成后 | 根据评审结果更新状态 |
 
-**详细规则**：详见 [execution-flow-standard.md](references/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
 
 ### 3.4 Demo 示例
 
@@ -233,9 +233,9 @@ flowchart TD
 
 ### 4.3 通用规范
 
-- **产物 ID 命名规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ---
@@ -244,7 +244,7 @@ flowchart TD
 
 ### 5.1 质量评估框架
 
-S5-A04 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S5-A04 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度 | 权重 | 评估标准 | 验收阈值 |
 |------|------|----------|----------|
@@ -389,15 +389,15 @@ flowchart TD
 | 校验失败 | 重新执行 | 1次 | 标记风险继续执行 |
 | 用户拒绝 | 使用默认值 | - | 标记风险继续执行 |
 
-详细流程参见 [error-code-standard.md](references/error-code-standard.md)
+详细流程参见 [error-code-standard.md](../_shared/error-code-standard.md)
 
 ### 6.4 用户交互协议
 
 S5-A04 使用标准化的用户交互模板：
 
-- **需求澄清**：使用 [user-interaction/clarification-template.md](references/user-interaction/clarification-template.md)
-- **信息收集**：使用 [user-interaction/information-collection-template.md](references/user-interaction/information-collection-template.md)
-- **方案选择**：使用 [user-interaction/option-selection-template.md](references/user-interaction/option-selection-template.md)
+- **需求澄清**：使用 [user-interaction/clarification-template.md](../_shared/user-interaction/clarification-template.md)
+- **信息收集**：使用 [user-interaction/information-collection-template.md](../_shared/user-interaction/information-collection-template.md)
+- **方案选择**：使用 [user-interaction/option-selection-template.md](../_shared/user-interaction/option-selection-template.md)
 
 **交互触发场景**：
 

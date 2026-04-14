@@ -11,8 +11,8 @@
 4. 验证 Markdown 报告格式是否规范
 
 **验证规则**：
-- normal 模式：检查 S101-S104、S201-S202、S301-S303
-- lightweight 模式：检查 S101-S102、S104、S301-S302
+- normal 模式：检查 S101-S102、S201-S204、S301-S304
+- lightweight 模式：检查 S201-S202、S204、S301-S302
 - 所有前置产物必须存在
 - 产物状态必须为 completed
 
@@ -56,7 +56,7 @@
 | 分类冲突 | 需求可能属于多个分类 | 既是核心功能又是扩展功能 |
 | 发现重大冲突 | 识别出需要用户决策的需求冲突 | 资源竞争冲突 |
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 **使用模板**：
 - 使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md) 进行信息澄清
@@ -250,7 +250,7 @@
 - 需要用户确认分类方案
 - 检测到潜在分类冲突
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 ---
 
@@ -294,7 +294,7 @@
 
 **目标**：更新Todo-List，标记 S401 完成，准备用户评审
 
-**Todo-List更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**Todo-List更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S401特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -304,7 +304,7 @@
 
 **用户评审**：
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **评审展示内容**：
 - 需求分类报告核心内容（分类统计、关键发现）

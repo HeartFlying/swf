@@ -1,6 +1,6 @@
-# S404 执行流程详细步骤
+# S406 执行流程详细步骤
 
-本文档包含 S404 原型设计 Skill 的详细执行步骤说明。
+本文档包含 S406 原型设计 Skill 的详细执行步骤说明。
 
 ## 步骤 1：前置校验
 
@@ -104,7 +104,7 @@
 | 关键功能优先级有争议 | 需要用户确认功能优先级 | 功能排序争议 |
 | 目标用户群体多样 | 需要确认主要目标用户 | 多用户群体场景 |
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 **使用模板**：
 - 使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md) 进行信息澄清
@@ -255,11 +255,11 @@
 
 ## 步骤 12：更新 Todo-List
 
-**目标**：更新 Todo-List，标记 S404 完成，准备用户评审
+**目标**：更新 Todo-List，标记 S406 完成，准备用户评审
 
-**Todo-List更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**Todo-List更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
-**S404特定更新时机**：
+**S406特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
 2. **用户交互后**：步骤5完成后，更新交互记录
 3. **执行完成**：步骤11完成后，状态：执行中 → 已完成，评审状态：待评审
@@ -269,7 +269,7 @@
 
 **目标**：用户对原型设计结果进行评审和确认
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **评审展示内容**：
 - 原型设计报告核心内容（原型概览、页面清单、交互流程）
@@ -287,4 +287,4 @@
 
 **目标**：根据用户评审结果，更新 Todo-List 状态
 
-**操作**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审后的状态更新"章节
+**操作**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审后的状态更新"章节

@@ -382,7 +382,7 @@ C. 独立时序数据库存储
 
 **目标**：更新Todo-List，标记 S5-A03 完成，准备用户评审
 
-**Todo-List更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**Todo-List更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S5-A03特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -392,7 +392,7 @@ C. 独立时序数据库存储
 
 **用户评审**：
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **评审展示内容**：
 - 数据架构设计核心内容（存储选型、核心表、数据流转）

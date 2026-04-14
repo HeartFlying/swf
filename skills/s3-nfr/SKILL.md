@@ -134,7 +134,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-遵循标准 [产物规范](references/artifact-specifications.md)。
+遵循标准 [产物规范](../_shared/artifact-specifications.md)。
 
 **本Skill产物**：
 
@@ -238,7 +238,7 @@ S303 遵循 ISO/IEC 25010 质量评估框架：
 | NFR冲突 | 用户交互确认优先级 |
 | 指标不可行 | 标记风险并提供建议 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ***
 

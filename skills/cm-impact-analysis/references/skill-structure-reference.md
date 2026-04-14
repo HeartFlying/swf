@@ -452,17 +452,19 @@ flowchart TD
 | S001 | S0 | `P000001-S0-S001-001` |
 | S101 | S1 | `P000001-S1-S101-001` |
 | S102 | S1 | `P000001-S1-S102-001` |
-| S103 | S1 | `P000001-S1-S103-001` |
-| S104 | S1 | `P000001-S1-S104-001` |
 | S201 | S2 | `P000001-S2-S201-001` |
 | S202 | S2 | `P000001-S2-S202-001` |
+| S203 | S2 | `P000001-S2-S203-001` |
+| S204 | S2 | `P000001-S2-S204-001` |
 | S301 | S3 | `P000001-S3-S301-001` |
 | S302 | S3 | `P000001-S3-S302-001` |
 | S303 | S3 | `P000001-S3-S303-001` |
+| S304 | S3 | `P000001-S3-S304-001` |
 | S401 | S4 | `P000001-S4-S401-001` |
 | S402 | S4 | `P000001-S4-S402-001` |
 | S403 | S4 | `P000001-S4-S403-001` |
-| S404 | S4 | `P000001-S4-S404-001` |
+| S405 | S4 | `P000001-S4-S405-001` |
+| S406 | S4 | `P000001-S4-S406-001` |
 | S5-A01 | S5 | `P000001-S5-A01-001` |
 | S5-A02 | S5 | `P000001-S5-A02-001` |
 | S5-A03 | S5 | `P000001-S5-A03-001` |
@@ -482,29 +484,32 @@ swf/
 ├── agents/
 │   └── coordinator.md
 ├── skills/
-│   ├── s0-plan/SKILL.md           # S001
-│   ├── s1-boundary/SKILL.md       # S101
-│   ├── s1-explicit/SKILL.md       # S102
-│   ├── s1-implicit/SKILL.md       # S103
-│   ├── s1-validation/SKILL.md     # S104
-│   ├── s2-competitor/SKILL.md     # S201
-│   ├── s2-market-analysis/SKILL.md # S202
-│   ├── s3-risk/SKILL.md           # S301
-│   ├── s3-feasibility/SKILL.md    # S302
-│   ├── s3-selection/SKILL.md      # S303
-│   ├── s4-classify/SKILL.md       # S401
-│   ├── s4-priority/SKILL.md       # S402
-│   ├── s4-core/SKILL.md           # S403
-│   ├── s4-prototype/SKILL.md      # S404
-│   ├── s5-vision/SKILL.md         # S5-A01
-│   ├── s5-views/SKILL.md          # S5-A02
-│   ├── s5-data/SKILL.md           # S5-A03
-│   ├── s5-interface/SKILL.md      # S5-A04
-│   ├── s5-deployment/SKILL.md     # S5-A05
-│   ├── s5-validation/SKILL.md     # S5-A06
-│   ├── s6-module/SKILL.md         # S6-A01
-│   ├── s6-database/SKILL.md       # S6-A02
-│   └── s6-uiux/SKILL.md           # S6-A03
+│   ├── s0-plan/SKILL.md              # S001
+│   ├── s1-competitor/SKILL.md        # S101
+│   ├── s1-market-analysis/SKILL.md   # S102
+│   ├── s2-boundary/SKILL.md          # S201
+│   ├── s2-explicit/SKILL.md          # S202
+│   ├── s2-implicit/SKILL.md          # S203
+│   ├── s2-validation/SKILL.md        # S204
+│   ├── s3-feasibility/SKILL.md       # S301
+│   ├── s3-selection/SKILL.md         # S302
+│   ├── s3-nfr/SKILL.md               # S303
+│   ├── s3-risk/SKILL.md              # S304
+│   ├── s4-classify/SKILL.md          # S401
+│   ├── s4-priority/SKILL.md          # S402
+│   ├── s4-core/SKILL.md              # S403
+│   ├── s4-user-stories/SKILL.md      # S405
+│   ├── s4-prototype/SKILL.md         # S406
+│   ├── s5-vision/SKILL.md            # S5-A01
+│   ├── s5-views/SKILL.md             # S5-A02
+│   ├── s5-data/SKILL.md              # S5-A03
+│   ├── s5-interface/SKILL.md         # S5-A04
+│   ├── s5-deployment/SKILL.md        # S5-A05
+│   ├── s5-validation/SKILL.md        # S5-A06
+│   ├── s6-module/SKILL.md            # S6-A01
+│   ├── s6-database/SKILL.md          # S6-A02
+│   ├── s6-uiux/SKILL.md              # S6-A03
+│   └── s6-test-strategy/SKILL.md     # S6-A04
 └── templates/
     ├── user-interaction/
     │   ├── clarification-template.md

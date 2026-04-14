@@ -17,7 +17,7 @@ version: 3.2.0
 | **执行顺序** | S4 阶段第 3 个执行 |
 | **执行模式** | normal / lightweight 均执行 |
 | **依赖 Skill** | S402 (需求优先级排序) |
-| **后置 Skill** | S404 (原型设计) |
+| **后置 Skill** | S405 (用户故事编写) |
 | **版本** | v3.2.0 |
 | **最后更新时间** | 2026-03-28 |
 
@@ -69,8 +69,8 @@ S403 负责从优先级排序后的需求中提取核心功能需求，识别 MV
 |---------|-----------|--------|---------|--------|
 | IN-01 | S402 | {PlanID}-S4-S402-001 | 需求优先级排序结果 | 必需 |
 | IN-02 | S401 | {PlanID}-S4-S401-001 | 需求分类梳理结果 | 必需 |
-| IN-03 | S104 | {PlanID}-S1-S104-001 | 需求验证报告 | 参考 |
-| IN-04 | S101 | {PlanID}-S1-S101-001 | 需求边界界定报告 | 参考 |
+| IN-03 | S204 | {PlanID}-S2-S204-001 | 需求验证报告 | 参考 |
+| IN-04 | S201 | {PlanID}-S2-S201-001 | 需求边界界定报告 | 参考 |
 
 #### 输入内容要求
 
@@ -185,7 +185,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S403产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S403产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S403特定产物清单
 
@@ -200,7 +200,7 @@ S403产物规范遵循 [references/artifact-specifications.md](references/artifa
 
 ### 5.1 质量评估框架
 
-S403遵循 [references/quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S403遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S403特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -328,7 +328,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 
@@ -341,13 +341,14 @@ flowchart TD
 | S401 | 需求分类梳理 | 按功能/用户/系统/业务分类的需求 | S4 |
 | S402 | 需求优先级排序 | 带优先级排序的需求清单 | S4 |
 | **S403** | **核心需求提取** | **核心功能清单、MVP 范围定义** | **S4** |
-| S404 | 原型设计 | 产品原型设计文档 | S4 |
+| S405 | 用户故事编写 | 用户故事地图和验收标准 | S4 |
+| S406 | 原型设计 | 产品原型设计文档 | S4 |
 
 ### S403 的输入输出关系
 
 ```
 S401 (需求分类) ----\
-                     ---> S403 (核心需求提取) ---> S404 (原型设计)
+                     ---> S403 (核心需求提取) ---> S405 (用户故事) ---> S406 (原型设计)
 S402 (优先级排序) ---/
 ```
 

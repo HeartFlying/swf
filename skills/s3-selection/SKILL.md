@@ -159,7 +159,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S303产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S303产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S303特定产物清单
 
@@ -191,7 +191,7 @@ S303产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S303遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S303遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S303特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -322,4 +322,4 @@ flowchart TD
 - 标记技术债务供后续迭代优化
 - 在报告中注明选型的不确定性
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)

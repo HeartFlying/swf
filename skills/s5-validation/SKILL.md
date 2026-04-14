@@ -219,9 +219,9 @@ S5-A06 提供完整的输入、处理过程、输出示例，帮助理解 Skill 
 
 ### 4.3 通用规范
 
-- **产物 ID 命名规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 2 章
-- **存储路径结构**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 3 章
-- **版本管理规则**：详见 [artifact-specifications.md](references/artifact-specifications.md) 第 4 章
+- **产物 ID 命名规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 2 章
+- **存储路径结构**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 3 章
+- **版本管理规则**：详见 [artifact-specifications.md](../_shared/artifact-specifications.md) 第 4 章
 - **产物模板**：使用 [template.md](template.md)
 
 ***
@@ -230,7 +230,7 @@ S5-A06 提供完整的输入、处理过程、输出示例，帮助理解 Skill 
 
 ### 5.1 质量评估框架
 
-S5-A06 遵循 [quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
+S5-A06 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架：
 
 | 维度 | 权重 | 评估标准 | 验收阈值 |
 |------|------|----------|----------|
@@ -364,11 +364,11 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ### 6.4 错误代码
 
-详细错误代码定义参见 [error-code-standard.md](references/error-code-standard.md)
+详细错误代码定义参见 [error-code-standard.md](../_shared/error-code-standard.md)
 
 | 代码 | 错误名称 | 说明 |
 |------|----------|------|

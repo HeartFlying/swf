@@ -195,7 +195,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S6-A03 产物规范遵循 [references/artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S6-A03 产物规范遵循 [../_shared/artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S6-A03 特定产物清单
 
@@ -226,7 +226,7 @@ graph LR
 
 ### 5.1 质量评估框架
 
-S6-A03 遵循 [references/quality-standard.md](references/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架。
+S6-A03 遵循 [../_shared/quality-standard.md](../_shared/quality-standard.md) 中的 ISO/IEC 25010 质量评估框架。
 
 **S6-A03 特定权重分配**：
 
@@ -360,7 +360,7 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [references/execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ---
 

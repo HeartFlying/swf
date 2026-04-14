@@ -59,7 +59,7 @@
 | 约束条件缺失 | 关键约束未明确 | 部署方式、技术栈约束 |
 | 非功能需求模糊 | 性能、可用性等指标不明确 | "高可用"未定义SLA |
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 **使用模板**：
 - 使用 [user-interaction/clarification-template.md](user-interaction/clarification-template.md) 进行信息澄清
@@ -201,7 +201,7 @@
 - 列出基于分析做出的假设
 - 请求用户确认或纠正
 
-**交互流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户交互标准流程"章节
+**交互流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户交互标准流程"章节
 
 ---
 
@@ -269,7 +269,7 @@
 
 **目标**：更新Todo-List，标记 S5-A01 完成，准备用户评审
 
-**Todo-List更新规则**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
+**Todo-List更新规则**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"Todo-List更新标准规则"章节
 
 **S5-A01特定更新时机**：
 1. **执行开始**：步骤1完成后，状态：待执行 → 执行中
@@ -279,7 +279,7 @@
 
 **用户评审**：
 
-**评审流程**：遵循 [execution-flow-standard.md](execution-flow-standard.md) 中的"用户评审标准流程"章节
+**评审流程**：遵循 [execution-flow-standard.md](../../_shared/execution-flow-standard.md) 中的"用户评审标准流程"章节
 
 **评审展示内容**：
 - 系统定位摘要

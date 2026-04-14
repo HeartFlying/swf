@@ -59,7 +59,6 @@ version: 3.2.0
 | 输入项       | 文件路径                                                   | 说明                   |  必填 |
 | --------- | ------------------------------------------------------ | -------------------- | :-: |
 | Plan 定义文件 | `artifacts/plans/{PlanID}.md`                           | Plan 基本信息            |  是  |
-| Plan 定义文件 | `artifacts/plans/{PlanID}.md`                           | Plan 基本信息            |  是  |
 
 #### 输入内容读取规则
 
@@ -138,7 +137,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-S101产物规范遵循 [artifact-specifications.md](references/artifact-specifications.md) 中的通用定义。
+S101产物规范遵循 [artifact-specifications.md](../_shared/artifact-specifications.md) 中的通用定义。
 
 ### 4.1 S101特定产物清单
 
@@ -152,7 +151,7 @@ S101产物规范遵循 [artifact-specifications.md](references/artifact-specific
 
 ### 5.1 质量评估框架
 
-S101遵循 [quality-standard.md](references/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
+S101遵循 [quality-standard.md](../_shared/quality-standard.md) 中的ISO/IEC 25010质量评估框架。
 
 **S101特定权重分配**：
 | 维度 | 权重 | 验收阈值 |
@@ -262,4 +261,4 @@ flowchart TD
 | 校验失败 | 重新执行或标记风险 |
 | 用户拒绝 | 使用默认值继续 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)

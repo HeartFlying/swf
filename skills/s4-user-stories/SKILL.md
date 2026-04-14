@@ -137,7 +137,7 @@ flowchart TD
 
 ## Section 4: 产物规范 (Artifact Specifications)
 
-遵循标准 [产物规范](references/artifact-specifications.md)。
+遵循标准 [产物规范](../_shared/artifact-specifications.md)。
 
 **本Skill产物**：
 
@@ -157,7 +157,7 @@ flowchart TD
 
 | 产物 ID | 产物类型 | 被依赖的 Skill | 用途 |
 | ------- | -------- | -------------- | ---- |
-| `{PlanID}-S4-S405-002` | 用户故事清单 | S404, S5-A01 | 原型设计和架构设计输入 |
+| `{PlanID}-S4-S405-002` | 用户故事清单 | S406, S5-A01 | 原型设计和架构设计输入 |
 
 ***
 
@@ -242,7 +242,7 @@ S405 遵循 INVEST 原则和 ISO/IEC 25010 质量评估框架：
 | 故事过大 | 建议拆分并提供拆分方案 |
 | 依赖复杂 | 可视化并提供优化建议 |
 
-详细流程参见 [execution-flow-standard.md](references/execution-flow-standard.md)
+详细流程参见 [execution-flow-standard.md](../_shared/execution-flow-standard.md)
 
 ***
 
