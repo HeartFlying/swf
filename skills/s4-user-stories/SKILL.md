@@ -1,39 +1,26 @@
 ---
 name: S405 用户故事编写
 description: This skill should be used when the user needs to convert requirements into user stories with acceptance criteria. It creates user story maps and defines story points for agile development.
-version: 3.2.0
 ---
 
 # S405: 用户故事编写
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S405                       |
-| **Skill 名称**   | 用户故事编写                 |
-| **Skill 英文名称** | User Story Writing         |
-| **所属阶段**       | S4 - 需求整合                 |
-| **执行顺序**       | S4 阶段第 4 个执行            |
-| **执行模式**       | normal/lightweight 均执行    |
-| **依赖 Skill**   | S403 (核心需求提炼)          |
-| **后置 Skill**   | S406 (原型设计) / S5-A01 (架构愿景) |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-29（新增）          |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S405 |
-| **Stage** | S4 |
-| **Directory** | skills/s4-user-stories |
-| **Depends On** | S403 |
-| **Next (Normal)** | S406 |
-| **Next (Lightweight)** | S5-A01 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S403-001.md |
-| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
+| **Skill 名称** | 用户故事编写 |
+| **Skill 英文名称** | User Story Writing |
+| **所属阶段** | S4 - 需求整合 |
+| **执行顺序** | S4 阶段第 4 个执行 |
+| **执行模式** | normal/lightweight 均执行 |
+| **存储目录** | skills/s4-user-stories |
+| **依赖 Skill** | S403 (核心需求提炼) |
+| **后置 Skill** | S406 (原型设计) / S5-A01 (架构愿景) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s4/{PlanID}-S4-S403-001.md |
+| **输出产物** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
 
 ***
 

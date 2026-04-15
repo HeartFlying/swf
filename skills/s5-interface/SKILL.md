@@ -1,7 +1,6 @@
 ---
 name: S5-A04 接口架构设计
 description: This skill should be used when the user asks to "design system interfaces", "define API specifications", "design RESTful API", "design integration interfaces", "define authentication scheme", or "create API documentation". It provides comprehensive interface architecture design including API style selection, authentication design, and integration patterns.
-version: 3.2.0
 ---
 
 # S5-A04: 接口架构设计
@@ -10,30 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S5-A04 |
+| **Skill ID** | S5-A04 |
 | **Skill 名称** | 接口架构设计 |
 | **Skill 英文名称** | Interface Architecture Design |
 | **所属阶段** | S5 - 架构设计阶段 |
 | **执行顺序** | S5 阶段第 4 个执行 |
 | **执行模式** | 自动分析 + 用户交互 |
+| **存储目录** | skills/s5-interface |
 | **依赖 Skill** | S5-A03 (数据架构设计) |
 | **后置 Skill** | S5-A05 (部署架构设计) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S5-A04 |
-| **Stage** | S5 |
-| **Directory** | skills/s5-interface |
-| **Depends On** | S5-A03 |
-| **Next (Normal)** | S5-A05 |
-| **Next (Lightweight)** | S5-A05 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A04-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}-S5-A04-001.md |
 
 ---
 

@@ -1,7 +1,6 @@
 ---
-name: S201 需求边界界定
+name: S201 需求边界
 description: This skill should be used when the user asks to "define requirement boundaries", "clarify product scope", "identify target users", "establish project boundaries", or "analyze product domain". It provides 5-dimensional boundary analysis (product, user, scenario, time, resource).
-version: 3.2.0
 ---
 
 # S201: 需求边界
@@ -10,30 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S201 |
+| **Skill ID** | S201 |
 | **Skill 名称** | 需求边界 |
 | **Skill 英文名称** | Requirement Boundary Definition |
 | **所属阶段** | S2 - 需求定义 |
 | **执行顺序** | S2 阶段第 1 个执行 |
 | **执行模式** | 常规模式 / 轻量化模式均执行 |
-| **依赖 Skill** | S102 (市场痛点验证) 或 S001 (Plan制定，轻量化模式) |
+| **存储目录** | skills/s2-boundary |
+| **依赖 Skill** | S102 (市场痛点验证) 或 S001 (Plan 制定，轻量化模式) |
 | **后置 Skill** | S202 (显性需求提取) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-29（阶段重构） |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S201 |
-| **Stage** | S2 |
-| **Directory** | skills/s2-boundary |
-| **Depends On** | S102 or S001 |
-| **Next (Normal)** | S202 |
-| **Next (Lightweight)** | S202 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/plans/{PlanID}.md |
-| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S201-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/plans/{PlanID}.md |
+| **输出产物** | artifacts/stages/s2/{PlanID}-S2-S201-001.md |
 
 ## Section 2: 功能描述 (Functional Description)
 

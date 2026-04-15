@@ -1,7 +1,6 @@
 ---
 name: S5-A06 架构验证与评审
 description: This skill should be used when the user asks to "validate architecture", "review architecture design", "check architecture completeness", "identify architecture risks", "generate ADR", or "create architecture validation report". It validates architecture against quality standards and generates comprehensive architecture report.
-version: 3.2.0
 ---
 
 # S5-A06: 架构验证与评审
@@ -10,31 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S5-A06 |
+| **Skill ID** | S5-A06 |
 | **Skill 名称** | 架构验证与评审 |
 | **Skill 英文名称** | Architecture Validation and Review |
 | **所属阶段** | S5 - 架构设计阶段 |
 | **执行顺序** | S5 阶段第 6 个执行（S5 阶段最后一个 Skill） |
 | **执行模式** | 自动分析 + 用户交互 |
+| **存储目录** | skills/s5-validation |
 | **依赖 Skill** | S5-A05 (部署架构设计) |
 | **后置 Skill** | 无（S5 阶段结束） |
-| **参考标准** | ISO/IEC 25010, SEI ATAM, IEEE 1471 |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S5-A06 |
-| **Stage** | S5 |
-| **Directory** | skills/s5-validation |
-| **Depends On** | S5-A05 |
-| **Next (Normal)** | S6-A01 |
-| **Next (Lightweight)** | S6-A01 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A06-001.md, artifacts/stages/s5/{PlanID}/{PlanID}-S5-report.md |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A06-001.md, artifacts/stages/s5/{PlanID}/{PlanID}-S5-report.md |
 
 ***
 

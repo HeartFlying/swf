@@ -1,39 +1,26 @@
 ---
 name: CM-001 变更影响分析
 description: This skill should be used when the user initiates a change request after workflow completion, or when detecting requirement/architecture/design changes. It analyzes change impact scope, identifies cascade effects, and generates minimal re-execution path for intelligent incremental updates.
-version: 3.2.0
 ---
 
 # CM-001: 变更影响分析
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                 |
-| -------------- | ------------------ |
-| **Skill 编号**   | CM-001               |
-| **Skill 名称**   | 变更影响分析            |
-| **Skill 英文名称** | Change Impact Analysis |
-| **所属阶段**       | CM - 变更管理阶段         |
-| **执行顺序**       | 变更触发后第 1 个执行      |
-| **执行模式**       | 常规模式 / 轻量化模式均执行    |
-| **依赖 Skill**   | 无（变更管理入口 Skill）     |
-| **后置 Skill**   | 由影响分析结果动态决定        |
-| **版本**         | v3.2.0               |
-| **最后更新时间**     | 2026-03-29（智能增量更新支持） |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | CM-001 |
-| **Stage** | CM |
-| **Directory** | skills/cm-impact-analysis |
-| **Depends On** | Dynamic (based on change type) |
-| **Next (Normal)** | Dynamic (based on impact analysis) |
-| **Next (Lightweight)** | Dynamic (based on impact analysis) |
-| **Lightweight Skip** | No |
-| **Required Inputs** | Dynamic (depends on change scope) |
-| **Outputs** | artifacts/change-management/{PlanID}-CM-001-001.md |
+| **Skill 名称** | 变更影响分析 |
+| **Skill 英文名称** | Change Impact Analysis |
+| **所属阶段** | CM - 变更管理 |
+| **执行顺序** | 变更触发后第 1 个执行 |
+| **执行模式** | 常规模式 / 轻量化模式均执行 |
+| **存储目录** | skills/cm-impact-analysis |
+| **依赖 Skill** | 无（变更管理入口 Skill） |
+| **后置 Skill** | 由影响分析结果动态决定 |
+| **轻量化跳过** | No |
+| **必需输入** | Dynamic (depends on change scope) |
+| **输出产物** | artifacts/change-management/{PlanID}-CM-001-001.md |
 
 ***
 

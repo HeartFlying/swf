@@ -1,7 +1,6 @@
 ---
 name: S6-A01 模块详细设计
 description: This skill should be used when the user asks to "design module details", "create class design", "define method signatures", or "detailed module design". It provides comprehensive module design including class structure, method signatures, algorithm design, and design patterns.
-version: 3.2.0
 ---
 
 # S6-A01: 模块详细设计
@@ -10,31 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S6-A01 |
+| **Skill ID** | S6-A01 |
 | **Skill 名称** | 模块详细设计 |
 | **Skill 英文名称** | Module Detailed Design |
-| **所属阶段** | S6 - 详细设计阶段 |
+| **所属阶段** | S6 - 详细设计 |
 | **执行顺序** | S6 阶段第 1 个执行 |
 | **执行模式** | 自动推导 + 用户交互 |
+| **存储目录** | skills/s6-module |
 | **依赖 Skill** | S5-A06 (架构验证与评审) |
 | **后置 Skill** | S6-A02 (数据库详细设计) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-| **参考标准** | UML 2.5, IEEE 1016, 面向对象设计原则 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S6-A01 |
-| **Stage** | S6 |
-| **Directory** | skills/s6-module |
-| **Depends On** | S5-A06 |
-| **Next (Normal)** | S6-A02 |
-| **Next (Lightweight)** | S6-A02 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s5/{PlanID}-S5-A06-001.md |
-| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A01-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s5/{PlanID}-S5-A06-001.md |
+| **输出产物** | artifacts/stages/s6/{PlanID}-S6-A01-001.md |
 
 ***
 

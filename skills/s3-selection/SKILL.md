@@ -1,39 +1,26 @@
 ---
 name: S302 技术选型
 description: This skill should be used when the user asks to "select technology", "technology stack", "choose framework", or "technical decision". It provides structured technology selection based on requirement characteristics and constraints.
-version: 3.2.0
 ---
 
 # S302: 技术选型
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S302                       |
-| **Skill 名称**   | 技术选型                    |
-| **Skill 英文名称** | Technology Selection       |
-| **所属阶段**       | S3 - 技术规划                  |
-| **执行顺序**       | S3 阶段第 2 个执行              |
-| **执行模式**       | 常规模式 / 轻量化模式均执行 |
-| **依赖 Skill**   | S301（技术可行性评估）          |
-| **后置 Skill**   | S303（非功能需求定义）          |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-29（阶段重构）      |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S302 |
-| **Stage** | S3 |
-| **Directory** | skills/s3-selection |
-| **Depends On** | S301 |
-| **Next (Normal)** | S303 |
-| **Next (Lightweight)** | S303 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
-| **Outputs** | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
+| **Skill 名称** | 技术选型 |
+| **Skill 英文名称** | Technology Selection |
+| **所属阶段** | S3 - 技术规划 |
+| **执行顺序** | S3 阶段第 2 个执行 |
+| **执行模式** | 常规模式 / 轻量化模式均执行 |
+| **存储目录** | skills/s3-selection |
+| **依赖 Skill** | S301（技术可行性评估） |
+| **后置 Skill** | S303（非功能需求定义） |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
+| **输出产物** | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
 
 ***
 

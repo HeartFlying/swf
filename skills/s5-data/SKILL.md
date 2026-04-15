@@ -1,39 +1,26 @@
 ---
 name: S5-A03 数据架构设计
 description: This skill should be used when the user asks to "design data architecture", "create data model", "design database schema", "select data storage", or "define data flow". It designs data models, storage architecture, and data governance strategies.
-version: 3.2.0
 ---
 
 # S5-A03: 数据架构设计
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S5-A03                     |
-| **Skill 名称**   | 数据架构设计                 |
-| **Skill 英文名称** | Data Architecture Design   |
-| **所属阶段**       | S5 - 架构设计阶段             |
-| **执行顺序**       | S5 阶段第 3 个执行            |
-| **执行模式**       | 自动分析 + 用户交互            |
-| **依赖 Skill**   | S5-A02（架构视图设计）         |
-| **后置 Skill**   | S5-A04（接口架构设计）         |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-28                 |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S5-A03 |
-| **Stage** | S5 |
-| **Directory** | skills/s5-data |
-| **Depends On** | S5-A02 |
-| **Next (Normal)** | S5-A04 |
-| **Next (Lightweight)** | S5-A04 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A03-001.md |
+| **Skill 名称** | 数据架构设计 |
+| **Skill 英文名称** | Data Architecture Design |
+| **所属阶段** | S5 - 架构设计阶段 |
+| **执行顺序** | S5 阶段第 3 个执行 |
+| **执行模式** | 自动分析 + 用户交互 |
+| **存储目录** | skills/s5-data |
+| **依赖 Skill** | S5-A02（架构视图设计） |
+| **后置 Skill** | S5-A04（接口架构设计） |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}-S5-A03-001.md |
 
 ***
 

@@ -1,39 +1,26 @@
 ---
 name: S204 需求验证
 description: This skill should be used when the user asks to "validate requirements", "verify requirement quality", "check requirement completeness", or "review requirements". It validates requirements against quality standards and identifies issues.
-version: 3.2.0
 ---
 
 # S204: 需求验证
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S204                       |
-| **Skill 名称**   | 需求验证                   |
-| **Skill 英文名称** | Requirements Validation    |
-| **所属阶段**       | S2 - 需求定义                 |
-| **执行顺序**       | S2 阶段第 4 个执行（S2 阶段最后一个 Skill） |
-| **执行模式**       | 常规模式 / 轻量化模式均执行   |
-| **依赖 Skill**   | S203（常规模式）/ S202（轻量化模式） |
-| **后置 Skill**   | S301 (技术可行性评估)        |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-29（阶段重构）      |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S204 |
-| **Stage** | S2 |
-| **Directory** | skills/s2-validation |
-| **Depends On** | S203 |
-| **Next (Normal)** | S301 |
-| **Next (Lightweight)** | S301 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s2/{PlanID}-S2-S201-001.md, artifacts/stages/s2/{PlanID}-S2-S202-001.md, artifacts/stages/s2/{PlanID}-S2-S203-001.md |
-| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S204-001.md, artifacts/stages/s2/{PlanID}-S2-summary.md |
+| **Skill 名称** | 需求验证 |
+| **Skill 英文名称** | Requirements Validation |
+| **所属阶段** | S2 - 需求定义 |
+| **执行顺序** | S2 阶段第 4 个执行（S2 阶段最后一个 Skill） |
+| **执行模式** | 常规模式 / 轻量化模式均执行 |
+| **存储目录** | skills/s2-validation |
+| **依赖 Skill** | S203（常规模式）/ S202（轻量化模式） |
+| **后置 Skill** | S301 (技术可行性评估) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s2/{PlanID}-S2-S201-001.md, artifacts/stages/s2/{PlanID}-S2-S202-001.md, artifacts/stages/s2/{PlanID}-S2-S203-001.md |
+| **输出产物** | artifacts/stages/s2/{PlanID}-S2-S204-001.md, artifacts/stages/s2/{PlanID}-S2-summary.md |
 
 ***
 

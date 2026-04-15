@@ -1,7 +1,6 @@
 ---
-name: S402 需求优先级排序
+name: S402 需求优先级
 description: This skill should be used when the user asks to "prioritize requirements", "requirement prioritization", "rank requirements", or "requirement sorting". It sorts requirements by business value, urgency, and implementation cost.
-version: 3.2.0
 ---
 
 # S402: 需求优先级
@@ -10,30 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S402 |
+| **Skill ID** | S402 |
 | **Skill 名称** | 需求优先级 |
 | **Skill 英文名称** | Requirements Prioritization |
 | **所属阶段** | S4 - 需求整合与核心提炼阶段 |
 | **执行顺序** | S4 阶段第 2 个执行 |
 | **执行模式** | normal / lightweight 均执行 |
+| **存储目录** | skills/s4-priority |
 | **依赖 Skill** | S401 (需求分类梳理) |
 | **后置 Skill** | S403 (核心需求提取) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S402 |
-| **Stage** | S4 |
-| **Directory** | skills/s4-priority |
-| **Depends On** | S401 |
-| **Next (Normal)** | S403 |
-| **Next (Lightweight)** | S403 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S401-001.md |
-| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S402-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s4/{PlanID}-S4-S401-001.md |
+| **输出产物** | artifacts/stages/s4/{PlanID}-S4-S402-001.md |
 
 ---
 

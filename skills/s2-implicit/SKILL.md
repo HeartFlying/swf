@@ -1,39 +1,26 @@
 ---
-name: S203 隐性需求挖掘
+name: S203 隐式需求挖掘
 description: This skill should be used when the user asks to "discover implicit requirements", "analyze unstated needs", "identify hidden requirements", or "explore user pain points". It uncovers requirements that users haven't explicitly stated.
-version: 3.2.0
 ---
 
 # S203: 隐式需求挖掘
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S203                       |
-| **Skill 名称**   | 隐式需求挖掘                 |
-| **Skill 英文名称** | Implicit Requirements Mining |
-| **所属阶段**       | S2 - 需求定义                 |
-| **执行顺序**       | S2 阶段第 3 个执行           |
-| **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
-| **依赖 Skill**   | S202 (显性需求提取)          |
-| **后置 Skill**   | S204 (需求验证)              |
-| **版本**          | v3.2.0                       |
-| **最后更新时间**    | 2026-03-29（阶段重构）      |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S203 |
-| **Stage** | S2 |
-| **Directory** | skills/s2-implicit |
-| **Depends On** | S202 |
-| **Next (Normal)** | S204 |
-| **Next (Lightweight)** | - |
-| **Lightweight Skip** | Yes |
-| **Required Inputs** | artifacts/stages/s2/{PlanID}-S2-S202-001.md, artifacts/stages/s2/{PlanID}-S2-S201-001.md |
-| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S203-001.md |
+| **Skill 名称** | 隐式需求挖掘 |
+| **Skill 英文名称** | Implicit Requirements Mining |
+| **所属阶段** | S2 - 需求定义 |
+| **执行顺序** | S2 阶段第 3 个执行 |
+| **执行模式** | 仅 常规模式执行（轻量化模式 跳过） |
+| **存储目录** | skills/s2-implicit |
+| **依赖 Skill** | S202 (显性需求提取) |
+| **后置 Skill** | S204 (需求验证) |
+| **轻量化跳过** | Yes |
+| **必需输入** | artifacts/stages/s2/{PlanID}-S2-S202-001.md, artifacts/stages/s2/{PlanID}-S2-S201-001.md |
+| **输出产物** | artifacts/stages/s2/{PlanID}-S2-S203-001.md |
 
 ***
 

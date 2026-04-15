@@ -1,7 +1,6 @@
 ---
 name: S403 核心需求提取
 description: This skill should be used when the user asks to "extract core requirements", "identify essential features", "core requirements", or "must-have requirements". It extracts P0 requirements that are critical for MVP.
-version: 3.2.0
 ---
 
 # S403: 核心需求提取
@@ -10,30 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S403 |
+| **Skill ID** | S403 |
 | **Skill 名称** | 核心需求提取 |
-| **英文名称** | Core Requirements Extraction |
+| **Skill 英文名称** | Core Requirements Extraction |
 | **所属阶段** | S4 - 需求整合与核心提炼阶段 |
 | **执行顺序** | S4 阶段第 3 个执行 |
 | **执行模式** | normal / lightweight 均执行 |
+| **存储目录** | skills/s4-core |
 | **依赖 Skill** | S402 (需求优先级排序) |
 | **后置 Skill** | S405 (用户故事编写) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S403 |
-| **Stage** | S4 |
-| **Directory** | skills/s4-core |
-| **Depends On** | S402 |
-| **Next (Normal)** | S405 |
-| **Next (Lightweight)** | S405 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S402-001.md |
-| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S403-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s4/{PlanID}-S4-S402-001.md |
+| **输出产物** | artifacts/stages/s4/{PlanID}-S4-S403-001.md |
 
 ---
 

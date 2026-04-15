@@ -1,37 +1,26 @@
 ---
-name: S301 技术可行性分析
+name: S301 技术可行性
 description: This skill should be used when the user asks to "analyze technical feasibility", "feasibility study", "technical assessment", or "evaluate technical risks". It assesses whether requirements can be implemented with available technology.
-version: 3.2.0
 ---
 
 # S301: 技术可行性
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S301                       |
-| **Skill 名称**   | 技术可行性                  |
-| **Skill 英文名称** | Technical Feasibility      |
-| **所属阶段**     | S3 - 技术规划                 |
-| **执行顺序**     | S3 阶段第 1 个执行            |
-| **执行模式**     | normal/lightweight 均执行    |
-| **依赖 Skill**   | S204 (需求验证)              |
-| **后置 Skill**   | S302 (技术选型)              |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S301 |
-| **Stage** | S3 |
-| **Directory** | skills/s3-feasibility |
-| **Depends On** | S204 |
-| **Next (Normal)** | S302 |
-| **Next (Lightweight)** | S302 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s2/{PlanID}-S2-S204-001.md |
-| **Outputs** | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
+| **Skill 名称** | 技术可行性 |
+| **Skill 英文名称** | Technical Feasibility |
+| **所属阶段** | S3 - 技术规划 |
+| **执行顺序** | S3 阶段第 1 个执行 |
+| **执行模式** | 常规模式/轻量化模式 均执行 |
+| **存储目录** | skills/s3-feasibility |
+| **依赖 Skill** | S204 (需求验证) |
+| **后置 Skill** | S302 (技术选型) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s2/{PlanID}-S2-S204-001.md |
+| **输出产物** | artifacts/stages/s3/{PlanID}-S3-S301-001.md |
 
 ***
 

@@ -1,7 +1,6 @@
 ---
 name: S6-A02 数据库详细设计
 description: This skill should be used when the user asks to "design database schema", "create table structures", "design indexes", "design database objects", or "database detailed design". It provides comprehensive database design including tables, indexes, views, stored procedures, and DDL scripts.
-version: 3.2.0
 ---
 
 # S6-A02: 数据库详细设计
@@ -10,31 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S6-A02 |
+| **Skill ID** | S6-A02 |
 | **Skill 名称** | 数据库详细设计 |
 | **Skill 英文名称** | Database Detailed Design |
-| **所属阶段** | S6 - 详细设计阶段 |
+| **所属阶段** | S6 - 详细设计 |
 | **执行顺序** | S6 阶段第 2 个执行 |
 | **执行模式** | 自动推导 + 用户交互 |
+| **存储目录** | skills/s6-database |
 | **依赖 Skill** | S6-A01 (模块详细设计) |
-| **后置 Skill** | S6-A03 (UI/UX设计) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-| **参考标准** | SQL 标准，数据库设计规范，性能优化最佳实践 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S6-A02 |
-| **Stage** | S6 |
-| **Directory** | skills/s6-database |
-| **Depends On** | S6-A01 |
-| **Next (Normal)** | S6-A03 |
-| **Next (Lightweight)** | S6-A03 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s6/{PlanID}-S6-A01-001.md |
-| **Outputs** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
+| **后置 Skill** | S6-A03 (UI/UX 设计) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s6/{PlanID}-S6-A01-001.md |
+| **输出产物** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
 
 ***
 

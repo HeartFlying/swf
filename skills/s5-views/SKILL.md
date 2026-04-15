@@ -1,7 +1,6 @@
 ---
 name: S5-A02 架构视图设计
 description: This skill should be used when the user asks to "design architecture views", "create 4+1 views", "define layered architecture", "identify modules and components", or "architecture view modeling". It provides comprehensive architecture view design based on IEEE 1016 and ISO/IEC/IEEE 42010 standards.
-version: 3.2.0
 ---
 
 # S5-A02: 架构视图设计
@@ -10,32 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S5-A02 |
+| **Skill ID** | S5-A02 |
 | **Skill 名称** | 架构视图设计 |
 | **Skill 英文名称** | Architecture View Design |
 | **所属阶段** | S5 - 架构设计阶段 |
 | **执行顺序** | S5 阶段第 2 个执行 |
 | **执行模式** | 自动分析 + 用户交互 |
+| **存储目录** | skills/s5-views |
 | **依赖 Skill** | S5-A01（架构愿景定义） |
 | **后置 Skill** | S5-A03（数据架构设计） |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-| **参考标准** | IEEE 1016, ISO/IEC/IEEE 42010:2011 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S5-A02 |
-| **Stage** | S5 |
-| **Execution Mode** | 自动分析 + 用户交互 |
-| **Directory** | skills/s5-views |
-| **Depends On** | S5-A01 |
-| **Next (Normal)** | S5-A03 |
-| **Next (Lightweight)** | S5-A03 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A02-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}-S5-A02-001.md |
 
 ***
 

@@ -1,39 +1,26 @@
 ---
 name: S001 Plan 制定
 description: This skill should be used when the user asks to "create a plan", "define project scope", "start requirement analysis", or "initialize workflow". It generates Plan ID, evaluates information completeness, and creates execution plan with todo-list.
-version: 3.2.0
 ---
 
 # S001: Plan 制定
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                 |
-| -------------- | ------------------ |
-| **Skill 编号**   | S001               |
-| **Skill 名称**   | Plan 制定            |
-| **Skill 英文名称** | Plan Definition    |
-| **所属阶段**       | S0 - 初始化阶段         |
-| **执行顺序**       | 第 1 个执行（入口 Skill）  |
-| **执行模式**       | 常规模式 / 轻量化模式均执行    |
-| **依赖 Skill**   | 无（入口 Skill）        |
-| **后置 Skill**   | 常规模式：S101；轻量化模式：S201 |
-| **版本**         | v3.2.0               |
-| **最后更新时间**     | 2026-03-28（渐进式披露优化） |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S001 |
-| **Stage** | S0 |
-| **Directory** | skills/s0-plan |
-| **Depends On** | 无 |
-| **Next (Normal)** | S101 |
-| **Next (Lightweight)** | S201 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 无 |
-| **Outputs** | artifacts/plans/{PlanID}.md, artifacts/stages/s0/{PlanID}-S0-S001-002.md |
+| **Skill 名称** | Plan 制定 |
+| **Skill 英文名称** | Plan Definition |
+| **所属阶段** | S0 - 初始化阶段 |
+| **执行顺序** | 第 1 个执行（入口 Skill） |
+| **执行模式** | 常规模式 / 轻量化模式均执行 |
+| **存储目录** | skills/s0-plan |
+| **依赖 Skill** | 无（入口 Skill） |
+| **后置 Skill** | 常规模式：S101；轻量化模式：S201 |
+| **轻量化跳过** | No |
+| **必需输入** | 无 |
+| **输出产物** | artifacts/plans/{PlanID}.md, artifacts/stages/s0/{PlanID}-S0-S001-002.md |
 
 ***
 

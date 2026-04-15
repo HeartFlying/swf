@@ -1,40 +1,26 @@
-***
-
-name: S401 需求分类梳理
+---
+name: S401 需求分类
 description: This skill should be used when the user asks to "classify requirements", "categorize requirements", "organize requirements", or "requirement taxonomy". It classifies requirements by type, priority, and module.
-version: 3.2.0
---------------
+---
 
 # S401: 需求分类
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                          |
-| -------------- | --------------------------- |
-| **Skill 编号**   | S401                        |
-| **Skill 名称**   | 需求分类                        |
+| 项目 | 内容 |
+|------|------|
+| **Skill ID** | S401 |
+| **Skill 名称** | 需求分类 |
 | **Skill 英文名称** | Requirements Classification |
-| **所属阶段**       | S4 - 需求整合与核心提炼阶段            |
-| **执行顺序**       | S4 阶段第 1 个执行                |
-| **执行模式**       | normal / lightweight 均执行    |
-| **依赖 Skill**   | S304                        |
-| **后置 Skill**   | S402（需求优先级排序）               |
-| **版本**         | v3.2.0                      |
-| **最后更新时间**     | 2026-03-28                  |
-
-## Contract
-
-| 项目                     | 内容                                          |
-| ---------------------- | ------------------------------------------- |
-| **Skill ID**           | S401                                        |
-| **Stage**              | S4                                          |
-| **Directory**          | skills/s4-classify                          |
-| **Depends On**         | S304                                        |
-| **Next (Normal)**      | S402                                        |
-| **Next (Lightweight)** | S402                                        |
-| **Lightweight Skip**   | No                                          |
-| **Required Inputs**    | artifacts/stages/s3/{PlanID}-S3-S304-001.md |
-| **Outputs**            | artifacts/stages/s4/{PlanID}-S4-S401-001.md |
+| **所属阶段** | S4 - 需求整合与核心提炼阶段 |
+| **执行顺序** | S4 阶段第 1 个执行 |
+| **执行模式** | normal / lightweight 均执行 |
+| **存储目录** | skills/s4-classify |
+| **依赖 Skill** | S304 |
+| **后置 Skill** | S402（需求优先级排序） |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s3/{PlanID}-S3-S304-001.md |
+| **输出产物** | artifacts/stages/s4/{PlanID}-S4-S401-001.md |
 
 ***
 

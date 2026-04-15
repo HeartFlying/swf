@@ -1,43 +1,26 @@
 ---
 name: S5-A01 架构愿景定义
-description: This skill should be used when the user asks to "define architecture vision",
-  "establish architecture goals", "identify architecture decisions", or "set architecture
-  principles". It provides systematic analysis of system characteristics and derives
-  architecture direction.
-version: 3.2.0
+description: This skill should be used when the user asks to "define architecture vision", "establish architecture goals", "identify architecture decisions", or "set architecture principles". It provides systematic analysis of system characteristics and derives architecture direction.
 ---
 
 # S5-A01: 架构愿景定义
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S5-A01                     |
-| **Skill 名称**   | 架构愿景定义                 |
-| **Skill 英文名称** | Architecture Vision Definition |
-| **所属阶段**       | S5 - 架构设计阶段             |
-| **执行顺序**       | S5 阶段第 1 个执行            |
-| **执行模式**       | normal / lightweight 均执行  |
-| **依赖 Skill**   | S4 阶段产物（需求整合与核心提炼）  |
-| **后置 Skill**   | S5-A02（架构视图设计）         |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-28                 |
-| **参考标准**      | ISO/IEC/IEEE 42010:2011    |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S5-A01 |
-| **Stage** | S5 |
-| **Directory** | skills/s5-vision |
-| **Depends On** | S406 |
-| **Next (Normal)** | S5-A02 |
-| **Next (Lightweight)** | S5-A02 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md |
+| **Skill 名称** | 架构愿景定义 |
+| **Skill 英文名称** | Architecture Vision Definition |
+| **所属阶段** | S5 - 架构设计阶段 |
+| **执行顺序** | S5 阶段第 1 个执行 |
+| **执行模式** | normal / lightweight 均执行 |
+| **存储目录** | skills/s5-vision |
+| **依赖 Skill** | S4 阶段产物（需求整合与核心提炼） |
+| **后置 Skill** | S5-A02（架构视图设计） |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md |
 
 ***
 

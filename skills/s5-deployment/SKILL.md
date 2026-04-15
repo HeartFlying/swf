@@ -1,7 +1,6 @@
 ---
 name: S5-A05 部署架构设计
 description: This skill should be used when the user asks to "design deployment architecture", "define deployment strategy", "plan CI/CD pipeline", "configure infrastructure", "design container orchestration", or "setup monitoring and alerting". It provides comprehensive deployment architecture design including environment planning, container orchestration, CI/CD flow, and observability strategy.
-version: 3.2.0
 ---
 
 # S5-A05: 部署架构设计
@@ -10,31 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S5-A05 |
+| **Skill ID** | S5-A05 |
 | **Skill 名称** | 部署架构设计 |
 | **Skill 英文名称** | Deployment Architecture Design |
 | **所属阶段** | S5 - 架构设计阶段 |
 | **执行顺序** | S5 阶段第 5 个执行 |
 | **执行模式** | 自动分析 + 用户交互 |
+| **存储目录** | skills/s5-deployment |
 | **依赖 Skill** | S5-A04 (接口架构设计) |
 | **后置 Skill** | S5-A06 (架构验证与评审) |
-| **参考标准** | The Twelve-Factor App, Docker最佳实践, Kubernetes设计模式 |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S5-A05 |
-| **Stage** | S5 |
-| **Directory** | skills/s5-deployment |
-| **Depends On** | S5-A04 |
-| **Next (Normal)** | S5-A06 |
-| **Next (Lightweight)** | S5-A06 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | 参见 workflow-manifest.yaml |
-| **Outputs** | artifacts/stages/s5/{PlanID}-S5-A05-001.md |
+| **轻量化跳过** | No |
+| **必需输入** | 参见 workflow-manifest.yaml |
+| **输出产物** | artifacts/stages/s5/{PlanID}-S5-A05-001.md |
 
 ## Section 2: 功能描述 (Functional Description)
 
@@ -42,7 +28,7 @@ version: 3.2.0
 
 S5-A05 负责设计系统部署架构，确保系统可以可靠、高效、安全地运行：
 
-1. **部署模式选择**：基于系统特征推荐最优部署模式（Docker Compose/Kubernetes/FaaS等）
+1. **部署模式选择**：基于系统特征推荐最优部署模式（Docker Compose/Kubernetes/FaaS 等）
 2. **服务架构设计**：定义容器化服务划分、资源需求、服务依赖关系
 3. **网络架构设计**：设计网络拓扑、安全策略、流量管理方案
 4. **存储架构设计**：选择存储类型、设计持久化策略、备份恢复方案
@@ -59,7 +45,7 @@ S5-A05 负责设计系统部署架构，确保系统可以可靠、高效、安�
 | 架构愿景文档 | 必填，包含系统特征、规模等级 | S5-A01 产物 |
 | 架构视图设计文档 | 必填，包含分层架构、模块划分 | S5-A02 产物 |
 | 数据架构设计文档 | 必填，包含存储方案、数据流 | S5-A03 产物 |
-| 接口架构设计文档 | 必填，包含API设计、外部集成 | S5-A04 产物 |
+| 接口架构设计文档 | 必填，包含 API 设计、外部集成 | S5-A04 产物 |
 | 非功能需求 | 必填，包含性能、可用性、安全要求 | 需求工程阶段 |
 | 部署约束 | 可选，包含预算、技术栈限制、合规要求 | 需求工程阶段 |
 
@@ -68,7 +54,7 @@ S5-A05 负责设计系统部署架构，确保系统可以可靠、高效、安�
 ```
 架构愿景文档：artifacts/stages/s5/{PlanID}/{PlanID}-S5-A01-001.md
 - 系统类型：电商平台
-- 规模等级：中型（日活10万）
+- 规模等级：中型（日活 10 万）
 - 关键特征：高可用、弹性扩展
 
 架构视图设计文档：artifacts/stages/s5/{PlanID}/{PlanID}-S5-A02-001.md
@@ -81,7 +67,7 @@ S5-A05 负责设计系统部署架构，确保系统可以可靠、高效、安�
 - 安全等级：等保二级
 
 部署约束：
-- 预算：50万/年
+- 预算：50 万/年
 - 云服务商：阿里云
 - 技术栈偏好：容器化部署
 ```
@@ -116,7 +102,7 @@ S5-A05 负责设计系统部署架构，确保系统可以可靠、高效、安�
 ```mermaid
 flowchart TD
     Start[开始执行 S5-A05] --> PreCheck[前置校验]
-    PreCheck --> CheckResult{校验通过?}
+    PreCheck --> CheckResult{校验通过？}
     CheckResult -->|否| Error[返回错误，补充信息]
     CheckResult -->|是| LoadInput[读取前置产物]
     LoadInput --> Analyze[分析部署需求]
@@ -124,7 +110,7 @@ flowchart TD
     DeriveMode --> DesignService[设计服务架构]
     DesignService --> DesignNetwork[设计网络架构]
     DesignNetwork --> DesignStorage[设计存储架构]
-    DesignStorage --> DesignCICD[设计CI/CD流程]
+    DesignStorage --> DesignCICD[设计 CI/CD 流程]
     DesignCICD --> DesignMonitor[设计监控告警]
     DesignMonitor --> DesignEnv[设计环境管理]
     DesignEnv --> GenConfirm[生成确认清单]
@@ -134,7 +120,7 @@ flowchart TD
     UserConfirm -->|确认| GenDoc[生成部署架构文档]
     GenDoc --> UpdateTodo[更新 Todo-List]
     UpdateTodo --> PostCheck[后置校验]
-    PostCheck --> PostResult{校验通过?}
+    PostCheck --> PostResult{校验通过？}
     PostResult -->|否| HandleError[错误处理]
     HandleError --> GenDoc
     PostResult -->|是| Review[用户评审]
@@ -161,7 +147,7 @@ flowchart TD
 | Skill 执行完成 | 步骤 11 完成后 | A05 任务状态：执行中 → 已完成，评审状态：待评审 |
 | 用户评审后 | 步骤 13 完成后 | 根据评审结果更新状态 |
 
-**详细规则**：详见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 中的"Todo-List更新规则"章节。
+**详细规则**：详见 [execution-flow-standard.md](../_shared/execution-flow-standard.md) 中的"Todo-List 更新规则"章节。
 
 ### 3.4 Demo 示例
 
@@ -233,7 +219,7 @@ S5-A05 遵循 [quality-standard.md](../_shared/quality-standard.md) 中的 ISO/I
 
 - [ ] 服务划分与架构视图设计一致
 - [ ] 存储方案与数据架构设计一致
-- [ ] API网关与接口架构设计一致
+- [ ] API 网关与接口架构设计一致
 - [ ] 安全策略与非功能需求一致
 
 **可读性检查**：
@@ -277,7 +263,7 @@ flowchart TD
     Score -->|是| Pass[通过验收]
     Score -->|否| Identify[识别问题点]
     Identify --> List[生成问题清单]
-    List --> ReExecute[自动重新执行A05]
+    List --> ReExecute[自动重新执行 A05]
     ReExecute --> Retry{重试次数 < 3?}
     Retry -->|是| Evaluate
     Retry -->|否| Risk[标记为风险]
@@ -287,9 +273,9 @@ flowchart TD
 
 **重试机制**：
 
-- 第1次：自动重新执行，尝试修复问题
-- 第2次：自动重新执行，调整参数
-- 第3次：自动重新执行，简化复杂部分
+- 第 1 次：自动重新执行，尝试修复问题
+- 第 2 次：自动重新执行，调整参数
+- 第 3 次：自动重新执行，简化复杂部分
 - 仍不达标：标记为风险，进入用户评审并提示问题
 
 ## Section 6: 异常处理 (Exception Handling)
@@ -303,17 +289,17 @@ flowchart TD
 
 **部署模式选择冲突**：
 
-- 错误代码：E151（S5阶段特定错误）
+- 错误代码：E151（S5 阶段特定错误）
 - 处理策略：列出备选方案，请求用户决策
 
 **资源估算超预算**：
 
-- 错误代码：E152（S5阶段特定错误）
+- 错误代码：E152（S5 阶段特定错误）
 - 处理策略：提供优化方案，调整资源配置
 
 **技术选型不一致**：
 
-- 错误代码：E153（S5阶段特定错误）
+- 错误代码：E153（S5 阶段特定错误）
 - 处理策略：标记冲突点，请求用户确认优先级
 
 ### 6.2 用户交互协议
@@ -328,10 +314,10 @@ flowchart TD
 
 | 异常类型 | 处理策略 | 重试次数 | 失败处理 |
 |----------|----------|----------|----------|
-| 前置产物缺失 | 请求用户执行前置Skill | - | 标记为阻塞 |
-| 部署模式冲突 | 请求用户决策选择 | 最多3轮 | 使用推荐方案 |
-| 资源超预算 | 提供优化方案 | 最多3轮 | 标记风险继续 |
-| 技术选型冲突 | 标记冲突，请求确认 | 最多3轮 | 标记风险继续 |
+| 前置产物缺失 | 请求用户执行前置 Skill | - | 标记为阻塞 |
+| 部署模式冲突 | 请求用户决策选择 | 最多 3 轮 | 使用推荐方案 |
+| 资源超预算 | 提供优化方案 | 最多 3 轮 | 标记风险继续 |
+| 技术选型冲突 | 标记冲突，请求确认 | 最多 3 轮 | 标记风险继续 |
 | 用户交互超时 | 使用默认值继续 | - | 标记信息缺失 |
 
 ### 6.4 错误处理流程

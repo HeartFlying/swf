@@ -1,40 +1,26 @@
 ---
-name: S6-A03 UI/UX设计
+name: S6-A03 UI/UX 设计
 description: This skill should be used when the user asks to "design UI/UX", "create interface design", "design user experience", or "create UI components". It provides comprehensive UI/UX design including information architecture, page layout, interaction flow, and accessibility.
-version: 3.2.0
 ---
 
-# S6-A03: UI/UX设计
+# S6-A03: UI/UX 设计
 
 ## Section 1: 元信息 (Meta Information)
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S6-A03 |
-| **Skill 名称** | UI/UX设计 |
+| **Skill ID** | S6-A03 |
+| **Skill 名称** | UI/UX 设计 |
 | **Skill 英文名称** | UI/UX Design |
-| **所属阶段** | S6 - 详细设计阶段 |
+| **所属阶段** | S6 - 详细设计 |
 | **执行顺序** | S6 阶段第 3 个执行 |
 | **执行模式** | 自动推导 + 用户交互 |
+| **存储目录** | skills/s6-uiux |
 | **依赖 Skill** | S6-A02（数据库详细设计） |
-| **后置 Skill** | S7 实现阶段 |
-| **参考标准** | Material Design, Human Interface Guidelines, WCAG 2.1 |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-28 |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S6-A03 |
-| **Stage** | S6 |
-| **Directory** | skills/s6-uiux |
-| **Depends On** | S6-A02 |
-| **Next (Normal)** | S6-A04 |
-| **Next (Lightweight)** | S6-A04 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
-| **Outputs** | artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-001.md, artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-002.md |
+| **后置 Skill** | S6-A04 (测试策略设计) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s6/{PlanID}-S6-A02-001.md |
+| **输出产物** | artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-001.md, artifacts/stages/s6/{PlanID}/{PlanID}-S6-A03-002.md |
 
 ***
 

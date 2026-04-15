@@ -1,39 +1,26 @@
 ---
 name: S303 非功能需求定义
 description: This skill should be used when the user needs to define non-functional requirements including performance, security, availability, scalability, and maintainability. It establishes quality attributes and constraints for architecture design.
-version: 3.2.0
 ---
 
 # S303: 非功能需求定义
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S303                       |
-| **Skill 名称**   | 非功能需求定义               |
-| **Skill 英文名称** | Non-Functional Requirements Definition |
-| **所属阶段**       | S3 - 技术规划                 |
-| **执行顺序**       | S3 阶段第 3 个执行            |
-| **执行模式**       | normal/lightweight 均执行    |
-| **依赖 Skill**   | S302 (技术选型)              |
-| **后置 Skill**   | S304 (风险识别)              |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-29（新增）          |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S303 |
-| **Stage** | S3 |
-| **Directory** | skills/s3-nfr |
-| **Depends On** | S302 |
-| **Next (Normal)** | S304 |
-| **Next (Lightweight)** | S304 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
-| **Outputs** | artifacts/stages/s3/{PlanID}-S3-S303-001.md |
+| **Skill 名称** | 非功能需求定义 |
+| **Skill 英文名称** | Non-Functional Requirements Definition |
+| **所属阶段** | S3 - 技术规划 |
+| **执行顺序** | S3 阶段第 3 个执行 |
+| **执行模式** | normal/lightweight 均执行 |
+| **存储目录** | skills/s3-nfr |
+| **依赖 Skill** | S302 (技术选型) |
+| **后置 Skill** | S304 (风险识别) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s3/{PlanID}-S3-S302-001.md |
+| **输出产物** | artifacts/stages/s3/{PlanID}-S3-S303-001.md |
 
 ***
 

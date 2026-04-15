@@ -1,39 +1,26 @@
 ---
 name: S406 原型设计
 description: This skill should be used when the user asks to "design prototype", "create wireframes", "prototype design", or "UI mockups". It creates visual prototypes for core features to validate requirements.
-version: 3.2.0
 ---
 
 # S406: 原型设计
 
 ## Section 1: 元信息 (Meta Information)
 
-| 项目             | 内容                       |
-| -------------- | -------------------------- |
-| **Skill 编号**   | S406                       |
-| **Skill 名称**   | 原型设计                   |
-| **Skill 英文名称** | Prototype Design           |
-| **所属阶段**       | S4 - 需求整合                  |
-| **执行顺序**       | S4 阶段第 6 个执行（可选） |
-| **执行模式**       | 仅 normal 模式执行（lightweight 跳过） |
-| **依赖 Skill**   | S405 (用户故事编写)          |
-| **后置 Skill**   | S5-A01 (架构愿景)            |
-| **版本**          | v3.2.0                     |
-| **最后更新时间**    | 2026-03-29（阶段重构）      |
-
-## Contract
-
 | 项目 | 内容 |
 |------|------|
 | **Skill ID** | S406 |
-| **Stage** | S4 |
-| **Directory** | skills/s4-prototype |
-| **Depends On** | S405 |
-| **Next (Normal)** | S5-A01 |
-| **Next (Lightweight)** | - |
-| **Lightweight Skip** | Yes |
-| **Required Inputs** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
-| **Outputs** | artifacts/stages/s4/{PlanID}-S4-S406-001.md |
+| **Skill 名称** | 原型设计 |
+| **Skill 英文名称** | Prototype Design |
+| **所属阶段** | S4 - 需求整合 |
+| **执行顺序** | S4 阶段第 6 个执行（可选） |
+| **执行模式** | 仅 normal 模式执行（lightweight 跳过） |
+| **存储目录** | skills/s4-prototype |
+| **依赖 Skill** | S405 (用户故事编写) |
+| **后置 Skill** | S5-A01 (架构愿景) |
+| **轻量化跳过** | Yes |
+| **必需输入** | artifacts/stages/s4/{PlanID}-S4-S405-001.md |
+| **输出产物** | artifacts/stages/s4/{PlanID}-S4-S406-001.md |
 
 ***
 

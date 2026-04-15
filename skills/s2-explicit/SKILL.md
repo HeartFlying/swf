@@ -1,7 +1,6 @@
 ---
-name: S202 显性需求提取
+name: S202 显式需求
 description: This skill should be used when the user asks to "extract explicit requirements", "collect functional requirements", "gather user requirements", or "document feature requests". It extracts and structures clearly stated requirements from users.
-version: 3.2.0
 ---
 
 # S202: 显式需求
@@ -10,30 +9,18 @@ version: 3.2.0
 
 | 项目 | 内容 |
 |------|------|
-| **Skill 编号** | S202 |
+| **Skill ID** | S202 |
 | **Skill 名称** | 显式需求 |
 | **Skill 英文名称** | Explicit Requirements |
 | **所属阶段** | S2 - 需求定义 |
 | **执行顺序** | S2 阶段第 2 个执行 |
 | **执行模式** | 常规模式 / 轻量化模式均执行 |
+| **存储目录** | skills/s2-explicit |
 | **依赖 Skill** | S201 (需求边界界定) |
-| **后置 Skill** | S203 (隐性需求挖掘 - normal 模式) / S204 (需求验证 - lightweight 模式) |
-| **版本** | v3.2.0 |
-| **最后更新时间** | 2026-03-29（阶段重构） |
-
-## Contract
-
-| 项目 | 内容 |
-|------|------|
-| **Skill ID** | S202 |
-| **Stage** | S2 |
-| **Directory** | skills/s2-explicit |
-| **Depends On** | S201 |
-| **Next (Normal)** | S203 |
-| **Next (Lightweight)** | S204 |
-| **Lightweight Skip** | No |
-| **Required Inputs** | artifacts/stages/s2/{PlanID}-S2-S201-001.md |
-| **Outputs** | artifacts/stages/s2/{PlanID}-S2-S202-001.md |
+| **后置 Skill** | S203 (隐性需求挖掘 - 常规 模式) / S204 (需求验证 - 轻量化 模式) |
+| **轻量化跳过** | No |
+| **必需输入** | artifacts/stages/s2/{PlanID}-S2-S201-001.md |
+| **输出产物** | artifacts/stages/s2/{PlanID}-S2-S202-001.md |
 
 ---
 
